@@ -182,6 +182,8 @@ enum class TabGridOpeningMode {
 // Shows the application App Store page, if any.
 - (void)showAppStorePage;
 
+// Shows the Vortex paywall (RevenueCat)
+- (void)showVortexPaywall;
 @end
 
 #endif  // IOS_CHROME_BROWSER_SHARED_PUBLIC_COMMANDS_APPLICATION_COMMANDS_H_

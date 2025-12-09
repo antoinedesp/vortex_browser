@@ -104,6 +104,7 @@ source_set("commands") {
     "web_content_commands.h",
     "welcome_back_promo_commands.h",
     "whats_new_commands.h",
+    "vpn_commands.h",
   ]
 
   deps = [
