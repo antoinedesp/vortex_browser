@@ -47,6 +47,11 @@
 #import "ios/web/public/thread/web_thread.h"
 #import "third_party/search_engines_data/resources/definitions/prepopulated_engines.h"
 
+// Vortex RevenueCat initializer
+#import "ios/chrome/app/vortex_revenuecat_initializer.h"
+#import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
+#import "third_party/mixpanel/ios/vortex_mixpanel_shim.h"
+
 namespace {
 // The time delay after firstSceneWillEnterForeground: before checking for main
 // intent signals.
@@ -129,6 +134,18 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
          selector:@selector(lastSceneDidEnterBackground:)
              name:UIApplicationDidEnterBackgroundNotification
            object:nil];
+
+  // MixPanel init
+  [VortexMixpanelShim configureWithToken:@"dde557452a3b2439ffedbd0057db32aa"
+                                   userId:nil];
+  [VortexMixpanelShim trackEvent:@"app_open" properties:@{ @"source": @"vortex" }];
+
+  // Vortex RevenueCat initializer
+  [VortexRevenueCatInitializer configureRevenueCat];
+
+  // Sync premium status on launch
+  [[VortexPlusManager sharedManager] syncWithRevenueCat];
+
   // UIApplicationWillEnterForegroundNotification will be delivered right
   // after the first scene sends UISceneWillEnterForegroundNotification.
   [[NSNotificationCenter defaultCenter]
@@ -339,6 +356,9 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
   [_mainController
       applicationWillEnterForeground:UIApplication.sharedApplication
                         memoryHelper:_memoryHelper];
+
+  // Re-sync premium status when app comes to foreground
+  [[VortexPlusManager sharedManager] syncWithRevenueCat];
 }
 
 #pragma mark - UIResponder methods
