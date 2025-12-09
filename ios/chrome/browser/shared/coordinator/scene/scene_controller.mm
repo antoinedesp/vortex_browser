@@ -262,8 +262,8 @@ const char kMultiWindowOpenInNewWindowHistogram[] =
 // received.
 const char kContextsToOpen[] = "IOS.NumberOfContextsToOpen";
 
-// The App Store page for Google Chrome.
-NSString* const kChromeAppStoreURL = @"https://apps.apple.com/app/id535886823";
+// The App Store page for Vortex Browser.
+NSString* const kChromeAppStoreURL = @"https://apps.apple.com/app/id6744260006";
 
 // Enum for IOS.NumberOfContextsToOpen histogram.
 // Keep in sync with "ContextsToOpen" in tools/metrics/histograms/enums.xml.
