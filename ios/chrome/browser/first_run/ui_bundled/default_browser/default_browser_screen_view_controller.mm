@@ -12,6 +12,7 @@
 #import "ios/chrome/common/ui/button_stack/button_stack_configuration.h"
 #import "ios/chrome/common/ui/colors/semantic_color_names.h"
 #import "ios/chrome/common/ui/instruction_view/instruction_view.h"
+#import "ios/chrome/common/ui/instruction_view/vortex_instruction_view.h"
 #import "ios/chrome/grit/ios_branded_strings.h"
 #import "ios/chrome/grit/ios_strings.h"
 #import "ui/base/device_form_factor.h"
@@ -28,11 +29,11 @@
   self.view.accessibilityIdentifier =
       first_run::kFirstRunDefaultBrowserScreenAccessibilityIdentifier;
   self.bannerSize = BannerImageSizeType::kStandard;
-#if BUILDFLAG(IOS_USE_BRANDED_SYMBOLS)
-  self.bannerName = kChromeDefaultBrowserScreenBannerImage;
-#else
-  self.bannerName = kChromiumDefaultBrowserScreenBannerImage;
-#endif
+// #if BUILDFLAG(IOS_USE_BRANDED_SYMBOLS)
+  // self.bannerName = kChromeDefaultBrowserScreenBannerImage;
+// #else
+   self.bannerName = kChromiumDefaultBrowserScreenBannerImage;
+// #endif
   if (![self.titleText length] || ![self.subtitleText length]) {
     // Sets default promo text if title and subtitle text are not explicitly
     // set.
@@ -58,8 +59,7 @@
       IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_SECONDARY_ACTION);
 
   NSMutableArray* defaultBrowserSteps = [[NSMutableArray alloc] init];
-  if (IsDefaultAppsDestinationAvailable() &&
-      IsUseDefaultAppsDestinationForPromosEnabled()) {
+
     [defaultBrowserSteps
         addObject:
             l10n_util::GetNSString(
@@ -68,22 +68,19 @@
         addObject:
             l10n_util::GetNSString(
                 IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_SECOND_STEP)];
-  } else {
-    [defaultBrowserSteps
-        addObject:l10n_util::GetNSString(
-                      IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_FIRST_STEP)];
-    [defaultBrowserSteps
-        addObject:l10n_util::GetNSString(
-                      IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_SECOND_STEP)];
-  }
+
   [defaultBrowserSteps
       addObject:l10n_util::GetNSString(
-                    IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_THIRD_STEP)];
+                    IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_THIRD_STEP)];
+
+  [defaultBrowserSteps
+      addObject:l10n_util::GetNSString(
+                    IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_FOURTH_STEP)];
 
   [self generateDisclaimer];
 
   UIView* instructionView =
-      [[InstructionView alloc] initWithList:defaultBrowserSteps];
+      [[VortexInstructionView alloc] initWithList:defaultBrowserSteps];
   instructionView.translatesAutoresizingMaskIntoConstraints = NO;
 
   [self.specificContentView addSubview:instructionView];

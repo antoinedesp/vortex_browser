@@ -30,9 +30,12 @@
 #import "ios/chrome/grit/ios_branded_strings.h"
 #import "ios/chrome/grit/ios_strings.h"
 #import "ui/base/l10n/l10n_util.h"
+#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_coordinator.h"
+
 
 @interface DefaultBrowserScreenCoordinator () <TOSCoordinatorDelegate,
-                                               UMACoordinatorDelegate>
+                                               UMACoordinatorDelegate,
+                                               VortexPaywallCoordinatorDelegate>
 @end
 
 @implementation DefaultBrowserScreenCoordinator {
@@ -48,6 +51,8 @@
   TOSCoordinator* _TOSCoordinator;
   UMACoordinator* _UMACoordinator;
   raw_ptr<ProfileIOS> _profile;
+
+  VortexPaywallCoordinator* _paywallCoordinator;
 }
 @synthesize baseNavigationController = _baseNavigationController;
 
@@ -93,6 +98,9 @@
   _instructionsCoordinator = nil;
   [self stopTOSCoordinator];
 
+  [_paywallCoordinator stop];
+  _paywallCoordinator = nil;
+
   [super stop];
 }
 
@@ -105,9 +113,12 @@
       first_run::kFirstRunStageHistogram,
       first_run::kDefaultBrowserScreenCompletionWithSettings);
 
-  OpenIOSDefaultBrowserSettingsPage();
+  // Comment out this line
+  // OpenIOSDefaultBrowserSettingsPage();
+  // Add this line
+  [self showPaywall];
 
-  [self finishPresenting];
+//  [self finishPresenting];
 }
 
 - (void)didTapSecondaryActionButton {
@@ -126,27 +137,21 @@
       first_run::AnimatedDefaultBrowserPromoInFREExperimentType::
           kAnimationWithShowMeHow) {
     NSMutableArray* defaultBrowserSteps = [[NSMutableArray alloc] init];
-    if (IsDefaultAppsDestinationAvailable() &&
-        IsUseDefaultAppsDestinationForPromosEnabled()) {
-      [defaultBrowserSteps
+    [defaultBrowserSteps
           addObject:
               l10n_util::GetNSString(
                   IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_FIRST_STEP)];
-      [defaultBrowserSteps
+    [defaultBrowserSteps
           addObject:
               l10n_util::GetNSString(
                   IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_SECOND_STEP)];
-    } else {
-      [defaultBrowserSteps
-          addObject:l10n_util::GetNSString(
-                        IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_FIRST_STEP)];
-      [defaultBrowserSteps
-          addObject:l10n_util::GetNSString(
-                        IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_SECOND_STEP)];
-    }
     [defaultBrowserSteps
         addObject:l10n_util::GetNSString(
-                      IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_THIRD_STEP)];
+                      IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_THIRD_STEP)];
+    [defaultBrowserSteps
+        addObject:l10n_util::GetNSString(
+                      IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_FOURTH_STEP)];
+
     _instructionsCoordinator = [[InstructionsBottomSheetCoordinator alloc]
         initWithBaseViewController:_animatedViewController
                            browser:self.browser
@@ -187,6 +192,43 @@
   DCHECK(_mediator);
   _mediator.UMAReportingUserChoice = UMAReportingUserChoice;
 }
+
+#pragma mark - Paywall
+
+// Shows the Vortex VPN paywall.
+- (void)showPaywall {
+  UIViewController* baseViewController = _staticViewController
+      ? _staticViewController
+      : _animatedViewController;
+
+  _paywallCoordinator = [[VortexPaywallCoordinator alloc]
+      initWithBaseViewController:baseViewController
+                         browser:self.browser];
+  _paywallCoordinator.delegate = self;
+
+  [_paywallCoordinator start];
+}
+
+#pragma mark - VortexPaywallCoordinatorDelegate
+
+- (void)vortexPaywallCoordinatorDidRequestClose:(VortexPaywallCoordinator*)coordinator {
+  CHECK_EQ(_paywallCoordinator, coordinator);
+  [_paywallCoordinator stop];
+  _paywallCoordinator = nil;
+
+  // ⬇️ VORTEX: NOW finish onboarding after paywall closes
+  [self finishPresenting];
+}
+
+- (void)vortexPaywallCoordinatorDidComplete:(VortexPaywallCoordinator*)coordinator {
+  CHECK_EQ(_paywallCoordinator, coordinator);
+  [_paywallCoordinator stop];
+  _paywallCoordinator = nil;
+
+  // ⬇️ VORTEX: Finish onboarding after successful purchase
+  [self finishPresenting];
+}
+
 
 #pragma mark - Private
 

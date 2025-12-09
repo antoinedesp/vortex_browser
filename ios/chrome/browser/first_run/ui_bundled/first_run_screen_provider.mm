@@ -40,94 +40,104 @@ void AddDBPromoScreen(NSMutableArray* screens, ProfileIOS* profile) {
 
 // Helper function to add the Best Features, Default Browser Promo, and Address
 // Bar screens when kUpdatedFirstRunSequence is disabled.
-void AddDBPromoAndBestFeaturesScreens(NSMutableArray* screens,
-                                      ProfileIOS* profile) {
-  using enum first_run::BestFeaturesScreenVariationType;
-  first_run::BestFeaturesScreenVariationType bestFeaturesType =
-      first_run::GetBestFeaturesScreenVariationType();
-  switch (bestFeaturesType) {
-    case kGeneralScreenAfterDBPromo:
-    case kGeneralScreenWithPasswordItemAfterDBPromo:
-    case kShoppingUsersWithFallbackAfterDBPromo:
-    case kSignedInUsersOnlyAfterDBPromo:
-      AddDBPromoScreen(screens, profile);
-      [screens addObject:@(kBestFeatures)];
-      break;
-    case kGeneralScreenBeforeDBPromo:
-      [screens addObject:@(kBestFeatures)];
-      AddDBPromoScreen(screens, profile);
-      break;
-    case kAddressBarPromoInsteadOfBestFeaturesScreen:
-      // TODO(crbug.com/402429544): Add address bar promo screen.
-      AddDBPromoScreen(screens, profile);
-      break;
-    case kDisabled:
-      AddDBPromoScreen(screens, profile);
-      break;
-  }
-}
+//void AddDBPromoAndBestFeaturesScreens(NSMutableArray* screens,
+//                                      ProfileIOS* profile) {
+//  using enum first_run::BestFeaturesScreenVariationType;
+//  first_run::BestFeaturesScreenVariationType bestFeaturesType =
+//      first_run::GetBestFeaturesScreenVariationType();
+//  switch (bestFeaturesType) {
+//    case kGeneralScreenAfterDBPromo:
+//    case kGeneralScreenWithPasswordItemAfterDBPromo:
+//    case kShoppingUsersWithFallbackAfterDBPromo:
+//    case kSignedInUsersOnlyAfterDBPromo:
+//      AddDBPromoScreen(screens, profile);
+//      [screens addObject:@(kBestFeatures)];
+//      break;
+//    case kGeneralScreenBeforeDBPromo:
+//      [screens addObject:@(kBestFeatures)];
+//      AddDBPromoScreen(screens, profile);
+//      break;
+//    case kAddressBarPromoInsteadOfBestFeaturesScreen:
+//      // TODO(crbug.com/402429544): Add address bar promo screen.
+//      AddDBPromoScreen(screens, profile);
+//      break;
+//    case kDisabled:
+//      AddDBPromoScreen(screens, profile);
+//      break;
+//  }
+//}
 
 NSArray* FirstRunScreenSequenceForProfile(ProfileIOS* profile) {
   NSMutableArray* screens = [NSMutableArray array];
 
-  first_run::UpdatedFRESequenceVariationType variationType =
-      first_run::GetUpdatedFRESequenceVariation(profile);
-  BOOL hasIdentities =
-      ChromeAccountManagerServiceFactory::GetForProfile(profile)
-          ->HasIdentities();
-
-  switch (variationType) {
-    case first_run::UpdatedFRESequenceVariationType::kDisabled:
-      [screens addObject:@(kSignIn)];
-      [screens addObject:@(kHistorySync)];
-      if (ShouldDisplaySearchEngineChoiceScreen(
-              *profile, /*is_first_run_entrypoint=*/true,
-              /*app_started_via_external_intent=*/false)) {
-        [screens addObject:@(kChoice)];
-      }
-      // Only add best features screen if feature
-      // kUpdatedFirstRunSequence is disabled for now.
-      AddDBPromoAndBestFeaturesScreens(screens, profile);
-      break;
-    case first_run::UpdatedFRESequenceVariationType::kDBPromoFirst:
-      AddDBPromoScreen(screens, profile);
-      [screens addObject:@(kSignIn)];
-      [screens addObject:@(kHistorySync)];
-      break;
-    case first_run::UpdatedFRESequenceVariationType::kRemoveSignInSync:
-      if (hasIdentities) {
-        [screens addObject:@(kSignIn)];
-        [screens addObject:@(kHistorySync)];
-      }
-      AddDBPromoScreen(screens, profile);
-      break;
-    case first_run::UpdatedFRESequenceVariationType::
-        kDBPromoFirstAndRemoveSignInSync:
-      AddDBPromoScreen(screens, profile);
-      if (hasIdentities) {
-        [screens addObject:@(kSignIn)];
-        [screens addObject:@(kHistorySync)];
-      }
-      break;
-  }
-
-  if (IsBestOfAppLensInteractivePromoEnabled()) {
-    [screens addObject:@(kLensInteractivePromo)];
-  } else if (IsBestOfAppLensAnimatedPromoEnabled()) {
-    [screens addObject:@(kLensAnimatedPromo)];
-  }
-
-  DockingPromoDisplayTriggerArm experimentArm =
-      DockingPromoExperimentTypeEnabled();
-
-  if (IsDockingPromoEnabled() &&
-      experimentArm == DockingPromoDisplayTriggerArm::kDuringFRE) {
-    [screens addObject:@(kDockingPromo)];
-  }
+  AddDBPromoScreen(screens, profile);
 
   [screens addObject:@(kStepsCompleted)];
+
   return screens;
 }
+
+//NSArray* FirstRunScreenSequenceForProfile(ProfileIOS* profile) {
+//  NSMutableArray* screens = [NSMutableArray array];
+//
+//  first_run::UpdatedFRESequenceVariationType variationType =
+//      first_run::GetUpdatedFRESequenceVariation(profile);
+//  BOOL hasIdentities =
+//      ChromeAccountManagerServiceFactory::GetForProfile(profile)
+//          ->HasIdentities();
+//
+//  switch (variationType) {
+//    case first_run::UpdatedFRESequenceVariationType::kDisabled:
+//      [screens addObject:@(kSignIn)];
+//      [screens addObject:@(kHistorySync)];
+//      if (ShouldDisplaySearchEngineChoiceScreen(
+//              *profile, /*is_first_run_entrypoint=*/true,
+//              /*app_started_via_external_intent=*/false)) {
+//        [screens addObject:@(kChoice)];
+//      }
+//      // Only add best features screen if feature
+//      // kUpdatedFirstRunSequence is disabled for now.
+//      AddDBPromoAndBestFeaturesScreens(screens, profile);
+//      break;
+//    case first_run::UpdatedFRESequenceVariationType::kDBPromoFirst:
+//      AddDBPromoScreen(screens, profile);
+//      [screens addObject:@(kSignIn)];
+//      [screens addObject:@(kHistorySync)];
+//      break;
+//    case first_run::UpdatedFRESequenceVariationType::kRemoveSignInSync:
+//      if (hasIdentities) {
+//        [screens addObject:@(kSignIn)];
+//        [screens addObject:@(kHistorySync)];
+//      }
+//      AddDBPromoScreen(screens, profile);
+//      break;
+//    case first_run::UpdatedFRESequenceVariationType::
+//        kDBPromoFirstAndRemoveSignInSync:
+//      AddDBPromoScreen(screens, profile);
+//      if (hasIdentities) {
+//        [screens addObject:@(kSignIn)];
+//        [screens addObject:@(kHistorySync)];
+//      }
+//      break;
+//  }
+//
+//  if (IsBestOfAppLensInteractivePromoEnabled()) {
+//    [screens addObject:@(kLensInteractivePromo)];
+//  } else if (IsBestOfAppLensAnimatedPromoEnabled()) {
+//    [screens addObject:@(kLensAnimatedPromo)];
+//  }
+//
+//  DockingPromoDisplayTriggerArm experimentArm =
+//      DockingPromoExperimentTypeEnabled();
+//
+//  if (IsDockingPromoEnabled() &&
+//      experimentArm == DockingPromoDisplayTriggerArm::kDuringFRE) {
+//    [screens addObject:@(kDockingPromo)];
+//  }
+//
+//  [screens addObject:@(kStepsCompleted)];
+//  return screens;
+//}
 
 }  // namespace
 

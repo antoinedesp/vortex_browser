@@ -33,6 +33,7 @@ source_set("default_browser") {
     "//ios/chrome/browser/shared/public/commands",
     "//ios/chrome/browser/shared/public/features",
     "//ios/chrome/common/ui/promo_style",
+    "//ios/chrome/browser/ui/vortex_paywall:vortex_paywall"
   ]
   frameworks = [ "UIKit.framework" ]
 }
