@@ -988,7 +988,7 @@ Povolenia, ktoré ste už udelili aplikáciám, sa môžu vzťahovať na tento �
 <translation id="1651633344379798952">Vyskúšajte Google Lens v telefóne</translation>
 <translation id="1652281434788353738">Hĺbavá</translation>
 <translation id="1652326691684645429">Povoliť Zdieľanie nablízku</translation>
-<translation id="1652862280638399816">Ak chcete používať Správcu hesiel s Kľúčenkou systému macOS, znova spustite Chromium a povoľte prístup ku Kľúčenke. Po opätovnom spustení sa karty znova otvoria.</translation>
+<translation id="1652862280638399816">Ak chcete používať Správcu hesiel s Kľúčenkou systému macOS, znova spustite Vortex a povoľte prístup ku Kľúčenke. Po opätovnom spustení sa karty znova otvoria.</translation>
 <translation id="1653958716132599769">Zoskupiť súvisiace karty</translation>
 <translation id="1654580009054503925">Nemôže zobrazovať žiadosti</translation>
 <translation id="1654713139320245449">Nebol nájdený žiadny cieľ prenosu. Potrebujete pomoc?</translation>
@@ -1295,7 +1295,7 @@ Povolenia, ktoré ste už udelili aplikáciám, sa môžu vzťahovať na tento �
 <translation id="186612162884103683"><ph name="EXTENSION" /> môže čítať a zapisovať obrázky, video a zvukové súbory vo vybratých umiestneniach.</translation>
 <translation id="1866589962721094893">Povoľte aplikáciám pre Android ovládať zariadenia USB v tomto Chromebooku. Povolenie sa bude požadovať pri každom pripojení zariadenia USB. Jednotlivé aplikácie pre Android budú požadovať ďalšie povolenia.</translation>
 <translation id="1867780286110144690">Aplikácia <ph name="PRODUCT_NAME" /> je pripravená dokončiť inštaláciu</translation>
-<translation id="1868553836791672080">Kontrola hesla nie je v prehliadači Chromium k dispozícii</translation>
+<translation id="1868553836791672080">Kontrola hesla nie je v prehliadači Vortex k dispozícii</translation>
 <translation id="1868617395637139709">Používajte polohu pre aplikácie a služby pre Android.</translation>
 <translation id="1869433484041798909">Tlačidlo Záložka</translation>
 <translation id="1871098866036088250">Otvárať v prehliadači Chrome</translation>
@@ -1578,7 +1578,7 @@ Ak chcete spravovať nastavenia tohto účtu, nainštalujte si do zariadenia apl
 <translation id="2059913712424898428">Časové pásmo</translation>
 <translation id="2060375639911876205">Odstrániť profil eSIM</translation>
 <translation id="2061366302742593739">Žiadne položky na zobrazenie</translation>
-<translation id="2061589908388230480">Ak Chromium zistí, že niektoré z vašich hesiel bolo odhalené pri verejnom porušení ochrany údajov a máte prihlásený účet, Správca hesiel Google vám môže ponúknuť zmenu hesla. <ph name="BEGIN_LINK" />Ďalšie informácie o automatizovanej zmene hesla<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Ak Vortex zistí, že niektoré z vašich hesiel bolo odhalené pri verejnom porušení ochrany údajov a máte prihlásený účet, Správca hesiel Google vám môže ponúknuť zmenu hesla. <ph name="BEGIN_LINK" />Ďalšie informácie o automatizovanej zmene hesla<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Používajte internet bez ukladania histórie prehliadania v okne inkognito</translation>
 <translation id="206308717637808771">Odstraňujte údaje pri zavretí všetkých okien. Prístup k údajom je rovnaký ako na webe, ktorý si prezeráte.</translation>
 <translation id="2066700471214517561">Mikrofón s podporou beamformingu, aby bol hlas osoby používajúcej Chromebook zreteľný.</translation>
@@ -2427,7 +2427,7 @@ Ak chcete spravovať nastavenia tohto účtu, nainštalujte si do zariadenia apl
 <translation id="2642111877055905627">Futbalová lopta</translation>
 <translation id="2642206811783203764">Vždy povoliť na <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Údaje merania reklám môžete kedykoľvek odstrániť vymazaním dát prehliadania</translation>
-<translation id="2643379881528582459">Ak Chromium zistí, že niektoré vaše heslo bolo odhalené pri verejnom porušení ochrany údajov a máte aktívne prihlásenie, môže vám ponúknuť zmenu hesla</translation>
+<translation id="2643379881528582459">Ak Vortex zistí, že niektoré vaše heslo bolo odhalené pri verejnom porušení ochrany údajov a máte aktívne prihlásenie, môže vám ponúknuť zmenu hesla</translation>
 <translation id="2643698698624765890">Ak chcete spravovať rozšírenia, kliknite na možnosť Rozšírenia v ponuke Okno.</translation>
 <translation id="2645047101481282803">Vaše zariadenie spravuje <ph name="PROFILE_NAME" />.</translation>
 <translation id="2645388244376970260">Táto karta sa prenáša do zariadenia <ph name="DEVICE_NAME" /></translation>
@@ -3164,7 +3164,7 @@ Ak chcete spravovať nastavenia tohto účtu, nainštalujte si do zariadenia apl
 <translation id="3151786313568798007">Orientácia</translation>
 <translation id="3152356229013609796">Zobraziť, odmietnuť alebo odpovedať na upozornenia telefónu</translation>
 <translation id="3154754096046236400">Osobný kontext</translation>
-<translation id="3155163173539279776">Znova spustiť prehliadač Chromium</translation>
+<translation id="3155163173539279776">Znova spustiť prehliadač Vortex</translation>
 <translation id="3155394504825881014">Urobte zo skupiny kariet priečinok so záložkami</translation>
 <translation id="3156511682997763015">O 10 sekúnd vpred</translation>
 <translation id="3157330780336267229">Ak chcete zdieľať skupiny kariet alebo sa k nejakým pripojiť, musíte zapnúť synchronizáciu</translation>
@@ -4901,7 +4901,7 @@ Ak chcete spravovať nastavenia tohto účtu, nainštalujte si do zariadenia apl
 <translation id="4333854382783149454">Štandard PKCS #1 SHA-1 so šifrovaním RSA</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> už neuvidíte</translation>
 <translation id="4335835283689002019">Bezpečné prehliadanie je vypnuté</translation>
-<translation id="4336967529148557673">Ak chcete, aby Chromium dokončil túto úlohu, musíte sa prihlásiť</translation>
+<translation id="4336967529148557673">Ak chcete, aby Vortex dokončil túto úlohu, musíte sa prihlásiť</translation>
 <translation id="4338363401382232853">Návrh okna rozdelenej obrazovky</translation>
 <translation id="4339203724549370495">Odinštalovať aplikáciu</translation>
 <translation id="4340125850502689798">Neplatné používateľské meno</translation>
@@ -5741,7 +5741,7 @@ Ak chcete zobrazenie oddialiť, stlačte Ctrl + Alt + zníženie jasu.</translat
 <translation id="4918762404810341788">Skopírovať a otvoriť</translation>
 <translation id="4918844574251943176">Obrázok bol skopírovaný</translation>
 <translation id="4921348630401250116">Prevod textu na reč</translation>
-<translation id="4922104989726031751">Ak chcete používať Správcu hesiel so svojím operačným systémom, znova spustite Chromium a povoľte prístup k Správcovi hesiel v počítači. Po opätovnom spustení sa karty znova otvoria.</translation>
+<translation id="4922104989726031751">Ak chcete používať Správcu hesiel so svojím operačným systémom, znova spustite Vortex a povoľte prístup k Správcovi hesiel v počítači. Po opätovnom spustení sa karty znova otvoria.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Uložiť 1 položku v účte}few{Uložiť # položky v účte}many{Save # items in account}other{Uložiť # položiek v účte}}</translation>
 <translation id="492363500327720082">Prebieha odinštalovanie aplikácie <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Zobraziť skupiny kariet</translation>

@@ -984,7 +984,7 @@ Pode que se lle apliquen a esta conta os permisos que xa lles concedeses ás apl
 <translation id="1651633344379798952">Proba Google Lens no teléfono</translation>
 <translation id="1652281434788353738">Melancólico</translation>
 <translation id="1652326691684645429">Activar Compartir por Nearby</translation>
-<translation id="1652862280638399816">Para poder usar o xestor de contrasinais con MacOS Keychain, reinicia Chromium e dálle acceso a Keychain. Despois do reinicio volverán abrirse as pestanas.</translation>
+<translation id="1652862280638399816">Para poder usar o xestor de contrasinais con MacOS Keychain, reinicia Vortex e dálle acceso a Keychain. Despois do reinicio volverán abrirse as pestanas.</translation>
 <translation id="1653958716132599769">Agrupar pestanas relacionadas</translation>
 <translation id="1654580009054503925">Non se permite mostrar solicitudes</translation>
 <translation id="1654713139320245449">Non se encontrou ningún dispositivo receptor de emisión. Precisas axuda?</translation>
@@ -1291,7 +1291,7 @@ Pode que se lle apliquen a esta conta os permisos que xa lles concedeses ás apl
 <translation id="186612162884103683">"<ph name="EXTENSION" />" pode ler e escribir en ficheiros de son, vídeo e imaxes nas localizacións seleccionadas.</translation>
 <translation id="1866589962721094893">Permite que as aplicacións para Android controlen os dispositivos USB neste Chromebook. Pediráseche permiso cada vez que conectes un dispositivo USB. As distintas aplicacións para Android solicitarán outros permisos adicionais.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> está preparado para completar a instalación</translation>
-<translation id="1868553836791672080">A comprobación de contrasinais non está dispoñible en Chromium.</translation>
+<translation id="1868553836791672080">A comprobación de contrasinais non está dispoñible en Vortex.</translation>
 <translation id="1868617395637139709">Utilizar a localización para as aplicacións e os servizos de Android.</translation>
 <translation id="1869433484041798909">Botón de marcador</translation>
 <translation id="1871098866036088250">Abrir no navegador Chrome</translation>
@@ -1573,7 +1573,7 @@ Instala a aplicación Family Link no teu dispositivo e poderás xestionar a conf
 <translation id="2059913712424898428">Fuso horario</translation>
 <translation id="2060375639911876205">Quitar perfil de eSIM</translation>
 <translation id="2061366302742593739">Non hai nada que mostrar</translation>
-<translation id="2061589908388230480">Se Chromium detecta un dos teus contrasinais nunha violación da seguranza dos datos, o xestor de contrasinais de Google pode ofrecerche a opción de cambialo por ti se tes a sesión iniciada. <ph name="BEGIN_LINK" />Máis información sobre o cambio de contrasinal automatizado<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Se Vortex detecta un dos teus contrasinais nunha violación da seguranza dos datos, o xestor de contrasinais de Google pode ofrecerche a opción de cambialo por ti se tes a sesión iniciada. <ph name="BEGIN_LINK" />Máis información sobre o cambio de contrasinal automatizado<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Utiliza a Web sen gardar o teu historial de navegación cunha ventá do modo de incógnito</translation>
 <translation id="206308717637808771">Eliminar os datos cando peches todas as ventás. Os datos trátanse igual ca no sitio web que estás vendo</translation>
 <translation id="2066700471214517561">Micrófono con conformación de feixes para que se escoite con claridade a persoa que use o Chromebook</translation>
@@ -2422,7 +2422,7 @@ Podes xestionar a configuración desde o menú da tarxeta ou ver máis opcións 
 <translation id="2642111877055905627">Balón de fútbol</translation>
 <translation id="2642206811783203764">Sempre en <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Sempre podes borrar os datos de navegación para eliminar os datos de medición de anuncios</translation>
-<translation id="2643379881528582459">Se Chromium detecta que un dos teus contrasinais se fixo público debido a unha violación da seguranza dos datos, pódeche ofrecer cambialo se tes a sesión iniciada</translation>
+<translation id="2643379881528582459">Se Vortex detecta que un dos teus contrasinais se fixo público debido a unha violación da seguranza dos datos, pódeche ofrecer cambialo se tes a sesión iniciada</translation>
 <translation id="2643698698624765890">Fai clic en Extensións no menú Ventá para xestionar as túas extensións.</translation>
 <translation id="2645047101481282803">O teu dispositivo está xestionado por <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Emitindo esta pestana en: <ph name="DEVICE_NAME" /></translation>
@@ -3158,7 +3158,7 @@ Podes xestionar a configuración desde o menú da tarxeta ou ver máis opcións 
 <translation id="3151786313568798007">Orientación</translation>
 <translation id="3152356229013609796">Consulta as notificacións do teu teléfono, ignóraas ou respóndeas</translation>
 <translation id="3154754096046236400">Contexto persoal</translation>
-<translation id="3155163173539279776">Reiniciar Chromium</translation>
+<translation id="3155163173539279776">Reiniciar Vortex</translation>
 <translation id="3155394504825881014">Converter o grupo de pestanas nun cartafol de marcadores</translation>
 <translation id="3156511682997763015">Avanzar 10 segundos</translation>
 <translation id="3157330780336267229">Para compartir grupos de pestanas ou unirte a eles, tes que activar a sincronización</translation>
@@ -4894,7 +4894,7 @@ Podes xestionar a configuración desde o menú da tarxeta ou ver máis opcións 
 <translation id="4333854382783149454">PKCS n.º 1 SHA-1 con cifrado RSA</translation>
 <translation id="4334768748331667190">Deixarás de ver <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">A navegación segura está desactivada</translation>
-<translation id="4336967529148557673">Cómpre que inicies sesión para que Chromium poida rematar esta tarefa</translation>
+<translation id="4336967529148557673">Cómpre que inicies sesión para que Vortex poida rematar esta tarefa</translation>
 <translation id="4338363401382232853">Suxestións de ventás para a pantalla dividida</translation>
 <translation id="4339203724549370495">Desinstalar aplicación</translation>
 <translation id="4340125850502689798">O nome do usuario non é válido</translation>
@@ -5732,7 +5732,7 @@ Se queres afastala, usa Control + Alt + Reducir brillo.</translation>
 <translation id="4918762404810341788">Copiar e abrir</translation>
 <translation id="4918844574251943176">Copiouse a imaxe</translation>
 <translation id="4921348630401250116">Conversión de texto a voz</translation>
-<translation id="4922104989726031751">Para poder usar o xestor de contrasinais co teu sistema operativo, reinicia Chromium e permite o acceso ao xestor de contrasinais do teu ordenador. Despois do reinicio volverán abrirse as pestanas.</translation>
+<translation id="4922104989726031751">Para poder usar o xestor de contrasinais co teu sistema operativo, reinicia Vortex e permite o acceso ao xestor de contrasinais do teu ordenador. Despois do reinicio volverán abrirse as pestanas.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Gardar 1 elemento na conta}other{Gardar # elementos na conta}}</translation>
 <translation id="492363500327720082">Desinstalando <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Mostrar grupos de pestanas</translation>

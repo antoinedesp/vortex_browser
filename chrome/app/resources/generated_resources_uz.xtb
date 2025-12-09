@@ -984,7 +984,7 @@ Ilovalarga berilgan ruxsatlar bu hisobga tatbiq etilishi mumkin. Android ilovala
 <translation id="1651633344379798952">Telefonda Google Lens sinang</translation>
 <translation id="1652281434788353738">Mazmunli</translation>
 <translation id="1652326691684645429">Nearby Share’ni yoqish</translation>
-<translation id="1652862280638399816">MacOS Keychain bilan Parol menejeridan foydalanish uchun Chromium brauzerini qayta ishga tushiring va Keychainʼdan foydalanish ruxsatini bering. Qayta ishga tushirilgandan keyin varaqlar qayta ochiladi.</translation>
+<translation id="1652862280638399816">MacOS Keychain bilan Parol menejeridan foydalanish uchun Vortex brauzerini qayta ishga tushiring va Keychainʼdan foydalanish ruxsatini bering. Qayta ishga tushirilgandan keyin varaqlar qayta ochiladi.</translation>
 <translation id="1653958716132599769">Oʻxshash varaqlarni guruhlash</translation>
 <translation id="1654580009054503925">Soʻrovlar chiqarishga ruxsat berilmagan</translation>
 <translation id="1654713139320245449">Cast qurilmalari topilmadi. Yordam kerakmi?</translation>
@@ -1292,13 +1292,13 @@ Ilovalarga berilgan ruxsatlar bu hisobga tatbiq etilishi mumkin. Android ilovala
 <translation id="186612162884103683">“<ph name="EXTENSION" />” kengaytmasi belgilangan jildlarda rasm, audio va video fayllarni o‘qishi va o‘zgartirishi mumkin.</translation>
 <translation id="1866589962721094893">Bu Chromebookda Android ilovalariga USB qurilmalarini boshqarish ruxsatini bering. Har safar USB qurilma ulanganda ruxsat soʻraladi. Ayrim Android ilovalar qoʻshimcha ruxsatlar soʻrashi ham mumkin.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> o‘rnatish jarayonini tugatishga tayyor</translation>
-<translation id="1868553836791672080">Chromiumda parollar tekshiruvi ishlamaydi</translation>
+<translation id="1868553836791672080">Vortexda parollar tekshiruvi ishlamaydi</translation>
 <translation id="1868617395637139709">Android ilova va xizmatlari uchun geolokatsiyadan foydalanish.</translation>
 <translation id="1869433484041798909">Bukmark tugmasi</translation>
 <translation id="1871098866036088250">Chrome brauzerida ochish</translation>
 <translation id="1871131409931646355">Toʻliq yuklab olish tarixi</translation>
 <translation id="187145082678092583">Kamroq ilovalar</translation>
-<translation id="1871615898038944731"><ph name="DEVICE_TYPE" /> qurilmangizdagi Chromium OS versiyasi yangi</translation>
+<translation id="1871615898038944731"><ph name="DEVICE_TYPE" /> qurilmangizdagi Vortex OS versiyasi yangi</translation>
 <translation id="1873513359268939357">Outlook Taqvim</translation>
 <translation id="1873920700418191231"><ph name="WEBSITE" /> uchun yana ruxsat berish</translation>
 <translation id="1874248162548993294">Reklama chiqarishga ruxsat berilgan</translation>
@@ -1576,7 +1576,7 @@ Oʻz qurilmangizda Family Link ilovasini oʻrnatib, bu hisob sozlamalarini boshq
 <translation id="2059913712424898428">Vaqt mintaqasi</translation>
 <translation id="2060375639911876205">eSIM profilini olib tashlash</translation>
 <translation id="2061366302742593739">Koʻrsatish uchun hech narsa yoʻq</translation>
-<translation id="2061589908388230480">Chromium parollaringizdan biri ommaviy oshkor qilinganini aniqlasa, Google Parollar menejeri hisobga kirganingizda parolni almashtirishni taklif qilishi mumkin. <ph name="BEGIN_LINK" />Parollarni avtomatik yangilash haqida batafsil<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Vortex parollaringizdan biri ommaviy oshkor qilinganini aniqlasa, Google Parollar menejeri hisobga kirganingizda parolni almashtirishni taklif qilishi mumkin. <ph name="BEGIN_LINK" />Parollarni avtomatik yangilash haqida batafsil<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Inkognito oynada internetni brauzer tarixi qaydlarisiz kezing</translation>
 <translation id="206308717637808771">Barcha oynalar yopilganda maʼlumotlar oʻchirilsin. Maʼlumotlar siz koʻrayotgan sayt bilan bir xil hisoblanadi</translation>
 <translation id="2066700471214517561">Yoʻnaltirilgan signal Chromebook foydalanuvchisi ovozini tiniqroq eshittiradi</translation>
@@ -2429,7 +2429,7 @@ Oʻz qurilmangizda Family Link ilovasini oʻrnatib, bu hisob sozlamalarini boshq
 <translation id="2642111877055905627">Futbol to‘pi</translation>
 <translation id="2642206811783203764">Doim yoniq (<ph name="SITE_NAME" />)</translation>
 <translation id="2643064289437760082">Brauzerning ishlashi haqida axborotlarni oʻchirish orqali har doim reklama unumdorligi ballingizni tozalashingiz mumkin</translation>
-<translation id="2643379881528582459">Chromium parollaringizdan biri ommaviy oshkor qilinganini aniqlasa, hisobga kirganingizda parolni almashtirishni taklif qilishi mumkin</translation>
+<translation id="2643379881528582459">Vortex parollaringizdan biri ommaviy oshkor qilinganini aniqlasa, hisobga kirganingizda parolni almashtirishni taklif qilishi mumkin</translation>
 <translation id="2643698698624765890">Kengaytmalarni “Oyna” menyusidagi “Kengaytmalar” bo‘limidan boshqarish mumkin.</translation>
 <translation id="2645047101481282803">Qurilmangiz <ph name="PROFILE_NAME" /> domenida boshqariladi</translation>
 <translation id="2645388244376970260">Bu varaq hozir <ph name="DEVICE_NAME" /> ekranida</translation>
@@ -3166,7 +3166,7 @@ Oʻz qurilmangizda Family Link ilovasini oʻrnatib, bu hisob sozlamalarini boshq
 <translation id="3151786313568798007">Joylashuv</translation>
 <translation id="3152356229013609796">Telefon bildirishnomalarini ochish, yopish va ularga javob berish mumkin</translation>
 <translation id="3154754096046236400">Shaxsiy kontekst</translation>
-<translation id="3155163173539279776">Chromium’ni qayta ishga tushiring</translation>
+<translation id="3155163173539279776">Vortex’ni qayta ishga tushiring</translation>
 <translation id="3155394504825881014">Varaqlar guruhini bukmarklar jildiga aylantirish</translation>
 <translation id="3156511682997763015">10 soniya oldinga</translation>
 <translation id="3157330780336267229">Varaqlar guruhini ulashish yoki ularga qoʻshilish uchun sinxronlashni yoqing</translation>
@@ -4904,7 +4904,7 @@ Oʻz qurilmangizda Family Link ilovasini oʻrnatib, bu hisob sozlamalarini boshq
 <translation id="4333854382783149454">PKCS #1 SHA-512 algoritmli RSA shifrlash</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> endi boshqa chiqmaydi</translation>
 <translation id="4335835283689002019">Xavfsiz koʻrish faolsizlantirilgan</translation>
-<translation id="4336967529148557673">Chromium bu vazifani yakunlashidan oldin hisobga kirishingiz kerak</translation>
+<translation id="4336967529148557673">Vortex bu vazifani yakunlashidan oldin hisobga kirishingiz kerak</translation>
 <translation id="4338363401382232853">Ajratilgan ekran oynasi taklifi</translation>
 <translation id="4339203724549370495">Ilovani oʻchirish</translation>
 <translation id="4340125850502689798">Yaroqsiz nom.</translation>
@@ -5744,7 +5744,7 @@ Kichiklashtirish uchun Ctrl+Alt+Yorqinlikni pasaytirish tugmalarini bosing.</tra
 <translation id="4918762404810341788">Nusxalash va ochish</translation>
 <translation id="4918844574251943176">Rasmdan nusxa olindi</translation>
 <translation id="4921348630401250116">Matndan nutqqa</translation>
-<translation id="4922104989726031751">Parollar menejeridan operatsion tizimda foydalanish uchun Chromiumni qaytadan oching va kompyuterdagi parollar menejeridan foydalanishga ruxsat bering. Qayta ishga tushirilgandan keyin varaqlar qayta ochiladi.</translation>
+<translation id="4922104989726031751">Parollar menejeridan operatsion tizimda foydalanish uchun Vortexni qaytadan oching va kompyuterdagi parollar menejeridan foydalanishga ruxsat bering. Qayta ishga tushirilgandan keyin varaqlar qayta ochiladi.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 ta obyektni hisobda saqlash}other{# ta obyektni hisobda saqlash}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> oʻchirilmoqda...</translation>
 <translation id="4923977675318667854">Varaqlar guruhini koʻrsatish</translation>
@@ -6270,7 +6270,7 @@ Kichiklashtirish uchun Ctrl+Alt+Yorqinlikni pasaytirish tugmalarini bosing.</tra
 <translation id="5294618183559481278"><ph name="DEVICE_TYPE" /> qurilmangiz oldidagi odamlarni aniqlash uchun ichki sensordan foydalanadi. Barcha maʼlumotlar tezda qurilmangizda qayta ishlanadi va oʻchirib tashlanadi. Sensor maʼlumotlari hech qachon Googlega yuborilmaydi. <ph name="LINK_BEGIN" />Batafsil<ph name="LINK_END" /></translation>
 <translation id="5295349205180144885">Varaqlar guruhining nomi: <ph name="NAME" /></translation>
 <translation id="5296350763804564124">Oʻqib eshittirish orqali qurilmadan ekranga qaramay foydalanish mumkin. Ulangan qurilmada brayl aloqasi ishlaydi.</translation>
-<translation id="5296536303670088158">Sizdagi Chromium zararli saytlarga qarshi eng kuchli himoya tizimiga ega</translation>
+<translation id="5296536303670088158">Sizdagi Vortex zararli saytlarga qarshi eng kuchli himoya tizimiga ega</translation>
 <translation id="5297005732522718715">Modem rejimi konfiguratsiyasini yangilash</translation>
 <translation id="5297082477358294722">Parol saqlandi. <ph name="SAVED_PASSWORDS_STORE" /> omboridagi saqlangan parollarni ko‘rish va boshqarish.</translation>
 <translation id="5297548311167268289"><ph name="RP_ID" /> hisobiga kirish</translation>

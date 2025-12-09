@@ -990,7 +990,7 @@ Leidimai, kuriuos jau esate suteikę programoms, gali būti taikomi šiai paskyr
 <translation id="1651633344379798952">Išbandykite „Google Lens“ telefone</translation>
 <translation id="1652281434788353738">Mąsli</translation>
 <translation id="1652326691684645429">Įjungti Bendrinimo netoliese funkciją</translation>
-<translation id="1652862280638399816">Jei norite naudoti Slaptažodžių tvarkyklę su „macOS Keychain“, iš naujo paleiskite „Chromium“ ir leiskite „Keychain“ prieigą. Paleidus iš naujo skirtukai bus atidaryti iš naujo.</translation>
+<translation id="1652862280638399816">Jei norite naudoti Slaptažodžių tvarkyklę su „macOS Keychain“, iš naujo paleiskite „Vortex“ ir leiskite „Keychain“ prieigą. Paleidus iš naujo skirtukai bus atidaryti iš naujo.</translation>
 <translation id="1653958716132599769">Grupuoti susijusius skirtukus</translation>
 <translation id="1654580009054503925">Neleidžiama rodyti užklausų</translation>
 <translation id="1654713139320245449">Nerasta jokių įrenginių, į kuriuos būtų galima perduoti. Reikia pagalbos?</translation>
@@ -1306,7 +1306,7 @@ Leidimai, kuriuos jau esate suteikę programoms, gali būti taikomi šiai paskyr
 <translation id="186612162884103683">„<ph name="EXTENSION" />“ patikrintose vietose gali nuskaityti ir įrašyti vaizdus, vaizdo įrašus ir garso failus.</translation>
 <translation id="1866589962721094893">Suteikite „Android“ programoms USB įrenginių valdymo teisę šiame „Chromebook“. Leidimo užklausa bus pateikta kaskart prijungus USB įrenginį. Atskiros „Android“ programos prašys papildomų leidimų.</translation>
 <translation id="1867780286110144690">„<ph name="PRODUCT_NAME" />“ pasirengusi baigti diegimą</translation>
-<translation id="1868553836791672080">Naudojant „Chromium“ slaptažodžio patikra nepasiekiama</translation>
+<translation id="1868553836791672080">Naudojant „Vortex“ slaptažodžio patikra nepasiekiama</translation>
 <translation id="1868617395637139709">Naudokite vietovės paslaugas „Android“ programose ir paslaugose.</translation>
 <translation id="1869433484041798909">Žymės mygtukas</translation>
 <translation id="1871098866036088250">Atidaryti naršyklėje „Chrome“</translation>
@@ -1590,7 +1590,7 @@ Jei nenorite, dabar atsijunkite, kad šios paskyros pakeitimai būtų matomi ši
 <translation id="2059913712424898428">Laiko juosta</translation>
 <translation id="2060375639911876205">Pašalinti „eSIM“ kortelės profilį</translation>
 <translation id="2061366302742593739">Nieko nėra</translation>
-<translation id="2061589908388230480">Jei „Chromium“ aptinka vieną iš jūsų slaptažodžių viešajame duomenų saugos pažeidime, „Google“ slaptažodžių tvarkyklė gali pasiūlyti pakeisti slaptažodį, jei esate prisijungę. <ph name="BEGIN_LINK" />Daugiau apie automatinį slaptažodžio keitimą<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Jei „Vortex“ aptinka vieną iš jūsų slaptažodžių viešajame duomenų saugos pažeidime, „Google“ slaptažodžių tvarkyklė gali pasiūlyti pakeisti slaptažodį, jei esate prisijungę. <ph name="BEGIN_LINK" />Daugiau apie automatinį slaptažodžio keitimą<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Naršykite žiniatinklį neišsaugodami naršymo istorijos inkognito lange</translation>
 <translation id="206308717637808771">Ištrinkite duomenis uždarę visus langus. Duomenys apdorojami taip pat kaip ir svetainė, kurią peržiūrite</translation>
 <translation id="2066700471214517561">Signalų srautą formuojantis mikrofonas, kad „Chromebook“ naudojančio asmens balsas būtų aiškus.</translation>
@@ -2443,7 +2443,7 @@ Jei nenorite, dabar atsijunkite, kad šios paskyros pakeitimai būtų matomi ši
 <translation id="2642111877055905627">Futbolo kamuolys</translation>
 <translation id="2642206811783203764">Visada įjungta <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Bet kada galite ištrinti skelbimų vertinimo duomenis ištrindami naršymo duomenis</translation>
-<translation id="2643379881528582459">Jei „Chromium“ aptinka vieną iš jūsų slaptažodžių viešajame duomenų saugos pažeidime, prisijungus gali būti siūloma pakeisti slaptažodį</translation>
+<translation id="2643379881528582459">Jei „Vortex“ aptinka vieną iš jūsų slaptažodžių viešajame duomenų saugos pažeidime, prisijungus gali būti siūloma pakeisti slaptažodį</translation>
 <translation id="2643698698624765890">„Lango“ meniu spustelėję „Plėtiniai“, tvarkykite plėtinius.</translation>
 <translation id="2645047101481282803">Įrenginį tvarko <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Šis skirtukas perduodamas į „<ph name="DEVICE_NAME" />“</translation>
@@ -3180,7 +3180,7 @@ Jei nenorite, dabar atsijunkite, kad šios paskyros pakeitimai būtų matomi ši
 <translation id="3151786313568798007">Orientacija</translation>
 <translation id="3152356229013609796">Peržiūrėkite telefono pranešimus, atsisakykite jų ir atsakykite į juos</translation>
 <translation id="3154754096046236400">Asmeninis kontekstas</translation>
-<translation id="3155163173539279776">Iš naujo paleisti „Chromium“</translation>
+<translation id="3155163173539279776">Iš naujo paleisti „Vortex“</translation>
 <translation id="3155394504825881014">Konvertuoti skirtukų grupę į žymių aplanką</translation>
 <translation id="3156511682997763015">Persukti dešimt sekundžių pirmyn</translation>
 <translation id="3157330780336267229">Jei norite bendrinti skirtukų grupes arba prisijungti prie jų, turite įjungti sinchronizavimą</translation>
@@ -4918,7 +4918,7 @@ Ar norite paleisti „<ph name="CONTROL_PANEL_APPLET_NAME" />“?</translation>
 <translation id="4333854382783149454">PKCS Nr. 1 SHA-1 su RSA šifruote</translation>
 <translation id="4334768748331667190">Nebematysite „<ph name="MODULE_NAME" />“</translation>
 <translation id="4335835283689002019">Saugus naršymas išjungtas</translation>
-<translation id="4336967529148557673">Turite prisijungti, kad „Chromium“ galėtų užbaigti šią užduotį</translation>
+<translation id="4336967529148557673">Turite prisijungti, kad „Vortex“ galėtų užbaigti šią užduotį</translation>
 <translation id="4338363401382232853">Išskaidyto ekrano režimo lango pasiūlymas</translation>
 <translation id="4339203724549370495">Pašalinti programą</translation>
 <translation id="4340125850502689798">Neteisingas naudotojo vardas</translation>
@@ -5759,7 +5759,7 @@ Jei norite nutolinti, naudokite „Ctrl“ + „Alt“ + šviesumo mažinimo kla
 <translation id="4918762404810341788">Kopijuoti ir atidaryti</translation>
 <translation id="4918844574251943176">Vaizdas nukopijuotas</translation>
 <translation id="4921348630401250116">Tekstas į kalbą</translation>
-<translation id="4922104989726031751">Jei norite naudoti Slaptažodžių tvarkyklę savo operacinėje sistemoje, iš naujo paleiskite „Chromium“ ir leiskite pasiekti kompiuterio slaptažodžių tvarkyklę. Paleidus iš naujo skirtukai bus atidaryti iš naujo.</translation>
+<translation id="4922104989726031751">Jei norite naudoti Slaptažodžių tvarkyklę savo operacinėje sistemoje, iš naujo paleiskite „Vortex“ ir leiskite pasiekti kompiuterio slaptažodžių tvarkyklę. Paleidus iš naujo skirtukai bus atidaryti iš naujo.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Išsaugoti 1 elementą paskyroje}one{Išsaugoti # elementą paskyroje}few{Išsaugoti # elementus paskyroje}many{Išsaugoti # elemento paskyroje}other{Išsaugoti # elementų paskyroje}}</translation>
 <translation id="492363500327720082">Pašalinama programa „<ph name="APP_NAME" />“...</translation>
 <translation id="4923977675318667854">Rodyti skirtukų grupes</translation>

@@ -986,7 +986,7 @@ Hazırda tətbiqlərə verdiyiniz icazələr bu hesaba tətbiq oluna bilər. And
 <translation id="1651633344379798952">Telefonunuzda Google Linzanı sınayın</translation>
 <translation id="1652281434788353738">Düşündürücü</translation>
 <translation id="1652326691684645429">Yaxındakılarla Paylaşmanı aktivləşdirin</translation>
-<translation id="1652862280638399816">MacOS Keychain ilə Parol Menecerindən istifadə üçün Chromium-u yenidən başladın və Keychain-ə giriş imkanı verin. Yenidən başladıldıqdan sonra tablar təkrar açılacaq.</translation>
+<translation id="1652862280638399816">MacOS Keychain ilə Parol Menecerindən istifadə üçün Vortex-u yenidən başladın və Keychain-ə giriş imkanı verin. Yenidən başladıldıqdan sonra tablar təkrar açılacaq.</translation>
 <translation id="1653958716132599769">Əlaqədar tabları qruplaşdırın</translation>
 <translation id="1654580009054503925">Sorğular göstərməsinə icazə verilməyib</translation>
 <translation id="1654713139320245449">Yayım destinasiyaları tapılmadı. Kömək lazımdır?</translation>
@@ -1293,7 +1293,7 @@ Hazırda tətbiqlərə verdiyiniz icazələr bu hesaba tətbiq oluna bilər. And
 <translation id="186612162884103683">"<ph name="EXTENSION" />" yoxlanmış məkanlarda şəkil, video və səs fayllarını oxuya və yaza bilər.</translation>
 <translation id="1866589962721094893">Android tətbiqlərinə bu Chromebook-da USB cihazları üzərində nəzarət imkanı verin. USB cihazını hər dəfə qoşduqda icazə tələb olunacaq. Fərdi Android tətbiqləri əlavə icazələr tələb edəcək.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> quraşdırmanız tamamlamaq üçün hazırdır</translation>
-<translation id="1868553836791672080">Parol yoxlaması Chromium'da əlçatan deyil</translation>
+<translation id="1868553836791672080">Parol yoxlaması Vortex'da əlçatan deyil</translation>
 <translation id="1868617395637139709">Android tətbiqləri və xidmətləri üçün məkandan istifadə edin.</translation>
 <translation id="1869433484041798909">Əlfəcin düyməsi</translation>
 <translation id="1871098866036088250">Chrome brauzerində açın</translation>
@@ -1576,7 +1576,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="2059913712424898428">Saat qurşağı</translation>
 <translation id="2060375639911876205">eSIM profilini silin</translation>
 <translation id="2061366302742593739">Göstəriləcək heç nə yoxdur</translation>
-<translation id="2061589908388230480">Chromium parollarınızdan birini ictimai data pozuntusunda aşkar edərsə, hesabınıza daxil olduğunuz halda, Google Parol Meneceri sizin əvəzinizə parolu dəyişdirməyi təklif edə bilər. <ph name="BEGIN_LINK" />Avtomatik parol dəyişikliyi haqqında daha çox məlumat<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Vortex parollarınızdan birini ictimai data pozuntusunda aşkar edərsə, hesabınıza daxil olduğunuz halda, Google Parol Meneceri sizin əvəzinizə parolu dəyişdirməyi təklif edə bilər. <ph name="BEGIN_LINK" />Avtomatik parol dəyişikliyi haqqında daha çox məlumat<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Axtarış tarixçənizi Anonim pəncərədə saxlamadan vebdən istifadə edin</translation>
 <translation id="206308717637808771">Bütün pəncərələri bağladığınız zaman datanı silin. Dataya baxdığınız saytla eyni şəkildə yanaşılır</translation>
 <translation id="2066700471214517561">Chromebook-dan istifadə edən şəxsin aydın səslənməsi üçün şüalı mikrofon.</translation>
@@ -2428,7 +2428,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="2642111877055905627">Futbol topu</translation>
 <translation id="2642206811783203764">Həmişə aktiv: <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Baxış datanızı silməklə reklam ölçmə datasını hər zaman silə bilərsiniz</translation>
-<translation id="2643379881528582459">Chromium parollarınızdan birini ictimai verilənlərin pozulmasında aşkar edərsə və hesabınıza daxil olmusunuzsa, sizin əvəzinizə parolu dəyişdirməyi təklif edə bilər</translation>
+<translation id="2643379881528582459">Vortex parollarınızdan birini ictimai verilənlərin pozulmasında aşkar edərsə və hesabınıza daxil olmusunuzsa, sizin əvəzinizə parolu dəyişdirməyi təklif edə bilər</translation>
 <translation id="2643698698624765890">Pəncərə menyusunda artırmalara klikləməklə artırmalarınızı idarə edin.</translation>
 <translation id="2645047101481282803">Cihazınız <ph name="PROFILE_NAME" /> tərəfindən idarə olunur</translation>
 <translation id="2645388244376970260">Bu tab <ph name="DEVICE_NAME" /> cihazında yayımlanır</translation>
@@ -3165,7 +3165,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="3151786313568798007">Oriyentasiya</translation>
 <translation id="3152356229013609796">Telefonunuzun bildirişlərinə baxın, qapadın və cavab yazın</translation>
 <translation id="3154754096046236400">Şəxsi kontekst</translation>
-<translation id="3155163173539279776">Chromium'u yenidən başladın</translation>
+<translation id="3155163173539279776">Vortex'u yenidən başladın</translation>
 <translation id="3155394504825881014">Tab qrupunu əlfəcin qovluğuna çevirin</translation>
 <translation id="3156511682997763015">10 saniyə irəli çəkin</translation>
 <translation id="3157330780336267229">Tab qruplarını paylaşmaq və ya onlara qoşulmaq üçün sinxronlaşdırmanı aktiv etməlisiniz</translation>
@@ -4900,7 +4900,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="4333854382783149454">PKCS #1 SHA-1 Şifrələmə ilə</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> göstərilməyəcək</translation>
 <translation id="4335835283689002019">Təhlükəsiz Baxış deaktivdir</translation>
-<translation id="4336967529148557673">Chromium bu tapşırığı tamamlamazdan əvvəl daxil olmalısınız</translation>
+<translation id="4336967529148557673">Vortex bu tapşırığı tamamlamazdan əvvəl daxil olmalısınız</translation>
 <translation id="4338363401382232853">Bölünmüş ekran üzrə pəncərə təklifi</translation>
 <translation id="4339203724549370495">Tətbiqi ləğv edin</translation>
 <translation id="4340125850502689798">Yanlış istifadəçi adı</translation>
@@ -5741,7 +5741,7 @@ Uzaqlaşdırmaq üçün Ctrl + Alt + Parlaqlığı Azalt düymələrindən istif
 <translation id="4918762404810341788">Kopyalayın və açın</translation>
 <translation id="4918844574251943176">Şəkil kopyalandı</translation>
 <translation id="4921348630401250116">Mətndən nitqə</translation>
-<translation id="4922104989726031751">Əməliyyat sisteminiz ilə Parol menecerindən istifadə üçün Chromium-u yenidən başladın və kompüterin parol menecerinə giriş imkanı verin. Yenidən başlatmadan sonra tablar təkrar açılacaq.</translation>
+<translation id="4922104989726031751">Əməliyyat sisteminiz ilə Parol menecerindən istifadə üçün Vortex-u yenidən başladın və kompüterin parol menecerinə giriş imkanı verin. Yenidən başlatmadan sonra tablar təkrar açılacaq.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 elementi hesabda yadda saxlayın}other{# elementi hesabda yadda saxlayın}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> tətbiqinin quraşdırılması ləğv edilir...</translation>
 <translation id="4923977675318667854">Tab qruplarını göstərin</translation>

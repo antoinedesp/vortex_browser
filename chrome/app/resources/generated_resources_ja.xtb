@@ -984,7 +984,7 @@
 <translation id="1651633344379798952">スマートフォンで Google レンズを活用</translation>
 <translation id="1652281434788353738">思慮深い</translation>
 <translation id="1652326691684645429">ニアバイシェアを有効にする</translation>
-<translation id="1652862280638399816">macOS キーチェーンでパスワード マネージャーを使用するには、Chromium を再起動してキーチェーンへのアクセスを許可してください。再起動すると、タブが再度開きます。</translation>
+<translation id="1652862280638399816">macOS キーチェーンでパスワード マネージャーを使用するには、Vortex を再起動してキーチェーンへのアクセスを許可してください。再起動すると、タブが再度開きます。</translation>
 <translation id="1653958716132599769">関連するタブをグループ化</translation>
 <translation id="1654580009054503925">リクエストの表示を許可しないウェブサイト</translation>
 <translation id="1654713139320245449">キャスト先が見つかりません。サポートが必要ですか？</translation>
@@ -1289,7 +1289,7 @@
 <translation id="186612162884103683">「<ph name="EXTENSION" />」はチェックした場所にある画像、動画、音声の各ファイルの読み込みと書き込みが可能です。</translation>
 <translation id="1866589962721094893">この Chromebook で Android アプリに USB デバイスの制御を許可します。USB デバイスを接続するたびに権限がリクエストされます。一部の Android アプリでは、他の権限もリクエストされる場合があります。</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> をインストールする準備ができました</translation>
-<translation id="1868553836791672080">Chromium では、パスワード確認をご利用いただけません</translation>
+<translation id="1868553836791672080">Vortex では、パスワード確認をご利用いただけません</translation>
 <translation id="1868617395637139709">位置情報を Android のアプリとサービスで使用します。</translation>
 <translation id="1869433484041798909">ブックマーク ボタン</translation>
 <translation id="1871098866036088250">Chrome ブラウザで開く</translation>
@@ -3154,7 +3154,7 @@
 <translation id="3151786313568798007">向き</translation>
 <translation id="3152356229013609796">スマートフォンの通知を確認する、閉じる、返信するなどの操作を行います</translation>
 <translation id="3154754096046236400">パーソナライズ設定</translation>
-<translation id="3155163173539279776">Chromium を再起動します</translation>
+<translation id="3155163173539279776">Vortex を再起動します</translation>
 <translation id="3155394504825881014">タブグループをブックマーク フォルダに変換</translation>
 <translation id="3156511682997763015">10 秒早送り</translation>
 <translation id="3157330780336267229">タブグループを共有するか、タブグループに参加するには、同期をオンにする必要があります</translation>
@@ -4883,7 +4883,7 @@
 <translation id="4333854382783149454">PKCS #1 SHA-1 with RSA 暗号化</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> は今後表示されません</translation>
 <translation id="4335835283689002019">セーフ ブラウジングはオフになっています</translation>
-<translation id="4336967529148557673">Chromium でこのタスクを完了するには、ログインする必要があります</translation>
+<translation id="4336967529148557673">Vortex でこのタスクを完了するには、ログインする必要があります</translation>
 <translation id="4338363401382232853">分割画面のウィンドウ候補</translation>
 <translation id="4339203724549370495">アプリをアンインストール</translation>
 <translation id="4340125850502689798">ユーザー名が無効です</translation>
@@ -5719,7 +5719,7 @@
 <translation id="4918762404810341788">コピーして開く</translation>
 <translation id="4918844574251943176">画像をコピーしました</translation>
 <translation id="4921348630401250116">テキスト読み上げ</translation>
-<translation id="4922104989726031751">お使いのオペレーティング システムでパスワード マネージャーを使用するには、Chromium を再起動してパソコンのパスワード マネージャーへのアクセスを許可してください。再起動すると、タブが再度開きます。</translation>
+<translation id="4922104989726031751">お使いのオペレーティング システムでパスワード マネージャーを使用するには、Vortex を再起動してパソコンのパスワード マネージャーへのアクセスを許可してください。再起動すると、タブが再度開きます。</translation>
 <translation id="4923561999941435531">{0,plural, =1{アカウントに 1 件のアイテムを保存}other{アカウントに # 件のアイテムを保存}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> をアンインストールしています...</translation>
 <translation id="4923977675318667854">タブグループを表示</translation>

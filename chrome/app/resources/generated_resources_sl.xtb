@@ -989,7 +989,7 @@ Dovoljenja, ki ste jih že odobrili aplikacijam, morda veljajo za ta račun. Dov
 <translation id="1651633344379798952">Preizkusite Google Lens v telefonu</translation>
 <translation id="1652281434788353738">Zamišljeno</translation>
 <translation id="1652326691684645429">Omogočanje deljenja v bližini</translation>
-<translation id="1652862280638399816">Če želite Googlovega upravitelja gesel uporabljati s shrambo poverilnic sistema macOS, Keychain, znova zaženite Chromium in omogočite dostop do shrambe poverilnic Keychain. Zavihki se bodo po vnovičnem zagonu znova odprli.</translation>
+<translation id="1652862280638399816">Če želite Googlovega upravitelja gesel uporabljati s shrambo poverilnic sistema macOS, Keychain, znova zaženite Vortex in omogočite dostop do shrambe poverilnic Keychain. Zavihki se bodo po vnovičnem zagonu znova odprli.</translation>
 <translation id="1653958716132599769">Združitev sorodnih zavihkov</translation>
 <translation id="1654580009054503925">Prikazovanje zahtev ni dovoljeno</translation>
 <translation id="1654713139320245449">Najden ni noben cilj predvajanja. Potrebujete pomoč?</translation>
@@ -1305,7 +1305,7 @@ Dovoljenja, ki ste jih že odobrili aplikacijam, morda veljajo za ta račun. Dov
 <translation id="186612162884103683">Razširitev »<ph name="EXTENSION" />« lahko prebere slike ter videodatoteke in zvočne datoteke na označenih lokacijah.</translation>
 <translation id="1866589962721094893">Aplikacijam za Android omogočite nadzor nad napravami USB v tem Chromebooku. Dovoljenje bo zahtevano vsakič, ko priključite napravo USB. Posamezne aplikacije za Android bodo zahtevale dodatna dovoljenja.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> je pripravljen, da konča namestitev</translation>
-<translation id="1868553836791672080">Preverjanje gesla ni na voljo v Chromiumu</translation>
+<translation id="1868553836791672080">Preverjanje gesla ni na voljo v Vortexu</translation>
 <translation id="1868617395637139709">Uporabite lokacijo za aplikacije in storitve za Android.</translation>
 <translation id="1869433484041798909">Gumb za ustvarjanje zaznamkov</translation>
 <translation id="1871098866036088250">Odpri v brskalniku Chrome</translation>
@@ -1587,7 +1587,7 @@ Nastavitve tega računa je mogoče upravljati z namestitvijo aplikacije Family L
 <translation id="2059913712424898428">Časovni pas</translation>
 <translation id="2060375639911876205">Odstranitev profila za eSIM</translation>
 <translation id="2061366302742593739">Nič za pokazati</translation>
-<translation id="2061589908388230480">Če Chromium v javni podatkovni kršitvi najde eno od vaših gesel, vam lahko Googlov upravitelj gesel ponudi, da ga spremeni, če ste prijavljeni. <ph name="BEGIN_LINK" />Več o samodejni spremembi gesla<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Če Vortex v javni podatkovni kršitvi najde eno od vaših gesel, vam lahko Googlov upravitelj gesel ponudi, da ga spremeni, če ste prijavljeni. <ph name="BEGIN_LINK" />Več o samodejni spremembi gesla<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Uporabljajte splet brez shranjevanja zgodovine brskanja z anonimnim oknom.</translation>
 <translation id="206308717637808771">Izbrišite podatke, ko zaprete vsa okna. Podatki se obravnavajo enako kot spletno mesto, ki si ga ogledujete.</translation>
 <translation id="2066700471214517561">Mikrofon z usmerjanjem snopa za jasen zvok osebe, ki uporablja Chromebook.</translation>
@@ -2439,7 +2439,7 @@ Nastavitve tega računa je mogoče upravljati z namestitvijo aplikacije Family L
 <translation id="2642111877055905627">Nogometna žoga</translation>
 <translation id="2642206811783203764">Vedno vklopljeno <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Podatke merjenja oglasov lahko kadar koli izbrišete tako, da izbrišete podatke brskanja.</translation>
-<translation id="2643379881528582459">Če Chromium v javni podatkovni kršitvi najde eno od vaših gesel, vam lahko ponudi, da ga spremeni, če ste prijavljeni</translation>
+<translation id="2643379881528582459">Če Vortex v javni podatkovni kršitvi najde eno od vaših gesel, vam lahko ponudi, da ga spremeni, če ste prijavljeni</translation>
 <translation id="2643698698624765890">Razširitve lahko upravljate tako, da v meniju »Windows« kliknete »Extensions«.</translation>
 <translation id="2645047101481282803">Napravo upravlja <ph name="PROFILE_NAME" />.</translation>
 <translation id="2645388244376970260">Predvajanje tega zavihka v napravi <ph name="DEVICE_NAME" />.</translation>
@@ -3175,7 +3175,7 @@ Domena <ph name="DOMAIN" /> zahteva, da je pametna kartica vstavljena.</translat
 <translation id="3151786313568798007">Usmerjenost</translation>
 <translation id="3152356229013609796">Ogled obvestil telefona, njihovo opuščanje in odgovarjanje nanja</translation>
 <translation id="3154754096046236400">Osebni kontekst</translation>
-<translation id="3155163173539279776">Znova zaženite Chromium</translation>
+<translation id="3155163173539279776">Znova zaženite Vortex</translation>
 <translation id="3155394504825881014">Pretvori skupino zavihkov v mapo z zaznamki</translation>
 <translation id="3156511682997763015">Preskok naprej za 10 sekund</translation>
 <translation id="3157330780336267229">Če želite deliti ali se pridružiti skupinam zavihkov, morate vklopiti sinhronizacijo</translation>
@@ -4911,7 +4911,7 @@ Domena <ph name="DOMAIN" /> zahteva, da je pametna kartica vstavljena.</translat
 <translation id="4333854382783149454">PKCS #1 SHA-1 s šifriranjem RSA</translation>
 <translation id="4334768748331667190">Modul <ph name="MODULE_NAME" /> ne bo več prikazan</translation>
 <translation id="4335835283689002019">Varno brskanje je izklopljeno</translation>
-<translation id="4336967529148557673">Preden lahko Chromium dokonča to opravilo, se morate prijaviti</translation>
+<translation id="4336967529148557673">Preden lahko Vortex dokonča to opravilo, se morate prijaviti</translation>
 <translation id="4338363401382232853">Predlog za okno razdeljenega zaslona</translation>
 <translation id="4339203724549370495">Odmesti aplikacijo</translation>
 <translation id="4340125850502689798">Neveljavno uporabniško ime</translation>
@@ -5750,7 +5750,7 @@ Za pomanjšavo pritisnite Ctrl + Alt + tipko za zmanjšanje svetlosti.</translat
 <translation id="4918762404810341788">Kopiraj in odpri</translation>
 <translation id="4918844574251943176">Slika je kopirana</translation>
 <translation id="4921348630401250116">Pretvorba besedila v govor</translation>
-<translation id="4922104989726031751">Če želite z operacijskim sistemom uporabljati upravitelja gesel, znova zaženite Chromium in omogočite dostop do upravitelja gesel v računalniku. Zavihki se bodo po vnovičnem zagonu znova odprli.</translation>
+<translation id="4922104989726031751">Če želite z operacijskim sistemom uporabljati upravitelja gesel, znova zaženite Vortex in omogočite dostop do upravitelja gesel v računalniku. Zavihki se bodo po vnovičnem zagonu znova odprli.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Shrani 1 element v računu}one{Shrani # element v računu}two{Shrani # elementa v računu}few{Shrani # elemente v računu}other{Shrani # elementov v računu}}</translation>
 <translation id="492363500327720082">Odmeščanje aplikacije <ph name="APP_NAME" /> …</translation>
 <translation id="4923977675318667854">Prikaz skupin zavihkov</translation>

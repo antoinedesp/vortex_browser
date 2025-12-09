@@ -985,7 +985,7 @@ Rechten die je al hebt gegeven aan apps, kunnen van toepassing zijn op dit accou
 <translation id="1651633344379798952">Probeer Google Lens op je telefoon</translation>
 <translation id="1652281434788353738">Bedachtzaam</translation>
 <translation id="1652326691684645429">Dichtbij delen aanzetten</translation>
-<translation id="1652862280638399816">Als je Wachtwoordmanager wilt gebruiken met macOS-sleutelhanger, herstart je Chromium en sta je sleutelhangertoegang toe. Je tabbladen worden opnieuw geopend na de herstart.</translation>
+<translation id="1652862280638399816">Als je Wachtwoordmanager wilt gebruiken met macOS-sleutelhanger, herstart je Vortex en sta je sleutelhangertoegang toe. Je tabbladen worden opnieuw geopend na de herstart.</translation>
 <translation id="1653958716132599769">Gerelateerde tabbladen groeperen</translation>
 <translation id="1654580009054503925">Geen toestemming om verzoeken te tonen</translation>
 <translation id="1654713139320245449">Geen castbestemmingen gevonden. Hulp nodig?</translation>
@@ -1292,7 +1292,7 @@ Rechten die je al hebt gegeven aan apps, kunnen van toepassing zijn op dit accou
 <translation id="186612162884103683">'<ph name="EXTENSION" />' kan afbeeldingen, video- en geluidsbestanden lezen en schrijven op de gecontroleerde locaties.</translation>
 <translation id="1866589962721094893">Geef Android-apps controle over USB-apparaten op deze Chromebook. Telkens als je een USB-apparaat aansluit, wordt er toestemming gevraagd. Afzonderlijke Android-apps vragen om aanvullende rechten.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> is klaar om je installatie te voltooien.</translation>
-<translation id="1868553836791672080">Wachtwoordcheck is niet beschikbaar in Chromium</translation>
+<translation id="1868553836791672080">Wachtwoordcheck is niet beschikbaar in Vortex</translation>
 <translation id="1868617395637139709">Gebruik locatie voor Android-apps en -services.</translation>
 <translation id="1869433484041798909">Knop voor bookmark</translation>
 <translation id="1871098866036088250">Openen in de Chrome-browser</translation>
@@ -1575,7 +1575,7 @@ Je kunt de instellingen van dit account beheren door de Family Link-app op je ap
 <translation id="2059913712424898428">Tijdzone</translation>
 <translation id="2060375639911876205">Profiel voor e-simkaart verwijderen</translation>
 <translation id="2061366302742593739">Niets om te laten zien</translation>
-<translation id="2061589908388230480">Als Chromium een van je wachtwoorden vindt bij een openbaar gegevenslek, kan Google Wachtwoordmanager aanbieden om je wachtwoord te wijzigen als je bent ingelogd. <ph name="BEGIN_LINK" />Meer informatie over geautomatiseerde wachtwoordwijziging<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Als Vortex een van je wachtwoorden vindt bij een openbaar gegevenslek, kan Google Wachtwoordmanager aanbieden om je wachtwoord te wijzigen als je bent ingelogd. <ph name="BEGIN_LINK" />Meer informatie over geautomatiseerde wachtwoordwijziging<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Gebruik een incognitovenster om te internetten zonder dat je browsegeschiedenis wordt opgeslagen</translation>
 <translation id="206308717637808771">Verwijder gegevens als je alle vensters sluit. Gegevens worden op dezelfde manier behandeld als de site die je bekijkt.</translation>
 <translation id="2066700471214517561">Beamforming-microfoon zodat de persoon die de Chromebook gebruikt, duidelijk klinkt.</translation>
@@ -2425,7 +2425,7 @@ Je kunt instellingen beheren via het kaartmenu of meer opties bekijken in het ge
 <translation id="2642111877055905627">Voetbal</translation>
 <translation id="2642206811783203764">Altijd op <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Je kunt de gegevens van advertentiemetingen altijd verwijderen door je browsegegevens te verwijderen</translation>
-<translation id="2643379881528582459">Als Chromium een van je wachtwoorden bij een openbaar gegevenslek vindt, kan Chromium aanbieden om je wachtwoord te wijzigen als je bent ingelogd</translation>
+<translation id="2643379881528582459">Als Vortex een van je wachtwoorden bij een openbaar gegevenslek vindt, kan Vortex aanbieden om je wachtwoord te wijzigen als je bent ingelogd</translation>
 <translation id="2643698698624765890">Je kunt je extensies beheren door in het paginamenu te klikken op 'Extensies'.</translation>
 <translation id="2645047101481282803">Je apparaat wordt beheerd door <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Dit tabblad casten naar <ph name="DEVICE_NAME" /></translation>
@@ -3161,7 +3161,7 @@ Je kunt instellingen beheren via het kaartmenu of meer opties bekijken in het ge
 <translation id="3151786313568798007">Stand</translation>
 <translation id="3152356229013609796">Bekijk, sluit en beantwoord meldingen van je telefoon</translation>
 <translation id="3154754096046236400">Persoonlijke context</translation>
-<translation id="3155163173539279776">Chromium opnieuw starten</translation>
+<translation id="3155163173539279776">Vortex opnieuw starten</translation>
 <translation id="3155394504825881014">Tabbladgroep converteren naar bookmarkmap</translation>
 <translation id="3156511682997763015">10 seconden vooruit</translation>
 <translation id="3157330780336267229">Als je tabbladgroepen wilt delen of eraan wilt deelnemen, moet je synchronisatie aanzetten</translation>
@@ -4895,7 +4895,7 @@ Je kunt instellingen beheren via het kaartmenu of meer opties bekijken in het ge
 <translation id="4333854382783149454">PKCS nr. 1 SHA-1 met RSA-versleuteling</translation>
 <translation id="4334768748331667190">Je krijgt <ph name="MODULE_NAME" /> niet meer te zien</translation>
 <translation id="4335835283689002019">Safe Browsing staat uit</translation>
-<translation id="4336967529148557673">Je moet inloggen voordat Chromium deze taak kan afronden</translation>
+<translation id="4336967529148557673">Je moet inloggen voordat Vortex deze taak kan afronden</translation>
 <translation id="4338363401382232853">Suggestie voor vensters op gesplitst scherm</translation>
 <translation id="4339203724549370495">App verwijderen</translation>
 <translation id="4340125850502689798">Ongeldige gebruikersnaam</translation>
@@ -5733,7 +5733,7 @@ Gebruik Ctrl + Alt + Helderheid omlaag om uit te zoomen.</translation>
 <translation id="4918762404810341788">Kopiëren en openen</translation>
 <translation id="4918844574251943176">Afbeelding gekopieerd</translation>
 <translation id="4921348630401250116">Tekst-naar-spraak</translation>
-<translation id="4922104989726031751">Als je Wachtwoordmanager wilt gebruiken met je besturingssysteem, start je Chromium opnieuw en geef je toegang tot de wachtwoordmanager van je computer. Je tabbladen worden opnieuw geopend na de herstart.</translation>
+<translation id="4922104989726031751">Als je Wachtwoordmanager wilt gebruiken met je besturingssysteem, start je Vortex opnieuw en geef je toegang tot de wachtwoordmanager van je computer. Je tabbladen worden opnieuw geopend na de herstart.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 item opslaan in account}other{# items opslaan in account}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> verwijderen…</translation>
 <translation id="4923977675318667854">Tabbladgroepen tonen</translation>

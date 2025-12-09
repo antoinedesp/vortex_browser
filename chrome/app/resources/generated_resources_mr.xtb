@@ -987,7 +987,7 @@
 <translation id="1651633344379798952">तुमच्या फोनवर Google Lens वापरून पहा</translation>
 <translation id="1652281434788353738">चिंतनशील</translation>
 <translation id="1652326691684645429">Nearby सह शेअरिंग सुरू करा</translation>
-<translation id="1652862280638399816">macOS Keychain सह Password Manager वापरण्यासाठी, Chromium पुन्हा लाँच करा आणि Keychain च्या अ‍ॅक्सेसची अनुमती द्या. पुन्हा लाँच केल्यानंतर तुमचे टॅब पुन्हा उघडतील.</translation>
+<translation id="1652862280638399816">macOS Keychain सह Password Manager वापरण्यासाठी, Vortex पुन्हा लाँच करा आणि Keychain च्या अ‍ॅक्सेसची अनुमती द्या. पुन्हा लाँच केल्यानंतर तुमचे टॅब पुन्हा उघडतील.</translation>
 <translation id="1653958716132599769">संबंधित टॅब गटबद्ध करा</translation>
 <translation id="1654580009054503925">विनंत्या दाखवण्याची अनुमती दिलेली नाही</translation>
 <translation id="1654713139320245449">कास्ट करण्यासाठी कोणतीही डेस्टिनेशन आढळली नाहीत. मदत हवी आहे का?</translation>
@@ -1303,7 +1303,7 @@
 <translation id="186612162884103683">"<ph name="EXTENSION" />" इमेज, व्हिडिओ आणि चेक केलेल्या स्थानांमधील ध्वनी फाइल वाचू आणि लिहू शकते.</translation>
 <translation id="1866589962721094893">या Chromebook वर Android अ‍ॅप्सना USB डिव्हाइसचे नियंत्रण द्या. तुम्ही USB डिव्हाइस प्लग इन केल्यावर परवानगीची विनंती केली जाईल. वैयक्तिक Android अ‍ॅप्स अतिरिक्त परवानग्यांची विनंती करतील.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> तुमची स्थापना पूर्ण करण्यासाठी तयार आहे</translation>
-<translation id="1868553836791672080">Chromium मध्ये पासवर्ड तपासणी उपलब्ध नाही</translation>
+<translation id="1868553836791672080">Vortex मध्ये पासवर्ड तपासणी उपलब्ध नाही</translation>
 <translation id="1868617395637139709">Android अ‍ॅप्स आणि सेवांसाठी स्थान वापरा.</translation>
 <translation id="1869433484041798909">बुकमार्क बटण</translation>
 <translation id="1871098866036088250">Chrome ब्राउझरमध्ये उघडा</translation>
@@ -1586,7 +1586,7 @@
 <translation id="2059913712424898428">टाइमझोन</translation>
 <translation id="2060375639911876205">eSIM प्रोफाइल काढून टाका</translation>
 <translation id="2061366302742593739">दाखवण्यासाठी काहीही नाही</translation>
-<translation id="2061589908388230480">Chromium ला सार्वजनिक डेटा भंगामध्ये तुमचा एखादा पासवर्ड आढळला, तर तुम्ही साइन इन केले असल्यास Google Password Manager तुमचा पासवर्ड बदलण्याची ऑफर देऊ शकते. <ph name="BEGIN_LINK" />ऑटोमेटेड पासवर्ड बदलाविषयी अधिक माहिती<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Vortex ला सार्वजनिक डेटा भंगामध्ये तुमचा एखादा पासवर्ड आढळला, तर तुम्ही साइन इन केले असल्यास Google Password Manager तुमचा पासवर्ड बदलण्याची ऑफर देऊ शकते. <ph name="BEGIN_LINK" />ऑटोमेटेड पासवर्ड बदलाविषयी अधिक माहिती<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">गुप्त विंडोमधील तुमचा ब्राउझिंग इतिहास सेव्ह न करता वेब वापरा</translation>
 <translation id="206308717637808771">तुम्ही सर्व विंडो बंद करता, तेव्हा डेटा हटवा. डेटा हा तुम्ही पाहत असलेल्या साइटप्रमाणेच हाताळला जातो</translation>
 <translation id="2066700471214517561">बीमफॉर्मिंग माइक, जेणेकरून Chromebook वापरणाऱ्या व्यक्तीचा आवाज स्पष्ट ऐकू येईल.</translation>
@@ -2438,7 +2438,7 @@
 <translation id="2642111877055905627">सॉकर बॉल</translation>
 <translation id="2642206811783203764"><ph name="SITE_NAME" /> वर नेहमी</translation>
 <translation id="2643064289437760082">तुमचा ब्राउझिंग डेटा हटवून तुम्ही कधीही जाहिरात मापन डेटा हटवू शकता</translation>
-<translation id="2643379881528582459">Chromium ला सार्वजनिक डेटा भंगामध्ये तुमचा एखादा पासवर्ड आढळला, तर तुम्ही साइन इन केले असल्यास ते तुमचा पासवर्ड बदलणे ऑफर करू शकते</translation>
+<translation id="2643379881528582459">Vortex ला सार्वजनिक डेटा भंगामध्ये तुमचा एखादा पासवर्ड आढळला, तर तुम्ही साइन इन केले असल्यास ते तुमचा पासवर्ड बदलणे ऑफर करू शकते</translation>
 <translation id="2643698698624765890">विंडो मेनूमध्‍ये विस्तारांवर क्लिक करुन ‍तुमचे विस्तार व्यवस्थापित करा.</translation>
 <translation id="2645047101481282803">तुमचे डिव्हाइस <ph name="PROFILE_NAME" /> द्वारे व्यवस्थापित केले आहे</translation>
 <translation id="2645388244376970260"><ph name="DEVICE_NAME" /> वर हा टॅब कास्ट करत आहे</translation>
@@ -3175,7 +3175,7 @@
 <translation id="3151786313568798007">अभिमुखता</translation>
 <translation id="3152356229013609796">तुमच्या फोनमधील सूचना पहा, त्या डिसमिस करा आणि त्यांना उत्तर द्या</translation>
 <translation id="3154754096046236400">वैयक्तिक संदर्भ</translation>
-<translation id="3155163173539279776">Chromium पुन्हा लाँच करा</translation>
+<translation id="3155163173539279776">Vortex पुन्हा लाँच करा</translation>
 <translation id="3155394504825881014">टॅब गट याचे रूपांतर बुकमार्क फोल्डर यामध्ये करा</translation>
 <translation id="3156511682997763015">१० सेकंद फॉरवर्ड करा</translation>
 <translation id="3157330780336267229">टॅब गट शेअर करण्यासाठी किंवा त्यामध्ये सामील होण्यासाठी, सिंक सुरू करणे आवश्यक आहे</translation>
@@ -4910,7 +4910,7 @@
 <translation id="4333854382783149454">PKCS #1 RSA एंक्रिप्शनसह SHA-1</translation>
 <translation id="4334768748331667190">तुम्हाला <ph name="MODULE_NAME" /> पुन्हा दिसणार नाही</translation>
 <translation id="4335835283689002019">सुरक्षित ब्राउझिंग बंद आहे</translation>
-<translation id="4336967529148557673">Chromium द्वारे हे काम पूर्ण केले जाण्यापूर्वी तुम्हाला साइन इन करावे लागेल</translation>
+<translation id="4336967529148557673">Vortex द्वारे हे काम पूर्ण केले जाण्यापूर्वी तुम्हाला साइन इन करावे लागेल</translation>
 <translation id="4338363401382232853">स्प्लिट स्क्रीन विंडोसंबंधित सूचना</translation>
 <translation id="4339203724549370495">अ‍ॅप अनइंस्टॉल करा</translation>
 <translation id="4340125850502689798">चुकीचे वापरकर्ता नाव</translation>
@@ -5751,7 +5751,7 @@
 <translation id="4918762404810341788">कॉपी करा आणि उघडा</translation>
 <translation id="4918844574251943176">इमेज कॉपी केली</translation>
 <translation id="4921348630401250116">टेक्‍स्‍ट टू स्‍पीच</translation>
-<translation id="4922104989726031751">तुमच्या ऑपरेटिंग सिस्टीमसह Password Manager वापरण्यासाठी, Chromium पुन्हा लाँच करा आणि तुमच्या कॉंप्युटरच्या पासवर्ड व्यवस्थापकाचा अ‍ॅक्सेस द्या. पुन्हा लाँच केल्यानंतर तुमचे टॅब पुन्हा उघडतील.</translation>
+<translation id="4922104989726031751">तुमच्या ऑपरेटिंग सिस्टीमसह Password Manager वापरण्यासाठी, Vortex पुन्हा लाँच करा आणि तुमच्या कॉंप्युटरच्या पासवर्ड व्यवस्थापकाचा अ‍ॅक्सेस द्या. पुन्हा लाँच केल्यानंतर तुमचे टॅब पुन्हा उघडतील.</translation>
 <translation id="4923561999941435531">{0,plural, =1{खात्यामध्ये १ आयटम सेव्ह करा}other{खात्यामध्ये # आयटम सेव्ह करा}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> अनइंस्टॉल करत आहे...</translation>
 <translation id="4923977675318667854">टॅब गट दाखवा</translation>

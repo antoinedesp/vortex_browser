@@ -987,7 +987,7 @@ Heimildir sem þú hefur þegar veitt forritum kunna að gilda á þessum reikni
 <translation id="1651633344379798952">Prófaðu Google-linsu í símanum þínum</translation>
 <translation id="1652281434788353738">Hugulsamt</translation>
 <translation id="1652326691684645429">Kveikja á Nærdeilingu</translation>
-<translation id="1652862280638399816">Til að nota Aðgangsorðastjórnun með macOS Keychain skaltu endurræsa Chromium og veita Keychain aðgang. Fliparnir þínir opnast aftur eftir endurræsingu.</translation>
+<translation id="1652862280638399816">Til að nota Aðgangsorðastjórnun með macOS Keychain skaltu endurræsa Vortex og veita Keychain aðgang. Fliparnir þínir opnast aftur eftir endurræsingu.</translation>
 <translation id="1653958716132599769">Flokka tengda flipa saman</translation>
 <translation id="1654580009054503925">Má ekki sýna beiðnir</translation>
 <translation id="1654713139320245449">Engir áfangastaðir fundust fyrir vörpun. Þarftu aðstoð?</translation>
@@ -1303,7 +1303,7 @@ Heimildir sem þú hefur þegar veitt forritum kunna að gilda á þessum reikni
 <translation id="186612162884103683">„<ph name="EXTENSION" />“ getur lesið og skrifað myndir, myndskeið og hljóðskrár á stöðunum sem merkt er við.</translation>
 <translation id="1866589962721094893">Leyfa Android-forritum að stjórna USB-tækjum í þessari Chromebook. Beðið verður um heimild í hvert sinn sem þú stingur USB-tæki í samband. Hvert og eitt Android-forrit mun biðja um viðbótarheimildir.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> er tilbúið til að ljúka uppsetningunni</translation>
-<translation id="1868553836791672080">Ekki er hægt að athuga aðgangsorð í Chromium</translation>
+<translation id="1868553836791672080">Ekki er hægt að athuga aðgangsorð í Vortex</translation>
 <translation id="1868617395637139709">Nota staðsetningu fyrir Android forrit og þjónustur.</translation>
 <translation id="1869433484041798909">Bókamerkishnappur</translation>
 <translation id="1871098866036088250">Opna í Chrome vafra</translation>
@@ -1585,7 +1585,7 @@ Annars skaltu skrá þig út núna svo breytingarnar á þessum reikningi taki g
 <translation id="2059913712424898428">Tímabelti</translation>
 <translation id="2060375639911876205">Fjarlægja eSIM-prófíl</translation>
 <translation id="2061366302742593739">Ekkert til að sýna</translation>
-<translation id="2061589908388230480">Ef Chromium finnur eitt aðgangsorðanna þinna í opinberu öryggisbroti getur Google-aðgangsorðastjórnun boðist til að breyta því fyrir þig ef þú ert skráð(ur) inn. <ph name="BEGIN_LINK" />Nánar um sjálfvirka breytingu aðgangsorða<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Ef Vortex finnur eitt aðgangsorðanna þinna í opinberu öryggisbroti getur Google-aðgangsorðastjórnun boðist til að breyta því fyrir þig ef þú ert skráð(ur) inn. <ph name="BEGIN_LINK" />Nánar um sjálfvirka breytingu aðgangsorða<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Vafraðu án þess að vista vafraferilinn með því að nota huliðsglugga</translation>
 <translation id="206308717637808771">Eyða gögnum þegar þú lokar öllum gluggum. Gögn eru meðhöndluð eins og vefsvæðið sem þú ert að skoða</translation>
 <translation id="2066700471214517561">Skynjar hljóðgeisla frá hljóðnema svo að það heyrist skýrt í einstaklingnum sem notar Chromebook.</translation>
@@ -2437,7 +2437,7 @@ Annars skaltu skrá þig út núna svo breytingarnar á þessum reikningi taki g
 <translation id="2642111877055905627">Fótbolti</translation>
 <translation id="2642206811783203764">Alltaf á <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Þú getur eytt auglýsingamæligögnum hvenær sem er með því að eyða vefskoðunargögnum</translation>
-<translation id="2643379881528582459">Ef Chromium finnur eitt aðgangsorðanna þinna í almennu öryggisbroti getur það boðist til að breyta aðgangsorðinu ef þú ert með innskráningu</translation>
+<translation id="2643379881528582459">Ef Vortex finnur eitt aðgangsorðanna þinna í almennu öryggisbroti getur það boðist til að breyta aðgangsorðinu ef þú ert með innskráningu</translation>
 <translation id="2643698698624765890">Stjórnaðu viðbótunum þínum með því að smella á Viðbætur í gluggavalmyndinni.</translation>
 <translation id="2645047101481282803"><ph name="PROFILE_NAME" /> hefur umsjón með tækinu þínu</translation>
 <translation id="2645388244376970260">Sendir þennan flipa út í <ph name="DEVICE_NAME" /></translation>
@@ -3173,7 +3173,7 @@ Annars skaltu skrá þig út núna svo breytingarnar á þessum reikningi taki g
 <translation id="3151786313568798007">Stefna</translation>
 <translation id="3152356229013609796">Skoðaðu, hunsaðu og svaraðu tilkynningum símans</translation>
 <translation id="3154754096046236400">Persónulegt umhverfi</translation>
-<translation id="3155163173539279776">Endurræsa Chromium</translation>
+<translation id="3155163173539279776">Endurræsa Vortex</translation>
 <translation id="3155394504825881014">Breyta flipahópi í bókamerkjamöppu</translation>
 <translation id="3156511682997763015">Áfram um 10 sekúndur</translation>
 <translation id="3157330780336267229">Til að deila eða tengjast flipahópum verður þú að kveikja á samstillingu</translation>
@@ -4906,7 +4906,7 @@ Annars skaltu skrá þig út núna svo breytingarnar á þessum reikningi taki g
 <translation id="4333854382783149454">PKCS #1 SHA-1 með RSA-dulkóðun</translation>
 <translation id="4334768748331667190">Þú munt ekki sjá <ph name="MODULE_NAME" /> aftur</translation>
 <translation id="4335835283689002019">Slökkt er á öruggri vefnotkun</translation>
-<translation id="4336967529148557673">Þú þarft að skrá þig inn svo að Chromium geti lokið þessu verki</translation>
+<translation id="4336967529148557673">Þú þarft að skrá þig inn svo að Vortex geti lokið þessu verki</translation>
 <translation id="4338363401382232853">Tillaga um glugga í skjáskiptingu</translation>
 <translation id="4339203724549370495">Fjarlægja forrit</translation>
 <translation id="4340125850502689798">Ógilt notandanafn</translation>
@@ -5744,7 +5744,7 @@ Notaðu Ctrl + Alt + minnka birtustig til að minnka aðdrátt.</translation>
 <translation id="4918762404810341788">Afrita og opna</translation>
 <translation id="4918844574251943176">Mynd afrituð</translation>
 <translation id="4921348630401250116">Upplestur</translation>
-<translation id="4922104989726031751">Til að nota Aðgangsorðastjórnun með stýrikerfinu þínu skaltu endurræsa Chromium og veita aðgang að aðgangsorðastjórnun tölvunnar. Fliparnir þínir opnast aftur eftir endurræsingu.</translation>
+<translation id="4922104989726031751">Til að nota Aðgangsorðastjórnun með stýrikerfinu þínu skaltu endurræsa Vortex og veita aðgang að aðgangsorðastjórnun tölvunnar. Fliparnir þínir opnast aftur eftir endurræsingu.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Vista 1 atriði á reikningi}one{Vista # atriði á reikningi}other{Vista # atriði á reikningi}}</translation>
 <translation id="492363500327720082">Fjarlægir <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Sýna flipahópa</translation>

@@ -989,7 +989,7 @@ Mae'n bosib y bydd caniatadau rydych eisoes wedi'u rhoi i apiau yn berthnasol i'
 <translation id="1651633344379798952">Rhowch gynnig ar Google Lens ar eich ffôn</translation>
 <translation id="1652281434788353738">Meddylgar</translation>
 <translation id="1652326691684645429">Galluogi Rhannu Gerllaw</translation>
-<translation id="1652862280638399816">I ddefnyddio'r Rheolwr Cyfrineiriau gyda macOS Keychain, ail-lansiwch Chromium a chaniatewch fynediad Keychain. Bydd eich tabiau yn ailagor ar ôl ail-lansio.</translation>
+<translation id="1652862280638399816">I ddefnyddio'r Rheolwr Cyfrineiriau gyda macOS Keychain, ail-lansiwch Vortex a chaniatewch fynediad Keychain. Bydd eich tabiau yn ailagor ar ôl ail-lansio.</translation>
 <translation id="1653958716132599769">Grwpio tabiau cysylltiedig</translation>
 <translation id="1654580009054503925">Ni chaniateir dangos ceisiadau</translation>
 <translation id="1654713139320245449">Ni chanfuwyd unrhyw gyrchfannau castio. Angen help?</translation>
@@ -1305,7 +1305,7 @@ Mae'n bosib y bydd caniatadau rydych eisoes wedi'u rhoi i apiau yn berthnasol i'
 <translation id="186612162884103683">Gall <ph name="EXTENSION" /> ddarllen ac ysgrifennu lluniau, fideos a ffeiliau sain yn y lleoliadau sydd wedi'u ticio.</translation>
 <translation id="1866589962721094893">Rhoi rheolaeth i apiau Android dros ddyfeisiau USB ar y Chromebook hwn. Gofynnir am ganiatâd bob tro y byddwch yn plygio dyfais USB i mewn. Bydd apiau Android unigol yn gofyn am ganiatâd ychwanegol.</translation>
 <translation id="1867780286110144690">Mae <ph name="PRODUCT_NAME" /> yn barod i gwblhau eich gosodiad</translation>
-<translation id="1868553836791672080">Nid yw gwiriad cyfrinair ar gael yn Chromium</translation>
+<translation id="1868553836791672080">Nid yw gwiriad cyfrinair ar gael yn Vortex</translation>
 <translation id="1868617395637139709">Defnyddio lleoliad ar gyfer apiau a gwasanaethau Android.</translation>
 <translation id="1869433484041798909">Botwm nod tudalen</translation>
 <translation id="1871098866036088250">Agor mewn porwr Chrome</translation>
@@ -1587,7 +1587,7 @@ Gallwch reoli gosodiadau'r cyfrif hwn drwy osod yr ap Family Link ar eich dyfais
 <translation id="2059913712424898428">Cylchfa amser</translation>
 <translation id="2060375639911876205">Tynnu proffil eSIM</translation>
 <translation id="2061366302742593739">Dim byd i'w ddangos</translation>
-<translation id="2061589908388230480">Os bydd Chromium yn dod o hyd i un o'ch cyfrineiriau mewn tor data cyhoeddus, gall Rheolwr Cyfrineiriau Google gynnig newid eich cyfrinair ar eich rhan os ydych chi wedi mewngofnodi. <ph name="BEGIN_LINK" />Rhagor am newid cyfrinair yn awtomatig<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Os bydd Vortex yn dod o hyd i un o'ch cyfrineiriau mewn tor data cyhoeddus, gall Rheolwr Cyfrineiriau Google gynnig newid eich cyfrinair ar eich rhan os ydych chi wedi mewngofnodi. <ph name="BEGIN_LINK" />Rhagor am newid cyfrinair yn awtomatig<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Defnyddio'r we heb gadw eich hanes pori gyda ffenestr Anhysbys</translation>
 <translation id="206308717637808771">Dileu data pan fyddwch yn cau pob ffenestr. Mae data'n cael eu trin yr un peth â'r wefan rydych yn edrych arni</translation>
 <translation id="2066700471214517561">Meic Beamforming fel bod y person sy'n defnyddio'r Chromebook yn swnio'n glir.</translation>
@@ -2439,7 +2439,7 @@ Gallwch reoli gosodiadau'r cyfrif hwn drwy osod yr ap Family Link ar eich dyfais
 <translation id="2642111877055905627">Pêl-droed</translation>
 <translation id="2642206811783203764">Bob amser ar <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Gallwch bob amser ddileu data mesur hysbyseb wrth ddileu eich data pori</translation>
-<translation id="2643379881528582459">Os bydd Chromium yn dod o hyd i un o'ch cyfrineiriau mewn achos o doriad data cyhoeddus, gall gynnig newid eich cyfrinair ar eich rhan os ydych wedi mewngofnodi</translation>
+<translation id="2643379881528582459">Os bydd Vortex yn dod o hyd i un o'ch cyfrineiriau mewn achos o doriad data cyhoeddus, gall gynnig newid eich cyfrinair ar eich rhan os ydych wedi mewngofnodi</translation>
 <translation id="2643698698624765890">Rheoli eich estyniadau drwy glicio Estyniadau yn y ddewislen Windows.</translation>
 <translation id="2645047101481282803">Rheolir eich dyfais gan <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Wrthi'n castio'r tab hwn i <ph name="DEVICE_NAME" /></translation>
@@ -3175,7 +3175,7 @@ Mae <ph name="DOMAIN" /> yn gofyn i chi gadw'ch cerdyn smart wedi'i fewnosod.</t
 <translation id="3151786313568798007">Gogwydd</translation>
 <translation id="3152356229013609796">Gweld, gwrthod, ac ymateb i hysbysebion eich ffôn</translation>
 <translation id="3154754096046236400">Cyd-destun personol</translation>
-<translation id="3155163173539279776">Ail-lansio Chromium</translation>
+<translation id="3155163173539279776">Ail-lansio Vortex</translation>
 <translation id="3155394504825881014">Trosi Grŵp Tabiau yn Ffolder Nodau Tudalen</translation>
 <translation id="3156511682997763015">Ymlaen 10 eiliad</translation>
 <translation id="3157330780336267229">I rannu neu ymuno â grwpiau tabiau, mae angen i chi droi cysoni ymlaen</translation>
@@ -4908,7 +4908,7 @@ Mae <ph name="DOMAIN" /> yn gofyn i chi gadw'ch cerdyn smart wedi'i fewnosod.</t
 <translation id="4333854382783149454">PKCS #1 SHA-1 Gydag Amgryptio RSA</translation>
 <translation id="4334768748331667190">Ni fyddwch yn gweld <ph name="MODULE_NAME" /> eto</translation>
 <translation id="4335835283689002019">Mae Pori'n Ddiogel wedi'i ddiffodd</translation>
-<translation id="4336967529148557673">Mae angen i chi fewngofnodi cyn y gall Chromium orffen y dasg hon</translation>
+<translation id="4336967529148557673">Mae angen i chi fewngofnodi cyn y gall Vortex orffen y dasg hon</translation>
 <translation id="4338363401382232853">Awgrym ffenestr sgrîn hollt</translation>
 <translation id="4339203724549370495">Dadosod yr ap</translation>
 <translation id="4340125850502689798">Enw defnyddiwr annilys</translation>
@@ -5746,7 +5746,7 @@ Defnyddiwch Ctrl + Alt + Lleihau disgleirdeb i bellhau.</translation>
 <translation id="4918762404810341788">Copïo ac agor</translation>
 <translation id="4918844574251943176">Llun wedi'i gopïo</translation>
 <translation id="4921348630401250116">Testun i Leferydd</translation>
-<translation id="4922104989726031751">I ddefnyddio Rheolwr Cyfrineiriau gyda'ch system weithredu, ail-lansiwch Chromium a chaniatáu mynediad at reolwr cyfrineiriau eich cyfrifiadur. Bydd eich tabiau yn ailagor ar ôl ail-lansio.</translation>
+<translation id="4922104989726031751">I ddefnyddio Rheolwr Cyfrineiriau gyda'ch system weithredu, ail-lansiwch Vortex a chaniatáu mynediad at reolwr cyfrineiriau eich cyfrifiadur. Bydd eich tabiau yn ailagor ar ôl ail-lansio.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Cadw 1 eitem yn y cyfrif}zero{Cadw # eitemau yn y cyfrif}two{Cadw # eitem yn y cyfrif}few{Cadw # eitem yn y cyfrif}many{Cadw # eitem yn y cyfrif}other{Cadw # eitem yn y cyfrif}}</translation>
 <translation id="492363500327720082">Wrthi’n dadosod <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Dangos Grwpiau Tab</translation>

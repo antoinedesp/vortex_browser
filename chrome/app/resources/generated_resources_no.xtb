@@ -984,7 +984,7 @@ Tillatelser du allerede har gitt apper, kan gjelde for denne kontoen. Du kan sty
 <translation id="1651633344379798952">Prøv Google Lens på telefonen</translation>
 <translation id="1652281434788353738">Tankefull</translation>
 <translation id="1652326691684645429">Slå på nærdeling</translation>
-<translation id="1652862280638399816">For å bruke Passordlagring med macOS-nøkkelring, start Chromium på nytt og gi tilgang til Nøkkelring. Fanene dine åpnes på nytt når du starter på nytt.</translation>
+<translation id="1652862280638399816">For å bruke Passordlagring med macOS-nøkkelring, start Vortex på nytt og gi tilgang til Nøkkelring. Fanene dine åpnes på nytt når du starter på nytt.</translation>
 <translation id="1653958716132599769">Grupper relaterte faner</translation>
 <translation id="1654580009054503925">Ikke tillatt å vise forespørsler</translation>
 <translation id="1654713139320245449">Fant ingen enheter å caste til. Trenger du hjelp?</translation>
@@ -1297,7 +1297,7 @@ Tillatelser du allerede har gitt apper, kan gjelde for denne kontoen. Du kan sty
 <translation id="186612162884103683">«<ph name="EXTENSION" />» kan lese og redigere bilder, videofiler og lydfiler i de avmerkede mappene.</translation>
 <translation id="1866589962721094893">Gi Android-apper kontroll over USB-enheter på denne Chromebooken. Du blir spurt om tillatelse hver gang du kobler til en USB-enhet. Individuelle Android-apper kommer til å spørre om tilleggstillatelser.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> er klar til å fullføre installasjonen</translation>
-<translation id="1868553836791672080">Passordsjekking er ikke tilgjengelig i Chromium</translation>
+<translation id="1868553836791672080">Passordsjekking er ikke tilgjengelig i Vortex</translation>
 <translation id="1868617395637139709">Bruk posisjon i Android-apper og -tjenester.</translation>
 <translation id="1869433484041798909">Bokmerkeknapp</translation>
 <translation id="1871098866036088250">Åpne i Chrome-nettleseren</translation>
@@ -1580,7 +1580,7 @@ Du kan administrere innstillingene for denne kontoen ved å installere Family Li
 <translation id="2059913712424898428">Tidssone</translation>
 <translation id="2060375639911876205">Fjern eSIM-kortprofilen</translation>
 <translation id="2061366302742593739">Ingenting å vise</translation>
-<translation id="2061589908388230480">Hvis Chromium finner et av passordene dine i et offentlig databrudd, kan Google Passordlagring tilby å endre passordet for deg hvis du er logget på. <ph name="BEGIN_LINK" />Mer om automatisk passordendring<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Hvis Vortex finner et av passordene dine i et offentlig databrudd, kan Google Passordlagring tilby å endre passordet for deg hvis du er logget på. <ph name="BEGIN_LINK" />Mer om automatisk passordendring<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Med et inkognitovindu kan du bruke nettet uten at nettleserloggen lagres</translation>
 <translation id="206308717637808771">Slett data når du lukker alle vinduer. Dataene behandles på samme måte som nettstedet du besøker</translation>
 <translation id="2066700471214517561">Mikrofon med stråleforming gjør at personen som bruker Chromebooken, høres tydelig.</translation>
@@ -2432,7 +2432,7 @@ Du kan administrere innstillingene for denne kontoen ved å installere Family Li
 <translation id="2642111877055905627">Fotball</translation>
 <translation id="2642206811783203764">Alltid på <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Du kan alltid slette målingsdata for annonser ved å slette nettlesingsdataene dine</translation>
-<translation id="2643379881528582459">Hvis Chromium finner et av passordene dine i et offentlig databrudd, kan den tilby å endre passordet for deg hvis du er logget på</translation>
+<translation id="2643379881528582459">Hvis Vortex finner et av passordene dine i et offentlig databrudd, kan den tilby å endre passordet for deg hvis du er logget på</translation>
 <translation id="2643698698624765890">Du kan administrere utvidelsene dine ved å klikke på Utvidelser i vindusmenyen.</translation>
 <translation id="2645047101481282803">Enheten administreres av <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Caste denne fanen til <ph name="DEVICE_NAME" /></translation>
@@ -3169,7 +3169,7 @@ Du kan administrere innstillingene for denne kontoen ved å installere Family Li
 <translation id="3151786313568798007">Retning</translation>
 <translation id="3152356229013609796">Se, skjul og svar på varsler fra telefonen</translation>
 <translation id="3154754096046236400">Personlig kontekst</translation>
-<translation id="3155163173539279776">Start Chromium på nytt</translation>
+<translation id="3155163173539279776">Start Vortex på nytt</translation>
 <translation id="3155394504825881014">Konverter fanegruppen til en bokmerkemappe</translation>
 <translation id="3156511682997763015">Spol 10 sekunder frem</translation>
 <translation id="3157330780336267229">For å dele eller bli med i fanegrupper må du slå på synkronisering</translation>
@@ -4901,7 +4901,7 @@ Du kan administrere innstillingene for denne kontoen ved å installere Family Li
 <translation id="4333854382783149454">PKCS #1 SHA-1 med RSA-kryptering</translation>
 <translation id="4334768748331667190">Du kommer ikke til å se <ph name="MODULE_NAME" /> mer</translation>
 <translation id="4335835283689002019">Safe Browsing er av</translation>
-<translation id="4336967529148557673">Du må logge på før Chromium kan fullføre denne oppgaven</translation>
+<translation id="4336967529148557673">Du må logge på før Vortex kan fullføre denne oppgaven</translation>
 <translation id="4338363401382232853">Forslag til vindu på delt skjerm</translation>
 <translation id="4339203724549370495">Avinstaller appen</translation>
 <translation id="4340125850502689798">Ugyldig brukernavn</translation>
@@ -5740,7 +5740,7 @@ Bruk Ctrl + Alt + lysstyrke ned for å zoome ut.</translation>
 <translation id="4918762404810341788">Kopier og åpne</translation>
 <translation id="4918844574251943176">Bildet er kopiert</translation>
 <translation id="4921348630401250116">Tekst til tale</translation>
-<translation id="4922104989726031751">For å bruke Passordlagring med operativsystemet ditt, start Chromium på nytt og gi tilgang til passordlagringen på datamaskinen. Fanene dine åpnes på nytt når du starter på nytt.</translation>
+<translation id="4922104989726031751">For å bruke Passordlagring med operativsystemet ditt, start Vortex på nytt og gi tilgang til passordlagringen på datamaskinen. Fanene dine åpnes på nytt når du starter på nytt.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Lagre 1 element i kontoen}other{Lagre # elementer i kontoen}}</translation>
 <translation id="492363500327720082">Avinstallerer <ph name="APP_NAME" /> …</translation>
 <translation id="4923977675318667854">Vis fanegrupper</translation>

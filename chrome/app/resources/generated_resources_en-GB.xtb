@@ -986,7 +986,7 @@ Permissions that you've already given to apps may apply to this account. You can
 <translation id="1651633344379798952">Try Google Lens on your phone</translation>
 <translation id="1652281434788353738">Thoughtful</translation>
 <translation id="1652326691684645429">Enable Nearby Share</translation>
-<translation id="1652862280638399816">To use Password Manager with macOS Keychain, relaunch Chromium and allow Keychain access. Your tabs will reopen after relaunching.</translation>
+<translation id="1652862280638399816">To use Password Manager with macOS Keychain, relaunch Vortex and allow Keychain access. Your tabs will reopen after relaunching.</translation>
 <translation id="1653958716132599769">Group related tabs</translation>
 <translation id="1654580009054503925">Not allowed to show requests</translation>
 <translation id="1654713139320245449">No cast destinations found. Need any help?</translation>
@@ -1302,7 +1302,7 @@ Permissions that you've already given to apps may apply to this account. You can
 <translation id="186612162884103683">"<ph name="EXTENSION" />" can read and write images, video and sound files in the ticked locations.</translation>
 <translation id="1866589962721094893">Give Android apps control over USB devices on this Chromebook. Permission will be requested each time that you plug in a USB device. Individual Android apps will ask for additional permissions.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> is ready to complete your installation</translation>
-<translation id="1868553836791672080">Password check is not available in Chromium</translation>
+<translation id="1868553836791672080">Password check is not available in Vortex</translation>
 <translation id="1868617395637139709">Use location for Android apps and services.</translation>
 <translation id="1869433484041798909">Bookmark button</translation>
 <translation id="1871098866036088250">Open in Chrome browser</translation>
@@ -1584,7 +1584,7 @@ You can manage this account’s settings by installing the Family Link app on yo
 <translation id="2059913712424898428">Time zone</translation>
 <translation id="2060375639911876205">Remove eSIM profile</translation>
 <translation id="2061366302742593739">Nothing to show</translation>
-<translation id="2061589908388230480">If Chromium finds one of your passwords in a public data breach, Google Password Manager can offer to change your password for you if you're signed in. <ph name="BEGIN_LINK" />More about automated password change<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">If Vortex finds one of your passwords in a public data breach, Google Password Manager can offer to change your password for you if you're signed in. <ph name="BEGIN_LINK" />More about automated password change<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Use the web without saving your browsing history with an Incognito window</translation>
 <translation id="206308717637808771">Delete data when you close all windows. Data is treated the same as the site that you’re viewing</translation>
 <translation id="2066700471214517561">Beamforming mic so that the person using the Chromebook sounds clear.</translation>
@@ -2436,7 +2436,7 @@ You can manage this account’s settings by installing the Family Link app on yo
 <translation id="2642111877055905627">Football</translation>
 <translation id="2642206811783203764">Always on <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">You can always delete ads measurement data by deleting your browsing data</translation>
-<translation id="2643379881528582459">If Chromium finds one of your passwords in a public data breach, it can offer to change your password for you if you're signed in</translation>
+<translation id="2643379881528582459">If Vortex finds one of your passwords in a public data breach, it can offer to change your password for you if you're signed in</translation>
 <translation id="2643698698624765890">Manage your extensions by clicking Extensions in the Window menu.</translation>
 <translation id="2645047101481282803">Your device is managed by <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Casting this tab to <ph name="DEVICE_NAME" /></translation>
@@ -3172,7 +3172,7 @@ You can manage this account’s settings by installing the Family Link app on yo
 <translation id="3151786313568798007">Orientation</translation>
 <translation id="3152356229013609796">View, dismiss and reply to your phone's notifications</translation>
 <translation id="3154754096046236400">Personal context</translation>
-<translation id="3155163173539279776">Relaunch Chromium</translation>
+<translation id="3155163173539279776">Relaunch Vortex</translation>
 <translation id="3155394504825881014">Convert tab group into bookmark folder</translation>
 <translation id="3156511682997763015">Forward 10 seconds</translation>
 <translation id="3157330780336267229">To share or join tab groups, you need to turn on sync</translation>
@@ -4908,7 +4908,7 @@ You can manage this account’s settings by installing the Family Link app on yo
 <translation id="4333854382783149454">PKCS #1 SHA-1 With RSA Encryption</translation>
 <translation id="4334768748331667190">You won't see <ph name="MODULE_NAME" /> again</translation>
 <translation id="4335835283689002019">Safe Browsing is off</translation>
-<translation id="4336967529148557673">You need to sign in before Chromium can finish this task</translation>
+<translation id="4336967529148557673">You need to sign in before Vortex can finish this task</translation>
 <translation id="4338363401382232853">Split screen window suggestion</translation>
 <translation id="4339203724549370495">Uninstall app</translation>
 <translation id="4340125850502689798">Invalid username</translation>
@@ -5747,7 +5747,7 @@ Use Ctrl + Alt + Brightness down to zoom out.</translation>
 <translation id="4918762404810341788">Copy and open</translation>
 <translation id="4918844574251943176">Image copied</translation>
 <translation id="4921348630401250116">Text-to-speech</translation>
-<translation id="4922104989726031751">To use Password Manager with your operating system, relaunch Chromium and allow access to your computer's password manager. Your tabs will reopen after relaunching.</translation>
+<translation id="4922104989726031751">To use Password Manager with your operating system, relaunch Vortex and allow access to your computer's password manager. Your tabs will reopen after relaunching.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Save 1 item in account}other{Save # items in account}}</translation>
 <translation id="492363500327720082">Uninstalling <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Show tab groups</translation>

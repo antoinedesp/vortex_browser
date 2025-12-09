@@ -986,7 +986,7 @@ Izin yang telah Anda berikan ke aplikasi dapat berlaku untuk akun ini. Anda dapa
 <translation id="1651633344379798952">Coba Google Lens di ponsel Anda</translation>
 <translation id="1652281434788353738">Bijaksana</translation>
 <translation id="1652326691684645429">Aktifkan Berbagi Langsung</translation>
-<translation id="1652862280638399816">Untuk menggunakan Pengelola Sandi dengan Rantai Kunci macOS, luncurkan kembali Chromium dan izinkan akses Rantai Kunci. Tab Anda akan dibuka lagi setelah peluncuran kembali.</translation>
+<translation id="1652862280638399816">Untuk menggunakan Pengelola Sandi dengan Rantai Kunci macOS, luncurkan kembali Vortex dan izinkan akses Rantai Kunci. Tab Anda akan dibuka lagi setelah peluncuran kembali.</translation>
 <translation id="1653958716132599769">Kelompokkan tab terkait</translation>
 <translation id="1654580009054503925">Tidak diizinkan menampilkan permintaan</translation>
 <translation id="1654713139320245449">Tujuan transmisi tidak ditemukan. Perlu bantuan?</translation>
@@ -1302,7 +1302,7 @@ Izin yang telah Anda berikan ke aplikasi dapat berlaku untuk akun ini. Anda dapa
 <translation id="186612162884103683">"<ph name="EXTENSION" />" dapat membaca dan menulis file gambar, video, dan suara di lokasi yang dicentang.</translation>
 <translation id="1866589962721094893">Memberikan kontrol aplikasi Android atas perangkat USB di Chromebook ini. Anda akan dimintai izin setiap kali mencolokkan perangkat USB. Setiap aplikasi Android akan meminta izin tambahan.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> siap menyelesaikan penginstalan</translation>
-<translation id="1868553836791672080">Pemeriksaan sandi tidak tersedia di Chromium</translation>
+<translation id="1868553836791672080">Pemeriksaan sandi tidak tersedia di Vortex</translation>
 <translation id="1868617395637139709">Gunakan lokasi untuk aplikasi dan layanan Android.</translation>
 <translation id="1869433484041798909">Tombol bookmark</translation>
 <translation id="1871098866036088250">Buka di browser Chrome</translation>
@@ -1584,7 +1584,7 @@ Anda dapat mengelola setelan akun ini dengan menginstal aplikasi Family Link di 
 <translation id="2059913712424898428">Zona waktu</translation>
 <translation id="2060375639911876205">Hapus profil eSIM</translation>
 <translation id="2061366302742593739">Tidak ada yang dapat ditampilkan</translation>
-<translation id="2061589908388230480">Jika Chromium menemukan salah satu sandi Anda dalam pelanggaran data publik, Pengelola Sandi Google dapat menawarkan untuk mengubah sandi Anda jika Anda sedang login. <ph name="BEGIN_LINK" />Selengkapnya tentang perubahan otomatis sandi<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Jika Vortex menemukan salah satu sandi Anda dalam pelanggaran data publik, Pengelola Sandi Google dapat menawarkan untuk mengubah sandi Anda jika Anda sedang login. <ph name="BEGIN_LINK" />Selengkapnya tentang perubahan otomatis sandi<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Gunakan web tanpa menyimpan histori penjelajahan dengan jendela Samaran</translation>
 <translation id="206308717637808771">Hapus data saat Anda menutup semua jendela. Data diperlakukan sama seperti situs yang Anda lihat</translation>
 <translation id="2066700471214517561">Memanfaatkan teknologi beamforming pada mikrofon agar suara pengguna Chromebook terdengar jelas.</translation>
@@ -2436,7 +2436,7 @@ Anda dapat mengelola setelan akun ini dengan menginstal aplikasi Family Link di 
 <translation id="2642111877055905627">Bola sepak</translation>
 <translation id="2642206811783203764">Selalu di <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Anda dapat menghapus data pengukuran iklan kapan saja dengan menghapus data penjelajahan</translation>
-<translation id="2643379881528582459">Jika Chromium menemukan salah satu sandi Anda dalam pelanggaran data publik, Chromium dapat menawarkan untuk mengubah sandi Anda jika Anda sedang login</translation>
+<translation id="2643379881528582459">Jika Vortex menemukan salah satu sandi Anda dalam pelanggaran data publik, Vortex dapat menawarkan untuk mengubah sandi Anda jika Anda sedang login</translation>
 <translation id="2643698698624765890">Kelola ekstensi Anda dengan mengklik Ekstensi pada menu Window.</translation>
 <translation id="2645047101481282803">Perangkat Anda dikelola oleh <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Mentransmisikan tab ini ke <ph name="DEVICE_NAME" /></translation>
@@ -3172,7 +3172,7 @@ Anda dapat mengelola setelan akun ini dengan menginstal aplikasi Family Link di 
 <translation id="3151786313568798007">Orientasi</translation>
 <translation id="3152356229013609796">Lihat, tutup, dan balas notifikasi dari ponsel Anda</translation>
 <translation id="3154754096046236400">Konteks personal</translation>
-<translation id="3155163173539279776">Luncurkan ulang Chromium</translation>
+<translation id="3155163173539279776">Luncurkan ulang Vortex</translation>
 <translation id="3155394504825881014">Konversi Grup Tab menjadi Folder Bookmark</translation>
 <translation id="3156511682997763015">Maju 10 detik</translation>
 <translation id="3157330780336267229">Untuk berbagi atau bergabung ke grup tab, Anda harus mengaktifkan sinkronisasi</translation>
@@ -4905,7 +4905,7 @@ Anda dapat mengelola setelan akun ini dengan menginstal aplikasi Family Link di 
 <translation id="4333854382783149454">PKCS #1 SHA-1 Dengan Enkripsi RSA</translation>
 <translation id="4334768748331667190">Anda tidak akan melihat <ph name="MODULE_NAME" /> lagi</translation>
 <translation id="4335835283689002019">Safe Browsing nonaktif</translation>
-<translation id="4336967529148557673">Anda harus login sebelum Chromium dapat menyelesaikan tugas ini</translation>
+<translation id="4336967529148557673">Anda harus login sebelum Vortex dapat menyelesaikan tugas ini</translation>
 <translation id="4338363401382232853">Saran jendela layar terpisah</translation>
 <translation id="4339203724549370495">Uninstal aplikasi</translation>
 <translation id="4340125850502689798">Nama pengguna tidak valid</translation>
@@ -5743,7 +5743,7 @@ Gunakan Ctrl + Alt + Kurangi kecerahan untuk memperkecil.</translation>
 <translation id="4918762404810341788">Salin dan buka</translation>
 <translation id="4918844574251943176">Gambar disalin</translation>
 <translation id="4921348630401250116">Text-to-speech</translation>
-<translation id="4922104989726031751">Untuk menggunakan Pengelola Sandi dengan sistem operasi Anda, luncurkan kembali Chromium dan izinkan akses ke pengelola sandi komputer. Tab Anda akan dibuka lagi setelah peluncuran kembali.</translation>
+<translation id="4922104989726031751">Untuk menggunakan Pengelola Sandi dengan sistem operasi Anda, luncurkan kembali Vortex dan izinkan akses ke pengelola sandi komputer. Tab Anda akan dibuka lagi setelah peluncuran kembali.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Simpan 1 item di akun}other{Simpan # item di akun}}</translation>
 <translation id="492363500327720082">Meng-uninstal <ph name="APP_NAME" /> ...</translation>
 <translation id="4923977675318667854">Tampilkan Grup Tab</translation>

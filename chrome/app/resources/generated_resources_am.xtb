@@ -986,7 +986,7 @@
 <translation id="1651633344379798952">Google ሌንስን በስልክዎ ላይ ይሞክሩ</translation>
 <translation id="1652281434788353738">አስተዋይ</translation>
 <translation id="1652326691684645429">የአቅራቢያ አጋራን ያንቁ</translation>
-<translation id="1652862280638399816">የሚስጥር ቁልፍ አስተዳዳሪን ከ macOS Keychain ጋር ለመጠቀም Chromium ን እንደገና ያስጀምሩ እና የ Keychain መዳረሻን ይፍቀዱ። ዳግም ከጀመረ በኋላ ትሮችዎ እንደገና ይከፈታሉ።</translation>
+<translation id="1652862280638399816">የሚስጥር ቁልፍ አስተዳዳሪን ከ macOS Keychain ጋር ለመጠቀም Vortex ን እንደገና ያስጀምሩ እና የ Keychain መዳረሻን ይፍቀዱ። ዳግም ከጀመረ በኋላ ትሮችዎ እንደገና ይከፈታሉ።</translation>
 <translation id="1653958716132599769">ቡድን ተዛማች ትሮች</translation>
 <translation id="1654580009054503925">ጥያቄዎችን ለማሳየት አልተፈቀደም</translation>
 <translation id="1654713139320245449">ምንም የcast መድረሻዎች አልተገኙም። እገዛ ይፈልጋሉ?</translation>
@@ -1300,7 +1300,7 @@
 <translation id="186612162884103683">«<ph name="EXTENSION" />» ምልክት በተደረገባቸው አካባቢዎች ውስጥ ምስሎችን፣ ቪዲዮ እና የድምጽ ፋይሎችን ማንበብ እና መጻፍ ይችላል።</translation>
 <translation id="1866589962721094893">በዚህ Chromebook ላይ ለAndroid መተግበሪያዎች በUSB መሣሪያዎች ላይ ቁጥጥር ይስጡ የUSB መሣሪያ በሰኩ ቁጥር ፈቃድ ያስፈልጋል። ተናጠል የAndroid መተግበሪያዎች ተጨማሪ ፈቃዶችን ይጠይቃሉ።</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> ጭነትዎን ለማጠናቀቅ ዝግጁ ነው</translation>
-<translation id="1868553836791672080">የይለፍ ቃል ፍተሻ በChromium ውስጥ አይገኝም</translation>
+<translation id="1868553836791672080">የይለፍ ቃል ፍተሻ በVortex ውስጥ አይገኝም</translation>
 <translation id="1868617395637139709">አካባቢን ለAndroid መተግበሪያዎች እና አገልግሎቶች ይጠቀሙ።</translation>
 <translation id="1869433484041798909">የዕልባት አዝራር</translation>
 <translation id="1871098866036088250">በChrome አሳሽ ውስጥ ይክፈቱ</translation>
@@ -1582,7 +1582,7 @@
 <translation id="2059913712424898428">የሰዓት ሰቅ</translation>
 <translation id="2060375639911876205">የኢሲም መገለጫን ዳግም ይሰይሙ</translation>
 <translation id="2061366302742593739">ምንም የሚታይ ነገር የለም</translation>
-<translation id="2061589908388230480">Chromium ከአንተ የይለፍ ቃላት ላይ አንዱን በይፋዊ ውሂብ ጥሰት ውስጥ ካገኘ፣ Google የይለፍ ቃል አስተዳዳሪ በመለያ ገብተህ ከሆነ ለአንተ የይለፍ ቃልህን ለመለወጥ ሊያቀርብ ይችላል። <ph name="BEGIN_LINK" />ስለ ራስ-ሰር የተደረገ የይለፍ ቃል ለውጥ ተጨማሪ<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Vortex ከአንተ የይለፍ ቃላት ላይ አንዱን በይፋዊ ውሂብ ጥሰት ውስጥ ካገኘ፣ Google የይለፍ ቃል አስተዳዳሪ በመለያ ገብተህ ከሆነ ለአንተ የይለፍ ቃልህን ለመለወጥ ሊያቀርብ ይችላል። <ph name="BEGIN_LINK" />ስለ ራስ-ሰር የተደረገ የይለፍ ቃል ለውጥ ተጨማሪ<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">ማንነት በማያሳውቅ መስኮት አማካኝነት የአሰሳ ታሪክዎን ሳያስቀምጡ ድሩን ይጠቀሙ</translation>
 <translation id="206308717637808771">ሁሉንም መስኮቶች ሲዘጉ ውሂብ ይሰርዙ። ውሂብ የሚስተናገደው እየተመለከቱት እንዳለው ጣቢያ ነው</translation>
 <translation id="2066700471214517561">Chromebook የሚጠቀሙት ሰው ግልፅ ሆነው መደመጥ እንዲችሉ ማይክን ሞገድ በማሠራት ላይ።</translation>
@@ -2432,7 +2432,7 @@
 <translation id="2642111877055905627">የእግር ኳስ ኳስ</translation>
 <translation id="2642206811783203764">ሁልጊዜ በ<ph name="SITE_NAME" /> ላይ</translation>
 <translation id="2643064289437760082">የአሰሳ ውሂብዎን በመሰረዝ የማስታወቂያ ልኬት ውሂብን ሁልጊዜ መሰረዝ ይችላሉ</translation>
-<translation id="2643379881528582459">Chromium ከእርስዎ የይለፍ ቃላት ላይ አንዱን በይፋዊ የውሂብ ጥሰት ውስጥ ካገኘ፣ በመለያ ገብተው ከሆነ ለእርስዎ የይለፍ ቃልዎን ለመለወጥ ሊያቀርብ ይችላል</translation>
+<translation id="2643379881528582459">Vortex ከእርስዎ የይለፍ ቃላት ላይ አንዱን በይፋዊ የውሂብ ጥሰት ውስጥ ካገኘ፣ በመለያ ገብተው ከሆነ ለእርስዎ የይለፍ ቃልዎን ለመለወጥ ሊያቀርብ ይችላል</translation>
 <translation id="2643698698624765890">በመስኮት ምናሌ ውስጥ ያለውን «ቅጥያዎች» ጠቅ በማድረግ ቅጥያዎችዎን ያቀናብሩ።</translation>
 <translation id="2645047101481282803">የእርስዎ መሣሪያ በ<ph name="PROFILE_NAME" /> ነው የሚተዳደረው</translation>
 <translation id="2645388244376970260">ይህን ትር ወደ <ph name="DEVICE_NAME" /> cast በማድረግ ላይ</translation>
@@ -3168,7 +3168,7 @@
 <translation id="3151786313568798007">አቀማመጥ</translation>
 <translation id="3152356229013609796">የስልክዎን ማሳወቂያዎች ይመልከቱ፣ ያሰናብቱ እና ምላሽ ይስጡ</translation>
 <translation id="3154754096046236400">ግላዊ አውድ</translation>
-<translation id="3155163173539279776">Chromiumን ዳግም አስጀምር</translation>
+<translation id="3155163173539279776">Vortexን ዳግም አስጀምር</translation>
 <translation id="3155394504825881014">የትር ቡድንን ወደ የዕልባት አቃፊ ይቀይሩ</translation>
 <translation id="3156511682997763015">10 ሰከንዶች ወደፊት</translation>
 <translation id="3157330780336267229">የትር ቡድኖችን ለማጋራት ወይም ለመቀላቀል ሥምረትን ማብራት ያስፈልግዎታል</translation>
@@ -4902,7 +4902,7 @@
 <translation id="4333854382783149454">PKCS #1 SHA-1 ከRSA ምስጠራ ጋር</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" />ን እንደገና አይመለከቱም</translation>
 <translation id="4335835283689002019">ደህንነቱ የተጠበቀ አሰሳ ጠፍቷል</translation>
-<translation id="4336967529148557673">Chromium ይህን ተግባር ማጠናቀቅ ከመቻሉ በፊት መመዝገብ ይኖርብዎታል</translation>
+<translation id="4336967529148557673">Vortex ይህን ተግባር ማጠናቀቅ ከመቻሉ በፊት መመዝገብ ይኖርብዎታል</translation>
 <translation id="4338363401382232853">የተከፈለ የማያ ገጽ መስኮት ጥቆማ</translation>
 <translation id="4339203724549370495">መተግበሪያን አራግፍ</translation>
 <translation id="4340125850502689798">ልክ ያልሆነ የተጠቃሚ ስም</translation>
@@ -5741,7 +5741,7 @@
 <translation id="4918762404810341788">ቅዳ እና ክፈት</translation>
 <translation id="4918844574251943176">ምስል ተቀድቷል</translation>
 <translation id="4921348630401250116">ጽሁፍ-ወደ-ንግግር</translation>
-<translation id="4922104989726031751">ከስርዓተ ክወናዎ ጋር የይለፍ ቃል አስተዳዳሪን ለመጠቀም Chromiumን ዳግም ያስጀምሩ እና የኮምፒውተርዎን ይለፍ ቃል አቀናባሪ የመግቢያ ፍቃድ ይስጡ። ዳግም ከጀመረ በኋላ ትሮችዎ እንደገና ይከፈታሉ።</translation>
+<translation id="4922104989726031751">ከስርዓተ ክወናዎ ጋር የይለፍ ቃል አስተዳዳሪን ለመጠቀም Vortexን ዳግም ያስጀምሩ እና የኮምፒውተርዎን ይለፍ ቃል አቀናባሪ የመግቢያ ፍቃድ ይስጡ። ዳግም ከጀመረ በኋላ ትሮችዎ እንደገና ይከፈታሉ።</translation>
 <translation id="4923561999941435531">{0,plural, =1{በመለያ ውስጥ 1 ንጥል አስቀምጥ}one{በመለያ ውስጥ # ንጥል አስቀምጥ}other{በመለያ ውስጥ # ንጥሎች አስቀምጥ}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" />ን በማራገፍ ላይ...</translation>
 <translation id="4923977675318667854">የትር ቡድኖችን አሳይ</translation>

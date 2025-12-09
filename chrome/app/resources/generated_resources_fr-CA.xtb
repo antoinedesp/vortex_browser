@@ -987,7 +987,7 @@ Les autorisations que vous avez déjà accordées à des applications peuvent s'
 <translation id="1651633344379798952">Essayer Lentille Google sur votre téléphone</translation>
 <translation id="1652281434788353738">Méditatif</translation>
 <translation id="1652326691684645429">Activer la fonctionnalité Partage à proximité</translation>
-<translation id="1652862280638399816">Pour utiliser le gestionnaire de mots de passe avec le trousseau macOS, relancez Chromium et autorisez l'accès au trousseau. Vos onglets s'ouvriront à nouveau après la relance.</translation>
+<translation id="1652862280638399816">Pour utiliser le gestionnaire de mots de passe avec le trousseau macOS, relancez Vortex et autorisez l'accès au trousseau. Vos onglets s'ouvriront à nouveau après la relance.</translation>
 <translation id="1653958716132599769">Onglets associés au groupe</translation>
 <translation id="1654580009054503925">Non autorisé à afficher les demandes</translation>
 <translation id="1654713139320245449">Aucune destination de diffusion trouvée. Besoin d'aide?</translation>
@@ -1294,7 +1294,7 @@ Les autorisations que vous avez déjà accordées à des applications peuvent s'
 <translation id="186612162884103683">« <ph name="EXTENSION" /> » dispose d'un droit d'accès en lecture et en écriture aux images, aux vidéos et aux fichiers audio figurant dans les dossiers sélectionnés.</translation>
 <translation id="1866589962721094893">Accordez aux applis Android l'autorisation de contrôler les appareils USB sur ce Chromebook. Une autorisation sera demandée chaque fois que vous brancherez un appareil USB. Des autorisations supplémentaires seront demandées pour chaque appli Android.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> est prêt à terminer l'installation.</translation>
-<translation id="1868553836791672080">La vérification des mots de passe n'est pas offerte dans Chromium</translation>
+<translation id="1868553836791672080">La vérification des mots de passe n'est pas offerte dans Vortex</translation>
 <translation id="1868617395637139709">Utiliser la position pour les applications et les services Android.</translation>
 <translation id="1869433484041798909">Bouton de favori</translation>
 <translation id="1871098866036088250">Ouvrir dans le navigateur Chrome</translation>
@@ -1577,7 +1577,7 @@ Vous pouvez gérer les paramètres de ce compte en installant l'application Fami
 <translation id="2059913712424898428">Fuseau horaire</translation>
 <translation id="2060375639911876205">Retirer le profil de la carte eSIM</translation>
 <translation id="2061366302742593739">Rien à afficher</translation>
-<translation id="2061589908388230480">Si Chromium indique qu'un de vos mots de passe a été découvert dans un cas de violation de données public, le gestionnaire de mots de passe Google peut vous proposer de le modifier pour vous si votre compte est connecté. <ph name="BEGIN_LINK" />En savoir plus sur la modification automatique du mot de passe<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Si Vortex indique qu'un de vos mots de passe a été découvert dans un cas de violation de données public, le gestionnaire de mots de passe Google peut vous proposer de le modifier pour vous si votre compte est connecté. <ph name="BEGIN_LINK" />En savoir plus sur la modification automatique du mot de passe<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Utilisez le Web sans enregistrer votre historique de navigation avec une fenêtre de navigation privée</translation>
 <translation id="206308717637808771">Supprimer les données lorsque vous fermez toutes les fenêtres. Les données sont traitées de la même manière que le site que vous consultez</translation>
 <translation id="2066700471214517561">Micro à formation de faisceaux pour que la personne utilisant le Chromebook ait un son clair.</translation>
@@ -2427,7 +2427,7 @@ https://support.google.com/chrome/?p=applescript</translation>
 <translation id="2642111877055905627">Ballon de soccer</translation>
 <translation id="2642206811783203764">Toujours sur <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Vous pouvez toujours supprimer les données de la mesure des annonces en supprimant vos données de navigation</translation>
-<translation id="2643379881528582459">Si Chromium indique qu'un de vos mots de passe a été découvert dans un cas de violation de données publique, il peut vous proposer de le modifier pour vous si votre compte est connecté</translation>
+<translation id="2643379881528582459">Si Vortex indique qu'un de vos mots de passe a été découvert dans un cas de violation de données publique, il peut vous proposer de le modifier pour vous si votre compte est connecté</translation>
 <translation id="2643698698624765890">Pour gérer vos extensions, cliquez sur « Extensions » dans le menu « Fenêtre ».</translation>
 <translation id="2645047101481282803">Votre appareil est géré par <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Diffusion de cet onglet sur <ph name="DEVICE_NAME" /></translation>
@@ -3165,7 +3165,7 @@ Par exemple, certains sites Web peuvent répondre à cette demande en diffusant 
 <translation id="3151786313568798007">Orientation</translation>
 <translation id="3152356229013609796">Affichez et ignorez les notifications de votre téléphone, et répondez-y</translation>
 <translation id="3154754096046236400">Contexte personnel</translation>
-<translation id="3155163173539279776">Relancer Chromium</translation>
+<translation id="3155163173539279776">Relancer Vortex</translation>
 <translation id="3155394504825881014">Convertir le groupe d'onglets en dossier de favoris</translation>
 <translation id="3156511682997763015">Avancer de 10 secondes</translation>
 <translation id="3157330780336267229">Pour partager ou rejoindre des groupes d'onglets, vous devez activer la synchronisation</translation>
@@ -4902,7 +4902,7 @@ Souhaitez-vous lancer <ph name="CONTROL_PANEL_APPLET_NAME" />?</translation>
 <translation id="4333854382783149454">PKCS n° 1 SHA-1 avec chiffrement RSA</translation>
 <translation id="4334768748331667190">Vous ne verrez plus <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">La navigation sécurisée est désactivée</translation>
-<translation id="4336967529148557673">Vous devez vous connecter avant que Chromium puisse terminer cette tâche</translation>
+<translation id="4336967529148557673">Vous devez vous connecter avant que Vortex puisse terminer cette tâche</translation>
 <translation id="4338363401382232853">Suggestion de fenêtre de l'Écran divisé</translation>
 <translation id="4339203724549370495">Désinstaller l'application</translation>
 <translation id="4340125850502689798">Nom d'utilisateur non valide</translation>
@@ -5742,7 +5742,7 @@ Appuyez sur Ctrl+Alt+diminuer la luminosité pour dézoomer.</translation>
 <translation id="4918762404810341788">Copier et ouvrir</translation>
 <translation id="4918844574251943176">Image copiée</translation>
 <translation id="4921348630401250116">Transcription de la voix</translation>
-<translation id="4922104989726031751">Pour utiliser le gestionnaire de mots de passe avec votre système d'exploitation, relancez Chromium et autorisez l'accès au gestionnaire de mots de passe de votre ordinateur. Vos onglets s'ouvriront à nouveau après la relance.</translation>
+<translation id="4922104989726031751">Pour utiliser le gestionnaire de mots de passe avec votre système d'exploitation, relancez Vortex et autorisez l'accès au gestionnaire de mots de passe de votre ordinateur. Vos onglets s'ouvriront à nouveau après la relance.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Enregistrer 1 élément dans le compte}one{Enregistrer # élément dans le compte}other{Enregistrer # éléments dans le compte}}</translation>
 <translation id="492363500327720082">Désinstallation de <ph name="APP_NAME" /> en cours…</translation>
 <translation id="4923977675318667854">Afficher les groupes d'onglets</translation>

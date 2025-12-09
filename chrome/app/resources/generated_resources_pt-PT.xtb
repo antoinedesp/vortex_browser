@@ -986,7 +986,7 @@ As autorizações que já concedeu às apps podem aplicar-se a esta conta. Pode 
 <translation id="1651633344379798952">Experimente o Google Lens no telemóvel</translation>
 <translation id="1652281434788353738">Pensativo</translation>
 <translation id="1652326691684645429">Ativar a funcionalidade Partilhar na proximidade</translation>
-<translation id="1652862280638399816">Para usar o Gestor de Palavras-passe com o Porta-chaves macOS, reinicie o Chromium e permita o acesso ao Porta-chaves. Os separadores reabrem depois de serem reiniciados.</translation>
+<translation id="1652862280638399816">Para usar o Gestor de Palavras-passe com o Porta-chaves macOS, reinicie o Vortex e permita o acesso ao Porta-chaves. Os separadores reabrem depois de serem reiniciados.</translation>
 <translation id="1653958716132599769">Agrupar separadores relacionados</translation>
 <translation id="1654580009054503925">Sem autorização para mostrar pedidos</translation>
 <translation id="1654713139320245449">Não foi encontrado nenhum destino de transmissão. Precisa de ajuda?</translation>
@@ -1293,7 +1293,7 @@ As autorizações que já concedeu às apps podem aplicar-se a esta conta. Pode 
 <translation id="186612162884103683">A extensão "<ph name="EXTENSION" />" consegue ler e escrever em imagens, em ficheiros de vídeo e de som nas localizações confirmadas.</translation>
 <translation id="1866589962721094893">Dê às apps Android controlo sobre dispositivos USB neste Chromebook. A autorização será pedida sempre que ligar um dispositivo USB. As apps Android individuais irão pedir autorizações adicionais.</translation>
 <translation id="1867780286110144690">O <ph name="PRODUCT_NAME" /> está preparado para concluir a instalação</translation>
-<translation id="1868553836791672080">A verificação da palavra-passe não está disponível no Chromium.</translation>
+<translation id="1868553836791672080">A verificação da palavra-passe não está disponível no Vortex.</translation>
 <translation id="1868617395637139709">Utilize a localização para apps e serviços Android.</translation>
 <translation id="1869433484041798909">Botão de marcadores</translation>
 <translation id="1871098866036088250">Abrir no navegador Chrome</translation>
@@ -1577,7 +1577,7 @@ Pode gerir as definições desta conta ao instalar a aplicação Family Link no 
 <translation id="2059913712424898428">Fuso horário</translation>
 <translation id="2060375639911876205">Remover perfil do eSIM</translation>
 <translation id="2061366302742593739">Não há nada para mostrar</translation>
-<translation id="2061589908388230480">Se o Chromium encontrar uma das suas palavras-passe numa violação de dados pública, o Gestor de Palavras-passe da Google pode oferecer-se para a alterar por si se tiver sessão iniciada. <ph name="BEGIN_LINK" />Mais informações sobre a alteração automática de palavras-passe<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Se o Vortex encontrar uma das suas palavras-passe numa violação de dados pública, o Gestor de Palavras-passe da Google pode oferecer-se para a alterar por si se tiver sessão iniciada. <ph name="BEGIN_LINK" />Mais informações sobre a alteração automática de palavras-passe<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Navegue na Web sem guardar o seu histórico de navegação com uma janela de navegação anónima</translation>
 <translation id="206308717637808771">Elimine dados quando fecha todas as janelas. Os dados são tratados da mesma forma que o site que está a ver</translation>
 <translation id="2066700471214517561">Microfone com beamforming para que a voz da pessoa que usa o Chromebook seja nítida.</translation>
@@ -2427,7 +2427,7 @@ Pode gerir as definições desta conta ao instalar a aplicação Family Link no 
 <translation id="2642111877055905627">Bola de futebol</translation>
 <translation id="2642206811783203764">Sempre em <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Pode sempre eliminar dados de medição de anúncios ao eliminar os seus dados de navegação</translation>
-<translation id="2643379881528582459">Se o Chromium encontrar uma das suas palavras-passe numa violação de dados pública, pode oferecer-se para a alterar por si se tiver sessão iniciada</translation>
+<translation id="2643379881528582459">Se o Vortex encontrar uma das suas palavras-passe numa violação de dados pública, pode oferecer-se para a alterar por si se tiver sessão iniciada</translation>
 <translation id="2643698698624765890">Faça a gestão das suas extensões clicando em Extensões no menu Janela.</translation>
 <translation id="2645047101481282803">O seu dispositivo é gerido por <ph name="PROFILE_NAME" />.</translation>
 <translation id="2645388244376970260">A transmitir este separador para o dispositivo <ph name="DEVICE_NAME" /></translation>
@@ -3165,7 +3165,7 @@ Quer pará-lo?</translation>
 <translation id="3151786313568798007">Orientação</translation>
 <translation id="3152356229013609796">Veja, ignore e responda às notificações do telemóvel</translation>
 <translation id="3154754096046236400">Experiência pessoal</translation>
-<translation id="3155163173539279776">Reiniciar o Chromium</translation>
+<translation id="3155163173539279776">Reiniciar o Vortex</translation>
 <translation id="3155394504825881014">Converta o grupo de separadores numa pasta de marcadores</translation>
 <translation id="3156511682997763015">Avançar 10 segundos</translation>
 <translation id="3157330780336267229">Para partilhar ou aderir a grupos de separadores, tem de ativar a sincronização</translation>
@@ -4905,7 +4905,7 @@ Quer pará-lo?</translation>
 <translation id="4333854382783149454">PKCS #1 SHA-1 Com encriptação RSA</translation>
 <translation id="4334768748331667190">Não vai ver <ph name="MODULE_NAME" /> novamente</translation>
 <translation id="4335835283689002019">A Navegação segura está desativada.</translation>
-<translation id="4336967529148557673">Tem de iniciar sessão para que o Chromium possa concluir esta tarefa</translation>
+<translation id="4336967529148557673">Tem de iniciar sessão para que o Vortex possa concluir esta tarefa</translation>
 <translation id="4338363401382232853">Sugestão da janela do ecrã dividido</translation>
 <translation id="4339203724549370495">Desinstalar app</translation>
 <translation id="4340125850502689798">Nome de utilizador inválido.</translation>
@@ -5746,7 +5746,7 @@ Use Ctrl + Alt + Diminuir o brilho para diminuir o zoom.</translation>
 <translation id="4918762404810341788">Copiar e abrir</translation>
 <translation id="4918844574251943176">Imagem copiada</translation>
 <translation id="4921348630401250116">Síntese de voz</translation>
-<translation id="4922104989726031751">Para usar o Gestor de Palavras-passe com o seu sistema operativo, reinicie o Chromium e permita o acesso ao gestor de palavras-passe do computador. Os separadores reabrem depois de serem reiniciados.</translation>
+<translation id="4922104989726031751">Para usar o Gestor de Palavras-passe com o seu sistema operativo, reinicie o Vortex e permita o acesso ao gestor de palavras-passe do computador. Os separadores reabrem depois de serem reiniciados.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Guardar 1 item na conta}other{Guardar # itens na conta}}</translation>
 <translation id="492363500327720082">A desinstalar a app <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Mostrar grupos de separadores</translation>

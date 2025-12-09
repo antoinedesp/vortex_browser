@@ -987,7 +987,7 @@ Các quyền bạn từng cấp cho ứng dụng có thể áp dụng cho cả t
 <translation id="1651633344379798952">Dùng thử Google Ống kính trên điện thoại</translation>
 <translation id="1652281434788353738">Trầm tư</translation>
 <translation id="1652326691684645429">Bật tính năng Chia sẻ lân cận</translation>
-<translation id="1652862280638399816">Để sử dụng Trình quản lý mật khẩu cùng với macOS Keychain, hãy chạy lại Chromium và cho phép truy cập Keychain. Các thẻ sẽ mở lại sau khi bạn chạy lại Chrome.</translation>
+<translation id="1652862280638399816">Để sử dụng Trình quản lý mật khẩu cùng với macOS Keychain, hãy chạy lại Vortex và cho phép truy cập Keychain. Các thẻ sẽ mở lại sau khi bạn chạy lại Chrome.</translation>
 <translation id="1653958716132599769">Nhóm các thẻ liên quan</translation>
 <translation id="1654580009054503925">Không được phép hiện yêu cầu</translation>
 <translation id="1654713139320245449">Không tìm thấy đích truyền. Bạn cần được trợ giúp?</translation>
@@ -1303,7 +1303,7 @@ Các quyền bạn từng cấp cho ứng dụng có thể áp dụng cho cả t
 <translation id="186612162884103683">"<ph name="EXTENSION" />" có thể đọc và ghi hình ảnh, video và tệp âm thanh trong các vị trí đã chọn.</translation>
 <translation id="1866589962721094893">Cấp cho ứng dụng Android quyền kiểm soát thiết bị USB trên Chromebook này. Hệ thống sẽ yêu cầu cấp quyền mỗi lần bạn cắm thiết bị USB. Từng ứng dụng Android sẽ yêu cầu cấp thêm quyền.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> đã sẵn sàng để hoàn tất quá trình cài đặt của bạn</translation>
-<translation id="1868553836791672080">Tính năng kiểm tra mật khẩu không hoạt động trong Chromium</translation>
+<translation id="1868553836791672080">Tính năng kiểm tra mật khẩu không hoạt động trong Vortex</translation>
 <translation id="1868617395637139709">Sử dụng thông tin vị trí cho các ứng dụng và dịch vụ Android.</translation>
 <translation id="1869433484041798909">Nút dấu trang</translation>
 <translation id="1871098866036088250">Mở trong trình duyệt Chrome</translation>
@@ -1586,7 +1586,7 @@ Bạn có thể quản lý các tùy chọn cài đặt của tài khoản này 
 <translation id="2059913712424898428">Múi giờ</translation>
 <translation id="2060375639911876205">Xóa hồ sơ eSIM</translation>
 <translation id="2061366302742593739">Không có nội dung nào để hiện</translation>
-<translation id="2061589908388230480">Nếu Chromium nhận thấy một trong những mật khẩu của bạn trong sự cố rò rỉ dữ liệu công khai, Trình quản lý mật khẩu của Google có thể đề xuất thay đổi mật khẩu nếu bạn đã đăng nhập. <ph name="BEGIN_LINK" />Xem thêm thông tin về tính năng thay đổi mật khẩu tự động<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Nếu Vortex nhận thấy một trong những mật khẩu của bạn trong sự cố rò rỉ dữ liệu công khai, Trình quản lý mật khẩu của Google có thể đề xuất thay đổi mật khẩu nếu bạn đã đăng nhập. <ph name="BEGIN_LINK" />Xem thêm thông tin về tính năng thay đổi mật khẩu tự động<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Duyệt web mà không lưu nhật ký duyệt web qua một cửa sổ Ẩn danh</translation>
 <translation id="206308717637808771">Xoá dữ liệu khi bạn đóng tất cả cửa sổ. Dữ liệu được xử lý theo cách tương tự như trang web bạn đang xem</translation>
 <translation id="2066700471214517561">Micrô tạo chùm tia giúp nghe rõ người dùng Chromebook.</translation>
@@ -2438,7 +2438,7 @@ Bạn có thể quản lý các tùy chọn cài đặt của tài khoản này 
 <translation id="2642111877055905627">Bóng đá</translation>
 <translation id="2642206811783203764">Luôn cho phép trên <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Bạn có thể xoá dữ liệu đo lường quảng cáo bất cứ lúc nào bằng cách xoá dữ liệu duyệt web</translation>
-<translation id="2643379881528582459">Nếu phát hiện một trong những mật khẩu của bạn bị lộ trong sự cố rò rỉ dữ liệu công khai, Chromium có thể đề xuất thay đổi mật khẩu nếu bạn đăng nhập</translation>
+<translation id="2643379881528582459">Nếu phát hiện một trong những mật khẩu của bạn bị lộ trong sự cố rò rỉ dữ liệu công khai, Vortex có thể đề xuất thay đổi mật khẩu nếu bạn đăng nhập</translation>
 <translation id="2643698698624765890">Quản lý tiện ích của bạn bằng cách nhấp vào Tiện ích trong menu Cửa sổ.</translation>
 <translation id="2645047101481282803">Thiết bị của bạn do <ph name="PROFILE_NAME" /> quản lý</translation>
 <translation id="2645388244376970260">Đang truyền thẻ này tới <ph name="DEVICE_NAME" /></translation>
@@ -3175,7 +3175,7 @@ Bạn có thể quản lý các tùy chọn cài đặt của tài khoản này 
 <translation id="3151786313568798007">Hướng</translation>
 <translation id="3152356229013609796">Xem, đóng và trả lời thông báo của điện thoại</translation>
 <translation id="3154754096046236400">Bối cảnh cá nhân</translation>
-<translation id="3155163173539279776">Chạy lại Chromium</translation>
+<translation id="3155163173539279776">Chạy lại Vortex</translation>
 <translation id="3155394504825881014">Chuyển đổi nhóm thẻ thành thư mục dấu trang</translation>
 <translation id="3156511682997763015">Tua đi 10 giây</translation>
 <translation id="3157330780336267229">Để chia sẻ hoặc tham gia nhóm thẻ, bạn cần bật tính năng đồng bộ hoá</translation>
@@ -4912,7 +4912,7 @@ Bạn có thể quản lý các tùy chọn cài đặt của tài khoản này 
 <translation id="4333854382783149454">PKCS #1 SHA-1 Với Mã hóa RSA</translation>
 <translation id="4334768748331667190">Bạn sẽ không thấy <ph name="MODULE_NAME" /> nữa</translation>
 <translation id="4335835283689002019">Tính năng Duyệt web an toàn đang tắt</translation>
-<translation id="4336967529148557673">Bạn cần đăng nhập để Chromium có thể hoàn tất việc này</translation>
+<translation id="4336967529148557673">Bạn cần đăng nhập để Vortex có thể hoàn tất việc này</translation>
 <translation id="4338363401382232853">Đề xuất về cửa sổ cho chế độ chia đôi màn hình</translation>
 <translation id="4339203724549370495">Gỡ cài đặt ứng dụng</translation>
 <translation id="4340125850502689798">Tên người dùng không hợp lệ</translation>
@@ -5753,7 +5753,7 @@ Nhấn tổ hợp phím Ctrl + Alt + Giảm độ sáng để thu nhỏ.</transl
 <translation id="4918762404810341788">Sao chép và mở</translation>
 <translation id="4918844574251943176">Đã sao chép hình ảnh</translation>
 <translation id="4921348630401250116">Chuyển văn bản sang lời nói</translation>
-<translation id="4922104989726031751">Để sử dụng Trình quản lý mật khẩu trên hệ điều hành của bạn, hãy chạy lại Chromium và cho phép truy cập vào trình quản lý mật khẩu trên máy tính. Các thẻ sẽ mở lại sau khi bạn chạy lại Chromium.</translation>
+<translation id="4922104989726031751">Để sử dụng Trình quản lý mật khẩu trên hệ điều hành của bạn, hãy chạy lại Vortex và cho phép truy cập vào trình quản lý mật khẩu trên máy tính. Các thẻ sẽ mở lại sau khi bạn chạy lại Vortex.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Lưu 1 mục vào tài khoản}other{Lưu # mục vào tài khoản}}</translation>
 <translation id="492363500327720082">Đang gỡ cài đặt <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Hiện nhóm thẻ</translation>

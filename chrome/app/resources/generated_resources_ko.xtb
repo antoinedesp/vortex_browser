@@ -986,7 +986,7 @@
 <translation id="1651633344379798952">휴대전화에서 Google 렌즈 사용해 보기</translation>
 <translation id="1652281434788353738">세심함</translation>
 <translation id="1652326691684645429">Nearby Share 사용</translation>
-<translation id="1652862280638399816">비밀번호 관리자를 MacOS 키체인과 함께 사용하려면 Chromium을 다시 실행한 다음 키체인 액세스를 허용하세요. 탭을 다시 실행하면 탭이 다시 열립니다.</translation>
+<translation id="1652862280638399816">비밀번호 관리자를 MacOS 키체인과 함께 사용하려면 Vortex을 다시 실행한 다음 키체인 액세스를 허용하세요. 탭을 다시 실행하면 탭이 다시 열립니다.</translation>
 <translation id="1653958716132599769">관련 탭 그룹화</translation>
 <translation id="1654580009054503925">요청 표시가 허용되지 않음</translation>
 <translation id="1654713139320245449">전송 대상을 찾을 수 없습니다. 도움이 필요하신가요?</translation>
@@ -1302,7 +1302,7 @@
 <translation id="186612162884103683">'<ph name="EXTENSION" />'은(는) 선택된 위치에서 이미지, 동영상 및 사운드 파일을 읽고 쓸 수 있습니다.</translation>
 <translation id="1866589962721094893">Android 앱이 이 Chromebook의 USB 기기를 제어하도록 허용합니다. USB 기기를 삽입할 때마다 권한 요청이 표시됩니다. 추가 권한은 각 Android 앱에서 개별적으로 요청합니다.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" />에서 설치를 완료할 준비가 되었습니다.</translation>
-<translation id="1868553836791672080">Chromium에서 비밀번호 확인 기능을 사용할 수 없습니다.</translation>
+<translation id="1868553836791672080">Vortex에서 비밀번호 확인 기능을 사용할 수 없습니다.</translation>
 <translation id="1868617395637139709">Android 앱과 서비스에 위치 사용.</translation>
 <translation id="1869433484041798909">북마크 버튼</translation>
 <translation id="1871098866036088250">Chrome 브라우저에서 열기</translation>
@@ -1585,7 +1585,7 @@
 <translation id="2059913712424898428">시간대</translation>
 <translation id="2060375639911876205">eSIM 프로필 삭제</translation>
 <translation id="2061366302742593739">표시할 항목이 없습니다.</translation>
-<translation id="2061589908388230480">공개 정보 유출로 인해 노출된 비밀번호를 Chromium에서 발견하는 경우, Google 비밀번호 관리자는 사용자가 로그인 시 비밀번호를 변경하도록 제안할 수 있습니다. <ph name="BEGIN_LINK" />자동화된 비밀번호 변경에 대해 자세히 알아보기<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">공개 정보 유출로 인해 노출된 비밀번호를 Vortex에서 발견하는 경우, Google 비밀번호 관리자는 사용자가 로그인 시 비밀번호를 변경하도록 제안할 수 있습니다. <ph name="BEGIN_LINK" />자동화된 비밀번호 변경에 대해 자세히 알아보기<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">시크릿 창에서는 인터넷 사용 기록을 저장하지 않고 웹을 사용할 수 있습니다.</translation>
 <translation id="206308717637808771">모든 창을 닫으면 데이터를 삭제합니다. 데이터는 현재 보고 있는 사이트와 동일하게 처리됩니다.</translation>
 <translation id="2066700471214517561">빔포밍 마이크로 Chromebook 사용자의 목소리가 선명하게 전달됩니다.</translation>
@@ -2438,7 +2438,7 @@
 <translation id="2642111877055905627">축구공</translation>
 <translation id="2642206811783203764"><ph name="SITE_NAME" />에서 항상 사용</translation>
 <translation id="2643064289437760082">언제든지 인터넷 사용 기록을 삭제하여 광고 측정 데이터를 삭제할 수 있습니다.</translation>
-<translation id="2643379881528582459">Chromium에서는 공개 정보 유출로 인해 노출된 비밀번호를 발견하는 경우, 사용자가 로그인 시 비밀번호를 변경할 수 있도록 제안합니다.</translation>
+<translation id="2643379881528582459">Vortex에서는 공개 정보 유출로 인해 노출된 비밀번호를 발견하는 경우, 사용자가 로그인 시 비밀번호를 변경할 수 있도록 제안합니다.</translation>
 <translation id="2643698698624765890">창 메뉴에서 확장 프로그램을 클릭하여 확장 프로그램을 관리할 수 있습니다.</translation>
 <translation id="2645047101481282803"><ph name="PROFILE_NAME" />님이 관리하는 기기입니다</translation>
 <translation id="2645388244376970260"><ph name="DEVICE_NAME" /> 기기로 이 탭 전송 중</translation>
@@ -3174,7 +3174,7 @@
 <translation id="3151786313568798007">방향</translation>
 <translation id="3152356229013609796">휴대전화의 알림을 보고 닫거나 답장합니다.</translation>
 <translation id="3154754096046236400">개인별 맞춤 AI</translation>
-<translation id="3155163173539279776">Chromium 다시 시작</translation>
+<translation id="3155163173539279776">Vortex 다시 시작</translation>
 <translation id="3155394504825881014">탭 그룹을 북마크 폴더로 변환</translation>
 <translation id="3156511682997763015">10초 앞으로 이동</translation>
 <translation id="3157330780336267229">탭 그룹을 공유하거나 탭 그룹에 참여하려면 동기화를 사용 설정해야 합니다.</translation>
@@ -4905,7 +4905,7 @@
 <translation id="4333854382783149454">PKCS #1 SHA-1(RSA 암호화 사용)</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" />가 다시 표시되지 않습니다.</translation>
 <translation id="4335835283689002019">세이프 브라우징 사용 안함</translation>
-<translation id="4336967529148557673">Chromium에서 이 작업을 완료하려면 로그인해야 합니다.</translation>
+<translation id="4336967529148557673">Vortex에서 이 작업을 완료하려면 로그인해야 합니다.</translation>
 <translation id="4338363401382232853">화면 분할 창 추천</translation>
 <translation id="4339203724549370495">앱 제거</translation>
 <translation id="4340125850502689798">잘못된 사용자 이름</translation>
@@ -5744,7 +5744,7 @@ https://support.google.com/chromebook/?p=tpm</translation>
 <translation id="4918762404810341788">복사하여 열기</translation>
 <translation id="4918844574251943176">이미지 복사됨</translation>
 <translation id="4921348630401250116">TTS(텍스트 음성 변환)</translation>
-<translation id="4922104989726031751">운영체제에서 비밀번호 관리자를 사용하려면 Chromium을 다시 실행하고 비밀번호 관리자에 대한 컴퓨터의 액세스를 허용하세요. 탭을 다시 실행하면 탭이 다시 열립니다.</translation>
+<translation id="4922104989726031751">운영체제에서 비밀번호 관리자를 사용하려면 Vortex을 다시 실행하고 비밀번호 관리자에 대한 컴퓨터의 액세스를 허용하세요. 탭을 다시 실행하면 탭이 다시 열립니다.</translation>
 <translation id="4923561999941435531">{0,plural, =1{계정에 항목 1개 저장}other{계정에 항목 #개 저장}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> 제거 중…</translation>
 <translation id="4923977675318667854">탭 그룹 표시</translation>

@@ -988,7 +988,7 @@ Posibleng malapat sa account na ito ang mga pahintulot na naibigay mo na sa mga 
 <translation id="1651633344379798952">Subukan ang Google Lens sa iyong telepono</translation>
 <translation id="1652281434788353738">Thoughtful</translation>
 <translation id="1652326691684645429">I-enable ang Nearby Share</translation>
-<translation id="1652862280638399816">Para magamit ang Password Manager sa macOS Keychain, ilunsad ulit ang Chromium at payagan ang access sa Keychain. Bubukas ulit ang iyong mga tab pagkatapos malunsad ulit.</translation>
+<translation id="1652862280638399816">Para magamit ang Password Manager sa macOS Keychain, ilunsad ulit ang Vortex at payagan ang access sa Keychain. Bubukas ulit ang iyong mga tab pagkatapos malunsad ulit.</translation>
 <translation id="1653958716132599769">Igrupo ang magkakaugnay na tab</translation>
 <translation id="1654580009054503925">Hindi pinapayagang magpakita ng mga request</translation>
 <translation id="1654713139320245449">Walang nakitang destinasyon ng pag-cast. Kailangan mo ba ng tulong?</translation>
@@ -1304,7 +1304,7 @@ Posibleng malapat sa account na ito ang mga pahintulot na naibigay mo na sa mga 
 <translation id="186612162884103683">Ang "<ph name="EXTENSION" />" ay nakakabasa at nakakapagsulat ng mga larawan, video, file ng tunog sa mga may check na lokasyon.</translation>
 <translation id="1866589962721094893">Bigyan ang mga Android app ng kontrol sa mga USB device sa Chromebook na ito. Magre-request ng pahintulot sa tuwing magsasaksak ka ng USB device. Hihiling ang mga indibidwal na Android app ng mga karagdagang pahintulot.</translation>
 <translation id="1867780286110144690">Ang <ph name="PRODUCT_NAME" /> ay handa nang kumpletuhin ang iyong pag-install</translation>
-<translation id="1868553836791672080">Hindi available ang pagsusuri sa password sa Chromium</translation>
+<translation id="1868553836791672080">Hindi available ang pagsusuri sa password sa Vortex</translation>
 <translation id="1868617395637139709">Gamitin ang lokasyon para sa mga Android app at serbisyo sa Android.</translation>
 <translation id="1869433484041798909">Button ng bookmark</translation>
 <translation id="1871098866036088250">Buksan sa Chrome browser</translation>
@@ -1587,7 +1587,7 @@ Puwede mong pamahalaan ang mga setting ng account na ito sa pamamagitan ng pag-i
 <translation id="2059913712424898428">Time zone</translation>
 <translation id="2060375639911876205">Alisin ang profile ng eSIM</translation>
 <translation id="2061366302742593739">Walang ipapakita</translation>
-<translation id="2061589908388230480">Kung makikita ng Chromium ang isa sa iyong mga password sa isang pampublikong breach sa data, puwedeng mag-alok ang Google Password Manager na palitan ang password mo para sa iyo kung naka-sign in ka. <ph name="BEGIN_LINK" />Higit pa tungkol sa naka-automate na pagpapalit ng password<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Kung makikita ng Vortex ang isa sa iyong mga password sa isang pampublikong breach sa data, puwedeng mag-alok ang Google Password Manager na palitan ang password mo para sa iyo kung naka-sign in ka. <ph name="BEGIN_LINK" />Higit pa tungkol sa naka-automate na pagpapalit ng password<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Gamitin ang web nang hindi nase-save ang iyong history ng pag-browse gamit ang isang Incognito window</translation>
 <translation id="206308717637808771">I-delete ang data kapag isinara mo ang lahat ng window. Ituturing ang data nang katulad ng site na tinitingnan mo</translation>
 <translation id="2066700471214517561">Beamforming mic para malinaw ang tunog ng taong gumagamit ng Chromebook.</translation>
@@ -2439,7 +2439,7 @@ Puwede mong pamahalaan ang mga setting ng account na ito sa pamamagitan ng pag-i
 <translation id="2642111877055905627">Bola ng soccer</translation>
 <translation id="2642206811783203764">Palagi sa <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Made-delete mo sa anumang oras ang data ng pagsukat ng ad sa pamamagitan ng pag-delete ng iyong data mula sa pag-browse</translation>
-<translation id="2643379881528582459">Kung makikita ng Chromium ang isa sa iyong mga password sa isang pampublikong breach sa data, puwede itong mag-alok na palitan ang password mo para sa iyo kung naka-sign in ka</translation>
+<translation id="2643379881528582459">Kung makikita ng Vortex ang isa sa iyong mga password sa isang pampublikong breach sa data, puwede itong mag-alok na palitan ang password mo para sa iyo kung naka-sign in ka</translation>
 <translation id="2643698698624765890">Pamahalaan ang iyong mga extension sa pamamagitan ng pag-click sa Mga Extension sa menu na Window.</translation>
 <translation id="2645047101481282803">Pinapamahalaan ng <ph name="PROFILE_NAME" /> ang iyong device</translation>
 <translation id="2645388244376970260">Kina-cast ang tab na ito sa <ph name="DEVICE_NAME" /></translation>
@@ -3176,7 +3176,7 @@ Inaatasan ka ng <ph name="DOMAIN" /> na panatilihing nakalagay ang iyong smart c
 <translation id="3151786313568798007">Oryentasyon</translation>
 <translation id="3152356229013609796">Tingnan, i-dismiss, at sagutin ang mga notification ng iyong telepono</translation>
 <translation id="3154754096046236400">Personal context</translation>
-<translation id="3155163173539279776">Muling ilunsad ang Chromium</translation>
+<translation id="3155163173539279776">Muling ilunsad ang Vortex</translation>
 <translation id="3155394504825881014">I-convert ang Grupo ng Tab sa Folder ng Bookmark</translation>
 <translation id="3156511682997763015">I-forward nang 10 segundo</translation>
 <translation id="3157330780336267229">Para mag-share ng o sumali sa mga grupo ng tab, kailangan mong i-on ang pag-sync</translation>
@@ -4910,7 +4910,7 @@ Inaatasan ka ng <ph name="DOMAIN" /> na panatilihing nakalagay ang iyong smart c
 <translation id="4333854382783149454">PKCS #1 SHA-1 na May RSA Encryption</translation>
 <translation id="4334768748331667190">Hindi mo na makikita ulit ang <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">Naka-off ang Ligtas na Pag-browse</translation>
-<translation id="4336967529148557673">Kailangan mong mag-sign in bago matapos ng Chromium ang gawaing ito</translation>
+<translation id="4336967529148557673">Kailangan mong mag-sign in bago matapos ng Vortex ang gawaing ito</translation>
 <translation id="4338363401382232853">Suhestyon sa split screen na window</translation>
 <translation id="4339203724549370495">I-uninstall ang app</translation>
 <translation id="4340125850502689798">Invalid na username</translation>
@@ -5750,7 +5750,7 @@ Gamitin ang Ctrl + Alt + Bawasan ang Liwanag para mag-zoom out.</translation>
 <translation id="4918762404810341788">Kopyahin at buksan</translation>
 <translation id="4918844574251943176">Nakopya na ang larawan</translation>
 <translation id="4921348630401250116">Text-to-speech</translation>
-<translation id="4922104989726031751">Para gamitin ang Password Manager sa iyong operating system, ilunsad ulit ang Chromium at payagan ang pag-access sa password manager ng iyong computer. Bubukas ulit ang iyong mga tab pagkatapos malunsad ulit.</translation>
+<translation id="4922104989726031751">Para gamitin ang Password Manager sa iyong operating system, ilunsad ulit ang Vortex at payagan ang pag-access sa password manager ng iyong computer. Bubukas ulit ang iyong mga tab pagkatapos malunsad ulit.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Mag-save ng 1 item sa account}one{Mag-save ng # item sa account}other{Mag-save ng # na item sa account}}</translation>
 <translation id="492363500327720082">Ina-uninstall ang <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Ipakita ang Mga Grupo ng Tab</translation>

@@ -985,7 +985,7 @@ Comprova les contrasenyes sempre que vulguis al <ph name="GOOGLE_PASSWORD_MANAGE
 <translation id="1651633344379798952">Prova Google Lens al telèfon</translation>
 <translation id="1652281434788353738">Atent</translation>
 <translation id="1652326691684645429">Activa Compartició Nearby</translation>
-<translation id="1652862280638399816">Per utilitzar el gestor de contrasenyes amb el clauer de macOS, reinicia Chromium i permet l'accés al clauer. Les pestanyes es tornaran a obrir després de reiniciar.</translation>
+<translation id="1652862280638399816">Per utilitzar el gestor de contrasenyes amb el clauer de macOS, reinicia Vortex i permet l'accés al clauer. Les pestanyes es tornaran a obrir després de reiniciar.</translation>
 <translation id="1653958716132599769">Agrupa les pestanyes relacionades</translation>
 <translation id="1654580009054503925">Sense permís per mostrar sol·licituds</translation>
 <translation id="1654713139320245449">No s'han trobat destinacions d'emissió. Necessites ajuda?</translation>
@@ -1292,7 +1292,7 @@ Comprova les contrasenyes sempre que vulguis al <ph name="GOOGLE_PASSWORD_MANAGE
 <translation id="186612162884103683">"<ph name="EXTENSION" />" pot llegir imatges, vídeos i fitxers d'àudio de les ubicacions marcades, així com escriure-hi.</translation>
 <translation id="1866589962721094893">Dona a les aplicacions d'Android el control sobre els dispositius USB en aquest Chromebook. El permís se sol·licitarà cada cop que endollis un dispositiu USB. Cada aplicació d'Android demanarà permisos addicionals.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> està llest per completar la instal·lació</translation>
-<translation id="1868553836791672080">La comprovació de contrasenyes no està disponible a Chromium</translation>
+<translation id="1868553836791672080">La comprovació de contrasenyes no està disponible a Vortex</translation>
 <translation id="1868617395637139709">Utilitza la ubicació per a les aplicacions i els serveis d'Android.</translation>
 <translation id="1869433484041798909">Botó d'adreça d'interès</translation>
 <translation id="1871098866036088250">Obre al navegador Chrome</translation>
@@ -1575,7 +1575,7 @@ Pots gestionar la configuració d'aquest compte instal·lant l'aplicació Family
 <translation id="2059913712424898428">Zona horària</translation>
 <translation id="2060375639911876205">Suprimeix el perfil de l'eSIM</translation>
 <translation id="2061366302742593739">No hi ha res per mostrar</translation>
-<translation id="2061589908388230480">Si Chromium troba que una de les teves contrasenyes s'ha fet pública a causa d'una violació de les dades, el gestor de contrasenyes de Google et pot oferir canviar-la si tens la sessió iniciada. <ph name="BEGIN_LINK" />Més informació sobre el canvi automàtic de contrasenyes<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Si Vortex troba que una de les teves contrasenyes s'ha fet pública a causa d'una violació de les dades, el gestor de contrasenyes de Google et pot oferir canviar-la si tens la sessió iniciada. <ph name="BEGIN_LINK" />Més informació sobre el canvi automàtic de contrasenyes<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Utilitza el web sense desar l'historial de navegació amb una finestra d'incògnit</translation>
 <translation id="206308717637808771">Suprimeix les dades en tancar totes les finestres. Les dades es tracten de la mateixa manera que el lloc web que estàs veient.</translation>
 <translation id="2066700471214517561">Micròfon amb conformació de feix perquè la persona que utilitzi el Chromebook soni amb nitidesa.</translation>
@@ -2425,7 +2425,7 @@ Pots gestionar la configuració d'aquest compte instal·lant l'aplicació Family
 <translation id="2642111877055905627">Pilota de futbol</translation>
 <translation id="2642206811783203764">Sempre a <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Pots suprimir les dades de mesurament d'anuncis en qualsevol moment suprimint les dades de navegació</translation>
-<translation id="2643379881528582459">Si Chromium troba que una de les teves contrasenyes s'ha fet pública a causa d'una violació de les dades, et pot oferir canviar-la quan iniciïs la sessió</translation>
+<translation id="2643379881528582459">Si Vortex troba que una de les teves contrasenyes s'ha fet pública a causa d'una violació de les dades, et pot oferir canviar-la quan iniciïs la sessió</translation>
 <translation id="2643698698624765890">Per gestionar les extensions, feu clic a Extensions al menú Finestra.</translation>
 <translation id="2645047101481282803"><ph name="PROFILE_NAME" /> gestiona el teu dispositiu</translation>
 <translation id="2645388244376970260">S'està emetent aquesta pestanya a <ph name="DEVICE_NAME" /></translation>
@@ -3161,7 +3161,7 @@ Pots gestionar la configuració d'aquest compte instal·lant l'aplicació Family
 <translation id="3151786313568798007">Orientació</translation>
 <translation id="3152356229013609796">Consulta les notificacions del telèfon, ignora-les o respon-hi</translation>
 <translation id="3154754096046236400">Context personal</translation>
-<translation id="3155163173539279776">Torna a iniciar Chromium</translation>
+<translation id="3155163173539279776">Torna a iniciar Vortex</translation>
 <translation id="3155394504825881014">Converteix el grup de pestanyes en una carpeta d'adreces d'interès</translation>
 <translation id="3156511682997763015">Avança 10 segons</translation>
 <translation id="3157330780336267229">Per compartir grups de pestanyes o unir-t'hi, has d'activar la sincronització</translation>
@@ -4892,7 +4892,7 @@ Pots gestionar la configuració d'aquest compte instal·lant l'aplicació Family
 <translation id="4333854382783149454">PKCS #1 SHA-1 amb encriptació RSA</translation>
 <translation id="4334768748331667190">No tornaràs a veure <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">La funció Navegació segura està desactivada</translation>
-<translation id="4336967529148557673">Has d'iniciar la sessió perquè Chromium pugui completar aquesta tasca</translation>
+<translation id="4336967529148557673">Has d'iniciar la sessió perquè Vortex pugui completar aquesta tasca</translation>
 <translation id="4338363401382232853">Suggeriment de finestra per a la pantalla dividida</translation>
 <translation id="4339203724549370495">Desinstal·la l'aplicació</translation>
 <translation id="4340125850502689798">Nom d'usuari no vàlid</translation>
@@ -5729,7 +5729,7 @@ Fes servir Ctrl+Alt+disminueix la brillantor per reduir el zoom.</translation>
 <translation id="4918762404810341788">Copia i obre</translation>
 <translation id="4918844574251943176">La imatge s'ha copiat</translation>
 <translation id="4921348630401250116">Text a parla</translation>
-<translation id="4922104989726031751">Per utilitzar el gestor de contrasenyes amb el teu sistema operatiu, reinicia Chromium i permet l'accés al gestor de contrasenyes de l'ordinador. Les pestanyes es tornaran a obrir després de reiniciar.</translation>
+<translation id="4922104989726031751">Per utilitzar el gestor de contrasenyes amb el teu sistema operatiu, reinicia Vortex i permet l'accés al gestor de contrasenyes de l'ordinador. Les pestanyes es tornaran a obrir després de reiniciar.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Desa 1 element al compte}other{Desa # elements al compte}}</translation>
 <translation id="492363500327720082">S'està desinstal·lant <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Mostra els grups de pestanyes</translation>

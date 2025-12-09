@@ -985,7 +985,7 @@ Dozvole koje ste već dali aplikacijama mogu da važe za ovaj nalog. Možete da
 <translation id="1651633344379798952">Isprobajte Google objektiv na telefonu</translation>
 <translation id="1652281434788353738">Zamišljeno</translation>
 <translation id="1652326691684645429">Omogući Deljenje u blizini</translation>
-<translation id="1652862280638399816">Da biste koristili Menadžer lozinki sa macOS Keychain-om, ponovo pokrenite Chromium i dozvolite pristup Keychain-u. Kartice će se ponovo otvoriti posle ponovnog pokretanja.</translation>
+<translation id="1652862280638399816">Da biste koristili Menadžer lozinki sa macOS Keychain-om, ponovo pokrenite Vortex i dozvolite pristup Keychain-u. Kartice će se ponovo otvoriti posle ponovnog pokretanja.</translation>
 <translation id="1653958716132599769">Grupišite srodne kartice</translation>
 <translation id="1654580009054503925">Prikazivanje zahteva nije dozvoljeno</translation>
 <translation id="1654713139320245449">Nije pronađeno nijedno odredište za prebacivanje. Treba vam pomoć?</translation>
@@ -1292,7 +1292,7 @@ Dozvole koje ste već dali aplikacijama mogu da važe za ovaj nalog. Možete da
 <translation id="186612162884103683">„<ph name="EXTENSION" />“ može da čita slike, video i audio datoteke na navedenim lokacijama, kao i da upisuje podatke u njih.</translation>
 <translation id="1866589962721094893">Omogućite Android aplikacijama da kontrolišu USB uređaje na ovom Chromebook-u. One će tražiti dozvolu svaki put kada uključite USB uređaj. Pojedinačne Android aplikacije će tražiti dodatne dozvole.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> je spreman da dovrši instalaciju</translation>
-<translation id="1868553836791672080">Provera lozinki nije dostupna u Chromium-u</translation>
+<translation id="1868553836791672080">Provera lozinki nije dostupna u Vortex-u</translation>
 <translation id="1868617395637139709">Koristi lokaciju za Android aplikacije i usluge.</translation>
 <translation id="1869433484041798909">Dugme obeleživača</translation>
 <translation id="1871098866036088250">Otvori u pregledaču Chrome</translation>
@@ -1575,7 +1575,7 @@ Možete da upravljate podešavanjima ovog naloga ako instalirate aplikaciju Fami
 <translation id="2059913712424898428">Vremenska zona</translation>
 <translation id="2060375639911876205">Uklonite eSIM profil</translation>
 <translation id="2061366302742593739">Nema stavki za prikaz</translation>
-<translation id="2061589908388230480">Ako Chromium pronađe neku od lozinki u javnoj povredi podataka, Google menadžer lozinki može da vam ponudi da promeni lozinku kada se prijavite. <ph name="BEGIN_LINK" />Više o automatskoj promeni lozinke<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Ako Vortex pronađe neku od lozinki u javnoj povredi podataka, Google menadžer lozinki može da vam ponudi da promeni lozinku kada se prijavite. <ph name="BEGIN_LINK" />Više o automatskoj promeni lozinke<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Pregledajte veb bez čuvanja istorije pregledanja u prozoru bez arhiviranja</translation>
 <translation id="206308717637808771">Izbrišite podatke kada zatvorite sve prozore. Podaci se tretiraju isto kao i sajt koji pregledate</translation>
 <translation id="2066700471214517561">Mikrofon sa prostornim filtriranjem da bi se osoba koja koristi Chromebook jasno čula.</translation>
@@ -2425,7 +2425,7 @@ Možete da upravljate podešavanjima ovog naloga ako instalirate aplikaciju Fami
 <translation id="2642111877055905627">Fudbalska lopta</translation>
 <translation id="2642206811783203764">Uvek na <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Podatke merenja oglasa uvek možete da izbrišete brisanjem podataka pregledanja</translation>
-<translation id="2643379881528582459">Ako Chromium pronađe neku od lozinki u javnoj povredi podataka, može da vam ponudi da promeni lozinku kada se prijavite</translation>
+<translation id="2643379881528582459">Ako Vortex pronađe neku od lozinki u javnoj povredi podataka, može da vam ponudi da promeni lozinku kada se prijavite</translation>
 <translation id="2643698698624765890">Upravljajte dodacima klikom na stavku Dodaci u meniju Prozor.</translation>
 <translation id="2645047101481282803">Uređajem upravlja <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Ova kartica se prebacuje na <ph name="DEVICE_NAME" /></translation>
@@ -3162,7 +3162,7 @@ Možete da upravljate podešavanjima ovog naloga ako instalirate aplikaciju Fami
 <translation id="3151786313568798007">Položaj</translation>
 <translation id="3152356229013609796">da pregleda i odbaci obaveštenja na telefonu ili odgovori na njih</translation>
 <translation id="3154754096046236400">Lični kontekst</translation>
-<translation id="3155163173539279776">Ponovo pokreni Chromium</translation>
+<translation id="3155163173539279776">Ponovo pokreni Vortex</translation>
 <translation id="3155394504825881014">Konvertujte grupu kartica u folder sa obeleživačima</translation>
 <translation id="3156511682997763015">Premotaj 10 sekundi unapred</translation>
 <translation id="3157330780336267229">Da biste delili grupe kartica ili im se pridružili, morate da uključite sinhronizaciju</translation>
@@ -4902,7 +4902,7 @@ Možete da upravljate podešavanjima ovog naloga ako instalirate aplikaciju Fami
 <translation id="4333854382783149454">PKCS #1 SHA-1 sa RSA šifrovanjem</translation>
 <translation id="4334768748331667190">Neće vam se više prikazivati modul <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">Bezbedno pregledanje je isključeno</translation>
-<translation id="4336967529148557673">Morate da se prijavite da bi Chromium dovršio ovaj zadatak</translation>
+<translation id="4336967529148557673">Morate da se prijavite da bi Vortex dovršio ovaj zadatak</translation>
 <translation id="4338363401382232853">Predlog za prozore sa podeljenim ekranom</translation>
 <translation id="4339203724549370495">Deinstaliraj aplikaciju</translation>
 <translation id="4340125850502689798">Nevažeće korisničko ime</translation>
@@ -5743,7 +5743,7 @@ Koristite Ctrl + Alt + taster za smanjivanje osvetljenosti da biste umanjili pri
 <translation id="4918762404810341788">Kopiraj i otvori</translation>
 <translation id="4918844574251943176">Slika je kopirana</translation>
 <translation id="4921348630401250116">Pretvaranje teksta u govor</translation>
-<translation id="4922104989726031751">Da biste koristili Menadžer lozinki sa operativnim sistemom, ponovo pokrenite Chromium i omogućite pristup menadžeru lozinki na računaru. Kartice će se ponovo otvoriti posle ponovnog pokretanja.</translation>
+<translation id="4922104989726031751">Da biste koristili Menadžer lozinki sa operativnim sistemom, ponovo pokrenite Vortex i omogućite pristup menadžeru lozinki na računaru. Kartice će se ponovo otvoriti posle ponovnog pokretanja.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Sačuvaj 1 stavku na nalogu}one{Sačuvaj # stavku na nalogu}few{Sačuvaj # stavke na nalogu}other{Sačuvaj # stavki na nalogu}}</translation>
 <translation id="492363500327720082">Deinstalira se <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Prikaži grupe kartica</translation>

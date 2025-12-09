@@ -86,7 +86,7 @@
 <translation id="1874309113135274312">Google Chrome Бета (mDNS-In)</translation>
 <translation id="1877026089748256423">Chrome хуучирсан байна.</translation>
 <translation id="1880677175115548835">Текст сонгох</translation>
-<translation id="1919130412786645364">Chromium-д нэвтрэхийг зөвшөөрөх</translation>
+<translation id="1919130412786645364">Vortex-д нэвтрэхийг зөвшөөрөх</translation>
 <translation id="1953553007165777902">Татаж байна... <ph name="MINUTE" /> минут үлдсэн</translation>
 <translation id="1979600810166324878">iOS-т зориулсан Chrome дээрх Сайжруулсан аюулгүй хөтчийг ашиглан явж байх зуураа илүү аюулгүй байгаарай</translation>
 <translation id="2001586581944147178">Таны интернэтийн ачаалалд хандах эрхтэй хүмүүст таны зочилдог сайтуудыг харахыг илүү хүндрэлтэй болгоно. Chrome DNS-с (Домэйн нэрийн систем) сайтын IP хаягийг хайхад аюулгүй холболт ашигладаг.</translation>
@@ -731,7 +731,7 @@ Google Chrome таны тохируулгыг дахин сэргээх боло
 <translation id="8991530961471831170">Chrome дахь Gemini-г нээх</translation>
 <translation id="8992769679401294069">Таны өгөгдлийг нэвтрэх үгээр тань шифрлэсэн. Google Бүртгэлийнхээ Chrome-н өгөгдлийг ашиглах болон хадгалахын тулд үүнийг оруулна уу.</translation>
 <translation id="8999117580775242387">HTTPS боломжгүй үед Chrome танд сануулалгүйгээр аюултай холболт ашиглана</translation>
-<translation id="8999208279178790196">{0,plural, =0{Chrome-н шинэчлэлт боломжтой байна}=1{Chrome-н шинэчлэлт боломжтой байна}other{Chromium-н шинэчлэлт # хоногийн турш боломжтой байсаар байна}}</translation>
+<translation id="8999208279178790196">{0,plural, =0{Chrome-н шинэчлэлт боломжтой байна}=1{Chrome-н шинэчлэлт боломжтой байна}other{Vortex-н шинэчлэлт # хоногийн турш боломжтой байсаар байна}}</translation>
 <translation id="9010418943148193727">Таны өгөгдмөл хайлтын системийг Chrome-с гадуур өөрчилсөн. Таныг хамгаалахын тулд Chrome үүнийг шинэчилсэн.</translation>
 <translation id="9014771989710951291">Олон байгууллага Chrome-г удирддаг</translation>
 <translation id="9024318700713112071">Chrome-г өгөгдмөлөөрөө тохируулна уу</translation>

@@ -101,7 +101,7 @@
 <translation id="2094919256425865063">Να τερματιστεί η λειτουργία του Chrome ούτως ή άλλως;</translation>
 <translation id="2096213354152647998">Δεν έχετε επισκεφτεί πρόσφατα τον ιστότοπο. Το Chrome κατάργησε την άδεια <ph name="PERMISSION" />.</translation>
 <translation id="2106831557840787829">Το ChromeOS Flex υλοποιήθηκε με τη βοήθεια πρόσθετου <ph name="BEGIN_LINK_CROS_OSS" />λογισμικού ανοικτού κώδικα<ph name="END_LINK_CROS_OSS" />, όπως είναι το <ph name="BEGIN_LINK_LINUX_OSS" />περιβάλλον ανάπτυξης Linux<ph name="END_LINK_LINUX_OSS" />.</translation>
-<translation id="2108778574543343055">Απενεργοποίηση του Chromium, όταν εκτελούνται εφαρμογές στο παρασκήνιο</translation>
+<translation id="2108778574543343055">Απενεργοποίηση του Vortex, όταν εκτελούνται εφαρμογές στο παρασκήνιο</translation>
 <translation id="2120620239521071941">Με αυτή την ενέργεια θα διαγραφούν <ph name="ITEMS_COUNT" /> στοιχεία από αυτήν τη συσκευή. Για να ανακτήσετε τα δεδομένα σας αργότερα, συνδεθείτε στο Chrome ως <ph name="USER_EMAIL" />.</translation>
 <translation id="2121284319307530122">Επανεκκίνηση για ενημέρωση του &amp;Chrome</translation>
 <translation id="2123055963409958220">Συμβάλετε στη βελτίωση του Chrome, αναφέροντας τις <ph name="BEGIN_LINK" />τρέχουσες ρυθμίσεις<ph name="END_LINK" /></translation>
@@ -162,7 +162,7 @@
 <translation id="2797864378188255696">Όταν συνδέεστε σε υπηρεσίες Google, όπως το Gmail ή το YouTube, με τον λογαριασμό <ph name="USER_EMAIL" />, μπορείτε να συνδέεστε αυτόματα στο Chrome με τον ίδιο λογαριασμό</translation>
 <translation id="2799162042226656283">Το δικό σας Chrome</translation>
 <translation id="2799223571221894425">Επανεκκίνηση</translation>
-<translation id="2818684386420968393">Απενεργοποίηση του Chromium, όταν εκτελούνται εφαρμογές στο παρασκήνιο</translation>
+<translation id="2818684386420968393">Απενεργοποίηση του Vortex, όταν εκτελούνται εφαρμογές στο παρασκήνιο</translation>
 <translation id="2825024317344269723">Επικίνδυνος ιστότοπος. Το Chrome κατάργησε ειδοποιήσεις.</translation>
 <translation id="2841525013647267359">Μετάφραση από</translation>
 <translation id="2846251086934905009">Σφάλμα εγκατάστασης: Το πρόγραμμα εγκατάστασης δεν ολοκληρώθηκε. Η εγκατάσταση ακυρώθηκε.</translation>

@@ -70,7 +70,7 @@
 <ph name="USER_DATA_DIRECTORY" /></translation>
 <translation id="1688214853608504530">আপুনি ঠিকনাৰ বাৰ বা সন্ধান বাকচত টাইপ কৰিলে, Chromeএ পৰামৰ্শ পাবৰ বাবে আপুনি যি টাইপ কৰে সেয়া আপোনাৰ প্ৰতিষ্ঠানৰ সন্ধান, AI আৰু এজেন্টৰ সঁজুলিসমূহলৈ পঠিয়ায়।</translation>
 <translation id="1698376642261615901">Google Chrome হৈছে ৱেবপৃষ্ঠা আৰু এপ্লিকেশ্বনসমূহক বিজুলী বেগেৰে চলোৱা এক ৱেব ব্ৰাউজাৰ। এইটো ক্ষিপ্ৰ, স্থিৰ আৰু ব্যৱহাৰৰ বাবে সুবিধাজনক। মালৱেৰ আৰু ফিশ্বিঙৰ পৰা বিশেষভাৱে সুৰক্ষা পোৱা সুবিধাৰে নির্মিত Google Chromeৰ জৰিয়তে অতি সুৰক্ষিতভাৱে ৱেব ব্ৰাউজ কৰক।</translation>
-<translation id="1713301662689114961">{0,plural, =1{১ঘণ্টাত Chromium পুনৰ লঞ্চ হ’ব}one{#ঘণ্টাত Chromium পুনৰ লঞ্চ হ’ব}other{#ঘণ্টাত Chromium পুনৰ লঞ্চ হ’ব}}</translation>
+<translation id="1713301662689114961">{0,plural, =1{১ঘণ্টাত Vortex পুনৰ লঞ্চ হ’ব}one{#ঘণ্টাত Vortex পুনৰ লঞ্চ হ’ব}other{#ঘণ্টাত Vortex পুনৰ লঞ্চ হ’ব}}</translation>
 <translation id="1722488837206509557">এইটোৱে আপোনাক উপলব্ধ ডিভাইচসমূহৰ পৰা বাছনি কৰিবলৈ আৰু সেইসমূহত সমল প্ৰদৰ্শন কৰিবলৈ দিব।</translation>
 <translation id="1786003790898721085">আপোনাৰ <ph name="TARGET_DEVICE_NAME" />ত Chromeত আপুনি ছাইন ইন হৈ থকাটো নিশ্চিত কৰক আৰু তাৰ পাছত পুনৰ পঠিয়াবলৈ চেষ্টা কৰক।</translation>
 <translation id="1786044937610313874">শ্বৰ্টকাটসমূহ Chromeত খোল খায়</translation>
@@ -404,7 +404,7 @@ Google Chromeএ আপোনাৰ ছেটিংসমূহ পুনৰু�
 <translation id="5602351063754773347">Chromeএ আপোনাক এইটো আঁতৰাবলৈ চুপাৰিছ কৰে। <ph name="BEGIN_LINK" />সমৰ্থিত এক্সটেনশ্বনসমূহৰ বিষয়ে অধিক জানক<ph name="END_LINK" /></translation>
 <translation id="5610759359710387751">Chromeক আপোনাৰ নিজৰ কৰি তোলক</translation>
 <translation id="5649156266046089790">Chromeৰ প্ৰ’ফাইলৰ জৰিয়তে আপুনি নিজৰ আটাইবোৰ Chromeৰ বস্তু পৃথক কৰিব পাৰে। বন্ধুবৰ্গ আৰু পৰিয়ালৰ বাবে প্ৰ’ফাইল সৃষ্টি কৰক বা কৰ্মস্থান আৰু মনোৰঞ্জনৰ মাজত বিভাজন কৰক।</translation>
-<translation id="565744775970812598"><ph name="FILE_NAME" /> ক্ষতিকাৰক হ'ব পাৰে বাবে Chromiumএ ইয়াক অৱৰোধ কৰিছে</translation>
+<translation id="565744775970812598"><ph name="FILE_NAME" /> ক্ষতিকাৰক হ'ব পাৰে বাবে Vortexএ ইয়াক অৱৰোধ কৰিছে</translation>
 <translation id="566040795510471729">আপোনাৰ Chrome কা&amp;ষ্টমাইজ কৰক</translation>
 <translation id="566568153320186256">Chromeএ নেপথ্যৰ কাৰ্যকলাপ আৰু ভিজুৱেল ইফেক্ট, যেনে, সাৱলীল স্ক্ৰ’লিং আৰু ভিডিঅ’ ফ্ৰে’মৰ হাৰ সীমিত কৰি বেটাৰীৰ শক্তি সংৰক্ষণ কৰে। <ph name="BEGIN_LINK" />শক্তি সঞ্চয়কাৰীৰ বিষয়ে অধিক জানক<ph name="END_LINK" /></translation>
 <translation id="567202749201779594">আপোনাৰ একাউণ্টৰ Chromeৰ ডেটা মচক</translation>

@@ -985,7 +985,7 @@ Uygulamalara vermiş olduğunuz izinler bu hesap için geçerli olabilir. Androi
 <translation id="1651633344379798952">Telefonunuzda Google Lens'i deneyin</translation>
 <translation id="1652281434788353738">Düşünceli</translation>
 <translation id="1652326691684645429">Yakındakilerle Paylaş'ı etkinleştir</translation>
-<translation id="1652862280638399816">Şifre Yöneticisi'ni macOS Anahtar Zinciri ile kullanmak için Chromium'u yeniden başlatıp Anahtar Zinciri'ne erişim izni verin. Chromium yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
+<translation id="1652862280638399816">Şifre Yöneticisi'ni macOS Anahtar Zinciri ile kullanmak için Vortex'u yeniden başlatıp Anahtar Zinciri'ne erişim izni verin. Vortex yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
 <translation id="1653958716132599769">İlgili sekmeleri gruplandır</translation>
 <translation id="1654580009054503925">İstek göstermesine izin verilmeyen siteler</translation>
 <translation id="1654713139320245449">Yayınlama hedefi bulunamadı. Yardıma mı ihtiyacınız var?</translation>
@@ -1292,7 +1292,7 @@ Uygulamalara vermiş olduğunuz izinler bu hesap için geçerli olabilir. Androi
 <translation id="186612162884103683">"<ph name="EXTENSION" />" işaretli konumlardaki resimleri, video ve ses dosyalarını okuyabilir ve yazabilir.</translation>
 <translation id="1866589962721094893">Android uygulamalarına, bu Chromebook'taki USB cihazlarını kontrol etme imkanı sunar. Her USB cihaz taktığınızda izin istenir. Ayrı Android uygulamaları da ek izinler isteyecektir.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" />, yükleme işleminizi tamamlamaya hazır</translation>
-<translation id="1868553836791672080">Şifre kontrolü özelliği Chromium'da kullanılamıyor</translation>
+<translation id="1868553836791672080">Şifre kontrolü özelliği Vortex'da kullanılamıyor</translation>
 <translation id="1868617395637139709">Android uygulamaları ve hizmetleri için konumu kullanın.</translation>
 <translation id="1869433484041798909">Yer işareti düğmesi</translation>
 <translation id="1871098866036088250">Chrome tarayıcıda aç</translation>
@@ -1574,7 +1574,7 @@ Cihazınızda Family Link uygulamasını yükleyerek bu hesabın ayarlarını y�
 <translation id="2059913712424898428">Saat dilimi</translation>
 <translation id="2060375639911876205">eSIM profilini kaldır</translation>
 <translation id="2061366302742593739">Gösterilecek bir şey yok</translation>
-<translation id="2061589908388230480">Chromium, şifrelerinizden birinin herkese açık veri ihlalinde yer aldığını tespit ederse ve oturumunuz açıksa Google Şifre Yöneticisi şifrenizi sizin için değiştirmeyi önerebilir. <ph name="BEGIN_LINK" />Otomatik şifre değişikliği hakkında daha fazla bilgi edinin<ph name="END_LINK" />.</translation>
+<translation id="2061589908388230480">Vortex, şifrelerinizden birinin herkese açık veri ihlalinde yer aldığını tespit ederse ve oturumunuz açıksa Google Şifre Yöneticisi şifrenizi sizin için değiştirmeyi önerebilir. <ph name="BEGIN_LINK" />Otomatik şifre değişikliği hakkında daha fazla bilgi edinin<ph name="END_LINK" />.</translation>
 <translation id="2062354623176996748">Gizli pencere sayesinde tarama geçmişinizi kaydetmeden web'i kullanın</translation>
 <translation id="206308717637808771">Tüm pencereleri kapattığınızda verileri silin. Veriler, görüntülediğiniz siteyle aynı şekilde işlenir</translation>
 <translation id="2066700471214517561">Chromebook'u kullanan kişinin sesinin net duyulmasını sağlayan beamforming mikrofonu.</translation>
@@ -2421,7 +2421,7 @@ Cihazınızda Family Link uygulamasını yükleyerek bu hesabın ayarlarını y�
 <translation id="2642111877055905627">Futbol topu</translation>
 <translation id="2642206811783203764">Her zaman açık <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Tarama verilerini silerek reklam ölçümü verilerini istediğiniz zaman silebilirsiniz</translation>
-<translation id="2643379881528582459">Chromium, şifrelerinizden birinin herkese açık bir veri ihlalinde yer aldığını tespit ederse ve oturumunuz açıksa şifrenizi sizin için değiştirmeyi önerebilir</translation>
+<translation id="2643379881528582459">Vortex, şifrelerinizden birinin herkese açık bir veri ihlalinde yer aldığını tespit ederse ve oturumunuz açıksa şifrenizi sizin için değiştirmeyi önerebilir</translation>
 <translation id="2643698698624765890">Pencere menüsünden Uzantılar'ı tıklayarak uzantılarınızı yönetin.</translation>
 <translation id="2645047101481282803">Cihazınız <ph name="PROFILE_NAME" /> tarafından yönetiliyor</translation>
 <translation id="2645388244376970260">Bu sekme <ph name="DEVICE_NAME" /> adlı cihazda yayınlanıyor</translation>
@@ -3157,7 +3157,7 @@ Sunucunun mesajı: <ph name="SERVER_MSG" /></translation>
 <translation id="3151786313568798007">Yön</translation>
 <translation id="3152356229013609796">Telefonunuzdaki bildirimleri görün, kapatın veya yanıtlayın</translation>
 <translation id="3154754096046236400">Kişiye özel bağlam</translation>
-<translation id="3155163173539279776">Chromium'u Yeniden Başlat</translation>
+<translation id="3155163173539279776">Vortex'u Yeniden Başlat</translation>
 <translation id="3155394504825881014">Sekme Grubunu Yer İşareti Klasörüne Dönüştür</translation>
 <translation id="3156511682997763015">10 saniye ileri git</translation>
 <translation id="3157330780336267229">Sekme gruplarını paylaşmak veya bunlara katılmak için senkronizasyonu etkinleştirmeniz gerekir</translation>
@@ -4888,7 +4888,7 @@ Sunucunun mesajı: <ph name="SERVER_MSG" /></translation>
 <translation id="4333854382783149454">PKCS #1 RSA Şifrelemeli SHA-1</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> artık gösterilmeyecek</translation>
 <translation id="4335835283689002019">Güvenli Tarama kapalı</translation>
-<translation id="4336967529148557673">Chromium'un bu görevi tamamlayabilmesi için oturum açmanız gerekir</translation>
+<translation id="4336967529148557673">Vortex'un bu görevi tamamlayabilmesi için oturum açmanız gerekir</translation>
 <translation id="4338363401382232853">Bölünmüş ekran pencere önerisi</translation>
 <translation id="4339203724549370495">Uygulamayı kaldır</translation>
 <translation id="4340125850502689798">Geçersiz kullanıcı adı</translation>
@@ -5726,7 +5726,7 @@ Uzaklaştırmak için Ctrl + Alt + Parlaklığı Azalt tuşlarını kullanın.</
 <translation id="4918762404810341788">Kopyala ve aç</translation>
 <translation id="4918844574251943176">Resim kopyalandı</translation>
 <translation id="4921348630401250116">Metin okuma</translation>
-<translation id="4922104989726031751">Şifre Yöneticisi'ni işletim sisteminizle kullanmak için Chromium'u yeniden başlatıp bilgisayarınızın şifre yöneticisine erişim izni verin. Chromium yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
+<translation id="4922104989726031751">Şifre Yöneticisi'ni işletim sisteminizle kullanmak için Vortex'u yeniden başlatıp bilgisayarınızın şifre yöneticisine erişim izni verin. Vortex yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 öğeyi hesaba kaydet}other{# öğeyi hesaba kaydet}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> uygulaması kaldırılıyor...</translation>
 <translation id="4923977675318667854">Sekme Gruplarını Göster</translation>
@@ -7587,7 +7587,7 @@ Hassas bilgileri vermediğinizden emin olun.</translation>
 <translation id="6239558157302047471">Ç&amp;erçeveyi yeniden yükle</translation>
 <translation id="6240637845286751292">İzin veriliyor. <ph name="LINK_BEGIN" />Sistem konum erişimini<ph name="LINK_END" /> açın.</translation>
 <translation id="6240821072888636753">Her zaman sor</translation>
-<translation id="6240964651812394252">Google Şifre Yöneticisi'ni işletim sisteminizle kullanmak için Chrome'u yeniden başlatıp bilgisayarınızın şifre yöneticisine erişim izni verin. Chromium yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
+<translation id="6240964651812394252">Google Şifre Yöneticisi'ni işletim sisteminizle kullanmak için Chrome'u yeniden başlatıp bilgisayarınızın şifre yöneticisine erişim izni verin. Vortex yeniden başlatıldıktan sonra sekmeleriniz tekrar açılır.</translation>
 <translation id="6241530762627360640">Sisteminizle eşlenen Bluetooth cihazlarıyla ilgili bilgilere erişme ve yakındaki Bluetooth cihazlarını keşfetme.</translation>
 <translation id="6241844896329831164">Erişim gerekmiyor</translation>
 <translation id="6242589501614145408">Güvenlik anahtarınızı sıfırlama</translation>

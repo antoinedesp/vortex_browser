@@ -987,7 +987,7 @@ De tilladelser, du har givet til apps, gælder muligvis for denne konto. Du kan 
 <translation id="1651633344379798952">Prøv Google Lens på din telefon</translation>
 <translation id="1652281434788353738">Eftertænksom</translation>
 <translation id="1652326691684645429">Slå Deling tæt på til</translation>
-<translation id="1652862280638399816">Hvis du vil bruge Adgangs­kode­admin­istrator sammen med macOS-nøgleringen, skal du genstarte Chromium og give adgang til nøgleringen. Dine faner åbnes igen, når du har genstartet.</translation>
+<translation id="1652862280638399816">Hvis du vil bruge Adgangs­kode­admin­istrator sammen med macOS-nøgleringen, skal du genstarte Vortex og give adgang til nøgleringen. Dine faner åbnes igen, når du har genstartet.</translation>
 <translation id="1653958716132599769">Gruppér relaterede faner</translation>
 <translation id="1654580009054503925">Har ikke tilladelse til at vise anmodninger</translation>
 <translation id="1654713139320245449">Der blev ikke fundet nogen steder til casting. Har du brug for hjælp?</translation>
@@ -1304,7 +1304,7 @@ De tilladelser, du har givet til apps, gælder muligvis for denne konto. Du kan 
 <translation id="186612162884103683">"<ph name="EXTENSION" />" har læse- og skriverettigheder til billed-, video- og lydfiler på de markerede placeringer.</translation>
 <translation id="1866589962721094893">Giv Android-apps kontrol over USB-enheder på denne Chromebook. Der anmodes om tilladelsen, hver gang du tilslutter en USB-enhed. Individuelle Android-apps anmoder om yderligere tilladelser.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> er klar til at færdiggøre din installation</translation>
-<translation id="1868553836791672080">Kontrol af adgangskode er ikke tilgængelig i Chromium</translation>
+<translation id="1868553836791672080">Kontrol af adgangskode er ikke tilgængelig i Vortex</translation>
 <translation id="1868617395637139709">Brug lokation i Android-apps og -tjenester.</translation>
 <translation id="1869433484041798909">Knappen Bogmærke</translation>
 <translation id="1871098866036088250">Åbn i Chrome-browseren</translation>
@@ -1586,7 +1586,7 @@ Du kan administrere indstillingerne for denne konto ved at installere Family Lin
 <translation id="2059913712424898428">Tidszone</translation>
 <translation id="2060375639911876205">Fjern eSIM-kortprofil</translation>
 <translation id="2061366302742593739">Intet at vise</translation>
-<translation id="2061589908388230480">Hvis Chromium registrerer, at én af dine adgangskoder er blevet lækket i forbindelse med et offentligt brud på datasikkerheden, kan Google Adgangskodeadministrator tilbyde at ændre adgangskoden for dig, hvis du er logget ind. <ph name="BEGIN_LINK" />Mere om automatisk ændring af adgangskoder<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Hvis Vortex registrerer, at én af dine adgangskoder er blevet lækket i forbindelse med et offentligt brud på datasikkerheden, kan Google Adgangskodeadministrator tilbyde at ændre adgangskoden for dig, hvis du er logget ind. <ph name="BEGIN_LINK" />Mere om automatisk ændring af adgangskoder<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Brug internettet uden at gemme din browserhistorik ved hjælp af et inkognitovindue</translation>
 <translation id="206308717637808771">Slet data, når du lukker alle vinduer. Data behandles på samme måde som det website, du besøger</translation>
 <translation id="2066700471214517561">Beamformingmikrofon, så den person, der bruger Chromebook-enheden, kan høres tydeligt.</translation>
@@ -2438,7 +2438,7 @@ Du kan administrere indstillingerne for denne konto ved at installere Family Lin
 <translation id="2642111877055905627">Fodbold</translation>
 <translation id="2642206811783203764">Altid på <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Du kan til enhver tid slette data om annoncemåling ved at slette dine browserdata</translation>
-<translation id="2643379881528582459">Hvis Chromium registrerer, at én af dine adgangskoder er blevet offentligt tilgængelig i forbindelse med et brud på datasikkerheden, kan den tilbyde at ændre din adgangskode for dig, hvis du er logget ind</translation>
+<translation id="2643379881528582459">Hvis Vortex registrerer, at én af dine adgangskoder er blevet offentligt tilgængelig i forbindelse med et brud på datasikkerheden, kan den tilbyde at ændre din adgangskode for dig, hvis du er logget ind</translation>
 <translation id="2643698698624765890">Administrer dine udvidelser ved at klikke på Udvidelser i menuen Vindue.</translation>
 <translation id="2645047101481282803">Din enhed administreres af <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Caster denne fane til <ph name="DEVICE_NAME" /></translation>
@@ -3174,7 +3174,7 @@ Du kan administrere indstillingerne for denne konto ved at installere Family Lin
 <translation id="3151786313568798007">Retning</translation>
 <translation id="3152356229013609796">Se, afvis og reager på notifikationer fra din telefon</translation>
 <translation id="3154754096046236400">Personlig kontekst</translation>
-<translation id="3155163173539279776">Genstart Chromium</translation>
+<translation id="3155163173539279776">Genstart Vortex</translation>
 <translation id="3155394504825881014">Konvertér fanegruppe til bogmærkemappe</translation>
 <translation id="3156511682997763015">Spol 10 sekunder frem</translation>
 <translation id="3157330780336267229">Du skal aktivere synkronisering for at dele eller deltage i fanegrupper</translation>
@@ -4907,7 +4907,7 @@ Vil du starte <ph name="CONTROL_PANEL_APPLET_NAME" />?</translation>
 <translation id="4333854382783149454">PKCS #1 SHA-1 med RSA-kryptering</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> vises ikke igen</translation>
 <translation id="4335835283689002019">Beskyttet browsing er slået fra</translation>
-<translation id="4336967529148557673">Du skal logge ind, før Chromium kan fuldføre denne opgave</translation>
+<translation id="4336967529148557673">Du skal logge ind, før Vortex kan fuldføre denne opgave</translation>
 <translation id="4338363401382232853">Vinduesforslag til opdelt skærm</translation>
 <translation id="4339203724549370495">Afinstaller app</translation>
 <translation id="4340125850502689798">Ugyldigt brugernavn</translation>
@@ -5745,7 +5745,7 @@ Brug Ctrl+Alt+Lysstyrke ned for at zoome ud.</translation>
 <translation id="4918762404810341788">Kopiér og åbn</translation>
 <translation id="4918844574251943176">Billedet er kopieret</translation>
 <translation id="4921348630401250116">Oplæsning</translation>
-<translation id="4922104989726031751">Hvis du vil bruge Adgangs­kode­admin­istrator sammen med dit operativsystem, skal du genstarte Chromium og give adgang til Adgangs­kode­admin­istrator på din computer. Dine faner åbnes igen, når du har genstartet.</translation>
+<translation id="4922104989726031751">Hvis du vil bruge Adgangs­kode­admin­istrator sammen med dit operativsystem, skal du genstarte Vortex og give adgang til Adgangs­kode­admin­istrator på din computer. Dine faner åbnes igen, når du har genstartet.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Gem 1 element på kontoen}one{Gem # element på kontoen}other{Gem # elementer på kontoen}}</translation>
 <translation id="492363500327720082">Afinstallerer <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Vis fanegrupper</translation>

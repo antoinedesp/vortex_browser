@@ -127,7 +127,7 @@
 <translation id="234869673307233423">Chrome तुमचे पासवर्ड तपासू शकत नाही. नंतर पुन्हा प्रयत्न करा.</translation>
 <translation id="2359808026110333948">सुरू ठेवा</translation>
 <translation id="2403703063067034158">स्टार्टअप एरर: सेटअपचे दुसरे इंस्टन्स सध्या सुरू आहे, कृपया नंतर पुन्हा प्रयत्न करा.</translation>
-<translation id="2409816192575564775">{NUM_DEVICES,plural, =0{1 HID device was being accessed by one or more Chromium extensions}=1{१ HID डिव्हाइस हे एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केले जात आहे}other{# HID डिव्हाइस ही एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केली जात आहेत}}</translation>
+<translation id="2409816192575564775">{NUM_DEVICES,plural, =0{1 HID device was being accessed by one or more Vortex extensions}=1{१ HID डिव्हाइस हे एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केले जात आहे}other{# HID डिव्हाइस ही एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केली जात आहेत}}</translation>
 <translation id="2424440923901031101">हे एक्स्टेंशन Chrome वेब स्टोअर च्या धोरणाचे उल्लंघन करते आणि ते असुरक्षित असू शकते. ते Chrome वरून काढून टाका, जेणेकरून ते तुमच्या वैयक्तिक माहितीच्या समावेशासह तुम्ही भेट देत असलेल्या साइटवरील तुमचा डेटा आता पाहू आणि बदलू शकत नाही.</translation>
 <translation id="2467438592969358367">Google Chrome ला तुमचे पासवर्ड निर्यात करायचे आहेत. हे करू देण्यासाठी तुमचा Windows पासवर्ड टाइप करा.</translation>
 <translation id="2472092250898121027">या एक्स्टेंशनमध्ये मालवेअर आहे आणि ते असुरक्षित आहे. ते Chrome वरून काढून टाका, जेणेकरून ते तुमच्या वैयक्तिक माहितीच्या समावेशासह तुम्ही भेट देत असलेल्या साइटवरील तुमचा डेटा आता पाहू आणि बदलू शकत नाही.</translation>
@@ -199,7 +199,7 @@
 <translation id="310459126943037700">टास्क संपवता आले नाही (आली नाहीत).</translation>
 <translation id="3112458742631356345">फाइल सामान्यतः डाउनलोड केली जात नसल्याने Chrome ने हे डाउनलोड ब्लॉक केले आहे आणि ती धोकादायक असू शकते</translation>
 <translation id="3114643501466072395">तुमचे इतर पासवर्ड डेटा भंग आणि इतर सुरक्षा समस्यांपासून सुरक्षित आहेत हे तपासण्यासाठी, <ph name="BEGIN_LINK" />Chrome मध्ये साइन इन करा<ph name="END_LINK" />.</translation>
-<translation id="3119573284443908657">Chromium ने हा डाउनलोड ब्लॉक केला आहे, कारण संग्रहित फाइलमध्ये मालवेअर लपवू शकणाऱ्या इतर फाइलचा समावेश असतो</translation>
+<translation id="3119573284443908657">Vortex ने हा डाउनलोड ब्लॉक केला आहे, कारण संग्रहित फाइलमध्ये मालवेअर लपवू शकणाऱ्या इतर फाइलचा समावेश असतो</translation>
 <translation id="3135560418014806498">Chrome प्रोफाइल जोडा</translation>
 <translation id="3137969841538672700">शोधण्यासाठी ड्रॅग करा</translation>
 <translation id="3140883423282498090">पुढील वेळी तुम्ही Google Chrome पुन्हा लाँच केल्यानंतर तुमचे बदल प्रभावी होतील.</translation>
@@ -574,7 +574,7 @@ Google Chrome तुमची सेटिंग्ज पुन्हा मि
 <translation id="7398801000654795464">तुम्ही <ph name="USER_EMAIL_ADDRESS" /> या रुपात Chrome मध्ये साइन इन केले होते. कृपया पुन्हा साइन इन करण्यासाठी समान खाते वापरा.</translation>
 <translation id="7412494426921990001">Chrome मेनूवर क्लिक करा</translation>
 <translation id="7419819959108735624">Google Lens वापरून शोधण्यासाठी काहीही निवडा</translation>
-<translation id="742463671275348370">{NUM_DEVICES,plural, =0{1 HID device was being accessed by one or more Chromium extensions}=1{१ USB डिव्हाइस हे एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केले जात आहे}other{# USB डिव्हाइस ही एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केली जात आहेत}}</translation>
+<translation id="742463671275348370">{NUM_DEVICES,plural, =0{1 HID device was being accessed by one or more Vortex extensions}=1{१ USB डिव्हाइस हे एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केले जात आहे}other{# USB डिव्हाइस ही एक किंवा त्याहून अधिक Chrome एक्स्टेंशनद्वारे अ‍ॅक्सेस केली जात आहेत}}</translation>
 <translation id="7426611252293106642">Google Chrome कदाचित योग्यरीत्या काम करणार नाही, कारण त्याला आता या Linux डिस्ट्रिब्यूशनवर सपोर्ट नाही</translation>
 <translation id="7437998757836447326">Chrome मधून साइन आउट करा</translation>
 <translation id="7449333426561673451">{COUNT,plural, =1{Chrome १ मिनिटासाठी वापरले जात नाही, तेव्हा तुमची संस्था ते आपोआप बंद करते.}other{Chrome # मिनिटांसाठी वापरले जात नाही, तेव्हा तुमची संस्था ते आपोआप बंद करते.}}</translation>

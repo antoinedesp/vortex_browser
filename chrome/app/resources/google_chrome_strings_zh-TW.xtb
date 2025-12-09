@@ -435,7 +435,7 @@ Google Chrome 無法復原你的設定。</translation>
 <translation id="5947104538377036631">Chrome 捷徑</translation>
 <translation id="5960071705175224773">你的設定遭到不明應用程式變更</translation>
 <translation id="5968400720580217226">AI 模式</translation>
-<translation id="5980111191913430208">來源不明的擴充功能、應用程式和主題可能會損害裝置。Chromium 建議你只透過 <ph name="IDS_EXTENSION_WEB_STORE_TITLE" />安裝這些項目</translation>
+<translation id="5980111191913430208">來源不明的擴充功能、應用程式和主題可能會損害裝置。Vortex 建議你只透過 <ph name="IDS_EXTENSION_WEB_STORE_TITLE" />安裝這些項目</translation>
 <translation id="6003112304606738118">下載中… 還剩 <ph name="HOURS" /> 小時</translation>
 <translation id="6008161919456049856">你儲存在 Google 帳戶中的密碼、付款方式和地址將從這部裝置中移除。如要在 Chrome 中再次使用這些資料，請重新登入。</translation>
 <translation id="6009821354356307391">繼續提問</translation>
@@ -555,7 +555,7 @@ Google Chrome 無法復原你的設定。</translation>
 <translation id="7155997830309522122">如果是的話，請編輯你儲存在 Chrome 中的密碼，使其與新密碼相符。</translation>
 <translation id="7161904924553537242">歡迎使用 Google Chrome</translation>
 <translation id="7193885263065350793">由於 Chrome 閒置超過 <ph name="TIMEOUT_DURATION" />，貴機構已將其關閉。</translation>
-<translation id="7242029209006116544">你已登入管理化環境下的帳戶，並將管理控制權授予你的 Chrome 設定檔。你的 Chrome 資料 (例如應用程式、書籤、記錄、密碼和其他設定) 均將永久與 <ph name="USER_NAME" /> 建立關聯。你可以透過 Google 帳戶資訊主頁刪除這些資料，但你無法將這些資料與其他帳戶建立關聯。如要另行保留現有的 Chromium 資料，你可以選擇建立新的設定檔。<ph name="LEARN_MORE" /></translation>
+<translation id="7242029209006116544">你已登入管理化環境下的帳戶，並將管理控制權授予你的 Chrome 設定檔。你的 Chrome 資料 (例如應用程式、書籤、記錄、密碼和其他設定) 均將永久與 <ph name="USER_NAME" /> 建立關聯。你可以透過 Google 帳戶資訊主頁刪除這些資料，但你無法將這些資料與其他帳戶建立關聯。如要另行保留現有的 Vortex 資料，你可以選擇建立新的設定檔。<ph name="LEARN_MORE" /></translation>
 <translation id="7285616922384953075">Chrome 是由「<ph name="MANAGER" />」管理</translation>
 <translation id="7288567540154601580">分頁和擴充功能</translation>
 <translation id="7296210096911315575">重要的使用與安全資訊</translation>

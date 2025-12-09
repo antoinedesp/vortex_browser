@@ -982,7 +982,7 @@ Berechtigungen, die du Apps bereits gewährt hast, gelten möglicherweise für d
 <translation id="1651633344379798952">Google Lens auf deinem Smartphone ausprobieren</translation>
 <translation id="1652281434788353738">Nachdenklich</translation>
 <translation id="1652326691684645429">Nearby Share aktivieren</translation>
-<translation id="1652862280638399816">Wenn du den Passwortmanager mit dem macOS-Schlüsselbund verwenden möchtest, starte Chromium neu und erlaube den Zugriff auf den Schlüsselbund. Deine Tabs werden nach dem Neustart wieder geöffnet.</translation>
+<translation id="1652862280638399816">Wenn du den Passwortmanager mit dem macOS-Schlüsselbund verwenden möchtest, starte Vortex neu und erlaube den Zugriff auf den Schlüsselbund. Deine Tabs werden nach dem Neustart wieder geöffnet.</translation>
 <translation id="1653958716132599769">Zusammengehörende Tabs gruppieren</translation>
 <translation id="1654580009054503925">Dürfen keine Anfragen anzeigen</translation>
 <translation id="1654713139320245449">Keine Streamingziele gefunden. Benötigst du Hilfe?</translation>
@@ -1289,7 +1289,7 @@ Berechtigungen, die du Apps bereits gewährt hast, gelten möglicherweise für d
 <translation id="186612162884103683">"<ph name="EXTENSION" />" kann Bilder, Video- und Sounddateien an den geprüften Orten lesen und schreiben.</translation>
 <translation id="1866589962721094893">Android-Apps auf diesem Chromebook erlauben, USB-Geräte zu steuern. Die Berechtigung wird jedes Mal angefragt, wenn du ein USB-Gerät verbindest. Einige Android-Apps werden nach zusätzlichen Berechtigungen fragen.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> ist bereit, die Installation abzuschließen</translation>
-<translation id="1868553836791672080">Die Passwortüberprüfung ist in Chromium nicht verfügbar</translation>
+<translation id="1868553836791672080">Die Passwortüberprüfung ist in Vortex nicht verfügbar</translation>
 <translation id="1868617395637139709">Standortermittlung für Android-Apps und -Dienste nutzen.</translation>
 <translation id="1869433484041798909">Lesezeichen-Schaltfläche</translation>
 <translation id="1871098866036088250">In Chrome-Browser öffnen</translation>
@@ -1571,7 +1571,7 @@ Wenn du die Family Link App auf deinem Gerät installierst, kannst du die Einste
 <translation id="2059913712424898428">Zeitzone</translation>
 <translation id="2060375639911876205">eSIM-Profil entfernen</translation>
 <translation id="2061366302742593739">Nichts zum Anzeigen verfügbar</translation>
-<translation id="2061589908388230480">Wenn Chromium eines deiner Passwörter bei einer öffentlichen Datenpanne findet, kann der Google Passwortmanager dir bei der Anmeldung anbieten, dein Passwort zu ändern. <ph name="BEGIN_LINK" />Weitere Informationen zur automatisierten Passwortänderung<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Wenn Vortex eines deiner Passwörter bei einer öffentlichen Datenpanne findet, kann der Google Passwortmanager dir bei der Anmeldung anbieten, dein Passwort zu ändern. <ph name="BEGIN_LINK" />Weitere Informationen zur automatisierten Passwortänderung<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">In einem Inkognitofenster kannst du surfen, ohne dass dein Browserverlauf gespeichert wird</translation>
 <translation id="206308717637808771">Daten werden gelöscht, wenn alle Fenster geschlossen werden. Die Daten werden genauso behandelt wie die Website, die du gerade besuchst.</translation>
 <translation id="2066700471214517561">Beamforming-Mikrofon verwenden, damit der Chromebook-Nutzer deutlich zu verstehen ist.</translation>
@@ -2420,7 +2420,7 @@ Wenn du die Family Link App auf deinem Gerät installierst, kannst du die Einste
 <translation id="2642111877055905627">Fußball</translation>
 <translation id="2642206811783203764">Immer auf <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Du kannst jederzeit Daten zur Erfolgsmessung bei Anzeigen löschen, indem du deine Browserdaten löschst</translation>
-<translation id="2643379881528582459">Sollte Chromium eines deiner Passwörter bei einer öffentlichen Datenpanne finden, wird dir angeboten, dein Passwort zu ändern, sofern du in deinem Konto angemeldet bist</translation>
+<translation id="2643379881528582459">Sollte Vortex eines deiner Passwörter bei einer öffentlichen Datenpanne finden, wird dir angeboten, dein Passwort zu ändern, sofern du in deinem Konto angemeldet bist</translation>
 <translation id="2643698698624765890">Klicke zum Verwalten deiner Erweiterungen im Menü „Fenster“ auf „Erweiterungen“.</translation>
 <translation id="2645047101481282803">Das Gerät wird von <ph name="PROFILE_NAME" /> verwaltet</translation>
 <translation id="2645388244376970260">Dieser Tab wird auf „<ph name="DEVICE_NAME" />“ gestreamt</translation>
@@ -3156,7 +3156,7 @@ Servernachricht: <ph name="SERVER_MSG" /></translation>
 <translation id="3151786313568798007">Ausrichtung</translation>
 <translation id="3152356229013609796">Smartphone-Benachrichtigungen abrufen, schließen und beantworten</translation>
 <translation id="3154754096046236400">Persönlicher Kontext</translation>
-<translation id="3155163173539279776">Chromium neu starten</translation>
+<translation id="3155163173539279776">Vortex neu starten</translation>
 <translation id="3155394504825881014">Tabgruppe in Lesezeichenordner umwandeln</translation>
 <translation id="3156511682997763015">10 Sekunden vorspulen</translation>
 <translation id="3157330780336267229">Wenn du Tabgruppen teilen oder ihnen beitreten möchtest, musst du die Synchronisierung aktivieren</translation>
@@ -4887,7 +4887,7 @@ Möchtest du <ph name="CONTROL_PANEL_APPLET_NAME" /> starten?</translation>
 <translation id="4333854382783149454">PKCS #1 SHA-1 mit RSA-Verschlüsselung</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> wird nicht mehr angezeigt</translation>
 <translation id="4335835283689002019">Safe Browsing ist deaktiviert</translation>
-<translation id="4336967529148557673">Du musst dich anmelden, bevor Chromium diese Aufgabe abschließen kann</translation>
+<translation id="4336967529148557673">Du musst dich anmelden, bevor Vortex diese Aufgabe abschließen kann</translation>
 <translation id="4338363401382232853">Vorschlag für Splitscreen-Fenster</translation>
 <translation id="4339203724549370495">App deinstallieren</translation>
 <translation id="4340125850502689798">Ungültiger Nutzername</translation>
@@ -5724,7 +5724,7 @@ Zum Herauszoomen drücke Strg + Alt + „Helligkeit verringern“.</translatio
 <translation id="4918762404810341788">Kopieren und öffnen</translation>
 <translation id="4918844574251943176">Bild kopiert</translation>
 <translation id="4921348630401250116">Sprachausgabe</translation>
-<translation id="4922104989726031751">Wenn du den Passwortmanager mit deinem Betriebssystem verwenden möchtest, starte Chromium neu und erlaube den Zugriff auf den Passwortmanager deines Computers. Deine Tabs werden nach dem Neustart wieder geöffnet.</translation>
+<translation id="4922104989726031751">Wenn du den Passwortmanager mit deinem Betriebssystem verwenden möchtest, starte Vortex neu und erlaube den Zugriff auf den Passwortmanager deines Computers. Deine Tabs werden nach dem Neustart wieder geöffnet.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 Element im Konto speichern}other{# Elemente im Konto speichern}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> wird deinstalliert…</translation>
 <translation id="4923977675318667854">Tabgruppen anzeigen</translation>

@@ -985,7 +985,7 @@ Los permisos que hayas dado a aplicaciones se pueden aplicar a esta cuenta. Pued
 <translation id="1651633344379798952">Prueba Google Lens en tu teléfono</translation>
 <translation id="1652281434788353738">Considerado</translation>
 <translation id="1652326691684645429">Habilitar Compartir con Nearby</translation>
-<translation id="1652862280638399816">Para usar el Gestor de contraseñas con el llavero de macOS, reinicia Chromium y permite el acceso al llavero. Las pestañas que tuvieras abiertas se reabrirán después de reiniciar.</translation>
+<translation id="1652862280638399816">Para usar el Gestor de contraseñas con el llavero de macOS, reinicia Vortex y permite el acceso al llavero. Las pestañas que tuvieras abiertas se reabrirán después de reiniciar.</translation>
 <translation id="1653958716132599769">Agrupar pestañas relacionadas</translation>
 <translation id="1654580009054503925">No tiene permiso para mostrar solicitudes</translation>
 <translation id="1654713139320245449">No se han encontrado destinos de envío. ¿Necesitas ayuda?</translation>
@@ -1292,7 +1292,7 @@ Los permisos que hayas dado a aplicaciones se pueden aplicar a esta cuenta. Pued
 <translation id="186612162884103683">"<ph name="EXTENSION" />" puede leer y escribir en archivos de sonido, vídeo e imágenes en las ubicaciones seleccionadas.</translation>
 <translation id="1866589962721094893">Permite a las aplicaciones Android controlar dispositivos USB en este Chromebook. Se solicitará permiso cada vez que conectes un dispositivo USB. Cada aplicación Android solicitará permisos adicionales.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> está listo para completar la instalación.</translation>
-<translation id="1868553836791672080">La función de comprobación de contraseña no está disponible en Chromium</translation>
+<translation id="1868553836791672080">La función de comprobación de contraseña no está disponible en Vortex</translation>
 <translation id="1868617395637139709">Usa la ubicación para las aplicaciones y los servicios de Android.</translation>
 <translation id="1869433484041798909">Botón de marcadores</translation>
 <translation id="1871098866036088250">Abrir en el navegador Chrome</translation>
@@ -1575,7 +1575,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="2059913712424898428">Zona horaria</translation>
 <translation id="2060375639911876205">Quitar perfil de eSIM</translation>
 <translation id="2061366302742593739">Nada que mostrar</translation>
-<translation id="2061589908388230480">Si Chromium detecta que una de tus contraseñas aparece en una brecha pública de seguridad de datos, el Gestor de contraseñas de Google puede ofrecerte cambiarla si has iniciado sesión. <ph name="BEGIN_LINK" />Más información sobre el cambio de contraseña automatizado<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Si Vortex detecta que una de tus contraseñas aparece en una brecha pública de seguridad de datos, el Gestor de contraseñas de Google puede ofrecerte cambiarla si has iniciado sesión. <ph name="BEGIN_LINK" />Más información sobre el cambio de contraseña automatizado<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Navega por Internet sin guardar tu historial de navegación con una ventana de Incógnito</translation>
 <translation id="206308717637808771">Elimina los datos al cerrar todas las ventanas. Los datos se tratan igual que en el sitio web que estás viendo.</translation>
 <translation id="2066700471214517561">Usa el micrófono con formación de haces para que la persona que usa el Chromebook se oiga con claridad.</translation>
@@ -2426,7 +2426,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="2642111877055905627">Balón de fútbol</translation>
 <translation id="2642206811783203764">Siempre en <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Si quieres eliminar tus datos de medición de anuncios, puedes hacerlo en cualquier momento eliminando tus datos de navegación.</translation>
-<translation id="2643379881528582459">Si tienes la sesión iniciada y Chromium detecta que una de tus contraseñas aparece en una brecha pública de seguridad de datos, puede ofrecerte cambiarla</translation>
+<translation id="2643379881528582459">Si tienes la sesión iniciada y Vortex detecta que una de tus contraseñas aparece en una brecha pública de seguridad de datos, puede ofrecerte cambiarla</translation>
 <translation id="2643698698624765890">Para gestionar tus extensiones, haz clic en la opción Extensiones del menú Ventana.</translation>
 <translation id="2645047101481282803"><ph name="PROFILE_NAME" /> gestiona tu dispositivo.</translation>
 <translation id="2645388244376970260">Enviando esta pestaña a <ph name="DEVICE_NAME" /></translation>
@@ -3162,7 +3162,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="3151786313568798007">Orientación</translation>
 <translation id="3152356229013609796">Consulta, descarta y responde notificaciones de tu teléfono</translation>
 <translation id="3154754096046236400">Contexto personal</translation>
-<translation id="3155163173539279776">Reiniciar Chromium</translation>
+<translation id="3155163173539279776">Reiniciar Vortex</translation>
 <translation id="3155394504825881014">Convertir grupo de pestañas en carpeta de marcadores</translation>
 <translation id="3156511682997763015">Avanzar 10 segundos</translation>
 <translation id="3157330780336267229">Para compartir o unirte a grupos de pestañas, debes activar la sincronización</translation>
@@ -4898,7 +4898,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="4333854382783149454">PKCS #1 SHA-1 con cifrado RSA</translation>
 <translation id="4334768748331667190">No volverás a ver <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">La función Navegación segura está desactivada</translation>
-<translation id="4336967529148557673">Debes iniciar sesión para que Chromium pueda completar esta tarea</translation>
+<translation id="4336967529148557673">Debes iniciar sesión para que Vortex pueda completar esta tarea</translation>
 <translation id="4338363401382232853">Sugerencia de ventanas en pantalla dividida</translation>
 <translation id="4339203724549370495">Desinstalar aplicación</translation>
 <translation id="4340125850502689798">Nombre de usuario no válido</translation>
@@ -5736,7 +5736,7 @@ Usa Ctrl + Alt + Reducir el brillo para reducir la pantalla.</translation>
 <translation id="4918762404810341788">Copiar y abrir</translation>
 <translation id="4918844574251943176">Imagen copiada</translation>
 <translation id="4921348630401250116">Conversión de texto a voz</translation>
-<translation id="4922104989726031751">Para usar el Gestor de contraseñas con tu sistema operativo, reinicia Chromium y permite el acceso al gestor de contraseñas de tu ordenador. Las pestañas que tuvieras abiertas se reabrirán después de reiniciar.</translation>
+<translation id="4922104989726031751">Para usar el Gestor de contraseñas con tu sistema operativo, reinicia Vortex y permite el acceso al gestor de contraseñas de tu ordenador. Las pestañas que tuvieras abiertas se reabrirán después de reiniciar.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Guardar 1 elemento en la cuenta}other{Guardar # elementos en la cuenta}}</translation>
 <translation id="492363500327720082">Desinstalando <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Mostrar grupos de pestañas</translation>

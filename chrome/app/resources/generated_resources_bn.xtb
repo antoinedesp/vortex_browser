@@ -987,7 +987,7 @@
 <translation id="1651633344379798952">আপনার ফোনে Google Lens ব্যবহার করে দেখুন</translation>
 <translation id="1652281434788353738">থটফুল</translation>
 <translation id="1652326691684645429">'নিয়ারবাই শেয়ার' ফিচারটি চালু করুন</translation>
-<translation id="1652862280638399816">MacOS Keychain-এর মাধ্যমে Password Manager ব্যবহার করতে, Chromium আবার লঞ্চ করুন ও Keychain অ্যাক্সেস করার অনুমতি দিন। আবার চালু করার পরে আপনার ট্যাব আবার খোলা হবে।</translation>
+<translation id="1652862280638399816">MacOS Keychain-এর মাধ্যমে Password Manager ব্যবহার করতে, Vortex আবার লঞ্চ করুন ও Keychain অ্যাক্সেস করার অনুমতি দিন। আবার চালু করার পরে আপনার ট্যাব আবার খোলা হবে।</translation>
 <translation id="1653958716132599769">গ্রুপ সংক্রান্ত ট্যাব</translation>
 <translation id="1654580009054503925">অনুরোধ দেখানোর অনুমতি নেই</translation>
 <translation id="1654713139320245449">কাস্ট করার মত কোনও জায়গা পাওয়া যায়নি। সাহায্য প্রয়োজন?</translation>
@@ -1303,7 +1303,7 @@
 <translation id="186612162884103683">" <ph name="EXTENSION" /> " চেক করা অবস্থানে চিত্র, ভিডিও এবং শব্দের ফাইলগুলি পড়তে ও লিখতে পারে৷</translation>
 <translation id="1866589962721094893">এই Chromebook-এ Android অ্যাপগুলিকে USB ডিভাইস কন্ট্রোল করতে দিন। আপনি প্রতিবার USB ডিভাইস প্লাগ-ইন করার সময় অনুমতির জন্য অনুরোধ করা হবে। আলাদা Android অ্যাপের ক্ষেত্রে অতিরিক্ত অনুমতি নিতে হবে।</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> আপনার ইনস্টেলশন সম্পূর্ণ করার জন্য প্রস্তুত</translation>
-<translation id="1868553836791672080">Chromium-এ পাসওয়ার্ড পরীক্ষা করার ফিচারটি উপলভ্য নয়</translation>
+<translation id="1868553836791672080">Vortex-এ পাসওয়ার্ড পরীক্ষা করার ফিচারটি উপলভ্য নয়</translation>
 <translation id="1868617395637139709">Android অ্যাপ ও পরিষেবার জন্য লোকেশন ব্যবহার করুন।</translation>
 <translation id="1869433484041798909">'বুকমার্ক' বোতাম</translation>
 <translation id="1871098866036088250">Chrome ব্রাউজারে খুলুন</translation>
@@ -1586,7 +1586,7 @@
 <translation id="2059913712424898428">টাইম জোন</translation>
 <translation id="2060375639911876205">ই-সিম প্রোফাইল সরান</translation>
 <translation id="2061366302742593739">দেখানোর মতো কিছুই নেই</translation>
-<translation id="2061589908388230480">Chromium পাবলিক হয়ে যাওয়া ডেটার মধ্যে আপনার পাসওয়ার্ডগুলির মধ্যে কোনও একটি খুঁজে পেলে, আপনি সাইন-ইন করার পর Google Password Manager আপনার পাসওয়ার্ড পরিবর্তন করার বিকল্প অফার করতে পারে। <ph name="BEGIN_LINK" />অটোমেটিক পাসওয়ার্ড পরিবর্তন হওয়া সম্পর্কে আরও তথ্য<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Vortex পাবলিক হয়ে যাওয়া ডেটার মধ্যে আপনার পাসওয়ার্ডগুলির মধ্যে কোনও একটি খুঁজে পেলে, আপনি সাইন-ইন করার পর Google Password Manager আপনার পাসওয়ার্ড পরিবর্তন করার বিকল্প অফার করতে পারে। <ph name="BEGIN_LINK" />অটোমেটিক পাসওয়ার্ড পরিবর্তন হওয়া সম্পর্কে আরও তথ্য<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">ব্রাউজিং ইতিহাস সেভ না করেই ওয়েব ব্রাউজ করতে ছদ্মবেশী উইন্ডো ব্যবহার করুন</translation>
 <translation id="206308717637808771">আপনি যখন সমস্ত উইন্ডো বন্ধ করেন তখন ডেটা মুছুন। আপনি যে সাইটটি দেখছেন সেটির মতোই ডেটা ব্যবহার করা হয়</translation>
 <translation id="2066700471214517561">বিমফর্মিং মাইকের সাহায্যে, Chromebook ব্যবহারকারীর আওয়াজ স্পষ্ট শুনতে পাওয়া যায়।</translation>
@@ -2439,7 +2439,7 @@
 <translation id="2642111877055905627">ফুটবল</translation>
 <translation id="2642206811783203764"><ph name="SITE_NAME" />-এর জন্য সবসময় অনুমতি দেওয়া</translation>
 <translation id="2643064289437760082">আপনি সবসময় আপনার ব্রাউজিং ডেটা মুছে বিজ্ঞাপন-পরিমাপ ডেটা মুছে ফেলতে পারেন</translation>
-<translation id="2643379881528582459">সবার সামনে ডেটার নিরাপত্তা লঙ্ঘন হওয়ার ঘটনাতে, Chromium আপনার কোনও পাসওয়ার্ড দেখতে পেলে, আপনি সাইন-ইন করা থাকলে, এটি আপনার হয়ে পাসওয়ার্ড পরিবর্তন করে দেওয়ার অফার দিতে পারে</translation>
+<translation id="2643379881528582459">সবার সামনে ডেটার নিরাপত্তা লঙ্ঘন হওয়ার ঘটনাতে, Vortex আপনার কোনও পাসওয়ার্ড দেখতে পেলে, আপনি সাইন-ইন করা থাকলে, এটি আপনার হয়ে পাসওয়ার্ড পরিবর্তন করে দেওয়ার অফার দিতে পারে</translation>
 <translation id="2643698698624765890">উইন্ডো মেনুতে এক্সটেনশান ক্লিক করে আপনার এক্সটেনশানগুলি পরিচালনা করুন৷</translation>
 <translation id="2645047101481282803">আপনার ডিভাইস <ph name="PROFILE_NAME" /> ম্যানেজ করে</translation>
 <translation id="2645388244376970260"><ph name="DEVICE_NAME" />-এ এই ট্যাব কাস্ট করা হচ্ছে</translation>
@@ -3175,7 +3175,7 @@
 <translation id="3151786313568798007">সজ্জা</translation>
 <translation id="3152356229013609796">আপনার ফোনের বিজ্ঞপ্তি দেখুন, বাতিল করুন এবং উত্তর দিন</translation>
 <translation id="3154754096046236400">ব্যক্তিগত প্রসঙ্গ</translation>
-<translation id="3155163173539279776">Chromium আবার লঞ্চ করুন</translation>
+<translation id="3155163173539279776">Vortex আবার লঞ্চ করুন</translation>
 <translation id="3155394504825881014">ট্যাব গ্রুপকে বুকমার্ক ফোল্ডারে কনভার্ট করুন</translation>
 <translation id="3156511682997763015">১০ সেকেন্ড ফরওয়ার্ড করুন</translation>
 <translation id="3157330780336267229">ট্যাব গ্রুপে শেয়ার করতে এবং যোগ দিতে হলে, আপনাকে সিঙ্ক চালু করতে হবে</translation>
@@ -4912,7 +4912,7 @@
 <translation id="4333854382783149454">RSA এনক্রিপশানের সাথে PKCS #1 SHA-1</translation>
 <translation id="4334768748331667190">আপনি আবার <ph name="MODULE_NAME" /> দেখতে পাবেন না</translation>
 <translation id="4335835283689002019">'নিরাপদ ব্রাউজিং' বন্ধ আছে</translation>
-<translation id="4336967529148557673">Chromium এই টাস্ক শেষ করার আগে আপনাকে সাইন-ইন করতে হবে</translation>
+<translation id="4336967529148557673">Vortex এই টাস্ক শেষ করার আগে আপনাকে সাইন-ইন করতে হবে</translation>
 <translation id="4338363401382232853">স্প্লিট স্ক্রিন উইন্ডো সম্পর্কিত সাজেশন</translation>
 <translation id="4339203724549370495">অ্যাপ আনইনস্টল করুন</translation>
 <translation id="4340125850502689798">অননুমোদিত ইউজারনেম</translation>
@@ -5751,7 +5751,7 @@
 <translation id="4918762404810341788">কপি করুন এবং খুলুন</translation>
 <translation id="4918844574251943176">ছবি কপি করা হয়েছে</translation>
 <translation id="4921348630401250116">টেক্সট-টু-স্পিচ</translation>
-<translation id="4922104989726031751">আপনার অপারেটিং সিস্টেমের সাথে Password Manager ব্যবহার করতে, Chromium আবার চালু করুন এবং নিজের কম্পিউটারের Password Manager অ্যাক্সেস করার অনুমতি দিন। আবার চালু করার পরে আপনার ট্যাব আবার খোলা হবে।</translation>
+<translation id="4922104989726031751">আপনার অপারেটিং সিস্টেমের সাথে Password Manager ব্যবহার করতে, Vortex আবার চালু করুন এবং নিজের কম্পিউটারের Password Manager অ্যাক্সেস করার অনুমতি দিন। আবার চালু করার পরে আপনার ট্যাব আবার খোলা হবে।</translation>
 <translation id="4923561999941435531">{0,plural, =1{অ্যাকাউন্টে ১টি আইটেম সেভ করুন}one{অ্যাকাউন্টে #টি আইটেম সেভ করুন}other{অ্যাকাউন্টে #টি আইটেম সেভ করুন}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> আনইনস্টল করা হচ্ছে...</translation>
 <translation id="4923977675318667854">ট্যাব গ্রুপ দেখুন</translation>

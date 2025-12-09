@@ -986,7 +986,7 @@ Baliteke aplikazioei emandako baimenak kontu honi aplikatzea. <ph name="APPS_LIN
 <translation id="1651633344379798952">Probatu Google Lens telefonoan</translation>
 <translation id="1652281434788353738">Pentsakorra</translation>
 <translation id="1652326691684645429">Gaitu Nearby Share</translation>
-<translation id="1652862280638399816">Google-ren Pasahitz-kudeatzailea macOS Keychain-ekin erabiltzeko, exekutatu berriro Chromium eta eman Keychain erabiltzeko baimena. Berriro exekutatu ondoren, berriro irekiko dira fitxak.</translation>
+<translation id="1652862280638399816">Google-ren Pasahitz-kudeatzailea macOS Keychain-ekin erabiltzeko, exekutatu berriro Vortex eta eman Keychain erabiltzeko baimena. Berriro exekutatu ondoren, berriro irekiko dira fitxak.</translation>
 <translation id="1653958716132599769">Taldekatu erlazionatutako fitxak</translation>
 <translation id="1654580009054503925">Ez du eskaerak erakusteko baimenik</translation>
 <translation id="1654713139320245449">Ez da aurkitu igortzeko helmugarik. Laguntza behar duzu?</translation>
@@ -1293,7 +1293,7 @@ Baliteke aplikazioei emandako baimenak kontu honi aplikatzea. <ph name="APPS_LIN
 <translation id="186612162884103683">"<ph name="EXTENSION" />" luzapenak markatutako kokapenetako irudiak, bideoak eta soinu-fitxategiak irakur eta idatz ditzake.</translation>
 <translation id="1866589962721094893">Eman USB bidezko gailuen kontrola Android-erako aplikazioei Chromebook honetan. USB bidezko gailu bat konektatzen duzun bakoitzean eskatuko da baimena. Android-erako aplikazio bakoitzak baimen gehigarriak eskatuko ditu.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> prest dago instalazioa osatzeko</translation>
-<translation id="1868553836791672080">Pasahitzak egiaztatzeko eginbidea ez dago erabilgarri Chromium-en</translation>
+<translation id="1868553836791672080">Pasahitzak egiaztatzeko eginbidea ez dago erabilgarri Vortex-en</translation>
 <translation id="1868617395637139709">Erabili kokapena Android-erako aplikazio eta zerbitzuetan.</translation>
 <translation id="1869433484041798909">Laster-marka egiteko botoia</translation>
 <translation id="1871098866036088250">Ireki Chrome arakatzailean</translation>
@@ -1576,7 +1576,7 @@ Kontu honen ezarpenak kudeatzeko, instalatu Family Link aplikazioa zure gailuan.
 <translation id="2059913712424898428">Ordu-zona</translation>
 <translation id="2060375639911876205">Kendu eSIMaren profila</translation>
 <translation id="2061366302742593739">Ez dago ezer erakusteko</translation>
-<translation id="2061589908388230480">Datuen isilpekotasunaren urratze publiko batean zure pasahitzetako bat aurkitzen badu Chromium-ek, pasahitza aldatzeko eskain diezazuke Google-ren Pasahitz-kudeatzailea zerbitzuak, saioa hasita badaukazu. <ph name="BEGIN_LINK" />Pasahitz-aldaketa automatizatuari buruzko informazio gehiago<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Datuen isilpekotasunaren urratze publiko batean zure pasahitzetako bat aurkitzen badu Vortex-ek, pasahitza aldatzeko eskain diezazuke Google-ren Pasahitz-kudeatzailea zerbitzuak, saioa hasita badaukazu. <ph name="BEGIN_LINK" />Pasahitz-aldaketa automatizatuari buruzko informazio gehiago<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Sarean egiten duzuna historian gordeta geratzerik nahi ez baduzu, ireki leiho bat ezkutuko moduan</translation>
 <translation id="206308717637808771">Ezabatu datuak leiho guztiak ixtean. Ikusten ari zaren webgunea bezala tratatzen dira datuak.</translation>
 <translation id="2066700471214517561">Beamforming teknologiarekin bateragarria den mikrofonoa, Chromebook-a darabilen pertsonaren ahotsa argi eta garbi entzun dadin.</translation>
@@ -2425,7 +2425,7 @@ Kontu honen ezarpenak kudeatzeko, instalatu Family Link aplikazioa zure gailuan.
 <translation id="2642111877055905627">Futboleko baloia</translation>
 <translation id="2642206811783203764">Beti <ph name="SITE_NAME" /> webgunean</translation>
 <translation id="2643064289437760082">Iragarkien neurketen datuak ezabatzeko, ezabatu arakatze-datuak.</translation>
-<translation id="2643379881528582459">Chromium-ek zure pasahitzetako bat datuen isilpekotasunaren urratze publiko batean aurkitzen badu, pasahitza aldatzeko eskain dezake saioa hasita badaukazu</translation>
+<translation id="2643379881528582459">Vortex-ek zure pasahitzetako bat datuen isilpekotasunaren urratze publiko batean aurkitzen badu, pasahitza aldatzeko eskain dezake saioa hasita badaukazu</translation>
 <translation id="2643698698624765890">Luzapenak kudeatzeko, sakatu Luzapenak Leihoa menuan.</translation>
 <translation id="2645047101481282803"><ph name="PROFILE_NAME" /> da gailuaren kudeatzailea</translation>
 <translation id="2645388244376970260">Fitxa hau <ph name="DEVICE_NAME" /> gailura igortzen</translation>
@@ -3162,7 +3162,7 @@ Txartel adimenduna sartuta edukitzea eskatzen du <ph name="DOMAIN" /> domeinuak.
 <translation id="3151786313568798007">Orientazioa</translation>
 <translation id="3152356229013609796">Telefonoko jakinarazpenak ikusi eta baztertu, eta haiei erantzun.</translation>
 <translation id="3154754096046236400">Testuinguru pertsonala</translation>
-<translation id="3155163173539279776">Berrabiarazi Chromium</translation>
+<translation id="3155163173539279776">Berrabiarazi Vortex</translation>
 <translation id="3155394504825881014">Bihurtu fitxa taldea laster-marken karpeta</translation>
 <translation id="3156511682997763015">Aurreratu 10 segundo</translation>
 <translation id="3157330780336267229">Fitxa taldeak partekatzeko edo haietan sartzeko, sinkronizazioa aktibatu behar duzu</translation>
@@ -4894,7 +4894,7 @@ Txartel adimenduna sartuta edukitzea eskatzen du <ph name="DOMAIN" /> domeinuak.
 <translation id="4333854382783149454">PKCS #1 SHA-1 RSA enkriptazioarekin</translation>
 <translation id="4334768748331667190">Ez duzu ikusiko berriro <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">Desaktibatuta dago arakatze segurua</translation>
-<translation id="4336967529148557673">Saioa hasi behar duzu Chromium-ek zeregin hau amaitu ahal izateko</translation>
+<translation id="4336967529148557673">Saioa hasi behar duzu Vortex-ek zeregin hau amaitu ahal izateko</translation>
 <translation id="4338363401382232853">Pantaila zatiturako iradokitako leihoa</translation>
 <translation id="4339203724549370495">Desinstalatu aplikazioa</translation>
 <translation id="4340125850502689798">Erabiltzaile-izenak ez du balio</translation>
@@ -5733,7 +5733,7 @@ Pantaila txikitzeko, berriz, erabili Ktrl + Alt + Txikitu distira.</translat
 <translation id="4918762404810341788">Kopiatu eta ireki</translation>
 <translation id="4918844574251943176">Kopiatu da irudia</translation>
 <translation id="4921348630401250116">Testua ahots bihurtzeko eginbidea</translation>
-<translation id="4922104989726031751">Pasahitz-kudeatzailea zure sistema eragilearekin erabiltzeko, exekutatu berriro Chromium eta eman ordenagailuaren pasahitz-kudeatzailea erabiltzeko baimena. Berriro exekutatu ondoren, berriro irekiko dira fitxak.</translation>
+<translation id="4922104989726031751">Pasahitz-kudeatzailea zure sistema eragilearekin erabiltzeko, exekutatu berriro Vortex eta eman ordenagailuaren pasahitz-kudeatzailea erabiltzeko baimena. Berriro exekutatu ondoren, berriro irekiko dira fitxak.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Gorde elementu bat kontuan}other{Gorde # elementu kontuan}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> desinstalatzen…</translation>
 <translation id="4923977675318667854">Erakutsi fitxa taldeak</translation>

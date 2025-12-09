@@ -353,7 +353,7 @@
 <translation id="4990567037958725628">Google Chrome Canary</translation>
 <translation id="5003967926796347400">点击“Google 密码管理工具”</translation>
 <translation id="5043786843026425788">详细了解如何在 Chrome 中使用 Google 智能镜头进行搜索</translation>
-<translation id="504867494566807945">在任意应用内通过 Chromium 打开链接。此外，为了方便使用，Chromium 会固定到任务栏。</translation>
+<translation id="504867494566807945">在任意应用内通过 Vortex 打开链接。此外，为了方便使用，Vortex 会固定到任务栏。</translation>
 <translation id="5114340746415930644">请输入您的口令，以便将 Chrome 数据保存在您的账号 <ph name="USER_EMAIL" /> 中并使用这些数据</translation>
 <translation id="5120334927898581447">登录其他 Google 服务时登录 Chrome</translation>
 <translation id="5126049312684316860">Chrome 会预加载您可能会访问的更多网页，以便提高这些网页在您访问时的加载速度</translation>
@@ -520,7 +520,7 @@
 <translation id="6800285125190089494">在 iOS 版 Chrome 中使用保存的密码更快地登录网站</translation>
 <translation id="6831043979455480757">翻译</translation>
 <translation id="683440813066116847">Google Chrome Canary版的入站规则，允许mDNS流量。</translation>
-<translation id="6841242485723266823">您可以根据不同的用途设置不同的 Chromium 资料。立即添加新的资料。</translation>
+<translation id="6841242485723266823">您可以根据不同的用途设置不同的 Vortex 资料。立即添加新的资料。</translation>
 <translation id="684888714667046800">无法连接到互联网。如果使用防火墙，请确保 <ph name="PRODUCT_EXE_NAME" /> 在许可名单中。</translation>
 <translation id="6859580922007887573">按 Tab 键即可继续</translation>
 <translation id="6877155553248388166">搜索区域的右下角：右侧 <ph name="RIGHT" />%，底部 <ph name="BOTTOM" />%</translation>

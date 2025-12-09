@@ -981,7 +981,7 @@
 <translation id="1651633344379798952">在手机上试用 Google 智能镜头</translation>
 <translation id="1652281434788353738">沉思</translation>
 <translation id="1652326691684645429">启用“附近分享”功能</translation>
-<translation id="1652862280638399816">若要将密码管理工具与 macOS 钥匙串搭配使用，请重新启动 Chromium 并允许访问钥匙串。您的标签页会在重新启动后重新打开。</translation>
+<translation id="1652862280638399816">若要将密码管理工具与 macOS 钥匙串搭配使用，请重新启动 Vortex 并允许访问钥匙串。您的标签页会在重新启动后重新打开。</translation>
 <translation id="1653958716132599769">将相关标签页分为一组</translation>
 <translation id="1654580009054503925">不得显示请求</translation>
 <translation id="1654713139320245449">找不到目标 Cast 设备。需要帮助吗？</translation>
@@ -1286,7 +1286,7 @@
 <translation id="186612162884103683">“<ph name="EXTENSION" />”对于选中位置中的图片、视频及声音文件具有读取和写入权限。</translation>
 <translation id="1866589962721094893">允许 Android 应用在此 Chromebook 上控制 USB 设备。您每次插入 USB 设备时，系统都会请求权限。个别 Android 应用会请求额外权限。</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> 已准备就绪，可以完成安装了</translation>
-<translation id="1868553836791672080">此版 Chromium 无法检查密码</translation>
+<translation id="1868553836791672080">此版 Vortex 无法检查密码</translation>
 <translation id="1868617395637139709">允许 Android 应用和服务使用位置信息。</translation>
 <translation id="1869433484041798909">书签按钮</translation>
 <translation id="1871098866036088250">在 Chrome 浏览器中打开</translation>
@@ -1569,7 +1569,7 @@
 <translation id="2059913712424898428">时区</translation>
 <translation id="2060375639911876205">移除 eSIM 卡配置文件</translation>
 <translation id="2061366302742593739">没有可显示的内容</translation>
-<translation id="2061589908388230480">如果 Chromium 发现您的密码在公开数据泄露事件中外泄，Google 密码管理工具可能会在您登录时建议更改密码。<ph name="BEGIN_LINK" />详细了解自动更改密码<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">如果 Vortex 发现您的密码在公开数据泄露事件中外泄，Google 密码管理工具可能会在您登录时建议更改密码。<ph name="BEGIN_LINK" />详细了解自动更改密码<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">如果您使用无痕式窗口浏览网页，系统便不会保存您的浏览记录</translation>
 <translation id="206308717637808771">关闭所有窗口时删除数据。在数据处理方面，与您正在查看的网站相同</translation>
 <translation id="2066700471214517561">波束成形麦克风，让 Chromebook 使用者的声音更清晰。</translation>
@@ -2417,7 +2417,7 @@
 <translation id="2642111877055905627">足球</translation>
 <translation id="2642206811783203764">始终允许在 <ph name="SITE_NAME" /> 上运行</translation>
 <translation id="2643064289437760082">您可随时通过删除浏览数据来删除广告衡量数据</translation>
-<translation id="2643379881528582459">如果 Chromium 发现您的密码在公开数据泄露事件中外泄，可能会在您登录时建议更改密码</translation>
+<translation id="2643379881528582459">如果 Vortex 发现您的密码在公开数据泄露事件中外泄，可能会在您登录时建议更改密码</translation>
 <translation id="2643698698624765890">您可以通过点击“窗口”菜单中的“扩展程序”，管理您的扩展程序。</translation>
 <translation id="2645047101481282803">您的设备由 <ph name="PROFILE_NAME" /> 管理</translation>
 <translation id="2645388244376970260">正在将此标签页投放到“<ph name="DEVICE_NAME" />”</translation>
@@ -3154,7 +3154,7 @@
 <translation id="3151786313568798007">方向</translation>
 <translation id="3152356229013609796">查看、关闭和回复手机中收到的通知</translation>
 <translation id="3154754096046236400">个人使用场景</translation>
-<translation id="3155163173539279776">重新启动 Chromium</translation>
+<translation id="3155163173539279776">重新启动 Vortex</translation>
 <translation id="3155394504825881014">将标签页分组转换为书签文件夹</translation>
 <translation id="3156511682997763015">快进 10 秒</translation>
 <translation id="3157330780336267229">如需分享或加入标签页分组，您需要开启同步功能</translation>
@@ -4885,7 +4885,7 @@
 <translation id="4333854382783149454">PKCS #1，带有 RSA 加密的 SHA-1</translation>
 <translation id="4334768748331667190">系统不会再向您显示<ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">“安全浏览”功能已关闭</translation>
-<translation id="4336967529148557673">您需要先登录，然后 Chromium 才能完成此任务</translation>
+<translation id="4336967529148557673">您需要先登录，然后 Vortex 才能完成此任务</translation>
 <translation id="4338363401382232853">分屏窗口建议</translation>
 <translation id="4339203724549370495">卸载应用</translation>
 <translation id="4340125850502689798">用户名无效</translation>
@@ -5724,7 +5724,7 @@
 <translation id="4918762404810341788">复制并打开</translation>
 <translation id="4918844574251943176">已复制图片</translation>
 <translation id="4921348630401250116">文字转语音</translation>
-<translation id="4922104989726031751">若要在您的操作系统中使用密码管理工具，请重新启动 Chromium 并允许使用计算机的密码管理工具。待 Chromium 重新启动后，您的标签页会自动重新打开。</translation>
+<translation id="4922104989726031751">若要在您的操作系统中使用密码管理工具，请重新启动 Vortex 并允许使用计算机的密码管理工具。待 Vortex 重新启动后，您的标签页会自动重新打开。</translation>
 <translation id="4923561999941435531">{0,plural, =1{将 1 项内容保存在账号中}other{将 # 项内容保存在账号中}}</translation>
 <translation id="492363500327720082">正在卸载 <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">显示标签页分组</translation>

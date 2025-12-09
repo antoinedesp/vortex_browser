@@ -988,7 +988,7 @@ Na tym koncie mogą obowiązywać uprawnienia przyznane wcześniej aplikacjom. U
 <translation id="1651633344379798952">Wypróbuj Obiektyw Google na telefonie</translation>
 <translation id="1652281434788353738">Refleksyjny</translation>
 <translation id="1652326691684645429">Włącz Udostępnianie w pobliżu</translation>
-<translation id="1652862280638399816">Aby używać Menedżera haseł z pękiem kluczy macOS, uruchom ponownie Chromium i zezwól na dostęp do pęku kluczy. Po ponownym uruchomieniu karty zostaną otwarte.</translation>
+<translation id="1652862280638399816">Aby używać Menedżera haseł z pękiem kluczy macOS, uruchom ponownie Vortex i zezwól na dostęp do pęku kluczy. Po ponownym uruchomieniu karty zostaną otwarte.</translation>
 <translation id="1653958716132599769">Grupuj powiązane karty</translation>
 <translation id="1654580009054503925">Nie zezwolono na wyświetlanie żądań</translation>
 <translation id="1654713139320245449">Nie znaleziono miejsc docelowych przesyłania. Potrzebujesz pomocy?</translation>
@@ -1295,7 +1295,7 @@ Na tym koncie mogą obowiązywać uprawnienia przyznane wcześniej aplikacjom. U
 <translation id="186612162884103683">„<ph name="EXTENSION" />” może odczytywać oraz zapisywać pliki graficzne, wideo i dźwiękowe z wybranych lokalizacji.</translation>
 <translation id="1866589962721094893">Zezwól aplikacjom na Androida na sterowanie urządzeniami USB na tym Chromebooku. Prośba o pozwolenie będzie wysyłana za każdym razem, gdy podłączysz urządzenie USB. Poszczególne aplikacje na Androida będą prosić o dodatkowe uprawnienia.</translation>
 <translation id="1867780286110144690">Przeglądarka <ph name="PRODUCT_NAME" /> jest gotowa do ukończenia instalacji</translation>
-<translation id="1868553836791672080">W Chromium sprawdzanie haseł nie jest dostępne</translation>
+<translation id="1868553836791672080">W Vortex sprawdzanie haseł nie jest dostępne</translation>
 <translation id="1868617395637139709">Używaj lokalizacji na potrzeby aplikacji na Androida i jego usług.</translation>
 <translation id="1869433484041798909">Przycisk zakładki</translation>
 <translation id="1871098866036088250">Otwórz w przeglądarce Chrome</translation>
@@ -1577,7 +1577,7 @@ Możesz zarządzać ustawieniami konta, korzystając z aplikacji Family Link na
 <translation id="2059913712424898428">Strefa czasowa</translation>
 <translation id="2060375639911876205">Usuń profil eSIM</translation>
 <translation id="2061366302742593739">Brak wydatków do wyświetlenia</translation>
-<translation id="2061589908388230480">Jeśli Chromium wykryje, że któreś z Twoich haseł zostało ujawnione w wyniku publicznego naruszenia bezpieczeństwa danych, to gdy się zalogujesz, Menedżer haseł Google może Ci zaproponować zmianę hasła. <ph name="BEGIN_LINK" />Więcej informacji o automatycznym zmienianiu hasła<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Jeśli Vortex wykryje, że któreś z Twoich haseł zostało ujawnione w wyniku publicznego naruszenia bezpieczeństwa danych, to gdy się zalogujesz, Menedżer haseł Google może Ci zaproponować zmianę hasła. <ph name="BEGIN_LINK" />Więcej informacji o automatycznym zmienianiu hasła<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Korzystaj z internetu w oknie incognito, aby nie zapisywać historii przeglądania</translation>
 <translation id="206308717637808771">Usuń dane w momencie zamknięcia wszystkich okien. Dane są traktowane tak samo jak strona, którą przeglądasz.</translation>
 <translation id="2066700471214517561">Mikrofon kształtujący wiązkę sprawia, że osoba korzystająca z Chromebooka jest wyraźnie słyszana.</translation>
@@ -2411,7 +2411,7 @@ Możesz zarządzać ustawieniami konta, korzystając z aplikacji Family Link na
 <translation id="2642111877055905627">Piłka nożna</translation>
 <translation id="2642206811783203764">Zawsze na <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">Zawsze możesz usunąć dane pomiarowe reklam, usuwając dane przeglądania</translation>
-<translation id="2643379881528582459">Gdy Chromium wykryje, że któreś z Twoich haseł zostało ujawnione w wyniku naruszenia bezpieczeństwa danych, to gdy się zalogujesz, może Ci zaproponować zmianę hasła</translation>
+<translation id="2643379881528582459">Gdy Vortex wykryje, że któreś z Twoich haseł zostało ujawnione w wyniku naruszenia bezpieczeństwa danych, to gdy się zalogujesz, może Ci zaproponować zmianę hasła</translation>
 <translation id="2643698698624765890">Aby zarządzać zainstalowanymi rozszerzeniami, kliknij Rozszerzenia w menu Okno.</translation>
 <translation id="2645047101481282803">Twoim urządzeniem zarządza <ph name="PROFILE_NAME" /></translation>
 <translation id="2645388244376970260">Przesyłam tę kartę na: <ph name="DEVICE_NAME" /></translation>
@@ -3148,7 +3148,7 @@ Domena <ph name="DOMAIN" /> wymaga, by karta inteligentna pozostała w gnieźdz
 <translation id="3151786313568798007">Orientacja</translation>
 <translation id="3152356229013609796">Wyświetlaj powiadomienia z telefonu, odpowiadaj na nie i je zamykaj</translation>
 <translation id="3154754096046236400">Spersonalizowany kontekst</translation>
-<translation id="3155163173539279776">Ponownie uruchom Chromium</translation>
+<translation id="3155163173539279776">Ponownie uruchom Vortex</translation>
 <translation id="3155394504825881014">Przekształć grupę kart w folder zakładek</translation>
 <translation id="3156511682997763015">Przewiń do przodu o 10 sekund</translation>
 <translation id="3157330780336267229">Aby udostępniać grupy kart lub do nich dołączać, musisz włączyć synchronizację</translation>
@@ -4876,7 +4876,7 @@ Domena <ph name="DOMAIN" /> wymaga, by karta inteligentna pozostała w gnieźdz
 <translation id="4333854382783149454">PKCS #1, SHA-1 z szyfrowaniem RSA</translation>
 <translation id="4334768748331667190"><ph name="MODULE_NAME" /> nie pojawi się ponownie</translation>
 <translation id="4335835283689002019">Bezpieczne przeglądanie jest wyłączone</translation>
-<translation id="4336967529148557673">Aby przeglądarka Chromium mogła dokończyć to zadanie, musisz się zalogować</translation>
+<translation id="4336967529148557673">Aby przeglądarka Vortex mogła dokończyć to zadanie, musisz się zalogować</translation>
 <translation id="4338363401382232853">Sugestia dotycząca okien na podzielonym ekranie</translation>
 <translation id="4339203724549370495">Odinstaluj aplikację</translation>
 <translation id="4340125850502689798">Nieprawidłowa nazwa użytkownika</translation>
@@ -5715,7 +5715,7 @@ Aby pomniejszyć, naciśnij Ctrl + Alt + zmniejsz jasność.</translation>
 <translation id="4918762404810341788">Skopiuj i otwórz</translation>
 <translation id="4918844574251943176">Zdjęcie zostało skopiowane</translation>
 <translation id="4921348630401250116">Zamiana tekstu na mowę</translation>
-<translation id="4922104989726031751">Aby używać Menedżera haseł w swoim systemie operacyjnym, uruchom ponownie Chromium i zezwól na dostęp do menedżera haseł na komputerze. Po ponownym uruchomieniu karty zostaną otwarte.</translation>
+<translation id="4922104989726031751">Aby używać Menedżera haseł w swoim systemie operacyjnym, uruchom ponownie Vortex i zezwól na dostęp do menedżera haseł na komputerze. Po ponownym uruchomieniu karty zostaną otwarte.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Zapisz 1 element na koncie}few{Zapisz # elementy na koncie}many{Zapisz # elementów na koncie}other{Zapisz # elementu na koncie}}</translation>
 <translation id="492363500327720082">Odinstalowuję <ph name="APP_NAME" />...</translation>
 <translation id="4923977675318667854">Pokaż grupy kart</translation>

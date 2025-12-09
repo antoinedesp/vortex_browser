@@ -985,7 +985,7 @@ A questo account potrebbero essere applicate le autorizzazioni già concesse all
 <translation id="1651633344379798952">Prova Google Lens sul tuo smartphone</translation>
 <translation id="1652281434788353738">Pensieroso</translation>
 <translation id="1652326691684645429">Attiva Condivisione nelle vicinanze</translation>
-<translation id="1652862280638399816">Per usare Gestore delle password con il Portachiavi di macOS, riavvia Chromium e consenti l'accesso al Portachiavi. Le schede verranno riaperte dopo il riavvio.</translation>
+<translation id="1652862280638399816">Per usare Gestore delle password con il Portachiavi di macOS, riavvia Vortex e consenti l'accesso al Portachiavi. Le schede verranno riaperte dopo il riavvio.</translation>
 <translation id="1653958716132599769">Raggruppa le schede correlate</translation>
 <translation id="1654580009054503925">Non autorizzate a mostrare richieste</translation>
 <translation id="1654713139320245449">Nessuna destinazione per la trasmissione. Serve aiuto?</translation>
@@ -1292,7 +1292,7 @@ A questo account potrebbero essere applicate le autorizzazioni già concesse all
 <translation id="186612162884103683">L'estensione "<ph name="EXTENSION" />" può leggere e scrivere file di immagini, video e audio nelle posizioni selezionate.</translation>
 <translation id="1866589962721094893">Concedi alle app per Android il controllo dei dispositivi USB su questo Chromebook. L'autorizzazione verrà richiesta ogni volta che inserisci un dispositivo USB. Le singole app per Android richiederanno autorizzazioni aggiuntive.</translation>
 <translation id="1867780286110144690"><ph name="PRODUCT_NAME" /> è pronto a completare l'installazione</translation>
-<translation id="1868553836791672080">Il controllo delle password non è disponibile in Chromium</translation>
+<translation id="1868553836791672080">Il controllo delle password non è disponibile in Vortex</translation>
 <translation id="1868617395637139709">Utilizza la posizione del dispositivo per i servizi Android e le app.</translation>
 <translation id="1869433484041798909">Pulsante Preferito</translation>
 <translation id="1871098866036088250">Apri nel browser Chrome</translation>
@@ -1575,7 +1575,7 @@ Puoi gestire le impostazioni dell'account installando l'app Family Link su quest
 <translation id="2059913712424898428">Fuso orario</translation>
 <translation id="2060375639911876205">Rimuovi profilo eSIM</translation>
 <translation id="2061366302742593739">Nulla da mostrare</translation>
-<translation id="2061589908388230480">Se Chromium rileva che una delle tue password è stata compromessa nell'ambito di una violazione dei dati pubblici, Gestore delle password di Google può offrirti di cambiarla automaticamente se hai eseguito l'accesso. <ph name="BEGIN_LINK" />Scopri di più sulla modifica automatica delle password<ph name="END_LINK" /></translation>
+<translation id="2061589908388230480">Se Vortex rileva che una delle tue password è stata compromessa nell'ambito di una violazione dei dati pubblici, Gestore delle password di Google può offrirti di cambiarla automaticamente se hai eseguito l'accesso. <ph name="BEGIN_LINK" />Scopri di più sulla modifica automatica delle password<ph name="END_LINK" /></translation>
 <translation id="2062354623176996748">Apri una finestra di navigazione in incognito per esplorare il Web senza salvare la tua cronologia di navigazione</translation>
 <translation id="206308717637808771">Elimina i dati alla chiusura di tutte le finestre. I dati vengono trattati allo stesso modo del sito che stai visualizzando</translation>
 <translation id="2066700471214517561">Microfono beamforming per un audio nitido della persona che utilizza Chromebook.</translation>
@@ -3161,7 +3161,7 @@ Puoi gestire le impostazioni dell'account installando l'app Family Link su quest
 <translation id="3151786313568798007">Orientamento</translation>
 <translation id="3152356229013609796">Visualizza, ignora e rispondi alle notifiche del tuo telefono</translation>
 <translation id="3154754096046236400">Suggerimenti su misura</translation>
-<translation id="3155163173539279776">Riavvia Chromium</translation>
+<translation id="3155163173539279776">Riavvia Vortex</translation>
 <translation id="3155394504825881014">Converti un gruppo di schede in una cartella di preferiti</translation>
 <translation id="3156511682997763015">Avanti di 10 secondi</translation>
 <translation id="3157330780336267229">Per partecipare a gruppi di schede o condividerli, devi attivare la sincronizzazione</translation>
@@ -4895,7 +4895,7 @@ Puoi gestire le impostazioni dell'account installando l'app Family Link su quest
 <translation id="4333854382783149454">PKCS #1 SHA-1 con crittografia RSA</translation>
 <translation id="4334768748331667190">Non vedrai più <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">Navigazione sicura non attiva</translation>
-<translation id="4336967529148557673">Devi accedere per consentire a Chromium di completare questa attività</translation>
+<translation id="4336967529148557673">Devi accedere per consentire a Vortex di completare questa attività</translation>
 <translation id="4338363401382232853">Suggerimento per le finestre dello schermo diviso</translation>
 <translation id="4339203724549370495">Disinstalla app</translation>
 <translation id="4340125850502689798">Nome utente non valido</translation>
@@ -5732,7 +5732,7 @@ Premi Ctrl + Alt + Diminuisci luminosità per diminuire lo zoom.</translation>
 <translation id="4918762404810341788">Copia e apri</translation>
 <translation id="4918844574251943176">Immagine copiata</translation>
 <translation id="4921348630401250116">Sintesi vocale</translation>
-<translation id="4922104989726031751">Per usare Gestore delle password con il tuo sistema operativo, riavvia Chromium e consenti l'accesso al gestore delle password del tuo computer. Le schede verranno riaperte dopo il riavvio.</translation>
+<translation id="4922104989726031751">Per usare Gestore delle password con il tuo sistema operativo, riavvia Vortex e consenti l'accesso al gestore delle password del tuo computer. Le schede verranno riaperte dopo il riavvio.</translation>
 <translation id="4923561999941435531">{0,plural, =1{Salva 1 elemento nell'account}other{Salva # elementi nell'account}}</translation>
 <translation id="492363500327720082">Disinstallazione di <ph name="APP_NAME" />…</translation>
 <translation id="4923977675318667854">Mostra gruppi di schede</translation>

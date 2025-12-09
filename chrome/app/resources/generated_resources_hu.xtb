@@ -986,7 +986,7 @@ Az alkalmazások számára már megadott engedélyek erre a fiókra is érvénye
 <translation id="1651633344379798952">A Google Lens kipróbálása telefonon</translation>
 <translation id="1652281434788353738">Elmélyült</translation>
 <translation id="1652326691684645429">Közeli megosztás bekapcsolása</translation>
-<translation id="1652862280638399816">Ha a Jelszókezelőt a macOS Keychain szolgáltatásával szeretné használni, indítsa újra a Chromiumot, és engedélyezze a Keychain-hozzáférést. Megnyitott lapjai az újraindítás után újra meg fognak nyílni.</translation>
+<translation id="1652862280638399816">Ha a Jelszókezelőt a macOS Keychain szolgáltatásával szeretné használni, indítsa újra a Vortexot, és engedélyezze a Keychain-hozzáférést. Megnyitott lapjai az újraindítás után újra meg fognak nyílni.</translation>
 <translation id="1653958716132599769">Kapcsolódó lapok csoportosítása</translation>
 <translation id="1654580009054503925">Nem jeleníthet meg kérelmeket</translation>
 <translation id="1654713139320245449">Nem található átküldési cél. Segítségre van szüksége?</translation>
@@ -1301,7 +1301,7 @@ Az alkalmazások számára már megadott engedélyek erre a fiókra is érvénye
 <translation id="186612162884103683">A(z) „<ph name="EXTENSION" />” olvashat és írhat képeket, videókat és hangfájlokat a megjelölt helyeken.</translation>
 <translation id="1866589962721094893">Az USB-eszközök feletti irányítás átadása az Android-alkalmazásoknak ezen a Chromebookon. A rendszer minden alkalommal engedélyt kér, amikor Ön USB-eszközt csatlakoztat. Az egyes Android-alkalmazások további engedélyeket kérnek.</translation>
 <translation id="1867780286110144690">A <ph name="PRODUCT_NAME" /> készen áll a telepítés befejezésére</translation>
-<translation id="1868553836791672080">A Jelszóellenőrzés nem áll rendelkezésre Chromium böngészőben</translation>
+<translation id="1868553836791672080">A Jelszóellenőrzés nem áll rendelkezésre Vortex böngészőben</translation>
 <translation id="1868617395637139709">Helyadatok használata Android-alkalmazásokhoz és -szolgáltatásokhoz.</translation>
 <translation id="1869433484041798909">Könyvjelző gomb</translation>
 <translation id="1871098866036088250">Megnyitás a Chrome böngészőben</translation>
@@ -1583,7 +1583,7 @@ Ha kezelni szeretné a fiók beállításait, telepítse eszközére a Family Li
 <translation id="2059913712424898428">Időzóna</translation>
 <translation id="2060375639911876205">Az eSIM-profil eltávolítása</translation>
 <translation id="2061366302742593739">Nincs megjeleníthető elem</translation>
-<translation id="2061589908388230480">Ha a Chromium megtalálja az Ön egyik jelszavát egy nyilvános adatvédelmi incidensben, akkor amikor be van jelentkezve, a Google Jelszókezelő felajánlhatja, hogy módosítja az Ön jelszavát. <ph name="BEGIN_LINK" />További információ az automatizált jelszómódosításról<ph name="END_LINK" />.</translation>
+<translation id="2061589908388230480">Ha a Vortex megtalálja az Ön egyik jelszavát egy nyilvános adatvédelmi incidensben, akkor amikor be van jelentkezve, a Google Jelszókezelő felajánlhatja, hogy módosítja az Ön jelszavát. <ph name="BEGIN_LINK" />További információ az automatizált jelszómódosításról<ph name="END_LINK" />.</translation>
 <translation id="2062354623176996748">Internetezzen a böngészési előzmények mentése nélkül inkognitó ablakban</translation>
 <translation id="206308717637808771">Adatok törlése az összes ablak bezárásakor. Az adatokat a rendszer ugyanúgy kezeli, mint az éppen megtekintett webhelyet.</translation>
 <translation id="2066700471214517561">Nyalábformáló mikrofon, hogy a Chromebookot használó személy hangja tisztán szóljon.</translation>
@@ -2435,7 +2435,7 @@ Ha kezelni szeretné a fiók beállításait, telepítse eszközére a Family Li
 <translation id="2642111877055905627">Focilabda</translation>
 <translation id="2642206811783203764">Mindig engedélyezve itt: <ph name="SITE_NAME" /></translation>
 <translation id="2643064289437760082">A hirdetésmérési adatokat bármikor törölheti a böngészési adatok törlésével.</translation>
-<translation id="2643379881528582459">Ha a Chromium nyilvános adatvédelmi incidenst észlel az egyik jelszavával kapcsolatban, akkor a bejelentkezéskor felajánlhatja Önnek, hogy módosítsa a jelszavát</translation>
+<translation id="2643379881528582459">Ha a Vortex nyilvános adatvédelmi incidenst észlel az egyik jelszavával kapcsolatban, akkor a bejelentkezéskor felajánlhatja Önnek, hogy módosítsa a jelszavát</translation>
 <translation id="2643698698624765890">Bővítményeit az Ablak menü Bővítmények elemére kattintva kezelheti.</translation>
 <translation id="2645047101481282803">Az eszközét a következő kezeli: <ph name="PROFILE_NAME" />.</translation>
 <translation id="2645388244376970260">Az aktuális lap átküldése folyamatban van ide: <ph name="DEVICE_NAME" /></translation>
@@ -3171,7 +3171,7 @@ A(z) <ph name="DOMAIN" /> megköveteli, hogy ne távolítsa el az intelligens k�
 <translation id="3151786313568798007">Tájolás</translation>
 <translation id="3152356229013609796">Megtekintheti, elvetheti és megválaszolhatja telefonja értesítéseit</translation>
 <translation id="3154754096046236400">Személyes kontextus</translation>
-<translation id="3155163173539279776">A Chromium újraindítása</translation>
+<translation id="3155163173539279776">A Vortex újraindítása</translation>
 <translation id="3155394504825881014">Lapcsoport konvertálása könyvjelzőmappává</translation>
 <translation id="3156511682997763015">Előre 10 másodpercet</translation>
 <translation id="3157330780336267229">Lapcsoportok megosztásához vagy a hozzájuk való csatlakozáshoz be kell kapcsolnia a szinkronizálást</translation>
@@ -4906,7 +4906,7 @@ Elindítja a következőt: <ph name="CONTROL_PANEL_APPLET_NAME" />?</translation
 <translation id="4333854382783149454">PKCS #1 SHA-1 RSA titkosítással</translation>
 <translation id="4334768748331667190">A továbbiakban nem jelenik meg <ph name="MODULE_NAME" /></translation>
 <translation id="4335835283689002019">A Biztonságos Böngészés ki van kapcsolva</translation>
-<translation id="4336967529148557673">A Chromium csak bejelentkezés után tudja befejezni ezt a feladatot</translation>
+<translation id="4336967529148557673">A Vortex csak bejelentkezés után tudja befejezni ezt a feladatot</translation>
 <translation id="4338363401382232853">Osztott képernyős ablakra vonatkozó javaslat</translation>
 <translation id="4339203724549370495">Alkalmazás eltávolítása</translation>
 <translation id="4340125850502689798">Érvénytelen felhasználónév</translation>
@@ -5745,7 +5745,7 @@ kicsinyítéshez pedig a Ctrl + Alt + Fényerő csökkentése billentyűpara
 <translation id="4918762404810341788">Másolás és megnyitás</translation>
 <translation id="4918844574251943176">Kép másolva</translation>
 <translation id="4921348630401250116">Szövegfelolvasás</translation>
-<translation id="4922104989726031751">Ha az operációs rendszerrel szeretné használni a Jelszókezelőt, indítsa újra a Chromiumot, és engedélyezze a számítógép jelszókezelőjéhez való hozzáférést. Megnyitott lapjai az újraindítás után újra meg fognak nyílni.</translation>
+<translation id="4922104989726031751">Ha az operációs rendszerrel szeretné használni a Jelszókezelőt, indítsa újra a Vortexot, és engedélyezze a számítógép jelszókezelőjéhez való hozzáférést. Megnyitott lapjai az újraindítás után újra meg fognak nyílni.</translation>
 <translation id="4923561999941435531">{0,plural, =1{1 elem mentése a fiókba}other{# elem mentése a fiókba}}</translation>
 <translation id="492363500327720082"><ph name="APP_NAME" /> eltávolítása…</translation>
 <translation id="4923977675318667854">Lapcsoportok megjelenítése</translation>
@@ -10368,7 +10368,7 @@ A kulcsfájlt tartsa biztonságos helyen. Szüksége lesz rá ahhoz, hogy új ve
 <translation id="8146177459103116374">Ha már regisztrálva van ezen az eszközön, akkor <ph name="LINK2_START" />bejelentkezhet meglévő felhasználóként<ph name="LINK2_END" />.</translation>
 <translation id="8146287226035613638">Vegye fel a listára, és rangsorolja az előnyben részesített nyelveit. A webhelyek szövege a preferált nyelveken jelenik meg, ha lehetséges. Ezeket a preferenciákat a rendszer szinkronizálja a böngésző beállításaival. <ph name="BEGIN_LINK_LEARN_MORE" />További információ<ph name="END_LINK_LEARN_MORE" />.</translation>
 <translation id="8146793085009540321">Sikertelen bejelentkezés. Kérjük, forduljon rendszergazdájához, vagy próbálja újra.</translation>
-<translation id="8147346945017130012">Segítse a Chrome és a Chromium OS funkcióinak és teljesítményének javítását azzal, hogy automatikusan elküldi a hibajelentéseket, valamint a diagnosztikai és használati adatokat a Google-nak.</translation>
+<translation id="8147346945017130012">Segítse a Chrome és a Vortex OS funkcióinak és teljesítményének javítását azzal, hogy automatikusan elküldi a hibajelentéseket, valamint a diagnosztikai és használati adatokat a Google-nak.</translation>
 <translation id="8147900440966275470"><ph name="NUM" /> lapot találtunk</translation>
 <translation id="814870937590541483">További műveletek Google Drive-fájlokhoz</translation>
 <translation id="8148760431881541277">Bejelentkezés korlátozása</translation>
