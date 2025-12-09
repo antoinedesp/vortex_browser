@@ -1,0 +1,17 @@
+{
+  "commitish" : "v4.2.0",
+  "iOS" : [
+    {
+      "name" : "Mixpanel",
+      "container" : "Mixpanel.xcframework",
+      "identifier" : "ios-arm64",
+      "hash" : "afff649823d8733e3b0f376da77117bfee8355de3a17e2b8a97ef2a0ab89337a"
+    },
+    {
+      "name" : "Mixpanel",
+      "container" : "Mixpanel.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "hash" : "1a52cdb2476c6c393b6eb6458b7d1039f396f01f8c6203a3c17f56940f3e11df"
+    }
+  ]
+}
