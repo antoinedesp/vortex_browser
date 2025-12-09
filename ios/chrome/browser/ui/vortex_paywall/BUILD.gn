@@ -1,0 +1,29 @@
+# ios/chrome/browser/ui/vortex_paywall/BUILD.gn
+
+import("//build/config/ios/config.gni")
+
+source_set("vortex_paywall") {
+  sources = [
+    "vortex_paywall_item.h",
+    "vortex_paywall_item.mm",
+    "vortex_paywall_consumer.h",
+    "vortex_paywall_view_controller.h",
+    "vortex_paywall_view_controller.mm",
+    "vortex_paywall_mediator.h",
+    "vortex_paywall_mediator.mm",
+    "vortex_paywall_coordinator.h",
+    "vortex_paywall_coordinator.mm",
+  ]
+
+  deps = [
+    # Common iOS UI utilities; copy the ones used by a nearby feature.
+    "//base",
+    "//ios/chrome/browser/shared/model/browser",
+    "//ios/chrome/browser/shared/public/commands:commands",
+    "//ios/chrome/browser/shared/coordinator/chrome_coordinator:chrome_coordinator",
+    "//ios/chrome/common/ui/colors:colors",
+    "//third_party/revenuecat:revenuecat_ios",
+    "//ios/chrome/browser/vortex_plus:vortex_plus",
+    "//ios/chrome/browser/shared/model/url:constants",
+  ]
+}
