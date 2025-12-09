@@ -34,7 +34,7 @@ Bularni hisobga olish kerak:
 
   • Sinxronizatsiya yoqilsa, koʻrsatkichlarga siz kiritgan URL manzillar ham biriktiriladi.
 <ph name="END_INDENT" /></translation>
-<translation id="1554731936187952550">Sizdagi Chromium zararli saytlarga qarshi eng kuchli himoya tizimiga ega</translation>
+<translation id="1554731936187952550">Sizdagi Vortex zararli saytlarga qarshi eng kuchli himoya tizimiga ega</translation>
 <translation id="155816064895200734">Chrome birlamchi brauzer boʻlsin</translation>
 <translation id="1580570086594302477">Chromeda yangi inkognito varaq ochadi.</translation>
 <translation id="1646463005043273333">Chromeni birlamchi brauzer etib belgilash Chrome sozlamasini ochadi.</translation>
@@ -254,7 +254,7 @@ Chromeni yaxshilashda ishlatiladigan maʼlumotlar qoʻshimcha sozlamalarini <ph 
 <translation id="6924922227983877439">Havolalarni doim Chromeda oching</translation>
 <translation id="6975725306479268850">Avtomatik kiritish uchun Chromeni tanlang</translation>
 <translation id="7001031184470316752">Chromeni dok-panelga oling</translation>
-<translation id="7038674195294813388">iOS sozlamalarida Birlamchi ilovalar sahifasini ochib, “Brauzer ilovasi” ustiga bosing va Chromiumni tanlang.</translation>
+<translation id="7038674195294813388">iOS sozlamalarida Birlamchi ilovalar sahifasini ochib, “Brauzer ilovasi” ustiga bosing va Vortexni tanlang.</translation>
 <translation id="7056826488869329999">Chromeda xavfsizliktekshiruvini ishga tushiradi.</translation>
 <translation id="7061455974939528301">Chrome belgisini bosib turing va "Bosh ekranni tahrirlash" ustiga bosing</translation>
 <translation id="7124339256045485976">Chrome brauzerini yangilab boring</translation>
@@ -288,7 +288,7 @@ Chromeni yaxshilashda ishlatiladigan maʼlumotlar qoʻshimcha sozlamalarini <ph 
 <translation id="7599894504325210080">Chrome avtomatik kiritish panelining yoyilgan shakli</translation>
 <translation id="7617512710641355143">Chrome boshqariladi</translation>
 <translation id="7626032353295482388">Chrome brauzeriga xush kelibsiz!</translation>
-<translation id="7641448682796883218">Chromium maslahati: Saytlarni kuchaytirilgan rejimda xavfsiz kezish</translation>
+<translation id="7641448682796883218">Vortex maslahati: Saytlarni kuchaytirilgan rejimda xavfsiz kezish</translation>
 <translation id="7642373780953416937">Maxfiylik va xavfsizlikka oid muammolar avtomatik aniqlanganda Chrome bu haqida xabar qiladi.</translation>
 <translation id="7660356333829433649">Chromedan unumli foydalanish maslahatlarini olish uchun keyinroq qayta tekshiring.</translation>
 <translation id="7662994914830945754">Boshqa qurilmalardagi Chrome varaqlarini koʻrish uchun hisobga kiring va sinxronizatsiyani yoqing</translation>
