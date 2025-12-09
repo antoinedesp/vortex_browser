@@ -6,6 +6,8 @@ source_set("instruction_view") {
   sources = [
     "instruction_view.h",
     "instruction_view.mm",
+    "vortex_instruction_view.h",
+    "vortex_instruction_view.mm",
   ]
   deps = [
     ":constants",
