@@ -659,18 +659,6 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                          [weakSelf reportAnIssue];
                                        }];
 
-  self.helpAction =
-      [self createOverflowMenuActionWithNameID:IDS_IOS_TOOLS_MENU_HELP_MOBILE
-                                    actionType:overflow_menu::ActionType::Help
-                                    symbolName:kHelpSymbol
-                                  systemSymbol:YES
-                              monochromeSymbol:NO
-                               accessibilityID:kToolsMenuHelpId
-                                  hideItemText:nil
-                                       handler:^{
-                                         [weakSelf openHelp];
-                                       }];
-
   self.shareChromeAction = [self
       createOverflowMenuActionWithNameID:IDS_IOS_OVERFLOW_MENU_SHARE_CHROME
                               actionType:overflow_menu::ActionType::ShareChrome
@@ -1655,7 +1643,6 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     [helpActions addObject:self.reportIssueAction];
   }
 
-  [helpActions addObject:self.helpAction];
   [helpActions addObject:self.shareChromeAction];
 
   self.helpActionsGroup.actions = helpActions;
@@ -2244,8 +2231,6 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return self.textZoomAction;
     case overflow_menu::ActionType::ReportAnIssue:
       return self.reportIssueAction;
-    case overflow_menu::ActionType::Help:
-      return self.helpAction;
     case overflow_menu::ActionType::ShareChrome:
       return self.shareChromeAction;
     case overflow_menu::ActionType::EditActions:
@@ -2281,7 +2266,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::ActionType::NewIncognitoTab:
     case overflow_menu::ActionType::NewWindow:
     case overflow_menu::ActionType::ReportAnIssue:
-    case overflow_menu::ActionType::Help:
+//    case overflow_menu::ActionType::Help:
     case overflow_menu::ActionType::ShareChrome:
     case overflow_menu::ActionType::EditActions:
       NOTREACHED();

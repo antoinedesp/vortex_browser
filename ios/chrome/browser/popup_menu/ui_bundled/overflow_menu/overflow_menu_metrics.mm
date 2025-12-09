@@ -65,8 +65,8 @@ IOSOverflowMenuAction HistogramActionFromActionType(
       return IOSOverflowMenuAction::kTextZoom;
     case overflow_menu::ActionType::ReportAnIssue:
       return IOSOverflowMenuAction::kReportAnIssue;
-    case overflow_menu::ActionType::Help:
-      return IOSOverflowMenuAction::kHelp;
+//    case overflow_menu::ActionType::Help:
+//      return IOSOverflowMenuAction::kHelp;
     case overflow_menu::ActionType::ShareChrome:
       return IOSOverflowMenuAction::kShareChrome;
     case overflow_menu::ActionType::EditActions:

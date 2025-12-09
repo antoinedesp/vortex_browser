@@ -45,7 +45,7 @@ enum class ActionType {
   FindInPage,
   TextZoom,
   ReportAnIssue,
-  Help,
+  // Help,
   ShareChrome,
   EditActions,
   LensOverlay,

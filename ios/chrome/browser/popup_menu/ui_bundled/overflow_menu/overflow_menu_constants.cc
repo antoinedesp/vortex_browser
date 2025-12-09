@@ -104,9 +104,11 @@ std::optional<ActionType> ActionTypeForStringName(std::string action) {
     return overflow_menu::ActionType::TextZoom;
   } else if (action == "ReportAnIssue") {
     return overflow_menu::ActionType::ReportAnIssue;
-  } else if (action == "Help") {
-    return overflow_menu::ActionType::Help;
-  } else if (action == "ShareChrome") {
+  }
+// else if (action == "Help") {
+//    return overflow_menu::ActionType::Help;
+//  }
+  else if (action == "ShareChrome") {
     return overflow_menu::ActionType::ShareChrome;
   } else if (action == "EditActions") {
     return overflow_menu::ActionType::EditActions;
@@ -157,8 +159,8 @@ std::string StringNameForActionType(ActionType action) {
       return "TextZoom";
     case overflow_menu::ActionType::ReportAnIssue:
       return "ReportAnIssue";
-    case overflow_menu::ActionType::Help:
-      return "Help";
+    // case overflow_menu::ActionType::Help:
+    //  return "Help";
     case overflow_menu::ActionType::ShareChrome:
       return "ShareChrome";
     case overflow_menu::ActionType::EditActions:
