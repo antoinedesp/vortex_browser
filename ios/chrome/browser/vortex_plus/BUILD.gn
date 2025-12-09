@@ -1,0 +1,16 @@
+# ios/chrome/browser/vortex_plus/BUILD.gn
+
+import("//build/config/ios/config.gni")
+
+source_set("vortex_plus") {
+  sources = [
+    "vortex_plus_manager.h",
+    "vortex_plus_manager.mm",
+  ]
+
+  deps = [
+    "//base",
+    "//ios/chrome/browser/shared/model/browser",
+    "//third_party/revenuecat:revenuecat_ios",
+  ]
+}
