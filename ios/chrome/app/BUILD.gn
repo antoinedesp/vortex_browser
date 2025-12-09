@@ -392,6 +392,12 @@ source_set("app_internal") {
     "startup_tasks.mm",
   ]
 
+  if(vortex_enable_revenuecat) {
+    sources += [ 
+      "vortex_revenuecat_initializer.mm", 
+    ]
+  }
+
   if (ios_enable_sandbox_dump) {
     sources += [
       "dump_documents_statistics.h",
@@ -561,6 +567,8 @@ source_set("app_internal") {
     "//ui/gfx",
     "//ui/resources",
     "//ui/strings:ui_strings",
+    # ⬇️ VORTEX: Add VPN manager
+    "//ios/chrome/browser/vortex_vpn:vortex_vpn",
   ]
 
   if (target_environment != "catalyst") {
@@ -577,6 +585,12 @@ source_set("app_internal") {
       "//ios/chrome/browser/rlz",
     ]
   }
+
+  if (vortex_enable_revenuecat) {
+    deps += [ "//ios/chrome/browser/vortex_plus:vortex_plus", "//third_party/revenuecat:revenuecat_ios", ]
+  }
+
+  deps += [ "//third_party/mixpanel:mixpanel_ios" ]
 
   frameworks = [ "MediaPlayer.framework" ]
 
@@ -721,6 +735,11 @@ chrome_app("chrome") {
     "//ios/chrome/app/resources",
     "//ios/chrome/app/resources:settings_resources",
   ]
+  if (vortex_enable_revenuecat) {
+    bundle_deps += [
+      "//third_party/revenuecat:revenuecat_ios_framework_bundle",
+    ]
+  }
   if (!is_chrome_branded || ios_chrome_app_variants == []) {
     assert(ios_application_icons_target != "",
            "ios_application_icons_target must be defined.")
@@ -785,6 +804,7 @@ chrome_app("chrome") {
     if (ios_enable_push_notification_service_extension) {
       bundle_deps += [ ":push_notification_service_extension_bundle" ]
     }
+
   }
 
   extra_substitutions = [
@@ -820,7 +840,6 @@ chrome_app("chrome") {
 }
 
 if (current_toolchain == default_toolchain && !ios_chrome_generate_order_file) {
-  _extension_toolchain = "${current_toolchain}_app_ext"
   if (ios_enable_share_extension) {
     extension_bundle_data("share_extension_bundle") {
       extension_name = "share_extension.appex"
