@@ -26,28 +26,28 @@ assert(xcode_version_int >= 2600 || target_environment == "catalyst",
 
 declare_args() {
   # Enable share extension.
-  ios_enable_share_extension = true
+  ios_enable_share_extension = false
 
   # Enable the new share extension UI and entry points.
-  ios_enable_extended_share_extension = true
+  ios_enable_extended_share_extension = false
 
   # Enable open in extension.
-  ios_enable_open_extension = true
+  ios_enable_open_extension = false
 
   # Enable credential provider extension.
-  ios_enable_credential_provider_extension = true
+  ios_enable_credential_provider_extension = false
 
   # Enable intents extension.
-  ios_enable_intents_extension = true
+  ios_enable_intents_extension = false
 
   # Enable iOS 14, WidgetKit extension.
-  ios_enable_widget_kit_extension = true
+  ios_enable_widget_kit_extension = false
 
   # Enable iOS 16 lockscreen widget in WidgetKit extension.
-  ios_enable_lockscreen_widget = true
+  ios_enable_lockscreen_widget = false
 
   # Enable iOS Push Notification Service extension.
-  ios_enable_push_notification_service_extension = true
+  ios_enable_push_notification_service_extension = false
 
   # Label of the target providing implementation for AccountVerificationProvider.
   # Overridden when using the Google-internal repository to build Chrome on iOS.
@@ -175,10 +175,10 @@ if (is_chrome_branded) {
   url_unsecure_scheme = "googlechrome"
   url_x_callback_scheme = "googlechrome-x-callback"
 } else {
-  chromium_short_name = "Chromium"
+  chromium_short_name = "Vortex"
   url_channel_scheme = "chromium-dev"
-  url_secure_scheme = "chromiums"
+  url_secure_scheme = "vortexs"
   url_ssoauth_scheme = "$ios_app_bundle_id_prefix.sso.chromium"
-  url_unsecure_scheme = "chromium"
-  url_x_callback_scheme = "chromium-x-callback"
+  url_unsecure_scheme = "vortex"
+  url_x_callback_scheme = "vortex-x-callback"
 }
