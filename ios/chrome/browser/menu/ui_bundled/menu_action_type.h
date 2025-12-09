@@ -82,7 +82,8 @@ enum class MenuActionType {
   PinSite = 69,
   UnpinSite = 70,
   EditPinnedSite = 71,
-  kMaxValue = EditPinnedSite,
+  VortexPaywall = 72,
+  kMaxValue = VortexPaywall,
 };
 // LINT.ThenChange(/tools/metrics/histograms/metadata/mobile/enums.xml)
 

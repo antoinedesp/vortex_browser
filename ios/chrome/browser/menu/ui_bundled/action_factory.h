@@ -260,6 +260,9 @@ class TabGroup;
 - (UIAction*)actionToEditPinnedSiteOnMostVisitedTileWithBlock:
     (ProceduralBlock)block;
 
+// Creates a UIAction instance to show the Vortex paywall (Vortex Premium).
+- (UIAction*)actionToOpenVortexPaywallWithBlock:(ProceduralBlock)block;
+
 @end
 
 #endif  // IOS_CHROME_BROWSER_MENU_UI_BUNDLED_ACTION_FACTORY_H_

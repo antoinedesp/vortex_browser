@@ -871,4 +871,14 @@ constexpr CGFloat kEmojiCanvasPaddingRatio = 1.3;
                          block:block];
 }
 
+- (UIAction*)actionToOpenVortexPaywallWithBlock:(ProceduralBlock)block {
+  UIImage* image =
+      DefaultSymbolWithPointSize(kXMarkSymbol, kSymbolActionPointSize);
+
+  return [self actionWithTitle:@"Plus"
+                         image:image
+                          type:MenuActionType::VortexPaywall
+                         block:block];
+}
+
 @end
