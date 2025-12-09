@@ -11,6 +11,7 @@
 #import "ios/chrome/browser/location_bar/ui_bundled/location_bar_consumer.h"
 #import "ios/chrome/browser/orchestrator/ui_bundled/location_bar_animatee.h"
 #import "ios/chrome/browser/shared/public/commands/omnibox_commands.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 @class LayoutGuideCenter;
 @protocol ActivityServiceCommands;
@@ -136,6 +137,9 @@ class Tracker;
 
 // The BWG command handler.
 @property(nonatomic, weak) id<BWGCommands> BWGHandler;
+
+// The VPN command handler.
+@property(nonatomic, weak) id<VPNCommands> VPNCommandsHandler;
 
 // The page action menu entry point handler. Returns the page action menu entry
 // point view for direct communication between a command dispatched and the page

@@ -262,36 +262,43 @@ const CGFloat kIconPointSize = 16.0;
     // necessary.
   }
 
-  if ([self isAIHubAvailable]) {
-    // If this is the user's first time being eligible for the AI Hub, notify
-    // the FET.
-    if (!_webStateList || !_webStateList->GetActiveWebState()) {
-      return;
-    }
-    web::WebState* webState = _webStateList->GetActiveWebState();
-    ProfileIOS* profile =
-        ProfileIOS::FromBrowserState(webState->GetBrowserState());
-    PrefService* prefs = profile->GetPrefs();
-    if (!prefs->GetBoolean(prefs::kAIHubEligibilityTriggered)) {
-      prefs->SetBoolean(prefs::kAIHubEligibilityTriggered, true);
-      feature_engagement::TrackerFactory::GetForProfile(profile)->NotifyEvent(
-          feature_engagement::events::kIOSGeminiEligiblity);
-    }
+  // For testing, you can make this always true, or add proper conditions
+  if (YES) {  // Replace with your actual VPN availability check
+    [self.consumer setPlaceholderType:LocationBarPlaceholderType::kVPNShield];
+    return;
+  }
 
-    // Record Gemini entry point impression when AI Hub is available and shown.
-    RecordGeminiEntryPointImpression();
-    [self.consumer
-        setPlaceholderType:LocationBarPlaceholderType::kPageActionMenu];
-    return;
-  }
-  if (![self isLensOverlayAvailable]) {
-    return;
-  }
-  if ([self isLensOverlayEntrypointAvailable]) {
-    [self.consumer setPlaceholderType:LocationBarPlaceholderType::kLensOverlay];
-  } else {
-    [self.consumer setPlaceholderType:LocationBarPlaceholderType::kNone];
-  }
+
+  // if ([self isAIHubAvailable]) {
+  //   // If this is the user's first time being eligible for the AI Hub, notify
+  //   // the FET.
+  //   if (!_webStateList || !_webStateList->GetActiveWebState()) {
+  //     return;
+  //   }
+  //   web::WebState* webState = _webStateList->GetActiveWebState();
+  //   ProfileIOS* profile =
+  //       ProfileIOS::FromBrowserState(webState->GetBrowserState());
+  //   PrefService* prefs = profile->GetPrefs();
+  //   if (!prefs->GetBoolean(prefs::kAIHubEligibilityTriggered)) {
+  //     prefs->SetBoolean(prefs::kAIHubEligibilityTriggered, true);
+  //     feature_engagement::TrackerFactory::GetForProfile(profile)->NotifyEvent(
+  //         feature_engagement::events::kIOSGeminiEligiblity);
+  //   }
+
+  //   // Record Gemini entry point impression when AI Hub is available and shown.
+  //   RecordGeminiEntryPointImpression();
+  //   [self.consumer
+  //       setPlaceholderType:LocationBarPlaceholderType::kPageActionMenu];
+  //   return;
+  // }
+  // if (![self isLensOverlayAvailable]) {
+  //   return;
+  // }
+  // if ([self isLensOverlayEntrypointAvailable]) {
+  //   [self.consumer setPlaceholderType:LocationBarPlaceholderType::kLensOverlay];
+  // } else {
+  //   [self.consumer setPlaceholderType:LocationBarPlaceholderType::kNone];
+  // }
 }
 
 /// Whether the lens overlay entrypoint should be available.

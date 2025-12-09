@@ -44,10 +44,11 @@
 #import "ios/chrome/browser/shared/public/commands/browser_coordinator_commands.h"
 #import "ios/chrome/browser/shared/public/commands/bwg_commands.h"
 #import "ios/chrome/browser/shared/public/commands/help_commands.h"
-#import "ios/chrome/browser/shared/public/commands/lens_commands.h"
-#import "ios/chrome/browser/shared/public/commands/lens_overlay_commands.h"
+// #import "ios/chrome/browser/shared/public/commands/lens_commands.h"
+// #import "ios/chrome/browser/shared/public/commands/lens_overlay_commands.h"
 #import "ios/chrome/browser/shared/public/commands/load_query_commands.h"
-#import "ios/chrome/browser/shared/public/commands/open_lens_input_selection_command.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
+// #import "ios/chrome/browser/shared/public/commands/open_lens_input_selection_command.h"
 #import "ios/chrome/browser/shared/public/commands/page_action_menu_commands.h"
 #import "ios/chrome/browser/shared/public/commands/page_action_menu_entry_point_commands.h"
 #import "ios/chrome/browser/shared/public/features/features.h"
@@ -60,8 +61,11 @@
 #import "ios/chrome/common/ui/util/constraints_ui_util.h"
 #import "ios/chrome/common/ui/util/pointer_interaction_util.h"
 #import "ios/chrome/grit/ios_strings.h"
-#import "ios/public/provider/chrome/browser/lens/lens_api.h"
+// #import "ios/public/provider/chrome/browser/lens/lens_api.h"
 #import "ui/base/l10n/l10n_util.h"
+#import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
+#import "ios/chrome/common/ui/colors/semantic_color_names.h"
+#import "ios/chrome/browser/shared/public/commands/command_dispatcher.h"
 
 using base::UserMetricsAction;
 
@@ -88,7 +92,8 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 
 @interface LocationBarViewController () <TextFieldViewContainingHeightDelegate,
                                          UIContextMenuInteractionDelegate,
-                                         UIIndirectScribbleInteractionDelegate>
+                                         UIIndirectScribbleInteractionDelegate,
+                                         VortexVPNObserver>
 // The injected edit view.
 @property(nonatomic, strong) UIView<TextFieldViewContaining>* editView;
 
@@ -153,7 +158,9 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
   UIView* _fakeboxButtonsSnapshot;
 
   // The location bar button to access Lens.
-  LensOverlayEntrypointButton* _lensOverlayPlaceholderView;
+  // LensOverlayEntrypointButton* _lensOverlayPlaceholderView;
+  // The location bar button to access VPN (replaces Lens).
+  UIButton* _vpnShieldButton;
 
   // The location bar button to access the page action menu.
   PageActionMenuEntrypointView* _pageActionMenuEntrypointView;
@@ -278,6 +285,39 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
   _helpCommandsHandler = helpCommandsHandler;
 }
 
+#pragma mark - Vortex VPN
+
+- (void)handleVPNShieldTapped {
+  NSLog(@"[VortexVPN] Shield tapped");
+  if (self.VPNCommandsHandler) {
+    [self.VPNCommandsHandler toggleVPN];
+  } else {
+    NSLog(@"[VortexVPN] ERROR: VPNCommands handler not set!");
+  }
+}
+
+- (void)vpnManagerDidUpdateStatus:(VortexVPNStatus)status {
+  [self updateVPNShieldForStatus:status];
+}
+
+- (void)updateVPNShieldForStatus:(VortexVPNStatus)status {
+  switch (status) {
+    case VortexVPNStatusConnected:
+      _vpnShieldButton.tintColor = [UIColor systemGreenColor];
+      break;
+    case VortexVPNStatusConnecting:
+      _vpnShieldButton.tintColor = [UIColor systemOrangeColor];
+      break;
+    case VortexVPNStatusError:
+      _vpnShieldButton.tintColor = [UIColor systemRedColor];
+      break;
+    case VortexVPNStatusDisconnected:
+    default:
+      _vpnShieldButton.tintColor = [UIColor colorNamed:kGrey600Color];
+      break;
+  }
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
@@ -314,17 +354,49 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
                                 underName:kPageActionMenuEntrypointGuide];
   }
 
-  if (IsLensOverlayAvailable(_profilePrefs)) {
-    _lensOverlayPlaceholderView = [[LensOverlayEntrypointButton alloc]
-        initWithProfilePrefs:_profilePrefs];
-    [self.layoutGuideCenter referenceView:_lensOverlayPlaceholderView
-                                underName:kLensOverlayEntrypointGuide];
+  // if (IsLensOverlayAvailable(_profilePrefs)) {
+  //   _lensOverlayPlaceholderView = [[LensOverlayEntrypointButton alloc]
+  //       initWithProfilePrefs:_profilePrefs];
+  //   [self.layoutGuideCenter referenceView:_lensOverlayPlaceholderView
+  //                               underName:kLensOverlayEntrypointGuide];
 
-    [_lensOverlayPlaceholderView
-               addTarget:self
-                  action:@selector(handleLensEntrypointPressed)
-        forControlEvents:UIControlEventTouchUpInside];
+  //   [_lensOverlayPlaceholderView
+  //              addTarget:self
+  //                 action:@selector(handleLensEntrypointPressed)
+  //       forControlEvents:UIControlEventTouchUpInside];
+  // }
+  // Vortex VPN shield button (replaces Lens entrypoint).
+  _vpnShieldButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  _vpnShieldButton.translatesAutoresizingMaskIntoConstraints = NO;
+  UIImage* shieldImage = [UIImage systemImageNamed:@"shield.fill"];
+  // Fallback in case SF Symbol is unavailable (older simulators etc.)
+  if (!shieldImage) {
+    shieldImage = [UIImage systemImageNamed:@"shield"];  // very old symbols
   }
+  UIImage* templateImage = [shieldImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+  [_vpnShieldButton setImage:templateImage forState:UIControlStateNormal];
+  _vpnShieldButton.tintColor = [UIColor colorNamed:kGrey600Color];
+
+  // Make it similar size to other symbol buttons.
+  CGFloat size = 32.0;
+  [NSLayoutConstraint activateConstraints:@[
+    [_vpnShieldButton.widthAnchor constraintEqualToConstant:size],
+    [_vpnShieldButton.heightAnchor constraintEqualToConstant:size],
+  ]];
+
+  // Register it under the same layout guide that Lens used. This means
+  // anything that was anchored to kLensOverlayEntrypointGuide will now
+  // anchor to our shield button instead.
+  [self.layoutGuideCenter referenceView:_vpnShieldButton
+                               underName:kLensOverlayEntrypointGuide];
+
+  [_vpnShieldButton addTarget:self
+                       action:@selector(handleVPNShieldTapped)
+             forControlEvents:UIControlEventTouchUpInside];
+
+  VortexVPNManager* vpnManager = [VortexVPNManager sharedManager];
+  [vpnManager addObserver:self];
+  [self updateVPNShieldForStatus:vpnManager.status];
 
   [_locationBarSteadyView.locationButton
              addTarget:self
@@ -398,6 +470,10 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
   if (!enabled) {
     [self updateForFullscreenProgress:1.0];
   }
+}
+
+- (void)dealloc {
+  [[VortexVPNManager sharedManager] removeObserver:self];
 }
 
 - (void)animateFullscreenWithAnimator:(FullscreenAnimator*)animator {
@@ -478,18 +554,18 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 }
 
 - (void)attemptShowingLensOverlayIPH {
-  if (IsLensOverlayAvailable(_profilePrefs) && !IsPageActionMenuEnabled() &&
-      !self.locationBarSteadyView.badgesContainerView.placeholderView.hidden) {
-    [self.helpCommandsHandler
-        presentInProductHelpWithType:InProductHelpType::kLensOverlayEntrypoint];
-  }
+//   if (IsLensOverlayAvailable(_profilePrefs) && !IsPageActionMenuEnabled() &&
+//       !self.locationBarSteadyView.badgesContainerView.placeholderView.hidden) {
+//     [self.helpCommandsHandler
+//         presentInProductHelpWithType:InProductHelpType::kLensOverlayEntrypoint];
+//   }
 }
 
 - (void)recordLensOverlayAvailability {
-  // Record lens overlay placeholder available.
-  if (_placeholderType == LocationBarPlaceholderType::kLensOverlay) {
-    RecordLensEntrypointAvailable();
-  }
+//   // Record lens overlay placeholder available.
+//   if (_placeholderType == LocationBarPlaceholderType::kLensOverlay) {
+//     RecordLensEntrypointAvailable();
+//   }
 }
 
 - (void)focusSteadyViewForVoiceOver {
@@ -790,9 +866,10 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 }
 
 - (BOOL)shouldUseLensInLongPressMenu {
-  return ios::provider::IsLensSupported() &&
-         base::FeatureList::IsEnabled(kEnableLensInOmniboxCopiedImage) &&
-         self.lensImageEnabled;
+  return false;
+  // return ios::provider::IsLensSupported() &&
+  //        base::FeatureList::IsEnabled(kEnableLensInOmniboxCopiedImage) &&
+  //        self.lensImageEnabled;
 }
 
 // Updates placeholder in the steady view.
@@ -1055,12 +1132,12 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 }
 
 - (void)handleLensEntrypointPressed {
-  RecordAction(UserMetricsAction("MobileToolbarLensOverlayTap"));
-  if (self.lensOverlayVisible) {
-    [self destroyLensOverlay];
-  } else {
-    [self openLensOverlay];
-  }
+//   RecordAction(UserMetricsAction("MobileToolbarLensOverlayTap"));
+//   if (self.lensOverlayVisible) {
+//     [self destroyLensOverlay];
+//   } else {
+//     [self openLensOverlay];
+//   }
 }
 
 - (void)handlePageActionMenuEntrypointTapped {
@@ -1080,33 +1157,33 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 
 // Creates and shows the LVF input selection UI.
 - (void)openLensViewFinder {
-  TriggerHapticFeedbackForSelectionChange();
-  OpenLensInputSelectionCommand* command = [[OpenLensInputSelectionCommand
-      alloc]
-          initWithEntryPoint:LensEntrypoint::LensOverlayLocationBar
-           presentationStyle:LensInputSelectionPresentationStyle::SlideFromRight
-      presentationCompletion:nil];
-  [self.dispatcher openLensInputSelection:command];
+  // TriggerHapticFeedbackForSelectionChange();
+  // OpenLensInputSelectionCommand* command = [[OpenLensInputSelectionCommand
+  //     alloc]
+  //         initWithEntryPoint:LensEntrypoint::LensOverlayLocationBar
+  //          presentationStyle:LensInputSelectionPresentationStyle::SlideFromRight
+  //     presentationCompletion:nil];
+  // [self.dispatcher openLensInputSelection:command];
 }
 
 // Creates and shows the lens overlay UI.
 - (void)openLensOverlay {
   // TODO(crbug.com/427478234): This event should be fired by the mediator.
-  if (self.tracker) {
-    self.tracker->NotifyEvent(
-        feature_engagement::events::kLensOverlayEntrypointUsed);
-  }
-  TriggerHapticFeedbackForSelectionChange();
-  [self.dispatcher createAndShowLensUI:YES
-                            entrypoint:LensOverlayEntrypoint::kLocationBar
-                            completion:nil];
+  // if (self.tracker) {
+  //   self.tracker->NotifyEvent(
+  //       feature_engagement::events::kLensOverlayEntrypointUsed);
+  // }
+  // TriggerHapticFeedbackForSelectionChange();
+  // [self.dispatcher createAndShowLensUI:YES
+  //                           entrypoint:LensOverlayEntrypoint::kLocationBar
+  //                           completion:nil];
 }
 
 // Creates and shows the lens overlay UI.
 - (void)destroyLensOverlay {
-  TriggerHapticFeedbackForSelectionChange();
-  [self.dispatcher destroyLensUI:YES
-                          reason:lens::LensOverlayDismissalSource::kToolbar];
+  // TriggerHapticFeedbackForSelectionChange();
+  // [self.dispatcher destroyLensUI:YES
+  //                         reason:lens::LensOverlayDismissalSource::kToolbar];
 }
 
 - (void)updatePlaceholderView {
@@ -1115,8 +1192,12 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
       [self.locationBarSteadyView setPlaceholderView:nil type:_placeholderType];
       break;
     case LocationBarPlaceholderType::kLensOverlay:
-      [self.locationBarSteadyView setPlaceholderView:_lensOverlayPlaceholderView
-                                                type:_placeholderType];
+      // [self.locationBarSteadyView setPlaceholderView:_lensOverlayPlaceholderView
+      //                                           type:_placeholderType];
+      break;
+    case LocationBarPlaceholderType::kVPNShield:
+      [self.locationBarSteadyView setPlaceholderView:_vpnShieldButton 
+                                          type:_placeholderType];
       break;
     case LocationBarPlaceholderType::kPageActionMenu:
       CHECK(IsPageActionMenuEnabled());
@@ -1152,11 +1233,11 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 - (void)updateLensVisibilityIndicationIfNeeded {
   // Only indicate Lens Overlay in use when the presentation does not cover the
   // location bar.
-  BOOL shouldIndicateLensInUse =
-      lens::ContainerPresentationFor(self) !=
-      lens::ContainerPresentationType::kFullscreenCover;
-  [_lensOverlayPlaceholderView
-      setLensOverlayActive:shouldIndicateLensInUse && _lensOverlayVisible];
+  // BOOL shouldIndicateLensInUse =
+  //     lens::ContainerPresentationFor(self) !=
+  //     lens::ContainerPresentationType::kFullscreenCover;
+  // [_lensOverlayPlaceholderView
+  //     setLensOverlayActive:shouldIndicateLensInUse && _lensOverlayVisible];
 }
 
 #pragma mark - TextFieldViewContainingHeightDelegate

@@ -110,6 +110,7 @@
 #import "services/network/public/cpp/resource_request.h"
 #import "ui/base/device_form_factor.h"
 #import "url/gurl.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 namespace {
 const size_t kMaxURLDisplayChars = 32 * 1024;
@@ -234,6 +235,8 @@ const size_t kMaxURLDisplayChars = 32 * 1024;
       self.browser->GetCommandDispatcher(), PageActionMenuCommands);
   self.viewController.BWGHandler =
       HandlerForProtocol(self.browser->GetCommandDispatcher(), BWGCommands);
+  self.viewController.VPNCommandsHandler =
+      HandlerForProtocol(self.browser->GetCommandDispatcher(), VPNCommands);
   _tracker = feature_engagement::TrackerFactory::GetForProfile(self.profile);
   self.viewController.tracker = _tracker;
   self.viewController.voiceSearchEnabled =

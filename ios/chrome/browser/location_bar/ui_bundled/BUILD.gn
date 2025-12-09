@@ -126,7 +126,9 @@ source_set("ui_bundled") {
     "//ui/gfx",
     "//ui/gfx/geometry",
     "//url",
+    "//ios/chrome/browser/vortex_vpn:vortex_vpn",
   ]
+  
   frameworks = [
     "CoreText.framework",
     "MobileCoreServices.framework",
