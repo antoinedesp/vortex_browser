@@ -110,15 +110,15 @@ inline constexpr char kCrashReasonURL[] =
 
 // "Learn more" URL for the Privacy section under Options.
 inline constexpr char kPrivacyLearnMoreURL[] =
-    "https://support.google.com/chrome/answer/114836?p=settings_privacy&ios=1";
+    "https://vortexbrowser.com/legal/privacy";
 
 // "Terms of service" URL.
 inline constexpr char kTermsOfServiceURL[] =
-    "https://policies.google.com/terms";
+    "https://vortexbrowser.com/legal/eula";
 
 // "Terms of service" URL for mobile view.
 inline constexpr char kEmbeddedTermsOfServiceURL[] =
-    "https://policies.google.com/terms/embedded";
+    "https://vortexbrowser.com/legal/eula";
 
 // The URL for the "Learn more" page on sync encryption.
 inline constexpr char kSyncEncryptionHelpURL[] =
