@@ -92,7 +92,7 @@ const CGFloat kOverallHeight = std::max(kSliderHeight, kSegmentHeight);
 // Overall width -- three segments plus two separators plus two margins between
 // leading/trailing segments and the slider.
 const CGFloat kOverallWidth =
-    3 * kSegmentWidth + 2 * kSeparatorWidth + 2 * kSliderMargin;
+    2 * kSegmentWidth + 2 * kSliderMargin;
 
 // Radius used to draw the background and the slider.
 const CGFloat kSliderCornerRadius = 13.0;
@@ -148,9 +148,9 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
 @property(nonatomic, weak) UILayoutGuide* regularGuide;
 @property(nonatomic, weak) UILayoutGuide* tabGroupsGuide;
 // The separator between incognito and regular tabs.
-@property(nonatomic, weak) UIView* firstSeparator;
+//@property(nonatomic, weak) UIView* firstSeparator;
 // The separator between the regular and tab groups pages.
-@property(nonatomic, weak) UIView* secondSeparator;
+//@property(nonatomic, weak) UIView* secondSeparator;
 // The view for the slider.
 @property(nonatomic, weak) UIView* sliderView;
 // The view for the selected images and labels (a subview of `sliderView).
@@ -235,18 +235,19 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
     _regularAccessibilityElement.accessibilityIdentifier =
         kTabGridRegularTabsPageButtonIdentifier;
 
-    _tabGroupsAccessibilityElement =
-        [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
-    _tabGroupsAccessibilityElement.accessibilityTraits =
-        UIAccessibilityTraitButton;
-    _tabGroupsAccessibilityElement.accessibilityLabel =
-        l10n_util::GetNSString(IDS_IOS_TAB_GRID_TAB_GROUPS_TITLE);
-    _tabGroupsAccessibilityElement.accessibilityIdentifier =
-        kTabGridTabGroupsPageButtonIdentifier;
+//    _tabGroupsAccessibilityElement =
+//        [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
+//    _tabGroupsAccessibilityElement.accessibilityTraits =
+//        UIAccessibilityTraitButton;
+//    _tabGroupsAccessibilityElement.accessibilityLabel =
+//        l10n_util::GetNSString(IDS_IOS_TAB_GRID_TAB_GROUPS_TITLE);
+//    _tabGroupsAccessibilityElement.accessibilityIdentifier =
+//        kTabGridTabGroupsPageButtonIdentifier;
 
     self.accessibilityElements = @[
-      _incognitoAccessibilityElement, _regularAccessibilityElement,
-      _tabGroupsAccessibilityElement
+      _incognitoAccessibilityElement,
+      _regularAccessibilityElement,
+//      _tabGroupsAccessibilityElement
     ];
 
     [[NSNotificationCenter defaultCenter]
@@ -296,19 +297,20 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
 
   // `_selectedPage` should be kept in sync with the slider position.
   TabGridPage previousSelectedPage = _selectedPage;
-  if (sliderPosition < 0.25) {
+  if (sliderPosition < 0.5) {
     _selectedPage = TabGridPageIncognitoTabs;
-  } else if (sliderPosition < 0.75) {
-    _selectedPage = TabGridPageRegularTabs;
   } else {
-    _selectedPage = TabGridPageTabGroups;
+    _selectedPage = TabGridPageRegularTabs;
   }
+//  else {
+//    _selectedPage = TabGridPageTabGroups;
+//  }
 
   // Hide/show the separator based on the slider position. Add a delta for the
   // comparison to avoid issues when the regular tabs are selected.
-  const CGFloat kDelta = 0.001;
-  self.firstSeparator.hidden = sliderPosition < 0.5 + kDelta;
-  self.secondSeparator.hidden = sliderPosition > 0.5 - kDelta;
+//  const CGFloat kDelta = 0.001;
+//  self.firstSeparator.hidden = YES;
+//  self.secondSeparator.hidden = sliderPosition > 0.5 - kDelta;
 
   if (_selectedPage != previousSelectedPage) {
     [self updateSelectedPageAccessibility];
@@ -333,10 +335,10 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
       newPosition = 0.0;
       break;
     case TabGridPageRegularTabs:
-      newPosition = 0.5;
+      newPosition = 1;
       break;
     case TabGridPageTabGroups:
-      newPosition = 1.0;
+//      newPosition = 1.0;
       break;
   }
   if (self.selectedPage == selectedPage && newPosition == self.sliderPosition) {
@@ -388,14 +390,14 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
       ]];
       break;
     case TabGridPageTabGroups:
-      pageGuide = self.tabGroupsGuide;
-      _highlightedIcon = self.tabGroupsNotSelectedIcon;
-      [NSLayoutConstraint activateConstraints:@[
-        [highlightBackground.leadingAnchor
-            constraintEqualToAnchor:self.regularGuide.centerXAnchor],
-        [highlightBackground.trailingAnchor
-            constraintEqualToAnchor:pageGuide.trailingAnchor]
-      ]];
+//      pageGuide = self.tabGroupsGuide;
+//      _highlightedIcon = self.tabGroupsNotSelectedIcon;
+//      [NSLayoutConstraint activateConstraints:@[
+//        [highlightBackground.leadingAnchor
+//            constraintEqualToAnchor:self.regularGuide.centerXAnchor],
+//        [highlightBackground.trailingAnchor
+//            constraintEqualToAnchor:pageGuide.trailingAnchor]
+//      ]];
       break;
     case TabGridPageRegularTabs:
       // Not supported right now.
@@ -428,8 +430,8 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
 }
 
 - (CGRect)lastSegmentFrame {
-  return [self.tabGroupsGuide.owningView
-      convertRect:self.tabGroupsGuide.layoutFrame
+  return [self.regularGuide.owningView
+      convertRect:self.regularGuide.layoutFrame
            toView:nil];
 }
 
@@ -518,21 +520,21 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
   self.regularSelectedLabel.center =
       [self centerOfSegment:TabGridPageRegularTabs];
 
-  self.tabGroupsNotSelectedIcon.center =
-      [self centerOfSegment:TabGridPageTabGroups];
-  self.tabGroupsSelectedIcon.center =
-      [self centerOfSegment:TabGridPageTabGroups];
+//  self.tabGroupsNotSelectedIcon.center =
+//      [self centerOfSegment:TabGridPageTabGroups];
+//  self.tabGroupsSelectedIcon.center =
+//      [self centerOfSegment:TabGridPageTabGroups];
 
   self.incognitoHoverView.center =
       [self centerOfSegment:TabGridPageIncognitoTabs];
   self.regularHoverView.center = [self centerOfSegment:TabGridPageRegularTabs];
-  self.tabGroupsHoverView.center = [self centerOfSegment:TabGridPageTabGroups];
+//  self.tabGroupsHoverView.center = [self centerOfSegment:TabGridPageTabGroups];
 
   // Determine the slider origin and range; this is based on the layout guides
   // and can't be computed until they are determined.
   self.sliderOrigin = CGRectGetMidX(self.incognitoGuide.layoutFrame);
   self.sliderRange =
-      CGRectGetMidX(self.tabGroupsGuide.layoutFrame) - self.sliderOrigin;
+      CGRectGetMidX(self.regularGuide.layoutFrame) - self.sliderOrigin; // Change groupsGuide to regularGuide
 
   // Set the slider position using the new slider origin and range.
   self.sliderPosition = _sliderPosition;
@@ -608,12 +610,12 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
       break;
     }
     case TabGridPageTabGroups: {
-      iconSelected = ImageViewForSymbol(kTabGroupsSymbol, /*selected=*/true,
-                                        /*is_system_symbol=*/true);
-      iconNotSelected = ImageViewForSymbol(kTabGroupsSymbol, /*selected=*/false,
-                                           /*is_system_symbol=*/true);
-      self.tabGroupsSelectedIcon = iconSelected;
-      self.tabGroupsNotSelectedIcon = iconNotSelected;
+//      iconSelected = ImageViewForSymbol(kTabGroupsSymbol, /*selected=*/true,
+//                                        /*is_system_symbol=*/true);
+//      iconNotSelected = ImageViewForSymbol(kTabGroupsSymbol, /*selected=*/false,
+//                                           /*is_system_symbol=*/true);
+//      self.tabGroupsSelectedIcon = iconSelected;
+//      self.tabGroupsNotSelectedIcon = iconNotSelected;
       break;
     }
   }
@@ -672,14 +674,15 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
   UILayoutGuide* regularGuide = [[UILayoutGuide alloc] init];
   [self addLayoutGuide:regularGuide];
   self.regularGuide = regularGuide;
-  UILayoutGuide* tabGroupsGuide = [[UILayoutGuide alloc] init];
-  [self addLayoutGuide:tabGroupsGuide];
-  self.tabGroupsGuide = tabGroupsGuide;
+//  UILayoutGuide* tabGroupsGuide = [[UILayoutGuide alloc] init];
+//  [self addLayoutGuide:tabGroupsGuide];
+//  self.tabGroupsGuide = tabGroupsGuide;
 
   // All of the guides are of the same height, and vertically centered in the
   // control.
+  // Vortex: Remove tabGroupsGuide
   for (UILayoutGuide* guide in
-       @[ incognitoGuide, regularGuide, tabGroupsGuide ]) {
+       @[ incognitoGuide, regularGuide ]) {
     [guide.heightAnchor constraintEqualToConstant:kOverallHeight].active = YES;
     // Guides are all the same width. The regular guide is centered in the
     // control, and the incognito and tab groups guides are on the leading and
@@ -689,26 +692,28 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
         YES;
   }
 
-  UIView* firstSeparator = [self newSeparator];
-  [self addSubview:firstSeparator];
-  self.firstSeparator = firstSeparator;
-  UIView* secondSeparator = [self newSeparator];
-  [self addSubview:secondSeparator];
-  self.secondSeparator = secondSeparator;
+//  UIView* firstSeparator = [self newSeparator];
+//  [self addSubview:firstSeparator];
+//  self.firstSeparator = firstSeparator;
+//  UIView* secondSeparator = [self newSeparator];
+//  [self addSubview:secondSeparator];
+//  self.secondSeparator = secondSeparator;
 
   [NSLayoutConstraint activateConstraints:@[
-    [incognitoGuide.trailingAnchor
-        constraintEqualToAnchor:firstSeparator.leadingAnchor],
-    [firstSeparator.trailingAnchor
-        constraintEqualToAnchor:regularGuide.leadingAnchor],
-    [regularGuide.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-    [regularGuide.trailingAnchor
-        constraintEqualToAnchor:secondSeparator.leadingAnchor],
-    [secondSeparator.trailingAnchor
-        constraintEqualToAnchor:tabGroupsGuide.leadingAnchor],
+    // Incognito on the left
+    [incognitoGuide.leadingAnchor
+        constraintEqualToAnchor:self.leadingAnchor
+                       constant:kSliderMargin],
 
-    [firstSeparator.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
-    [secondSeparator.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
+    // Regular on the right
+    [regularGuide.trailingAnchor
+        constraintEqualToAnchor:self.trailingAnchor
+                       constant:-kSliderMargin],
+
+    // Position them next to each other (with small gap equal to separator width)
+    [regularGuide.leadingAnchor
+        constraintEqualToAnchor:incognitoGuide.trailingAnchor
+                       constant:kSeparatorWidth],  // Small gap where separator was
   ]];
 
   // Add the slider above the section images and labels.
@@ -743,7 +748,7 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
 
   [self addTabsIcon:TabGridPageRegularTabs];
   [self addTabsIcon:TabGridPageIncognitoTabs];
-  [self addTabsIcon:TabGridPageTabGroups];
+//  [self addTabsIcon:TabGridPageTabGroups];
 
   UILabel* regularLabel = [self labelSelected:NO];
   [self.contentView insertSubview:regularLabel belowSubview:self.sliderView];
@@ -758,9 +763,9 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
   [center referenceView:self.incognitoHoverView
               underName:kTabGridPageControlIncognitoGuide];
   self.regularHoverView = [self configureHoverView];
-  self.tabGroupsHoverView = [self configureHoverView];
-  [center referenceView:self.tabGroupsHoverView
-              underName:kTabGridPageControlTabGroupsGuide];
+//  self.tabGroupsHoverView = [self configureHoverView];
+//  [center referenceView:self.tabGroupsHoverView
+//              underName:kTabGridPageControlTabGroupsGuide];
 
   [self.sliderView
       addInteraction:[[UIPointerInteraction alloc] initWithDelegate:self]];
@@ -813,9 +818,11 @@ UIImageView* ImageViewForSymbol(NSString* symbol_name,
   TabGridPage page;
   if (CGRectContainsPoint(self.incognitoGuide.layoutFrame, point)) {
     page = TabGridPageIncognitoTabs;
-  } else if (CGRectContainsPoint(self.tabGroupsGuide.layoutFrame, point)) {
-    page = TabGridPageTabGroups;
-  } else {
+  }
+//  else if (CGRectContainsPoint(self.tabGroupsGuide.layoutFrame, point)) {
+//    page = TabGridPageTabGroups;
+//  }
+  else {
     // TODO(crbug.com/451554492): taps in the left- or rightmost
     // `kSliderOverhang` points of the control will fall through to this case.
     page = TabGridPageRegularTabs;

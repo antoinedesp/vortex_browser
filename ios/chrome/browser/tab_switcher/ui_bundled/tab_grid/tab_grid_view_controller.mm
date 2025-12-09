@@ -754,11 +754,11 @@ NSUInteger GetPageIndexFromPage(TabGridPage page) {
 
   [self addChildViewController:self.incognitoGridContainerViewController];
   [self addChildViewController:self.regularGridContainerViewController];
-  [self addChildViewController:self.tabGroupsGridContainerViewController];
+//  [self addChildViewController:self.tabGroupsGridContainerViewController];
   UIStackView* gridsStack = [[UIStackView alloc] initWithArrangedSubviews:@[
     self.incognitoGridContainerViewController.view,
     self.regularGridContainerViewController.view,
-    self.tabGroupsGridContainerViewController.view
+//    self.tabGroupsGridContainerViewController.view
   ]];
   gridsStack.translatesAutoresizingMaskIntoConstraints = NO;
   gridsStack.distribution = UIStackViewDistributionEqualSpacing;
@@ -768,8 +768,8 @@ NSUInteger GetPageIndexFromPage(TabGridPage page) {
   [self.incognitoGridContainerViewController
       didMoveToParentViewController:self];
   [self.regularGridContainerViewController didMoveToParentViewController:self];
-  [self.tabGroupsGridContainerViewController
-      didMoveToParentViewController:self];
+//  [self.tabGroupsGridContainerViewController
+//      didMoveToParentViewController:self];
 
   self.scrollView = scrollView;
   self.scrollView.scrollEnabled = YES;
@@ -779,8 +779,8 @@ NSUInteger GetPageIndexFromPage(TabGridPage page) {
         constraintEqualToAnchor:self.view.widthAnchor],
     [self.regularGridContainerViewController.view.widthAnchor
         constraintEqualToAnchor:self.view.widthAnchor],
-    [self.tabGroupsGridContainerViewController.view.widthAnchor
-        constraintEqualToAnchor:self.view.widthAnchor],
+//    [self.tabGroupsGridContainerViewController.view.widthAnchor
+//        constraintEqualToAnchor:self.view.widthAnchor],
 
     [scrollView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
     [scrollView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
