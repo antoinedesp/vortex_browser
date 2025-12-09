@@ -301,14 +301,15 @@ typedef NSDiffableDataSourceSnapshot<NSString*, MagicStackModule*>
       registrationWithCellClass:[MagicStackModuleCollectionViewCell class]
            configurationHandler:configureModuleCell];
 
-  auto configureEditButtonCell =
-      ^(MagicStackEditButtonCell* cell, NSIndexPath* indexPath,
-        MagicStackModule* item) {
-        [weakSelf configureEditButtonCell:cell];
-      };
-  _editButtonRegistration = [UICollectionViewCellRegistration
-      registrationWithCellClass:[MagicStackEditButtonCell class]
-           configurationHandler:configureEditButtonCell];
+// Vortex
+//  auto configureEditButtonCell =
+//      ^(MagicStackEditButtonCell* cell, NSIndexPath* indexPath,
+//        MagicStackModule* item) {
+//        [weakSelf configureEditButtonCell:cell];
+//      };
+//  _editButtonRegistration = [UICollectionViewCellRegistration
+//      registrationWithCellClass:[MagicStackEditButtonCell class]
+//           configurationHandler:configureEditButtonCell];
 
   self.diffableDataSource = [[UICollectionViewDiffableDataSource alloc]
       initWithCollectionView:_collectionView
@@ -343,14 +344,15 @@ typedef NSDiffableDataSourceSnapshot<NSString*, MagicStackModule*>
 - (UICollectionViewCell*)cellForItemAtIndexPath:(NSIndexPath*)indexPath
                                  itemIdentifier:
                                      (MagicStackModule*)itemIdentifier {
-  if (indexPath.section ==
-      [self.diffableDataSource.snapshot
-          indexOfSectionIdentifier:kMagicStackEditSectionIdentifier]) {
-    return [_collectionView
-        dequeueConfiguredReusableCellWithRegistration:_editButtonRegistration
-                                         forIndexPath:indexPath
-                                                 item:itemIdentifier];
-  }
+// Vortex
+//  if (indexPath.section ==
+//      [self.diffableDataSource.snapshot
+//          indexOfSectionIdentifier:kMagicStackEditSectionIdentifier]) {
+//    return [_collectionView
+//        dequeueConfiguredReusableCellWithRegistration:_editButtonRegistration
+//                                         forIndexPath:indexPath
+//                                                 item:itemIdentifier];
+//  }
   return [_collectionView
       dequeueConfiguredReusableCellWithRegistration:_moduleCellRegistration
                                        forIndexPath:indexPath
@@ -385,12 +387,12 @@ typedef NSDiffableDataSourceSnapshot<NSString*, MagicStackModule*>
   [snapshot appendSectionsWithIdentifiers:@[ kMagicStackSectionIdentifier ]];
   [snapshot appendItemsWithIdentifiers:items
              intoSectionWithIdentifier:kMagicStackSectionIdentifier];
-  if (!isPlaceholder) {
-    [snapshot
-        appendSectionsWithIdentifiers:@[ kMagicStackEditSectionIdentifier ]];
-    [snapshot appendItemsWithIdentifiers:@[ [[EditButtonConfig alloc] init] ]
-               intoSectionWithIdentifier:kMagicStackEditSectionIdentifier];
-  }
+//  if (!isPlaceholder) {
+//    [snapshot
+//        appendSectionsWithIdentifiers:@[ kMagicStackEditSectionIdentifier ]];
+//    [snapshot appendItemsWithIdentifiers:@[ [[EditButtonConfig alloc] init] ]
+//               intoSectionWithIdentifier:kMagicStackEditSectionIdentifier];
+//  }
 
   [self.diffableDataSource applySnapshotUsingReloadData:snapshot];
 }

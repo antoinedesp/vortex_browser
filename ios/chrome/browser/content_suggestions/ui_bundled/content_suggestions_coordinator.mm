@@ -462,6 +462,9 @@ using segmentation_platform::TipIdentifier;
   BOOL areTipsCardsEnabled =
       prefs->GetBoolean(ntp_tiles::prefs::kTipsHomeModuleEnabled);
 
+  // Vortex
+  areTipsCardsEnabled = NO;
+
   if (IsTipsMagicStackEnabled() && areTipsCardsEnabled) {
     _tipsMediator = [[TipsMagicStackMediator alloc]
         initWithIdentifier:TipIdentifier::kUnknown
@@ -475,22 +478,22 @@ using segmentation_platform::TipIdentifier;
     [moduleMediators addObject:_tipsMediator];
   }
 
-  if (segmentation_platform::features::IsAppBundlePromoEphemeralCardEnabled() &&
-      areTipsCardsEnabled) {
-    _appBundlePromoMediator = [[AppBundlePromoMediator alloc]
-        initWithAppStoreBundleService:AppStoreBundleServiceFactory::
-                                          GetForProfile(self.profile)
-                   profilePrefService:prefs];
-    _appBundlePromoMediator.presentationAudience = self;
-    [moduleMediators addObject:_appBundlePromoMediator];
-  }
-  if (segmentation_platform::features::IsDefaultBrowserMagicStackEnabled() &&
-      areTipsCardsEnabled) {
-    _defaultBrowserMediator =
-        [[DefaultBrowserMediator alloc] initWithProfilePrefService:prefs];
-    _defaultBrowserMediator.presentationAudience = self;
-    [moduleMediators addObject:_defaultBrowserMediator];
-  }
+//  if (segmentation_platform::features::IsAppBundlePromoEphemeralCardEnabled() &&
+//      areTipsCardsEnabled) {
+//    _appBundlePromoMediator = [[AppBundlePromoMediator alloc]
+//        initWithAppStoreBundleService:AppStoreBundleServiceFactory::
+//                                          GetForProfile(self.profile)
+//                   profilePrefService:prefs];
+//    _appBundlePromoMediator.presentationAudience = self;
+//    [moduleMediators addObject:_appBundlePromoMediator];
+//  }
+//  if (segmentation_platform::features::IsDefaultBrowserMagicStackEnabled() &&
+//      areTipsCardsEnabled) {
+//    _defaultBrowserMediator =
+//        [[DefaultBrowserMediator alloc] initWithProfilePrefService:prefs];
+//    _defaultBrowserMediator.presentationAudience = self;
+//    [moduleMediators addObject:_defaultBrowserMediator];
+//  }
 
   ContentSuggestionsViewController* viewController =
       [[ContentSuggestionsViewController alloc] init];
