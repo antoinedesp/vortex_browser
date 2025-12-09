@@ -29,7 +29,7 @@ declare_args() {
   # must be a substring of the description of exactly one of the identities by
   # `security find-identity -v -p codesigning`.
   # TODO(crbug.com/378918882): Prefix with apple_mobile_ instead of ios_.
-  ios_code_signing_identity_description = "Apple Development"
+  ios_code_signing_identity_description = ""
 
   # Prefix for CFBundleIdentifier property of iOS bundles (correspond to the
   # "Organization Identifier" in Xcode). Code signing will fail if no mobile
