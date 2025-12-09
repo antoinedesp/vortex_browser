@@ -53,6 +53,9 @@ TEST_F(OverflowMenuConstantsTest, DestinationConversion) {
         finalExpectedDestination =
             overflow_menu::Destination::SpotlightDebugger;
         break;
+      case overflow_menu::Destination::VortexPaywall:
+        finalExpectedDestination = overflow_menu::Destination::VortexPaywall;
+        break;
     }
 
     // If there's no finalExpectedDestination, then the loop has looped through

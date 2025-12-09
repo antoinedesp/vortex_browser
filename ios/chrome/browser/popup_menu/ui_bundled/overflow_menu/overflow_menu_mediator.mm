@@ -264,6 +264,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
 @property(nonatomic, strong) OverflowMenuAction* hideToolbarsAction;
 
+@property(nonatomic, strong) OverflowMenuDestination* vortexPaywallDestination;
+
 @end
 
 @implementation OverflowMenuMediator
@@ -531,6 +533,9 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   // Site Info destination.
   self.siteInfoDestination = [self newSiteInfoDestination];
+
+  // Vortex Paywall destination.
+  self.vortexPaywallDestination = [self newVortexPaywallDestination];
 
   [self logTranslateAvailability];
 
@@ -1228,12 +1233,34 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                      }];
 }
 
+- (OverflowMenuDestination*)newVortexPaywallDestination {
+  __weak __typeof(self) weakSelf = self;
+
+  OverflowMenuDestination* result =
+      [[OverflowMenuDestination alloc] initWithName:@"Plus"
+                                         symbolName:kPlusInSquareSymbol
+                                       systemSymbol:YES
+                                   monochromeSymbol:NO
+                            accessibilityIdentifier:@"VortexPaywallDestination"
+                                 enterpriseDisabled:NO
+                                displayNewLabelIcon:NO
+                                            handler:^{
+                                              [weakSelf openVortexPaywall];
+                                            }];
+  result.destination =
+      static_cast<NSInteger>(overflow_menu::Destination::VortexPaywall);
+  result.canBeHidden = NO;
+
+  return result;
+}
+
 - (NSString*)hideItemTextForDestination:
     (overflow_menu::Destination)destination {
   switch (destination) {
     case overflow_menu::Destination::SiteInfo:
     case overflow_menu::Destination::Settings:
     case overflow_menu::Destination::SpotlightDebugger:
+    case overflow_menu::Destination::VortexPaywall:
       // These items are unhideable.
       return nil;
     case overflow_menu::Destination::Bookmarks:
@@ -1460,14 +1487,15 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   std::vector<overflow_menu::Destination> destinations = {
       overflow_menu::Destination::Bookmarks,
       overflow_menu::Destination::History,
-      overflow_menu::Destination::ReadingList,
-      overflow_menu::Destination::Passwords,
       overflow_menu::Destination::Downloads,
+      overflow_menu::Destination::VortexPaywall,
+      overflow_menu::Destination::ReadingList,
+//      overflow_menu::Destination::Passwords,
       overflow_menu::Destination::RecentTabs,
       overflow_menu::Destination::SiteInfo,
       overflow_menu::Destination::Settings,
-      overflow_menu::Destination::PriceNotifications,
-      overflow_menu::Destination::WhatsNew,
+//      overflow_menu::Destination::PriceNotifications,
+//      overflow_menu::Destination::WhatsNew,
   };
 
   return destinations;
@@ -2029,6 +2057,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 - (OverflowMenuDestination*)destinationForDestinationType:
     (overflow_menu::Destination)destinationType {
   switch (destinationType) {
+    case overflow_menu::Destination::VortexPaywall:
+      return self.vortexPaywallDestination;
     case overflow_menu::Destination::Bookmarks:
       return self.bookmarksDestination;
     case overflow_menu::Destination::History:
@@ -2098,6 +2128,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 - (OverflowMenuDestination*)customizationDestinationForDestinationType:
     (overflow_menu::Destination)destinationType {
   switch (destinationType) {
+    case overflow_menu::Destination::VortexPaywall:
+      return [self newVortexPaywallDestination];
     case overflow_menu::Destination::Bookmarks:
       return [self newBookmarksDestination];
     case overflow_menu::Destination::History:
@@ -2696,6 +2728,12 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                       BadgeTypePromo)];
 }
 
+// Dismisses the menu and opens Vortex Paywall.
+- (void)openVortexPaywall {
+  [self dismissMenu];
+  [self.applicationHandler showVortexPaywall];
+}
+
 - (void)enterpriseLearnMore {
   [self dismissMenu];
   [self.applicationHandler
@@ -2738,6 +2776,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::Destination::WhatsNew:
     case overflow_menu::Destination::SpotlightDebugger:
     case overflow_menu::Destination::PriceNotifications:
+    case overflow_menu::Destination::VortexPaywall:
       // Most destinations have no corresponding destination and nothing special
       // to be done when their shown state is toggled.
       return;

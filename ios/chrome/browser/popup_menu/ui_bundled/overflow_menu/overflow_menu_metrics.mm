@@ -33,6 +33,8 @@ IOSOverflowMenuDestination HistogramDestinationFromDestination(
       return IOSOverflowMenuDestination::kSpotlightDebugger;
     case overflow_menu::Destination::PriceNotifications:
       return IOSOverflowMenuDestination::kPriceNotifications;
+    case overflow_menu::Destination::VortexPaywall:
+      return IOSOverflowMenuDestination::kVortexPaywall;
   }
 }
 

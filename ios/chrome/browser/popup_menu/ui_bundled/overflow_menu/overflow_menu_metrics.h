@@ -59,7 +59,8 @@ enum class IOSOverflowMenuDestination {
   kWhatsNew = 8,
   kSpotlightDebugger = 9,
   kPriceNotifications = 10,
-  kMaxValue = kPriceNotifications,
+  kVortexPaywall = 11,
+  kMaxValue = kVortexPaywall,
 };
 // LINT.ThenChange(overflow_menu_constants.h:destination)
 

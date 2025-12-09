@@ -23,6 +23,7 @@ enum class Destination {
   WhatsNew = 8,
   SpotlightDebugger = 9,
   PriceNotifications = 10,
+  VortexPaywall = 11,
 };
 // LINT.ThenChange(overflow_menu_metrics.h:destination)
 

@@ -35,6 +35,8 @@ std::optional<Destination> DestinationForStringName(std::string destination) {
     return overflow_menu::Destination::WhatsNew;
   } else if (destination == "overflow_menu::Destination::SpotlightDebugger") {
     return overflow_menu::Destination::SpotlightDebugger;
+  } else if (destination == "overflow_menu::Destination::VortexPaywall") {
+    return overflow_menu::Destination::VortexPaywall;
   } else {
     return std::nullopt;
   }
@@ -68,6 +70,8 @@ std::string StringNameForDestination(Destination destination) {
       return "overflow_menu::Destination::WhatsNew";
     case overflow_menu::Destination::SpotlightDebugger:
       return "overflow_menu::Destination::SpotlightDebugger";
+    case overflow_menu::Destination::VortexPaywall:
+      return "overflow_menu::Destination::VortexPaywall";
   }
 }
 // LINT.ThenChange(:stringToDestination)
@@ -212,6 +216,9 @@ void RecordUmaActionForDestination(Destination destination) {
       break;
     case Destination::WhatsNew:
       base::RecordAction(base::UserMetricsAction("MobileMenuWhatsNew"));
+      break;
+    case Destination::VortexPaywall:
+      base::RecordAction(base::UserMetricsAction("MobileMenuVortexPaywall"));
       break;
     case overflow_menu::Destination::SpotlightDebugger:
       // No need to log metrics for a debug-only feature.
