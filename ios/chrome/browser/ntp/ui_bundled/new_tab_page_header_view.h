@@ -6,6 +6,7 @@
 #define IOS_CHROME_BROWSER_NTP_UI_BUNDLED_NEW_TAB_PAGE_HEADER_VIEW_H_
 
 #import <UIKit/UIKit.h>
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 @class GradientView;
 @class TabGroupIndicatorView;
@@ -38,7 +39,9 @@
 @property(nonatomic, strong, readonly) UIButton* voiceSearchButton;
 
 // The button that opens Lens. May be nil if Lens is not enabled.
-@property(nonatomic, strong, readonly) UIButton* lensButton;
+// @property(nonatomic, strong, readonly) UIButton* lensButton;
+@property(nonatomic, strong, readwrite) UIButton* vpnShieldButton;
+@property(nonatomic, weak) id<VPNCommands> VPNCommandsHandler;
 
 // The button that opens MIA. May be nil if MIA is not enabled.
 @property(nonatomic, strong, readonly) UIButton* miaButton;

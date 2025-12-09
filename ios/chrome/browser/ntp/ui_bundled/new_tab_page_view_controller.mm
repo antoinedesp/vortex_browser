@@ -262,6 +262,9 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
 
   self.identityDiscButton = [self.headerViewController identityDiscButton];
   DCHECK(self.identityDiscButton);
+  self.identityDiscButton.hidden = YES;
+  self.identityDiscButton.enabled = NO;
+  self.identityDiscButton.userInteractionEnabled = NO;
 
   self.viewDidFinishLoading = YES;
 

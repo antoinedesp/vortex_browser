@@ -57,6 +57,8 @@
 #import "ios/public/provider/chrome/browser/lottie/lottie_animation_configuration.h"
 #import "ui/base/l10n/l10n_util.h"
 #import "ui/gfx/ios/uikit_util.h"
+#import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 namespace {
 
@@ -78,7 +80,7 @@ const CGFloat kFakeboxMinimumFontScaleFactor = 0.57;
 const CGFloat kEndButtonFakeboxTrailingSpace = 13.0;
 const CGFloat kEndButtonNormalSizeFakeboxWithBadgeTrailingSpace = 7.0;
 const CGFloat kEndButtonMIAEnlargedFakebox = 20.0;
-const CGFloat kEndButtonOmniboxTrailingSpace = 7.0;
+// const CGFloat kEndButtonOmniboxTrailingSpace = 7.0;
 
 // Distance between the trailing fakebox icon and the placeholder text.
 const CGFloat kHintLabelFakeboxTrailingSpace = 12.0f;
@@ -210,7 +212,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
 @end
 
-@interface NewTabPageHeaderView ()
+@interface NewTabPageHeaderView () <VortexVPNObserver>
 
 // The Lens button. May be null if Lens is not available.
 @property(nonatomic, strong, readwrite) ExtendedTouchTargetButton* lensButton;
@@ -312,6 +314,9 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     _useNewBadgeForLensButton = useNewBadgeForLensButton;
     _lastAnimationPercent = 0;
     _currentHintLabelScale = 1;
+
+    // Register as VPN observer
+    [[VortexVPNManager sharedManager] addObserver:self];
 
     NSArray<UITrait>* traits = TraitCollectionSetForTraits(@[
       UITraitPreferredContentSizeCategory.class, UITraitUserInterfaceStyle.class
@@ -416,6 +421,28 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
         constraintEqualToAnchor:self.fakeLocationBar.trailingAnchor],
   ]];
 
+  // To ensure touch events are correctly forwarded to the buttons within the
+  // stack view use a stack view implementation that propagates touches to its
+  // subviews.
+  // Otherwise the stack view would 'clip' the extended touch areas of its inner
+  // buttons, preventing them from registering touches properly.
+  _buttonStack = [[TouchAreaOverflowStackView alloc] init];
+  _buttonStack.translatesAutoresizingMaskIntoConstraints = NO;
+  _buttonStack.alignment = UIStackViewAlignmentCenter;
+  _buttonStack.spacing = kButtonSpacing;
+  _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsZero;
+  _buttonStack.layoutMarginsRelativeArrangement = true;
+  [searchField addSubview:_buttonStack];
+  [NSLayoutConstraint activateConstraints:@[
+    [_buttonStack.leadingAnchor
+        constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
+                     constant:[self endButtonFakeboxTrailingSpace]],  // ✅ Inside, with margin
+    [_buttonStack.centerYAnchor
+        constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor],
+  ]];
+
+  [self addFakeboxButtonsToStack];
+
   // Hint label.
   self.searchHintLabel = [[UILabel alloc] init];
   self.searchHintLabel.adjustsFontSizeToFitWidth = true;
@@ -425,8 +452,8 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self updateHintLabelFonts];
 
   self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
-      constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
-                     constant:self.hintLabelFakeboxLeadingSpace];
+      constraintEqualToAnchor:_buttonStack.trailingAnchor
+                     constant:kHintLabelFakeboxTrailingSpace];
   [NSLayoutConstraint activateConstraints:@[
     self.hintLabelLeadingConstraint,
     [self.searchHintLabel.heightAnchor
@@ -444,28 +471,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self.searchHintLabel
       setContentCompressionResistancePriority:UILayoutPriorityDefaultLow
                                       forAxis:UILayoutConstraintAxisHorizontal];
-
-  // To ensure touch events are correctly forwarded to the buttons within the
-  // stack view use a stack view implementation that propagates touches to its
-  // subviews.
-  // Otherwise the stack view would 'clip' the extended touch areas of its inner
-  // buttons, preventing them from registering touches properly.
-  _buttonStack = [[TouchAreaOverflowStackView alloc] init];
-  _buttonStack.translatesAutoresizingMaskIntoConstraints = NO;
-  _buttonStack.alignment = UIStackViewAlignmentCenter;
-  _buttonStack.spacing = kButtonSpacing;
-  _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsMake(
-      0, 0, 0, [self endButtonFakeboxTrailingSpace]);
-  _buttonStack.layoutMarginsRelativeArrangement = true;
-  [searchField addSubview:_buttonStack];
-  [NSLayoutConstraint activateConstraints:@[
-    [_buttonStack.trailingAnchor
-        constraintEqualToAnchor:self.fakeLocationBar.trailingAnchor],
-    [_buttonStack.centerYAnchor
-        constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor],
-  ]];
-
-  [self addFakeboxButtonsToStack];
 
   // Constraints.
   AddSameConstraints(self.fakeToolbar, searchField);
@@ -502,9 +507,9 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   logoView.translatesAutoresizingMaskIntoConstraints = NO;
   AddSquareConstraints(logoView, kFakeboxImageSize);
 
-  self.leadingLogoConstraint = [logoView.leadingAnchor
-      constraintEqualToAnchor:searchField.leadingAnchor
-                     constant:kOmniboxImageLeadingSpace];
+  self.leadingLogoConstraint = [logoView.trailingAnchor
+      constraintEqualToAnchor:searchField.trailingAnchor
+                     constant:-kOmniboxImageLeadingSpace];
   [NSLayoutConstraint activateConstraints:@[
     self.leadingLogoConstraint,
     [logoView.centerYAnchor constraintEqualToAnchor:searchField.centerYAnchor
@@ -512,11 +517,15 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   ]];
 
+  logoView.image = DefaultSymbolWithPointSize(kSearchSymbol, kFakeboxImageSize);
+  logoView.tintColor = [UIColor colorNamed:kTextSecondaryColor];
+
   _logoView = logoView;
 }
 
 - (void)setDefaultSearchEngineLogo:(UIImage*)logo {
-  _logoView.image = logo;
+  // no-op
+  // _logoView.image = logo;
 }
 
 // Updates button styling for the current trait collection.
@@ -537,19 +546,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   content_suggestions::ConfigureVoiceSearchButton(self.voiceSearchButton,
                                                   useColorIcon);
-  if (self.lensButton) {
-    // Only color the badge if there's no image background.
-    UIColor* newBadgeColor =
-        [self.traitCollection boolForNewTabPageImageBackgroundTrait]
-            ? nil
-            : [self.traitCollection objectForNewTabPageTrait].tintColor;
-    content_suggestions::ConfigureLensButtonAppearance(
-        self.lensButton, _useNewBadgeForLensButton, useColorIcon,
-        newBadgeColor);
-    if (_useNewBadgeForLensButton) {
-      content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(
-          self.lensButton, 1 - _lastAnimationPercent);
-    }
+
+  // Update VPN shield based on current status instead of using color icon
+  if (self.vpnShieldButton) {
+    VortexVPNStatus status = [VortexVPNManager sharedManager].status;
+    [self updateVPNShieldForStatus:status];
   }
 
   if (self.miaButton) {
@@ -601,6 +602,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                      forOffset:(CGFloat)offset
                    screenWidth:(CGFloat)screenWidth
                 safeAreaInsets:(UIEdgeInsets)safeAreaInsets {
+
   CGFloat contentWidth = std::max<CGFloat>(
       0, screenWidth - safeAreaInsets.left - safeAreaInsets.right);
   if (screenWidth == 0 || contentWidth == 0) {
@@ -616,45 +618,29 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   [self updateTabGroupIndicatorAvailabilityWithOffset:offset];
 
-  // Update the opacity of the header background color as the user scrolls so
-  // that content does not appear beneath it. Since the NTP background might be
-  // a gradient, the opacity must be 0 by default.
   self.backgroundColor =
       [HeaderBackgroundColor(self) colorWithAlphaComponent:percent];
 
   [self setFakeboxColorsWithProgress:percent];
 
-  // Offset the hint label constraints with half of the change in width
-  // from the original scale, since constraints are calculated before
-  // transformations are applied. This prevents the label from overlapping
-  // with other UI elements.
   [self scaleHintLabelForPercent:percent];
   CGFloat hintLabelScalingExtraOffset =
       (_currentHintLabelScale - 1) *
       self.searchHintLabel.intrinsicContentSize.width * 0.5;
 
-  // If MIA animation view is shown then add an aditional spacing to avoid any
-  // overlap with the label.
-  self.hintLabelTrailingConstraint.constant = -hintLabelScalingExtraOffset -
-                                              [self miaButtonHintLabelOffset] -
-                                              kHintLabelFakeboxTrailingSpace;
+  // Define the base spacing (constant relative to button stack)
+  // const CGFloat kBaseHintSpacing = kHintLabelFakeboxTrailingSpace + 12;
 
-  // Animate the leading image from its fakebox position to its scrolled omnibox
-  // position linearly. When `percent` is 0, the fakebox is displayed in the
-  // middle of the screen; when it's 1, the fakebox is fully scrolled up.
+  // Animate the logo
   self.leadingLogoConstraint.constant =
-      kFakeboxImageLeadingSpace * (1 - percent) +
-      kOmniboxImageLeadingSpace * percent;
+      -(kFakeboxImageLeadingSpace * (1 - percent) +
+      kOmniboxImageLeadingSpace * percent);
 
   CGFloat fakeOmniboxHeight = content_suggestions::FakeOmniboxHeight();
   CGFloat locationBarHeight = content_suggestions::PinnedFakeOmniboxHeight();
 
   if (CanShowTabStrip(self) || !IsSplitToolbarMode(self)) {
-    // When Voiceover is running, if the header's alpha is set to 0, voiceover
-    // can't scroll back to it, and it will never come back into view. To
-    // prevent that, set the alpha to non-zero when the header is fully
-    // offscreen. It will still not be seen, but it will be accessible to
-    // Voiceover.
+    // iPad/landscape iPhone
     self.alpha = std::max(1 - percent, 0.01);
 
     widthConstraint.constant = searchFieldNormalWidth;
@@ -667,24 +653,21 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     self.fakeLocationBarTrailingConstraint.constant = 0;
     self.fakeLocationBarTopConstraint.constant = 0;
 
-    // Reset the view horizontal constraints.
+    // Keep spacing constant relative to button stack
     self.hintLabelLeadingConstraint.constant =
-        self.hintLabelFakeboxLeadingSpace + hintLabelScalingExtraOffset;
+        hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
 
     self.separator.alpha = 0;
-
-    _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsMake(
-        0, 0, 0, [self endButtonFakeboxTrailingSpace]);
+    _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsZero;
 
     _lastAnimationPercent = percent;
     return;
   }
 
+  // Split toolbar mode (iPhone portrait)
   self.alpha = 1;
   self.separator.alpha = percent;
 
-  // Calculate the amount to grow the width and height of searchField so that
-  // its frame covers the entire toolbar area.
   CGFloat maxWidth = self.bounds.size.width;
   widthConstraint.constant =
       Interpolate(searchFieldNormalWidth, maxWidth, percent);
@@ -699,8 +682,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                   locationBarHeight + kAdaptiveLocationBarVerticalMargin,
                   percent);
 
-  // Calculate the amount to shrink the width and height of background so that
-  // it's where the focused adapative toolbar focuses.
   CGFloat horizontalMargin = self.fakeboxHorizontalMargin;
   self.fakeLocationBarLeadingConstraint.constant = Interpolate(
       horizontalMargin,
@@ -716,25 +697,17 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   self.fakeLocationBar.layer.cornerRadius =
       self.fakeLocationBarHeightConstraint.constant / 2;
 
-  // Adjust the position of the search field's subviews.
-  CGFloat endButtonInset = Interpolate([self endButtonFakeboxTrailingSpace],
-                                       kEndButtonOmniboxTrailingSpace, percent);
-  _buttonStack.directionalLayoutMargins =
-      NSDirectionalEdgeInsetsMake(0, 0, 0, endButtonInset);
+  // Keep spacing constant relative to button stack throughout animation
   self.hintLabelLeadingConstraint.constant =
-      hintLabelScalingExtraOffset +
-      Interpolate(self.hintLabelFakeboxLeadingSpace,
-                  self.hintLabelOmniboxLeadingSpace, percent);
+      hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
 
-  // Fade N badge treatment when scrolled.
-  if (_useNewBadgeForLensButton && !_lensButtonWithNewBadgeTapped &&
-      self.lensButton) {
-    content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(self.lensButton,
-                                                              1 - percent);
-    // Hide divider when N badge is shown.
-    self.voiceAndLensDivider.alpha = percent;
-    self.miaAndVoiceDivider.alpha = percent;
-  }
+  // if (_useNewBadgeForLensButton && !_lensButtonWithNewBadgeTapped &&
+  //     self.lensButton) {
+  //   content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(self.lensButton,
+  //                                                             1 - percent);
+  //   self.voiceAndLensDivider.alpha = percent;
+  //   self.miaAndVoiceDivider.alpha = percent;
+  // }
 
   _lastAnimationPercent = percent;
 }
@@ -794,7 +767,9 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     [_customizationMenuButton removeFromSuperview];
   }
 
-  if (IsNTPBackgroundCustomizationEnabled()) {
+  BOOL isVPNButton = [customizationMenuButton.accessibilityIdentifier isEqualToString:@"VPNStatusButton"];
+
+  if (IsNTPBackgroundCustomizationEnabled() && !isVPNButton) {
     UIButtonConfiguration* configuration =
         [UIButtonConfiguration plainButtonConfiguration];
 
@@ -1050,26 +1025,46 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   if (displayOtherActions) {
     // Voice search.
-    self.voiceSearchButton =
-        [ExtendedTouchTargetButton buttonWithType:UIButtonTypeSystem];
-    [_buttonStack addArrangedSubview:self.voiceSearchButton];
+    [self addVoiceAndVPNDivider];
+    
+    self.vpnShieldButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.vpnShieldButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    UIImage* shieldImage = [UIImage systemImageNamed:@"shield.fill"];
+    if (!shieldImage) {
+      shieldImage = [UIImage systemImageNamed:@"shield"];
+    }
+    [self.vpnShieldButton setImage:shieldImage forState:UIControlStateNormal];
+    self.vpnShieldButton.tintColor = [UIColor colorNamed:kGrey600Color];
+    
+    // Size constraints similar to other buttons
+    CGFloat size = 24.0;
+    [NSLayoutConstraint activateConstraints:@[
+      [self.vpnShieldButton.widthAnchor constraintEqualToConstant:size],
+      [self.vpnShieldButton.heightAnchor constraintEqualToConstant:size],
+    ]];
+    
+    self.vpnShieldButton.accessibilityLabel = @"VPN Shield";
+    self.vpnShieldButton.accessibilityIdentifier = @"NTPVPNShieldButton";
+    
+    [_buttonStack addArrangedSubview:self.vpnShieldButton];
   }
 
   // Lens.
-  const BOOL useLens =
-      lens_availability::CheckAndLogAvailabilityForLensEntryPoint(
-          LensEntrypoint::NewTabPage, self.isGoogleDefaultSearchEngine);
-  if (useLens && displayOtherActions) {
-    [self addVoiceAndLensDivider];
-    self.lensButton =
-        [ExtendedTouchTargetButton buttonWithType:UIButtonTypeSystem];
-    [_buttonStack addArrangedSubview:self.lensButton];
-    if (_useNewBadgeForLensButton) {
-      [self.lensButton addTarget:self
-                          action:@selector(lensButtonWithNewBadgeTapped:)
-                forControlEvents:UIControlEventTouchUpInside];
-    }
-  }
+  // const BOOL useLens =
+  //     lens_availability::CheckAndLogAvailabilityForLensEntryPoint(
+  //         LensEntrypoint::NewTabPage, self.isGoogleDefaultSearchEngine);
+  // if (useLens && displayOtherActions) {
+  //   [self addVoiceAndLensDivider];
+  //   self.lensButton =
+  //       [ExtendedTouchTargetButton buttonWithType:UIButtonTypeSystem];
+  //   [_buttonStack addArrangedSubview:self.lensButton];
+  //   if (_useNewBadgeForLensButton) {
+  //     [self.lensButton addTarget:self
+  //                         action:@selector(lensButtonWithNewBadgeTapped:)
+  //               forControlEvents:UIControlEventTouchUpInside];
+  //   }
+  // }
 
   [self updateButtonsForCurrentTraitCollection];
 
@@ -1085,9 +1080,12 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self.voiceSearchButton addTarget:self
                              action:@selector(preloadVoiceSearch:)
                    forControlEvents:UIControlEventTouchDown];
-  [self.lensButton addTarget:self
-                      action:@selector(openLensViewFinder)
-            forControlEvents:UIControlEventTouchUpInside];
+  
+  // Replace Lens action with VPN action
+  [self.vpnShieldButton addTarget:self
+                           action:@selector(handleVPNShieldTapped)
+                 forControlEvents:UIControlEventTouchUpInside];
+  
   [self.miaButton addTarget:self
                      action:@selector(openMIA)
            forControlEvents:UIControlEventTouchUpInside];
@@ -1095,22 +1093,43 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
 // Updates the trailing constraint of the label to the nearest button stack
 // element.
+// Updates the trailing constraint of the label to the nearest button stack element.
 - (void)updateHintLabelTrailingConstraint {
-  UIView* referenceView = _buttonStack.arrangedSubviews.firstObject;
-  if (!referenceView) {
-    return;
+  UIView* referenceView = _buttonStack.arrangedSubviews.lastObject;  
+  
+  NSLayoutConstraint* leadingConstraint = [self.searchHintLabel.leadingAnchor
+      constraintGreaterThanOrEqualToAnchor:_buttonStack.trailingAnchor
+                     constant:kHintLabelFakeboxTrailingSpace];
+  
+  // Create trailing constraint
+  NSLayoutConstraint* trailingConstraint = nil;
+  if (_logoView) {
+    trailingConstraint = [self.searchHintLabel.trailingAnchor
+        constraintLessThanOrEqualToAnchor:_logoView.leadingAnchor
+                                 constant:-kHintLabelFakeboxTrailingSpace];
+  } else {
+    trailingConstraint = [self.searchHintLabel.trailingAnchor
+        constraintLessThanOrEqualToAnchor:self.fakeLocationBar.trailingAnchor
+                                 constant:-kHintLabelFakeboxTrailingSpace];
+  }
+  trailingConstraint.priority = UILayoutPriorityDefaultHigh;
+
+  // Store the constraints
+  self.hintLabelLeadingConstraint = leadingConstraint;
+  self.hintLabelTrailingConstraint = trailingConstraint;
+
+  // Activate them
+  NSMutableArray* constraints = [NSMutableArray arrayWithObjects:
+    leadingConstraint,
+    trailingConstraint,
+    nil];
+  
+  if (referenceView) {
+    [constraints addObject:[referenceView.centerYAnchor
+        constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor]];
   }
 
-  self.hintLabelTrailingConstraint = [self.searchHintLabel.trailingAnchor
-      constraintLessThanOrEqualToAnchor:referenceView.leadingAnchor
-                               constant:-[self miaButtonHintLabelOffset] -
-                                        kHintLabelFakeboxTrailingSpace];
-  self.hintLabelTrailingConstraint.priority = UILayoutPriorityDefaultHigh;
-  [NSLayoutConstraint activateConstraints:@[
-    [referenceView.centerYAnchor
-        constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor],
-    self.hintLabelTrailingConstraint,
-  ]];
+  [NSLayoutConstraint activateConstraints:constraints];
 }
 
 // Gets the fonts for the pinned and unpinned fakebox hint label, and sets
@@ -1216,7 +1235,9 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                    : defaultDividerColor;
   _miaButton.tintColor = tintColor;
   _voiceSearchButton.tintColor = tintColor;
-  _lensButton.tintColor = tintColor;
+  // VPN shield color is managed by status, not theme
+  // _vpnShieldButton.tintColor is set by updateVPNShieldForStatus
+  // _lensButton.tintColor = tintColor;
   _voiceAndLensDivider.backgroundColor = dividerColor;
   _miaAndVoiceDivider.backgroundColor = dividerColor;
 }
@@ -1239,10 +1260,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 }
 
 // Adds a short vertical line between the mic and lens icons in the fakebox.
-- (void)addVoiceAndLensDivider {
-  UIView* divider = [self createDivider];
-  self.voiceAndLensDivider = divider;
-  [_buttonStack addArrangedSubview:divider];
+- (void)addVoiceAndVPNDivider {
+  // no-op
+  // UIView* divider = [self createDivider];
+  // self.voiceAndLensDivider = divider; 
+  // [_buttonStack addArrangedSubview:divider];
 }
 
 // Adds a short vertical line between the MIA and Voice icons in the fakebox.
@@ -1254,17 +1276,17 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
 // Handles a lens button with new badge tap. Registers that the tap has occurred
 // and animates out the new badge portion of the button.
-- (void)lensButtonWithNewBadgeTapped:(id)sender {
-  if (!_lensButtonWithNewBadgeTapped) {
-    _lensButtonWithNewBadgeTapped = YES;
-    [UIView
-        animateWithDuration:kMaterialDuration1
-                 animations:^{
-                   content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(
-                       self.lensButton, 0);
-                 }];
-  }
-}
+// - (void)lensButtonWithNewBadgeTapped:(id)sender {
+//   if (!_lensButtonWithNewBadgeTapped) {
+//     _lensButtonWithNewBadgeTapped = YES;
+//     [UIView
+//         animateWithDuration:kMaterialDuration1
+//                  animations:^{
+//                    content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(
+//                        self.lensButton, 0);
+//                  }];
+//   }
+// }
 
 // Returns end button fakebox trailing space depending on fakebox size and
 // whether the new badge is displayed.
@@ -1430,9 +1452,9 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self.NTPShortcutsHandler openMIA];
 }
 
-- (void)openLensViewFinder {
-  [self.NTPShortcutsHandler openLensViewFinder];
-}
+// - (void)openLensViewFinder {
+//   [self.NTPShortcutsHandler openLensViewFinder];
+// }
 
 - (void)loadVoiceSearch:(id)sender {
   UIView* voiceSearchButton = base::apple::ObjCCastStrict<UIView>(sender);
@@ -1444,6 +1466,51 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                 action:@selector(preloadVoiceSearch:)
       forControlEvents:UIControlEventTouchDown];
   [self.NTPShortcutsHandler preloadVoiceSearch];
+}
+
+#pragma mark - Vortex VPN
+
+- (void)setVPNCommandsHandler:(id<VPNCommands>)handler {
+    _VPNCommandsHandler = handler;
+}
+
+- (void)dealloc {
+  [[VortexVPNManager sharedManager] removeObserver:self];
+}
+
+- (void)handleVPNShieldTapped {
+  NSLog(@"[VortexVPN] Shield tapped");
+  if (self.VPNCommandsHandler) {
+    [self.VPNCommandsHandler toggleVPN];
+  } else {
+    NSLog(@"[VortexVPN] ERROR: VPNCommands handler not set!");
+  }
+}
+
+- (void)vpnManagerDidUpdateStatus:(VortexVPNStatus)status {
+  [self updateVPNShieldForStatus:status];
+}
+
+- (void)updateVPNShieldForStatus:(VortexVPNStatus)status {
+  if (!self.vpnShieldButton) {
+    return;
+  }
+  
+  switch (status) {
+    case VortexVPNStatusConnected:
+      self.vpnShieldButton.tintColor = [UIColor systemGreenColor];
+      break;
+    case VortexVPNStatusConnecting:
+      self.vpnShieldButton.tintColor = [UIColor systemOrangeColor];
+      break;
+    case VortexVPNStatusError:
+      self.vpnShieldButton.tintColor = [UIColor systemRedColor];
+      break;
+    case VortexVPNStatusDisconnected:
+    default:
+      self.vpnShieldButton.tintColor = [UIColor colorNamed:kGrey600Color];
+      break;
+  }
 }
 
 @end

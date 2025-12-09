@@ -62,6 +62,7 @@
 #import "ios/chrome/common/ui/util/ui_util.h"
 #import "ios/chrome/grit/ios_strings.h"
 #import "ui/base/l10n/l10n_util.h"
+#import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
 
 using base::UserMetricsAction;
 
@@ -94,7 +95,9 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
 @interface NewTabPageHeaderViewController () <
     SearchEngineLogoConsumer,
     UIIndirectScribbleInteractionDelegate,
-    UIPointerInteractionDelegate>
+    UIPointerInteractionDelegate,
+    VortexVPNObserver>
+
 
 // `YES` if this consumer is has voice search enabled.
 @property(nonatomic, assign) BOOL voiceSearchIsEnabled;
@@ -146,6 +149,7 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
   __weak UIImage* _dseLogo;
   SearchEngineLogoMediator* _searchEngineLogoMediator;
   SearchEngineLogoState _searchEngineLogoState;
+  UIButton* _vpnButton;  // Vortex VPN
 }
 
 - (instancetype)initWithUseNewBadgeForLensButton:(BOOL)useNewBadgeForLensButton
@@ -206,6 +210,7 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
 }
 
 - (void)dealloc {
+  [[VortexVPNManager sharedManager] removeObserver:self];
   [self.accessibilityButton removeObserver:self forKeyPath:@"highlighted"];
 }
 
@@ -368,6 +373,7 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
     if (IsNTPBackgroundCustomizationEnabled()) {
       [self applyBackgroundTheme];
     }
+    self.headerView.VPNCommandsHandler = self.VPNCommandsHandler;
   }
 }
 
@@ -427,6 +433,11 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
     (id<NewTabPageShortcutsHandler>)NTPShortcutsHandler {
   _NTPShortcutsHandler = NTPShortcutsHandler;
   self.headerView.NTPShortcutsHandler = NTPShortcutsHandler;
+}
+
+- (void)setVPNCommandsHandler:(id<VPNCommands>)VPNCommandsHandler {
+  _VPNCommandsHandler = VPNCommandsHandler;
+  self.headerView.VPNCommandsHandler = VPNCommandsHandler;   // 🔧 propagate
 }
 
 #pragma mark - FakeboxButtonsSnapshotProvider
@@ -502,10 +513,10 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
       [[UIIndirectScribbleInteraction alloc] initWithDelegate:self];
   [self.fakeOmnibox addInteraction:scribbleInteraction];
 
-  if (self.headerView.lensButton) {
-    [self.layoutGuideCenter referenceView:self.headerView.lensButton
-                                underName:kFakeboxLensIconGuide];
-  }
+  // if (self.headerView.lensButton) {
+  //   [self.layoutGuideCenter referenceView:self.headerView.lensButton
+  //                               underName:kFakeboxLensIconGuide];
+  // }
 
   [self updateVoiceSearchDisplay];
 }
@@ -555,6 +566,11 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
         return [UIPointerStyle styleWithEffect:proposedEffect shape:shape];
       };
 
+  // ⬇️ Vortex: hide and disable identity disc (sign-in button).
+  self.identityDiscButton.hidden = YES;
+  self.identityDiscButton.enabled = NO;
+  self.identityDiscButton.userInteractionEnabled = NO;
+
   // `self.identityDiscButton` should not be updated if `self.identityDiscImage`
   // is not available yet.
   if (self.identityDiscImage) {
@@ -581,42 +597,119 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
   [self updateIdentityDiscConstraints];
 }
 
-// Creates the Home customization menu and adds it to the header view.
+// Creates the VPN status button and adds it to the header view.
 - (void)addCustomizationMenu {
-  UIButton* customizationMenuButton =
+  UIButton* vpnButton =
       [[ExtendedTouchTargetButton alloc] initWithFrame:CGRectZero];
 
-  if (!IsNTPBackgroundCustomizationEnabled()) {
-    UIImage* icon = DefaultSymbolTemplateWithPointSize(
-        kPencilSymbol,
-        IsSignInButtonNoAvatarEnabled()
-            ? ntp_home::kCustomizationMenuIconSizeWhenSignInButtonHasNoAvatar
-            : ntp_home::kCustomizationMenuIconSize);
-    [customizationMenuButton setImage:icon forState:UIControlStateNormal];
-    customizationMenuButton.backgroundColor =
-        [self defaultButtonBackgroundColor];
+  // ⬇️ VORTEX: Create shield icon with proper configuration
+  UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration
+    configurationWithPointSize:ntp_home::kCustomizationMenuIconSize];
 
-    UIColor* tintColor = [UIColor
-        colorNamed:(IsSignInButtonNoAvatarEnabled() ? kBlue600Color
-                                                    : kTextSecondaryColor)];
-    customizationMenuButton.tintColor = tintColor;
+  UIImage* shieldIcon = [UIImage systemImageNamed:@"shield.fill"
+                             withConfiguration:config];
 
-    customizationMenuButton.layer.cornerRadius =
-        ntp_home::kCustomizationMenuButtonCornerRadius;
-    customizationMenuButton.clipsToBounds = YES;
+  // ⬇️ CRITICAL: Make it a template image so it respects tintColor
+  UIImage* templateImage = [shieldIcon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+
+  [vpnButton setImage:templateImage forState:UIControlStateNormal];
+  vpnButton.backgroundColor = [self defaultButtonBackgroundColor];
+
+  vpnButton.layer.cornerRadius = ntp_home::kCustomizationMenuButtonCornerRadius;
+  vpnButton.clipsToBounds = YES;
+
+  vpnButton.accessibilityIdentifier = @"VPNStatusButton";
+  vpnButton.accessibilityLabel = @"VPN Disconnected. Tap to connect.";
+
+  // ⬇️ VORTEX: Tap to toggle VPN
+  [vpnButton addTarget:self
+                action:@selector(vpnButtonTapped:)
+      forControlEvents:UIControlEventTouchUpInside];
+
+  // Store reference for status updates
+  _vpnButton = vpnButton;
+
+
+  [self.headerView setCustomizationMenuButton:vpnButton
+                                 withNewBadge:NO];
+
+  // ⬇️ VORTEX: Set initial gray tint color BEFORE calling updateVPNButtonColor
+  vpnButton.tintColor = [UIColor colorNamed:kTextSecondaryColor];
+
+  // ⬇️ VORTEX: Update color based on actual VPN status (happens after setup)
+  [self updateVPNButtonColor:vpnButton];
+
+  // ⬇️ VORTEX: Start observing VPN status
+  [[VortexVPNManager sharedManager] addObserver:self];
+}
+
+#pragma mark - VPN Status Updates
+
+- (void)updateVPNButtonColor:(UIButton*)button {
+  VortexVPNManager* vpnManager = [VortexVPNManager sharedManager];
+  VortexVPNStatus status = vpnManager.status;
+
+  UIColor* tintColor;
+  NSString* accessibilityLabel;
+
+  switch (status) {
+    case VortexVPNStatusDisconnected:
+      // Gray when disconnected
+      tintColor = [UIColor colorNamed:kTextSecondaryColor];
+      accessibilityLabel = @"VPN Disconnected. Tap to connect.";
+      break;
+
+    case VortexVPNStatusConnecting:
+      // Yellow when connecting
+      tintColor = [UIColor systemOrangeColor];
+      accessibilityLabel = @"VPN Connecting...";
+      break;
+
+    case VortexVPNStatusConnected:
+      // Green when connected
+      tintColor = [UIColor systemGreenColor];
+      accessibilityLabel = @"VPN Connected. Tap to disconnect.";
+      break;
+
+    case VortexVPNStatusError:
+      // Red when error
+      tintColor = [UIColor systemRedColor];
+      accessibilityLabel = @"VPN Error. Tap to retry.";
+      break;
   }
 
-  customizationMenuButton.accessibilityIdentifier =
-      kNTPCustomizationMenuButtonIdentifier;
-  customizationMenuButton.accessibilityLabel =
-      l10n_util::GetNSString(IDS_IOS_HOME_CUSTOMIZATION_ACCESSIBILITY_LABEL);
+  button.tintColor = tintColor;
+  button.accessibilityLabel = accessibilityLabel;
+}
 
-  [customizationMenuButton addTarget:self.commandHandler
-                              action:@selector(customizationMenuWasTapped:)
-                    forControlEvents:UIControlEventTouchUpInside];
+- (void)handleVPNShieldTapped {
+  NSLog(@"[VortexVPN] Shield tapped");
+  if (self.VPNCommandsHandler) {
+    [self.VPNCommandsHandler toggleVPN];
+  } else {
+    NSLog(@"[VortexVPN] ERROR: VPNCommands handler not set!");
+  }
+}
 
-  [self.headerView setCustomizationMenuButton:customizationMenuButton
-                                 withNewBadge:_useNewBadgeForCustomizationMenu];
+- (void)vpnButtonTapped:(UIButton*)sender {
+  NSLog(@"🔵 [NTPHome] VPN button tapped");
+  [self handleVPNShieldTapped];
+
+  // Optional: Show a quick toast/feedback
+  // [self showVPNStatusToast];
+}
+
+#pragma mark - VortexVPNObserver
+
+- (void)vpnManagerDidUpdateStatus:(VortexVPNStatus)status {
+  // Update button color on main thread
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if (self->_vpnButton) {
+      [self updateVPNButtonColor:self->_vpnButton];
+
+      NSLog(@"🔵 [NTPHome] VPN status updated to: %ld", (long)status);
+    }
+  });
 }
 
 // Configures `identityDiscButton` with the current state of

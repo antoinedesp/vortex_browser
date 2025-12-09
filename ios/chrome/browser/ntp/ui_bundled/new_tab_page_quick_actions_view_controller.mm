@@ -70,8 +70,9 @@ UIColor* ButtonBackgroundColor(NewTabPageColorPalette* colorPalette) {
   [NSLayoutConstraint
       activateConstraints:@[ [_buttonStackView.heightAnchor
                               constraintEqualToConstant:kQuickActionsHeight] ]];
-  BOOL showAIMEntrypoint = GetNTPMIAEntrypointVariation() ==
-                           NTPMIAEntrypointVariation::kAIMInQuickAction;
+//  BOOL showAIMEntrypoint = GetNTPMIAEntrypointVariation() ==
+//                           NTPMIAEntrypointVariation::kAIMInQuickAction;
+  BOOL showAIMEntrypoint = NO;
   if (showAIMEntrypoint) {
     _aimButton =
         [self createButtonWithSymbolName:kMagnifyingglassSparkSymbol
@@ -80,8 +81,9 @@ UIColor* ButtonBackgroundColor(NewTabPageColorPalette* colorPalette) {
     [_buttonStackView addArrangedSubview:_aimButton];
   }
 
-  BOOL showIncognito = GetNTPMIAEntrypointVariation() !=
-                       NTPMIAEntrypointVariation::kEnlargedFakeboxNoIncognito;
+//  BOOL showIncognito = GetNTPMIAEntrypointVariation() !=
+//                       NTPMIAEntrypointVariation::kEnlargedFakeboxNoIncognito;
+  BOOL showIncognito = NO;
   if (showIncognito) {
     if (showAIMEntrypoint) {
       _incognitoButton = [self

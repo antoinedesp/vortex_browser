@@ -338,6 +338,7 @@ source_set("ntp_internal") {
     "//ui/base",
     "//ui/gfx/ios:uikit_util",
     "//url",
+    "//ios/chrome/browser/vortex_vpn:vortex_vpn",
   ]
   frameworks = [
     "CoreGraphics.framework",

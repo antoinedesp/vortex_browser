@@ -11,9 +11,11 @@
 #import "ios/chrome/browser/location_bar/ui_bundled/fakebox_buttons_snapshot_provider.h"
 #import "ios/chrome/browser/ntp/ui_bundled/new_tab_page_header_consumer.h"
 #import "ios/chrome/browser/ntp/ui_bundled/new_tab_page_header_view_controller_delegate.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 @protocol FakeboxFocuser;
 @protocol HelpCommands;
+@protocol VPNCommands;
 @protocol NewTabPageControllerDelegate;
 @protocol NewTabPageHeaderCommands;
 @protocol NewTabPageShortcutsHandler;
@@ -47,6 +49,8 @@
 @property(nonatomic, weak) id<NewTabPageHeaderViewControllerDelegate> delegate;
 @property(nonatomic, weak) id<NewTabPageHeaderCommands> commandHandler;
 @property(nonatomic, weak) id<NewTabPageControllerDelegate> toolbarDelegate;
+
+@property(nonatomic, weak) id<VPNCommands> VPNCommandsHandler;
 
 // `YES` if Google is the default search engine.
 @property(nonatomic, assign) BOOL isGoogleDefaultSearchEngine;

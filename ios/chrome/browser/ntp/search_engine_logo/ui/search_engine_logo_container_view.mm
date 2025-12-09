@@ -45,7 +45,8 @@ constexpr base::TimeDelta kFadeDuration = base::Milliseconds(500);
     // TODO(crbug.com/1170491): Ideally the width anchor added so the
     // imageview frame matches the intrinsic size.
     [NSLayoutConstraint activateConstraints:@[
-      [_shrunkLogoView.heightAnchor constraintEqualToAnchor:self.heightAnchor],
+      [_shrunkLogoView.heightAnchor constraintEqualToAnchor:self.heightAnchor
+                                         multiplier:0.67],
       [_shrunkLogoView.centerXAnchor
           constraintEqualToAnchor:self.centerXAnchor],
       [_shrunkLogoView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor]
@@ -69,6 +70,20 @@ constexpr base::TimeDelta kFadeDuration = base::Milliseconds(500);
     [_doodleLogo setAlpha:0.0];
     _logoState = SearchEngineLogoState::kLogo;
   }
+
+  // ⬇️ VORTEX: Replace with custom logo
+  UIImage* vortexLogo = [UIImage imageNamed:@"vortex_logo"];
+  if (vortexLogo) {
+    _shrunkLogoView.image = vortexLogo;
+    _shrunkLogoView.contentMode = UIViewContentModeScaleAspectFit;
+    [_shrunkLogoView setAlpha:1.0];
+    [_doodleLogo setAlpha:0.0];
+    _logoState = SearchEngineLogoState::kLogo;
+  }
+  else {
+    NSLog(@"search_engine_logo_container_view: vortex_logo not found");
+  }
+
   return self;
 }
 
@@ -83,42 +98,67 @@ constexpr base::TimeDelta kFadeDuration = base::Milliseconds(500);
 
 #pragma mark Public
 
+//- (void)setLogoState:(SearchEngineLogoState)logoState animated:(BOOL)animated {
+//  if (_logoState == logoState) {
+//    return;
+//  }
+//  _logoState = logoState;
+//  BOOL showingDoodle = _logoState == SearchEngineLogoState::kDoodle;
+//  UIView* logoView = self.shrunkLogoView;
+//  DCHECK(logoView.superview);
+//  if (!showingDoodle) {
+//    [self.doodleLogo stopAnimating];
+//  }
+//  __weak UIView* viewToFadeOut = showingDoodle ? logoView : self.doodleLogo;
+//  __weak UIView* viewToFadeIn = showingDoodle ? self.doodleLogo : logoView;
+//  ProceduralBlock fadeOutAnimation = ^{
+//    [viewToFadeOut setAlpha:0.0];
+//  };
+//  ProceduralBlock fadeInAnimation = ^{
+//    [viewToFadeIn setAlpha:1.0];
+//  };
+//  if (animated) {
+//    ProceduralBlock animations = ^{
+//      [UIView addKeyframeWithRelativeStartTime:0.0
+//                              relativeDuration:0.5
+//                                    animations:fadeOutAnimation];
+//      [UIView addKeyframeWithRelativeStartTime:0.5
+//                              relativeDuration:0.5
+//                                    animations:fadeInAnimation];
+//    };
+//    [UIView animateKeyframesWithDuration:kFadeDuration.InSecondsF()
+//                                   delay:0.0
+//                                 options:0
+//                              animations:animations
+//                              completion:nil];
+//  } else {
+//    fadeOutAnimation();
+//    fadeInAnimation();
+//  }
+//}
+
 - (void)setLogoState:(SearchEngineLogoState)logoState animated:(BOOL)animated {
+  // ⬇️ VORTEX: Always force to show our custom logo
   if (_logoState == logoState) {
     return;
   }
-  _logoState = logoState;
-  BOOL showingDoodle = _logoState == SearchEngineLogoState::kDoodle;
-  UIView* logoView = self.shrunkLogoView;
-  DCHECK(logoView.superview);
-  if (!showingDoodle) {
+
+  NSLog(@"search_engine_logo_container_view: setLogoState called with state: %d", (int)logoState);
+
+  // Always force to logo state (not doodle)
+  _logoState = SearchEngineLogoState::kLogo;
+
+  // Ensure our custom logo is showing
+  UIImage* vortexLogo = [UIImage imageNamed:@"vortex_logo"];
+  if (vortexLogo) {
+    NSLog(@"search_engine_logo_container_view: Setting vortex_logo");
+    _shrunkLogoView.image = vortexLogo;
+    _shrunkLogoView.contentMode = UIViewContentModeScaleAspectFit;
+    [_shrunkLogoView setAlpha:1.0];
+    [_doodleLogo setAlpha:0.0];
     [self.doodleLogo stopAnimating];
-  }
-  __weak UIView* viewToFadeOut = showingDoodle ? logoView : self.doodleLogo;
-  __weak UIView* viewToFadeIn = showingDoodle ? self.doodleLogo : logoView;
-  ProceduralBlock fadeOutAnimation = ^{
-    [viewToFadeOut setAlpha:0.0];
-  };
-  ProceduralBlock fadeInAnimation = ^{
-    [viewToFadeIn setAlpha:1.0];
-  };
-  if (animated) {
-    ProceduralBlock animations = ^{
-      [UIView addKeyframeWithRelativeStartTime:0.0
-                              relativeDuration:0.5
-                                    animations:fadeOutAnimation];
-      [UIView addKeyframeWithRelativeStartTime:0.5
-                              relativeDuration:0.5
-                                    animations:fadeInAnimation];
-    };
-    [UIView animateKeyframesWithDuration:kFadeDuration.InSecondsF()
-                                   delay:0.0
-                                 options:0
-                              animations:animations
-                              completion:nil];
   } else {
-    fadeOutAnimation();
-    fadeInAnimation();
+    NSLog(@"search_engine_logo_container_view: ERROR - vortex_logo not found!");
   }
 }
 

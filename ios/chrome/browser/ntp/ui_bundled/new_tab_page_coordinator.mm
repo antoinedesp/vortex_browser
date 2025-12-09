@@ -728,6 +728,8 @@
       HandlerForProtocol(dispatcher, FakeboxFocuser);
   headerViewController.helpHandler =
       HandlerForProtocol(dispatcher, HelpCommands);
+  headerViewController.VPNCommandsHandler =
+    HandlerForProtocol(dispatcher, VPNCommands);
 
   headerViewController.NTPShortcutsHandler = self;
 
