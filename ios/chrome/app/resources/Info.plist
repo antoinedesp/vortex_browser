@@ -78,7 +78,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.0.0</string>
+	<string>1.1</string>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -99,6 +99,8 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+	    <string>network-authentication</string>
+	    <string>void</string>
 		<string>audio</string>
 	</array>
 	<key>UIApplicationShortcutItems</key>
