@@ -459,11 +459,10 @@ using segmentation_platform::TipIdentifier;
     [moduleMediators addObject:_sendTabPromoMediator];
   }
 
+  prefs->SetBoolean(ntp_tiles::prefs::kTipsHomeModuleEnabled, false);
+
   BOOL areTipsCardsEnabled =
       prefs->GetBoolean(ntp_tiles::prefs::kTipsHomeModuleEnabled);
-
-  // Vortex
-  areTipsCardsEnabled = NO;
 
   if (IsTipsMagicStackEnabled() && areTipsCardsEnabled) {
     _tipsMediator = [[TipsMagicStackMediator alloc]
