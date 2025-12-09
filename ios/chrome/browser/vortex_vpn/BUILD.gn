@@ -1,0 +1,21 @@
+# ios/chrome/browser/vortex_vpn/BUILD.gn
+
+import("//build/config/ios/config.gni")
+
+source_set("vortex_vpn") {
+  sources = [
+    "vortex_vpn_manager.h",
+    "vortex_vpn_manager.mm",
+  ]
+
+  deps = [
+    "//base",
+    "//ios/chrome/browser/shared/model/browser",
+  ]
+
+  frameworks = [
+    "Foundation.framework",
+    "NetworkExtension.framework",
+    "Security.framework",
+  ]
+}
