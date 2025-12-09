@@ -1,0 +1,67 @@
+{
+  "iOS" : [
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "ios-arm64",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "c2496f9b557c4c367ddaa815d9e18dfdc9133896b7ebfb7a3a196da48910186e"
+    },
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "793541c81043f74d950a465caa293a1ff2a48b2ea276f406caf71aa5bc0fd70a"
+    },
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "ios-arm64_x86_64-maccatalyst",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "7e6bba47336390b9016c3ca7b0069a0e8b45d911e565072030ffb7932d6e1180"
+    }
+  ],
+  "tvOS" : [
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "tvos-arm64",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "2dd37552dbbc28756a086fc8a7413ec20340b8eedfe5bfaf12fc567f77aca108"
+    },
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "tvos-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "dae96b04867ca3600e5e768ad16232fb0aa4a4ed5de0c1c4aa56b7b31792a57d"
+    }
+  ],
+  "commitish" : "5.49.2",
+  "Mac" : [
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "macos-arm64_x86_64",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "41f13e1971b1b177d6439de8a7d1dc8b9303262db696449179544f2688551ab8"
+    }
+  ],
+  "watchOS" : [
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "watchos-arm64_arm64_32_armv7k",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "5f955c2ae30d5b8f68160b75c386a8c93e7f06217fdbb12d95043fa17f10a552"
+    },
+    {
+      "container" : "RevenueCat.xcframework",
+      "identifier" : "watchos-arm64_x86_64-simulator",
+      "swiftToolchainVersion" : "6.1.2 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)",
+      "name" : "RevenueCat",
+      "hash" : "d4a0a30a516422b3b57c0c6e60be22268bd6ff939c4170dd83e17624277e5e89"
+    }
+  ]
+}

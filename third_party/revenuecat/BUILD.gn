@@ -1,0 +1,50 @@
+import("//build/config/ios/config.gni")
+import("//build/config/ios/rules.gni")
+
+config("revenuecat_ios_config") {
+  include_dirs = [
+    "//third_party/revenuecat/ios/RevenueCat.xcframework/ios-arm64/RevenueCat.framework/Headers",
+    "//third_party/revenuecat/ios/RevenueCat.xcframework/ios-arm64_x86_64-simulator/RevenueCat.framework/Headers",
+  ]
+
+  framework_dirs = [
+    "//third_party/revenuecat/ios/RevenueCat.xcframework/ios-arm64",
+    "//third_party/revenuecat/ios/RevenueCat.xcframework/ios-arm64_x86_64-simulator",
+  ]
+}
+
+source_set("revenuecat_ios") {
+  public_configs = [ ":revenuecat_ios_config" ]
+  public_deps = [ ":revenuecat_ios_framework_bundle" ]
+
+  sources = [
+    "ios/vortex_revenuecat_shim.h",
+    "ios/vortex_revenuecat_shim.mm",
+  ]
+
+  frameworks = [
+    "StoreKit.framework",
+    "RevenueCat.framework",
+  ]
+}
+
+bundle_data("revenuecat_ios_framework_bundle") {
+  # Path inside the XCFramework for *simulator* slice.
+  if (target_environment == "device") {
+    _framework_dir = "ios/RevenueCat.xcframework/ios-arm64/RevenueCat.framework"
+  } else {
+    _framework_dir = "ios/RevenueCat.xcframework/ios-arm64_x86_64-simulator/RevenueCat.framework"
+  }
+
+  # All files under that directory should be copied. Follow the pattern used
+  # in ios/third_party/lottie/BUILD.gn for the sources/outputs syntax.
+  sources = [
+    "$_framework_dir/RevenueCat",
+    "$_framework_dir/Info.plist",
+    "$_framework_dir/Modules/module.modulemap",
+    # add other header/module files if Lottie’s bundle_data lists them explicitly
+  ]
+  outputs = [
+    "{{bundle_contents_dir}}/Frameworks/RevenueCat.framework/{{source_file_part}}",
+  ]
+}

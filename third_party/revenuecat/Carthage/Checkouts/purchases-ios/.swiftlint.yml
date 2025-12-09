@@ -1,0 +1,78 @@
+excluded:
+  - Carthage
+  - Examples
+  - Tests/InstallationTests
+  - Tests/TestingApps
+  - Tests/APITesters
+  - Tuist
+  - vendor
+  - scan_derived_data
+  - .git
+  - .build
+  - ./**/Project.swift
+
+opt_in_rules:
+  - force_unwrapping
+  - sorted_imports
+  - missing_docs
+  - convenience_type
+  - multiline_parameters
+  - vertical_parameter_alignment
+  - vertical_parameter_alignment_on_call
+  - explicit_init
+
+disabled_rules:
+  - orphaned_doc_comment
+  - blanket_disable_command
+  # Broken: https://github.com/realm/SwiftLint/issues/5153
+  - unneeded_synthesized_initializer
+  - non_optional_string_data_conversion
+  - static_over_final_class
+
+custom_rules:
+  xctestcase_superclass:
+    included: ".*\\.swift"
+    excluded:
+      - Tests/ReceiptParserTests
+      - Tests/v3LoadShedderIntegration
+      - Tests/v4LoadShedderIntegration
+    regex: "\\: XCTestCase \\{"
+    name: "XCTestCase Superclass"
+    message: "Test classes must inherit `TestCase` instead."
+
+  return_switch_forbidden:
+    included: ".*\\.swift"
+    name: "Forbidden 'return switch' usage"
+    regex: '\breturn\s+switch\b'
+    message: "Inline 'return switch' is not allowed."
+    severity: error
+
+  no_preview_macro:
+    name: "No Preview Macro"
+    regex: "#Preview"
+    message: "The '#Preview' macro will not compile in the CI pipeline during deployment, use a PreviewProvider instead."
+    severity: error
+
+  no_assignments_from_switch:
+    name: "No Assignments from Switch Statements"
+    regex: " = switch "
+    message: "In older versions of xcode build tools, this is not supported and will fail in CI"
+    severity: error
+
+  no_trailing_comma_multiline:
+    name: "No Trailing Commas"
+    regex: ',\s*\n\s*\)'
+    message: "Trailing commas are not allowed"
+    severity: error
+
+identifier_name:
+  max_length:
+    warning: 60
+    error: 80
+
+large_tuple:
+  warning: 4
+  error: 5
+
+missing_docs:
+  excludes_inherited_types: false
