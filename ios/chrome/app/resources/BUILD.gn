@@ -19,6 +19,7 @@ group("resources") {
     ":launchscreen",
     ":quick_action_icons",
     ":system_strings",
+    ":vortex_assets",
     "//ios/chrome/app/resources:packed_resources",
   ]
 }
@@ -147,27 +148,22 @@ repack("repack_unscaled_resources") {
 bundle_data_xcassets("chromium_icons_legacy") {
   catalog = "ChromiumIconsLegacy.xcassets"
   sources = [
-    "ChromiumIconsLegacy.xcassets/AppIcon.appiconset/Contents.json",
-    "ChromiumIconsLegacy.xcassets/AppIcon.appiconset/Icon-1024.png",
-    "ChromiumIconsLegacy.xcassets/AppIcon.appiconset/Icon-1024Dark.png",
-    "ChromiumIconsLegacy.xcassets/AppIcon.appiconset/Icon-1024Tinted.png",
+    "ChromiumIconsLegacy.xcassets/AppIconLegacy.appiconset/Icon-1024.png",
+    "ChromiumIconsLegacy.xcassets/AppIconLegacy.appiconset/Icon-1024Dark.png",
+    "ChromiumIconsLegacy.xcassets/AppIconLegacy.appiconset/Icon-1024Tinted.png",
+    "ChromiumIconsLegacy.xcassets/AppIconLegacy.appiconset/Contents.json",
   ]
 }
 
 bundle_data_xcassets("chromium_icons") {
   catalog = "ChromiumIcons.xcassets"
   sources = [
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/2.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/3.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/5.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/blue.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/cr.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/donut.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/pill.svg",
-    "ChromiumIcons.xcassets/AppIcon.icon/Assets/ring.png",
-    "ChromiumIcons.xcassets/AppIcon.icon/icon.json",
+    "ChromiumIcons.xcassets/AppIcon.appiconset/Icon-1024.png",
+    "ChromiumIcons.xcassets/AppIcon.appiconset/Icon-1024Dark.png",
+    "ChromiumIcons.xcassets/AppIcon.appiconset/Icon-1024Tinted.png",
+    "ChromiumIcons.xcassets/AppIcon.appiconset/Contents.json",
   ]
-}
+ }
 
 bundle_data_xcassets("launchscreen_assets") {
   catalog = "Launchscreen.xcassets"
@@ -260,4 +256,14 @@ bundle_data("settings_resources") {
   public_deps = [ ":settings_resources_experimental_plist" ]
   sources = [ "Settings.bundle/Root.plist" ]
   outputs = [ "{{bundle_resources_dir}}/Settings.bundle/{{source_file_part}}" ]
+}
+
+bundle_data_xcassets("vortex_assets") {
+  catalog = "VortexAssets.xcassets"
+  sources = [
+    "VortexAssets.xcassets/vortex_logo.imageset/Contents.json",
+    "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo.png",
+    "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo@2x.png",
+    "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo@3x.png",
+  ]
 }
