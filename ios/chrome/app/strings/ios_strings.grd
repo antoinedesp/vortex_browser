@@ -1648,7 +1648,7 @@
         Content settings
       </message>
       <message name="IDS_IOS_CONTENT_SUGGESTIONS_ACCESSIBILITY_LABEL_SUGGESTION" desc="The accessibility label of a suggestion. Summarizes fields in the reading list entry (title, publisher informations, status and informations). Read by Text-to-Speech.">
-        <ph name="TITLE"><ex>Learn about the new Chromium projects</ex>$1</ph>, <ph name="PUBLISHER_INFORMATION"><ex>The Chromium organization</ex>$2</ph>, <ph name="PUBLICATION_DATE"><ex>January 1 2017</ex>$3</ph>
+        <ph name="TITLE"><ex>Learn about the new Vortex projects</ex>$1</ph>, <ph name="PUBLISHER_INFORMATION"><ex>The Vortex organization</ex>$2</ph>, <ph name="PUBLICATION_DATE"><ex>January 1 2017</ex>$3</ph>
       </message>
       <message name="IDS_IOS_CONTENT_SUGGESTIONS_ADD_PINNED_SITE" desc="The title of the button to add a pinned site on the new tab page [Length: 10em]">
         Add Site
@@ -2803,16 +2803,22 @@
         Terms of service
       </message>
       <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_FIRST_STEP" desc="Text of the row indicating the first step of setting the default browser [iOS only]">
-        Open <ph name="BEGIN_BOLD">BEGIN_BOLD</ph>Default Apps<ph name="END_BOLD">END_BOLD</ph> settings in iOS
+        Private VPN connection
       </message>
       <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_SECOND_STEP" desc="Text of the row indicating the second step of setting the default browser [iOS only]">
-        Tap <ph name="BEGIN_BOLD">BEGIN_BOLD</ph>Browser App<ph name="END_BOLD">END_BOLD</ph>
+        Ad &amp; tracker blocking
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_THIRD_STEP" desc="Text of the row indicating the third step of setting the default browser [iOS only]">
+        Faster, cleaner browsing
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_DEFAULT_APPS_FOURTH_STEP" desc="Text of the row indicating the fourth step of setting the default browser [iOS only]">
+        Protects all apps on your device
       </message>
       <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_FIRST_STEP" desc="Text of the row indicating the first step of setting the default browser [iOS only]">
         Open <ph name="BEGIN_BOLD">BEGIN_BOLD</ph>Settings<ph name="END_BOLD">END_BOLD</ph>
       </message>
       <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_PRIMARY_ACTION" desc="The primary action string on the default browser screen presented to the user on First Run [iOS only]">
-        Make default in Settings…
+        Try for free
       </message>
       <message name="IDS_IOS_FIRST_RUN_DEFAULT_BROWSER_SCREEN_SECONDARY_ACTION" desc="The secondary action string on the default browser screen presented to the user on First Run [iOS only]">
         No thanks
@@ -3914,7 +3920,7 @@
       <message name="IDS_IOS_MANAGED_SIGNIN_WITH_USER_POLICY_CONTINUE_BUTTON_LABEL" desc="The title of the Continue button of the Sign in to a managed account dialog when User Policy is enabled. [iOS only]">
         Continue
       </message>
-      <message name="IDS_IOS_MANAGE_DATA_IN_YOUR_ACCOUNT_DESCRIPTION" desc="Subtitle for the cell to open 'Data from Chromium sync' web page where the user can control all their data data from sync.">
+      <message name="IDS_IOS_MANAGE_DATA_IN_YOUR_ACCOUNT_DESCRIPTION" desc="Subtitle for the cell to open 'Data from Vortex sync' web page where the user can control all their data data from sync.">
         Review your account data
       </message>
       <message name="IDS_IOS_MANAGE_STORAGE_ALERT_MANAGE_STORAGE_BUTTON" desc="Label of the primary action button in an alert presented when the user tries to select a destination for an upload, without sufficient storage space in the destination. The button opens a page where the user can manage their storage space. [iOS only] [Length: 12em]" meaning="Label of the primary action button in an alert presented when the user tries to select a destination for an upload, without sufficient storage space in the destination. The button opens a page where the user can manage their storage space. [iOS only] [Length: 12em]">
@@ -3926,7 +3932,7 @@
       <message name="IDS_IOS_MANAGE_STORAGE_ALERT_TITLE" desc="Title of an alert presented when the user tries to select a destination for an upload, without sufficient storage space in the destination. [iOS only]">
         Your storage is full
       </message>
-      <message name="IDS_IOS_MANAGE_SYNC_DATA_FROM_CHROME_SYNC_DESCRIPTION" desc="Subtitle for the cell to open 'Data from Chromium sync' web page where the user can control all their data data from sync.">
+      <message name="IDS_IOS_MANAGE_SYNC_DATA_FROM_CHROME_SYNC_DESCRIPTION" desc="Subtitle for the cell to open 'Data from Vortex sync' web page where the user can control all their data data from sync.">
         Review your synced data
       </message>
       <message name="IDS_IOS_MANAGE_SYNC_ENCRYPTION" desc="Title for the cell to open the encryption dialog.">
@@ -4179,10 +4185,10 @@
         Turn on notifications?
       </message>
       <message name="IDS_IOS_NOTIFICATIONS_CONFIRMATION_MESSAGE" desc="The snackbar message that confirms that notifications have been turned on.">
-        <ph name="FEATURE_NAME">$1<ex>Chromium Tips</ex></ph> notifications turned on
+        <ph name="FEATURE_NAME">$1<ex>Vortex Tips</ex></ph> notifications turned on
       </message>
       <message name="IDS_IOS_NOTIFICATIONS_CONFIRMATION_MESSAGE_OFF" desc="The snackbar message that confirms that notifications have been turned off.">
-        <ph name="FEATURE_NAME">$1<ex>Chromium Tips</ex></ph> notifications turned off
+        <ph name="FEATURE_NAME">$1<ex>Vortex Tips</ex></ph> notifications turned off
       </message>
       <message name="IDS_IOS_NOTIFICATIONS_MANAGE_SETTINGS" desc="The label for a button that takes the user to the app's Notifications Settings page.">
         Manage
@@ -5159,7 +5165,7 @@ Handoff must also be enabled in the General section of Settings, and your device
         Check your default browser settings
       </message>
       <message name="IDS_IOS_POST_RESTORE_DEFAULT_BROWSER_PRIMARY_ACTION" desc="The text for the primary action button of the post restore default browser promo.">
-        Make default in settings…
+        Try for free
       </message>
       <message name="IDS_IOS_POST_RESTORE_DEFAULT_BROWSER_SECONDARY_ACTION" desc="The text for the secondary action button of the post restore default browser promo.">
         No thanks
@@ -5525,10 +5531,10 @@ Handoff must also be enabled in the General section of Settings, and your device
         Edit
       </message>
       <message name="IDS_IOS_READING_LIST_ENTRY_ACCESSIBILITY_LABEL" desc="Accessibility label for a reading list entry. Summarizes fields in the reading list entry (title, status and url). Read by Text To Speech. Similar to IDS_IOS_READING_LIST_ENTRY_WITH_UPLOAD_STATE_ACCESSIBILITY_LABEL">
-        <ph name="TITLE"><ex>Chromium - The Chromium projects</ex>$1</ph>, <ph name="STATE"><ex>available offline</ex>$2</ph>, <ph name="URL"><ex>http://www.chromium.org/Home</ex>$3</ph>
+        <ph name="TITLE"><ex>Vortex - The Vortex projects</ex>$1</ph>, <ph name="STATE"><ex>available offline</ex>$2</ph>, <ph name="URL"><ex>http://www.chromium.org/Home</ex>$3</ph>
       </message>
       <message name="IDS_IOS_READING_LIST_ENTRY_WITH_UPLOAD_STATE_ACCESSIBILITY_LABEL" desc="Accessibility label for a reading list entry. Summarizes fields in the reading list entry (title, status, upload state and url). Read by Text To Speech. Similar to IDS_IOS_READING_LIST_ENTRY_ACCESSIBILITY_LABEL">
-        <ph name="TITLE"><ex>Chromium - The Chromium projects</ex>$1</ph>, <ph name="STATE"><ex>available offline</ex>$2</ph>, only on this device, <ph name="URL"><ex>http://www.chromium.org/Home</ex>$3</ph>
+        <ph name="TITLE"><ex>Vortex - The Vortex projects</ex>$1</ph>, <ph name="STATE"><ex>available offline</ex>$2</ph>, only on this device, <ph name="URL"><ex>http://www.chromium.org/Home</ex>$3</ph>
       </message>
       <message name="IDS_IOS_READING_LIST_JUST_NOW" desc="String indicating that an event (adding item, distillation) happened less than one minute ago. [Length: 25em]">
         Just now
@@ -6647,7 +6653,7 @@ Handoff must also be enabled in the General section of Settings, and your device
         Expand list
       </message>
       <message name="IDS_IOS_SET_UP_LIST_HIDE_MODULE_CONTEXT_MENU_DESCRIPTION" desc="Description for the long-press context menu for the Set Up List module.">
-          Hide "<ph name="TITLE">$1<ex>Get the most out of Chromium</ex></ph>"
+          Hide "<ph name="TITLE">$1<ex>Get the most out of Vortex</ex></ph>"
       </message>
       <message name="IDS_IOS_SET_UP_LIST_MENU" desc="Accessibility label for the Set Up List menu button.">
         Options
@@ -7565,10 +7571,10 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_TANGIBLE_SYNC_DATA_TYPE_HISTORY" desc="This string appears as an item in a list of sync data types on a full-page screen that asks users if they want to turn on sync. Translate 'history' according to https://localization.google.com/glossary/termset?gid=27517723&amp;tsid=59c3162. Translate 'and more' so that it conveys that there are additional similar items that are not listed. [iOS only][CHAR_LIMIT=30]">
         History and more
       </message>
-      <message name="IDS_IOS_TANGIBLE_SYNC_DISCLAIMER" desc="This string appears in the footer on a full-page screen that asks users if they want to turn on sync. 'Sync' is short for 'synchronization'. The first sentence informs the user where they can go to change their mind or to customize what Chrome/Chromium data types they choose to sync (a user's Chrome/Chromium data includes their bookmarks, passwords, history, settings, and more). The second sentence informs the user that if they choose to sync, then their history may be used to personalize Search and other services. Translate 'history' according to https://localization.google.com/glossary/termset?gid=27517723&amp;tsid=59c3162. [iOS only][CHAR_LIMIT=200].">
+      <message name="IDS_IOS_TANGIBLE_SYNC_DISCLAIMER" desc="This string appears in the footer on a full-page screen that asks users if they want to turn on sync. 'Sync' is short for 'synchronization'. The first sentence informs the user where they can go to change their mind or to customize what Chrome/Vortex data types they choose to sync (a user's Chrome/Vortex data includes their bookmarks, passwords, history, settings, and more). The second sentence informs the user that if they choose to sync, then their history may be used to personalize Search and other services. Translate 'history' according to https://localization.google.com/glossary/termset?gid=27517723&amp;tsid=59c3162. [iOS only][CHAR_LIMIT=200].">
         You can always choose what to sync in <ph name="BEGIN_LINK">BEGIN_LINK</ph>settings<ph name="END_LINK">END_LINK</ph>. Google may personalize Search and other services based on your history.
       </message>
-      <message name="IDS_IOS_TANGIBLE_SYNC_SUBTITLE_BACK_UP" desc="This string appears as a subheading a full-page screen that asks users if they want to turn on sync. This string explains to users that they can back up their Chrome/Chromium data and use it on all their computers, phones, and other devices; a user's Chrome/Chromium data includes their bookmarks, passwords, history, settings, and more. The word 'stuff' can be translated as 'data' or similar if there is no natural translation of 'stuff'. Maintain the level of formality that your language generally uses in the Chrome/Chromium app. The tone should be informative and inviting. [iOS only][CHAR_LIMIT=100]">
+      <message name="IDS_IOS_TANGIBLE_SYNC_SUBTITLE_BACK_UP" desc="This string appears as a subheading a full-page screen that asks users if they want to turn on sync. This string explains to users that they can back up their Chrome/Vortex data and use it on all their computers, phones, and other devices; a user's Chrome/Vortex data includes their bookmarks, passwords, history, settings, and more. The word 'stuff' can be translated as 'data' or similar if there is no natural translation of 'stuff'. Maintain the level of formality that your language generally uses in the Chrome/Vortex app. The tone should be informative and inviting. [iOS only][CHAR_LIMIT=100]">
         Back up your stuff and use it on any device.
       </message>
       <message name="IDS_IOS_TANGIBLE_SYNC_TITLE_TURN_ON_SYNC" desc="This string appears as a heading on a full-page screen that asks users if they want to turn on sync. 'Sync' is short for 'synchronization'. The tone should be informative and inviting. [iOS only][CHAR_LIMIT=35]">
@@ -7584,10 +7590,10 @@ Handoff must also be enabled in the General section of Settings, and your device
         Zoom out
       </message>
       <message name="IDS_IOS_TIPS_NOTIFICATIONS_CONTEXT_MENU_ITEM" desc="Title of context menu item for the Set Up List to enable notifications.">
-        Turn on notifications for <ph name="FEATURE_NAME">$1<ex>Chromium tips</ex></ph>
+        Turn on notifications for <ph name="FEATURE_NAME">$1<ex>Vortex tips</ex></ph>
       </message>
       <message name="IDS_IOS_TIPS_NOTIFICATIONS_CONTEXT_MENU_ITEM_OFF" desc="Title of context menu item for the Set Up List to turn off notifications.">
-        Turn off notifications for <ph name="FEATURE_NAME">$1<ex>Chromium tips</ex></ph>
+        Turn off notifications for <ph name="FEATURE_NAME">$1<ex>Vortex tips</ex></ph>
       </message>
       <message name="IDS_IOS_TOGGLE_SETTING_MANAGED_ACCESSIBILITY_HINT" desc="Action hint for any managed switch in settings. This is spoken by VoiceOver. [iOS only]">
         This setting is managed, double tap for more information
