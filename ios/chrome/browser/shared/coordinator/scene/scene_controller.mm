@@ -229,6 +229,7 @@
 #import "net/base/url_util.h"
 #import "services/network/public/cpp/shared_url_loader_factory.h"
 #import "ui/base/l10n/l10n_util.h"
+#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_coordinator.h"
 
 #if BUILDFLAG(ENABLE_WIDGETS_FOR_MIM)
 #import "ios/chrome/browser/widget_kit/model/model_swift.h"  // nogncheck
@@ -541,6 +542,8 @@ void RecordIfNeededSigninFullscreenPromoEvent(
 // The profile of the current scene.
 @property(nonatomic, readonly) ProfileIOS* profile;
 
+@property(nonatomic, strong)
+    VortexPaywallCoordinator* vortexPaywallCoordinator;
 @end
 
 @implementation SceneController
@@ -2467,6 +2470,32 @@ using UserFeedbackDataCallback =
       presentViewController:self.settingsNavigationController
                    animated:YES
                  completion:nil];
+}
+
+#pragma mark - ApplicationCommands (Vortex)
+- (void)showVortexPaywall {
+  if (self.vortexPaywallCoordinator) {
+    [self.vortexPaywallCoordinator stop];
+    self.vortexPaywallCoordinator = nil;
+  }
+
+  UIViewController* baseViewController = self.mainCoordinator.baseViewController;
+  if (!baseViewController) {
+    return;
+  }
+
+  Browser* browser = self.mainInterface.browser;
+  if (!browser) {
+    return;
+  }
+
+  VortexPaywallCoordinator* coordinator =
+      [[VortexPaywallCoordinator alloc] 
+        initWithBaseViewController:baseViewController
+                    browser:browser];
+  self.vortexPaywallCoordinator = coordinator;
+
+  [self.vortexPaywallCoordinator start];
 }
 
 - (void)openNewWindowWithActivity:(NSUserActivity*)userActivity {
