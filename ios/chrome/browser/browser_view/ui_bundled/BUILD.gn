@@ -319,6 +319,7 @@ source_set("ui_bundled") {
     "//ui/base",
     "//ui/gfx",
     "//url",
+    "//ios/chrome/browser/ui/vpn:vpn",
 
     # Fake dependencies to break cycles
     "//ios/chrome/browser/settings/ui_bundled",

@@ -348,6 +348,8 @@
 #import "ios/web/public/web_state_id.h"
 #import "ui/base/device_form_factor.h"
 #import "ui/base/l10n/l10n_util.h"
+#import "ios/chrome/browser/ui/vpn/vpn_coordinator.h"
+#import "ios/chrome/browser/shared/public/commands/vpn_commands.h"
 
 namespace {
 
@@ -656,6 +658,8 @@ const char kChromeAppStoreUrl[] =
 // Coordinator for the composebox.
 @property(nonatomic, strong) ComposeboxCoordinator* composeboxCoordinator;
 
+@property(nonatomic, strong) VPNCoordinator* vpnCoordinator;
+
 @end
 
 @implementation BrowserCoordinator {
@@ -806,6 +810,13 @@ const char kChromeAppStoreUrl[] =
   [self createViewControllerDependencies];
 
   [self createViewController];
+  self.vpnCoordinator = [[VPNCoordinator alloc]
+    initWithBaseViewController:self.baseViewController
+                         browser:self.browser];
+  [self.vpnCoordinator start];
+  [self.browser->GetCommandDispatcher()
+    startDispatchingToTarget:self.vpnCoordinator
+       forProtocol:@protocol(VPNCommands)];
 
   [self updateViewControllerDependencies];
 
@@ -1415,6 +1426,14 @@ const char kChromeAppStoreUrl[] =
       browser->GetWebStateList()->AsWeakPtr();
   _viewControllerDependencies.voiceSearchController = _voiceSearchController;
   _viewControllerDependencies.safeAreaProvider = _safeAreaProvider;
+  self.vpnCoordinator = [[VPNCoordinator alloc]
+      initWithBaseViewController:self.baseViewController
+                         browser:self.browser];
+  [self.vpnCoordinator start];
+
+  [self.browser->GetCommandDispatcher()
+  startDispatchingToTarget:self.vpnCoordinator
+               forProtocol:@protocol(VPNCommands)];
 }
 
 - (void)updateViewControllerDependencies {
@@ -1457,7 +1476,6 @@ const char kChromeAppStoreUrl[] =
   _tabStripCoordinator.baseViewController = viewController;
   _NTPCoordinator.baseViewController = viewController;
   _bubblePresenterCoordinator.baseViewController = viewController;
-
   [_dispatcher startDispatchingToTarget:viewController
                             forProtocol:@protocol(BrowserCommands)];
 }
@@ -1807,6 +1825,9 @@ const char kChromeAppStoreUrl[] =
 
   [self.nonModalSignInPromoCoordinator stop];
   self.nonModalSignInPromoCoordinator = nil;
+
+  [self.vpnCoordinator stop];
+  self.vpnCoordinator = nil;
 
   [_addContactsCoordinator stop];
   _addContactsCoordinator = nil;
