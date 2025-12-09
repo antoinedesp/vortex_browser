@@ -1,0 +1,23 @@
+# ios/chrome/browser/ui/vortex_paywall/BUILD.gn
+
+import("//build/config/ios/config.gni")
+
+source_set("vpn") {
+  sources = [
+    "vpn_coordinator.h",
+    "vpn_coordinator.mm",
+  ]
+
+  deps = [
+    # Common iOS UI utilities; copy the ones used by a nearby feature.
+    "//base",
+    "//ios/chrome/browser/shared/model/browser",
+    "//ios/chrome/browser/shared/public/commands:commands",
+    "//ios/chrome/browser/shared/coordinator/chrome_coordinator:chrome_coordinator",
+    "//ios/chrome/common/ui/colors:colors",
+    "//third_party/revenuecat:revenuecat_ios",
+    "//ios/chrome/browser/vortex_plus:vortex_plus",
+    "//ios/chrome/browser/ui/vortex_paywall:vortex_paywall",
+    "//ios/chrome/browser/vortex_vpn:vortex_vpn",
+  ]
+}
