@@ -53,6 +53,8 @@
   __weak __typeof__(self) weakSelf = self;
   [self.vpnManager loadFromPreferencesWithCompletionHandler:^(NSError* error) {
     if (error) {
+      weakSelf.status = VortexVPNStatusDisconnected;
+      [weakSelf notifyObservers];
       NSLog(@"🔴 [VortexVPNManager] Failed to load VPN config: %@", error);
       return;
     }
@@ -121,8 +123,8 @@
   VortexVPNStatus newStatus;
   switch (vpnStatus) {
     case NEVPNStatusInvalid:
-      newStatus = VortexVPNStatusError;
-      NSLog(@"🔴 [VortexVPNManager] Status: Invalid");
+      newStatus = VortexVPNStatusDisconnected;
+      NSLog(@"⚪️ [VortexVPNManager] Status: Invalid (not configured)");
       break;
     case NEVPNStatusDisconnected:
       newStatus = VortexVPNStatusDisconnected;
