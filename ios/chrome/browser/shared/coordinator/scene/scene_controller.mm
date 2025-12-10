@@ -230,6 +230,7 @@
 #import "services/network/public/cpp/shared_url_loader_factory.h"
 #import "ui/base/l10n/l10n_util.h"
 #import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_coordinator.h"
+#import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
 
 #if BUILDFLAG(ENABLE_WIDGETS_FOR_MIM)
 #import "ios/chrome/browser/widget_kit/model/model_swift.h"  // nogncheck
@@ -415,6 +416,7 @@ void RecordIfNeededSigninFullscreenPromoEvent(
                                SceneURLLoadingServiceDelegate,
                                SettingsNavigationControllerDelegate,
                                TabGridCoordinatorDelegate,
+                               VortexPaywallCoordinatorDelegate,
                                YoutubeIncognitoCoordinatorDelegate> {
   std::unique_ptr<WebStateListObserverBridge> _webStateListForwardingObserver;
   std::unique_ptr<PolicyWatcherBrowserAgentObserverBridge>
@@ -1515,6 +1517,9 @@ void RecordIfNeededSigninFullscreenPromoEvent(
   [self.browserViewWrangler shutdown];
   self.browserViewWrangler = nil;
 
+  [self.vortexPaywallCoordinator stop];
+  self.vortexPaywallCoordinator = nil;
+
   [self.sceneState.profileState removeObserver:self];
   _sceneURLLoadingService.reset();
 
@@ -2474,14 +2479,14 @@ using UserFeedbackDataCallback =
 
 #pragma mark - ApplicationCommands (Vortex)
 - (void)showVortexPaywall {
+  if ([[VortexPlusManager sharedManager] isPremium]) {
+    [self showAlreadyPremiumDialog];
+    return;
+  }
+
   if (self.vortexPaywallCoordinator) {
     [self.vortexPaywallCoordinator stop];
     self.vortexPaywallCoordinator = nil;
-  }
-
-  UIViewController* baseViewController = self.mainCoordinator.baseViewController;
-  if (!baseViewController) {
-    return;
   }
 
   Browser* browser = self.mainInterface.browser;
@@ -2489,13 +2494,49 @@ using UserFeedbackDataCallback =
     return;
   }
 
+  UIViewController* baseViewController = self.currentInterface.viewController;
+  if (!baseViewController) {
+    return;
+  }
+
   VortexPaywallCoordinator* coordinator =
-      [[VortexPaywallCoordinator alloc] 
+      [[VortexPaywallCoordinator alloc]
         initWithBaseViewController:baseViewController
-                    browser:browser];
+                           browser:browser];
+
+  coordinator.delegate = self;
   self.vortexPaywallCoordinator = coordinator;
 
   [self.vortexPaywallCoordinator start];
+}
+
+- (void)showAlreadyPremiumDialog {
+  UIAlertController* alert = [UIAlertController
+      alertControllerWithTitle:@"Vortex Plus ✨"
+                       message:@"You are already premium. Thank you for supporting a more private Internet experience!"
+                preferredStyle:UIAlertControllerStyleAlert];
+
+  UIAlertAction* manageAction = [UIAlertAction
+      actionWithTitle:@"Manage Subscription"
+                style:UIAlertActionStyleDefault
+              handler:^(UIAlertAction* action) {
+                // Open subscription settings
+                NSURL* settingsURL = [NSURL URLWithString:@"https://apps.apple.com/account/subscriptions"];
+                [[UIApplication sharedApplication] openURL:settingsURL
+                                                   options:@{}
+                                         completionHandler:nil];
+              }];
+
+  UIAlertAction* okAction = [UIAlertAction
+      actionWithTitle:@"OK"
+                style:UIAlertActionStyleDefault
+              handler:nil];
+
+  [alert addAction:manageAction];
+  [alert addAction:okAction];
+
+  UIViewController* topViewController = self.activeViewController;
+  [topViewController presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)openNewWindowWithActivity:(NSUserActivity*)userActivity {
@@ -4281,6 +4322,43 @@ using UserFeedbackDataCallback =
   }
 
   _tabCountBeforeBatchOperation.erase(iter);
+}
+
+#pragma mark - VortexPaywallCoordinatorDelegate
+
+- (void)vortexPaywallCoordinatorDidRequestClose:
+    (VortexPaywallCoordinator*)coordinator {
+  NSLog(@"[SceneController] Paywall requested close");
+  CHECK_EQ(coordinator, self.vortexPaywallCoordinator);
+  [self.vortexPaywallCoordinator stop];
+  self.vortexPaywallCoordinator = nil;
+}
+
+- (void)vortexPaywallCoordinatorDidComplete:
+    (VortexPaywallCoordinator*)coordinator {
+  NSLog(@"[SceneController] Paywall completed (purchase successful)");
+  CHECK_EQ(coordinator, self.vortexPaywallCoordinator);
+  [self.vortexPaywallCoordinator stop];
+  self.vortexPaywallCoordinator = nil;
+
+  [self showPurchaseSuccessDialog];
+}
+
+- (void)showPurchaseSuccessDialog {
+  UIAlertController* alert = [UIAlertController
+      alertControllerWithTitle:@"Welcome to Vortex Plus! 🎉"
+                       message:@"Thank you for your support. Enjoy all premium features!"
+                preferredStyle:UIAlertControllerStyleAlert];
+
+  UIAlertAction* okAction = [UIAlertAction
+      actionWithTitle:@"Let's Go!"
+                style:UIAlertActionStyleDefault
+              handler:nil];
+
+  [alert addAction:okAction];
+
+  UIViewController* topViewController = self.activeViewController;
+  [topViewController presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Private methods
