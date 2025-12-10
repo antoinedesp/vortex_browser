@@ -51,6 +51,7 @@
 #import "ios/chrome/app/vortex_revenuecat_initializer.h"
 #import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
 #import "third_party/mixpanel/ios/vortex_mixpanel_shim.h"
+#import "ios/third_party/vortex/src/vortex_constants.h"
 
 namespace {
 // The time delay after firstSceneWillEnterForeground: before checking for main
@@ -136,7 +137,7 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
            object:nil];
 
   // MixPanel init
-  [VortexMixpanelShim configureWithToken:@"dde557452a3b2439ffedbd0057db32aa"
+  [VortexMixpanelShim configureWithToken:VORTEX_MIXPANEL_API_KEY
                                    userId:nil];
   [VortexMixpanelShim trackEvent:@"app_open" properties:@{ @"source": @"vortex" }];
 
