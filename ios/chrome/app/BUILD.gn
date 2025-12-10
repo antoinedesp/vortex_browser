@@ -567,8 +567,8 @@ source_set("app_internal") {
     "//ui/gfx",
     "//ui/resources",
     "//ui/strings:ui_strings",
-    # ⬇️ VORTEX: Add VPN manager
     "//ios/chrome/browser/vortex_vpn:vortex_vpn",
+    "//ios/third_party/vortex:vortex",
   ]
 
   if (target_environment != "catalyst") {
