@@ -58,6 +58,7 @@
         item.subtitle = info.subtitle;
         item.priceString = info.priceText;
         item.recommended = info.recommended;
+        item.hasTrial = info.hasTrial;
         [items addObject:item];
       }
 
