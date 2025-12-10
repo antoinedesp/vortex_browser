@@ -1,5 +1,6 @@
 #import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
 #import <NetworkExtension/NetworkExtension.h>
+#import "ios/third_party/vortex/src/vortex_constants.h"
 
 @interface VortexVPNManager ()
 @property(nonatomic, assign, readwrite) VortexVPNStatus status;
@@ -164,7 +165,7 @@
 - (void)fetchRandomServerWithCompletion:(void (^)(NSString* _Nullable serverAddress,
                                                   NSString* _Nullable sharedSecret,
                                                   NSError* _Nullable error))completion {
-  NSURL* url = [NSURL URLWithString:@"https://vortexbrowser.com/api/random-server"];
+  NSURL* url = [NSURL URLWithString:VORTEX_RANDOM_SERVER_ENDPOINT_URL];
   if (!url) {
     if (completion) {
       NSError* err = [NSError errorWithDomain:@"VortexVPN"

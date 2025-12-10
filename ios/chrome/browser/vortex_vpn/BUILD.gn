@@ -11,6 +11,7 @@ source_set("vortex_vpn") {
   deps = [
     "//base",
     "//ios/chrome/browser/shared/model/browser",
+    "//ios/third_party/vortex:vortex",
   ]
 
   frameworks = [
