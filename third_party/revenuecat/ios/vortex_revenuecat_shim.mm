@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
                              title:(NSString*)title
                           subtitle:(NSString*)subtitle
                          priceText:(NSString*)priceText
-                       recommended:(BOOL)recommended {
+                       recommended:(BOOL)recommended
+                       hasTrial:(BOOL)hasTrial {
   self = [super init];
   if (self) {
     _identifier = [identifier copy];
@@ -26,20 +27,28 @@ NS_ASSUME_NONNULL_BEGIN
     _subtitle = [subtitle copy];
     _priceText = [priceText copy];
     _recommended = recommended;
+    _hasTrial = hasTrial;
   }
   return self;
 }
 
 - (NSString*)description {
   return [NSString stringWithFormat:
-      @"<VortexProductInfo: %@ - %@ (%@)%@>",
+      @"<VortexProductInfo: %@ - %@ (%@)%@%@>",
       self.identifier, self.title, self.priceText,
-      self.recommended ? @" [RECOMMENDED]" : @""];
+      self.recommended ? @" [RECOMMENDED]" : @"",
+      self.hasTrial ? @" [TRIAL]" : @""];
 }
 
 @end
 
 #pragma mark - VortexRevenueCatShim
+
+@interface VortexRevenueCatShim ()
++ (NSString*)unitStringForPeriodUnit:(RCSubscriptionPeriodUnit)unit;
++ (NSString*)titleForPackageType:(RCPackageType)packageType;
++ (NSString*)subtitleForPackageType:(RCPackageType)packageType;
+@end
 
 @implementation VortexRevenueCatShim
 
@@ -155,17 +164,30 @@ static NSString* kPremiumEntitlementID = @"premium";
     // Convert RCPackage objects to VortexProductInfo
     NSMutableArray<VortexProductInfo*>* products = [NSMutableArray array];
     for (RCPackage* package in offerings.current.availablePackages) {
+      NSString* title = [self titleForPackageType:package.packageType];
       NSString* subtitle = [self subtitleForPackageType:package.packageType];
       BOOL isRecommended =
           (package.packageType == RCPackageTypeAnnual ||
            package.packageType == RCPackageTypeSixMonth);
+      BOOL hasTrial = NO;
+      if (package.storeProduct.introductoryDiscount) {
+        RCStoreProductDiscount* intro = package.storeProduct.introductoryDiscount;
+        if([intro.price compare:@0] == NSOrderedSame) {
+          hasTrial = YES;
+          NSLog(@"[VortexRevenueCatShim] Product %@ has free trial: %@ %@",
+               package.identifier,
+               @(intro.subscriptionPeriod.value),
+               [self unitStringForPeriodUnit:intro.subscriptionPeriod.unit]);
+        }
+      }
 
       VortexProductInfo* productInfo = [[VortexProductInfo alloc]
-          initWithIdentifier:package.identifier
-                       title:package.storeProduct.localizedTitle
-                    subtitle:subtitle
-                   priceText:package.localizedPriceString
-                 recommended:isRecommended];
+        initWithIdentifier:package.identifier
+            title:title
+            subtitle:subtitle
+            priceText:package.localizedPriceString
+            recommended:isRecommended
+            hasTrial:hasTrial];
 
       [products addObject:productInfo];
     }
@@ -181,6 +203,28 @@ static NSString* kPremiumEntitlementID = @"premium";
   // Stub implementation: return mock products
   [self loadStubOfferingsWithCompletion:completion];
 #endif
+}
+
++ (NSString*)titleForPackageType:(RCPackageType)packageType {
+    switch (packageType) {
+      case RCPackageTypeWeekly:
+        return @"Weekly";
+      case RCPackageTypeMonthly:
+        return @"Monthly";
+      case RCPackageTypeTwoMonth:
+        return @"2 Months";
+      case RCPackageTypeThreeMonth:
+        return @"3 Months";
+      case RCPackageTypeSixMonth:
+        return @"6 Months";
+      case RCPackageTypeAnnual:
+        return @"Yearly";
+      case RCPackageTypeLifetime:
+        return @"Lifetime";
+      default:
+        return @"";
+
+    }
 }
 
 + (NSString*)subtitleForPackageType:(RCPackageType)packageType {
@@ -214,17 +258,19 @@ static NSString* kPremiumEntitlementID = @"premium";
       dispatch_get_main_queue(), ^{
     VortexProductInfo* monthly = [[VortexProductInfo alloc]
         initWithIdentifier:@"vortex_plus_monthly"
-                     title:@"Vortex Plus Monthly"
-                  subtitle:@"Billed monthly. Cancel anytime."
-                 priceText:@"€4.99 / month"
-               recommended:NO];
+            title:@"Vortex Plus Monthly"
+            subtitle:@"Billed monthly. Cancel anytime."
+            priceText:@"€4.99 / month"
+            recommended:NO
+            hasTrial:NO];
 
     VortexProductInfo* yearly = [[VortexProductInfo alloc]
         initWithIdentifier:@"vortex_plus_yearly"
-                     title:@"Vortex Plus Yearly"
-                  subtitle:@"12 months for the price of 8."
-                 priceText:@"€39.99 / year"
-               recommended:YES];
+            title:@"Vortex Plus Yearly"
+            subtitle:@"12 months for the price of 8."
+            priceText:@"€39.99 / year"
+            recommended:YES
+            hasTrial:YES];
 
     NSLog(@"[VortexRevenueCatShim] Returning stub offerings");
     completion(@[ monthly, yearly ], nil);
@@ -361,6 +407,21 @@ static NSString* kPremiumEntitlementID = @"premium";
     NSLog(@"[VortexRevenueCatShim] Stub: purchase successful");
     completion(YES, nil);
   });
+}
+
++ (NSString*)unitStringForPeriodUnit:(RCSubscriptionPeriodUnit)unit {
+    switch(unit) {
+        case RCSubscriptionPeriodUnitDay:
+          return @"day(s)";
+        case RCSubscriptionPeriodUnitWeek:
+          return @"week(s)";
+        case RCSubscriptionPeriodUnitMonth:
+          return @"month(s)";
+        case RCSubscriptionPeriodUnitYear:
+          return @"year(s)";
+        default:
+          return @"period(s)";
+    }
 }
 
 #pragma mark - Restore

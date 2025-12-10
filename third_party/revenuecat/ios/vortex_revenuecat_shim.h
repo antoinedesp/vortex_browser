@@ -6,6 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,12 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) NSString* subtitle;
 @property(nonatomic, copy, readonly) NSString* priceText;
 @property(nonatomic, assign, readonly) BOOL recommended;
+@property(nonatomic, assign, readonly) BOOL hasTrial;
 
 - (instancetype)initWithIdentifier:(NSString*)identifier
                              title:(NSString*)title
                           subtitle:(NSString*)subtitle
                          priceText:(NSString*)priceText
-                       recommended:(BOOL)recommended;
+                       recommended:(BOOL)recommended
+                       hasTrial:(BOOL)hasTrial;
 
 @end
 
