@@ -47,11 +47,35 @@
       [[UINavigationController alloc] initWithRootViewController:self.viewController];
   self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-  // ⬇️ VORTEX: Find the topmost view controller
-  UIViewController* presentingVC = [self topMostViewController];
+  // ⬇️ VORTEX: Make sure we're using the right base view controller
+  UIViewController* presentingVC = self.baseViewController;
+
+  // ⬇️ VORTEX: Check if base VC is already presenting something
+  while (presentingVC.presentedViewController) {
+    NSLog(@"[VortexPaywallCoordinator] Base VC is already presenting: %@",
+          presentingVC.presentedViewController);
+    if ([NSStringFromClass([presentingVC.presentedViewController class])
+         containsString:@"OverflowMenuHostingController"]) {
+      NSLog(@"[VortexPaywallCoordinator] Found overflow menu, dismissing it first");
+
+      __weak __typeof(self) weakSelf = self;
+      [presentingVC.presentedViewController dismissViewControllerAnimated:YES
+                                                               completion:^{
+        NSLog(@"[VortexPaywallCoordinator] Overflow menu dismissed, presenting paywall");
+        [weakSelf actuallyPresentPaywall:presentingVC];
+      }];
+      return;
+    }
+
+    presentingVC = presentingVC.presentedViewController;
+  }
 
   NSLog(@"[VortexPaywallCoordinator] presenting from: %@", presentingVC);
 
+  [self actuallyPresentPaywall:presentingVC];
+}
+
+- (void)actuallyPresentPaywall:(UIViewController*)presentingVC {
   __weak __typeof(self) weakSelf = self;
   [presentingVC presentViewController:self.navigationController
                               animated:YES
