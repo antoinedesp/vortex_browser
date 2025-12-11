@@ -646,8 +646,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     widthConstraint.constant = searchFieldNormalWidth;
     self.fakeLocationBarHeightConstraint.constant =
         fakeOmniboxHeight - kFakeLocationBarHeightMargin;
-    self.fakeLocationBar.layer.cornerRadius =
-        self.fakeLocationBarHeightConstraint.constant / 2;
+    self.fakeLocationBar.layer.cornerRadius = 12;
 
     self.fakeLocationBarLeadingConstraint.constant = 0;
     self.fakeLocationBarTrailingConstraint.constant = 0;
@@ -694,20 +693,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
       ntp_header::kFakeLocationBarTopConstraint * percent;
   self.fakeLocationBarHeightConstraint.constant =
       Interpolate(fakeOmniboxHeight, locationBarHeight, percent);
-  self.fakeLocationBar.layer.cornerRadius =
-      self.fakeLocationBarHeightConstraint.constant / 2;
+  self.fakeLocationBar.layer.cornerRadius = 12;
 
   // Keep spacing constant relative to button stack throughout animation
   self.hintLabelLeadingConstraint.constant =
       hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
-
-  // if (_useNewBadgeForLensButton && !_lensButtonWithNewBadgeTapped &&
-  //     self.lensButton) {
-  //   content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(self.lensButton,
-  //                                                             1 - percent);
-  //   self.voiceAndLensDivider.alpha = percent;
-  //   self.miaAndVoiceDivider.alpha = percent;
-  // }
 
   _lastAnimationPercent = percent;
 }
@@ -1050,22 +1040,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     [_buttonStack addArrangedSubview:self.vpnShieldButton];
   }
 
-  // Lens.
-  // const BOOL useLens =
-  //     lens_availability::CheckAndLogAvailabilityForLensEntryPoint(
-  //         LensEntrypoint::NewTabPage, self.isGoogleDefaultSearchEngine);
-  // if (useLens && displayOtherActions) {
-  //   [self addVoiceAndLensDivider];
-  //   self.lensButton =
-  //       [ExtendedTouchTargetButton buttonWithType:UIButtonTypeSystem];
-  //   [_buttonStack addArrangedSubview:self.lensButton];
-  //   if (_useNewBadgeForLensButton) {
-  //     [self.lensButton addTarget:self
-  //                         action:@selector(lensButtonWithNewBadgeTapped:)
-  //               forControlEvents:UIControlEventTouchUpInside];
-  //   }
-  // }
-
   [self updateButtonsForCurrentTraitCollection];
 
   [self addActionsToFakeboxButtons];
@@ -1135,21 +1109,8 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 // Gets the fonts for the pinned and unpinned fakebox hint label, and sets
 // the correct one.
 - (void)updateHintLabelFonts {
-  _hintLabelFontSmall = LocationBarSteadyViewFont(
-      self.traitCollection.preferredContentSizeCategory);
-  CGFloat bigFontSize = _hintLabelFontSmall.pointSize /
-                        (1.0 - content_suggestions::kHintTextScale);
-  _hintLabelFontBig = [_hintLabelFontSmall fontWithSize:bigFontSize];
-  self.searchHintLabel.font =
-      [self hintLabelFontForPercent:_lastAnimationPercent];
-}
-
-// Returns the font for the hint label at the given animation percent.
-- (UIFont*)hintLabelFontForPercent:(CGFloat)percent {
-  if (percent == 1 && !self.allowFontScaleAnimation) {
-    return _hintLabelFontSmall;
-  }
-  return _hintLabelFontBig;
+  self.searchHintLabel.font = LocationBarSteadyViewFont(
+      self.traitCollection.preferredContentSizeCategory);;
 }
 
 // Scale the the hint label down to at most content_suggestions::kHintTextScale.
@@ -1159,33 +1120,14 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     return;
   }
 
-  if (percent > 0.90) {
-    // When percent is very close to 1, the big font will be scaled down to be
-    // almost the same size as the small font. But due to rendering differences
-    // the big font scaled down can actually look slightly smaller than the
-    // small font. By switching to the small font 10% early, a glitchy jump in
-    // size is avoided.
-    percent = 1;
-  }
-
   UILabel* searchHintLabel = self.searchHintLabel;
-  UIFont* font = [self hintLabelFontForPercent:percent];
-  if (searchHintLabel.font != font) {
-    searchHintLabel.font = font;
+
+  if (searchHintLabel.font != _hintLabelFontSmall) {
+    searchHintLabel.font = _hintLabelFontSmall;
   }
 
-  if (percent == 1 && !self.allowFontScaleAnimation) {
-    // When pinned, the small font is used without scaling down.
-    _currentHintLabelScale = 1;
-    searchHintLabel.transform = CGAffineTransformIdentity;
-    return;
-  }
-
-  // When unpinned, the bigger font is used and scaling is applied depending on
-  // the animation percent.
-  _currentHintLabelScale = 1 - (content_suggestions::kHintTextScale * percent);
-  searchHintLabel.transform = CGAffineTransformMakeScale(
-      _currentHintLabelScale, _currentHintLabelScale);
+  _currentHintLabelScale = 1;
+  searchHintLabel.transform = CGAffineTransformIdentity;
 }
 
 // The positive offset value to begin the fake omnibox expansion animation.
@@ -1235,9 +1177,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                    : defaultDividerColor;
   _miaButton.tintColor = tintColor;
   _voiceSearchButton.tintColor = tintColor;
-  // VPN shield color is managed by status, not theme
-  // _vpnShieldButton.tintColor is set by updateVPNShieldForStatus
-  // _lensButton.tintColor = tintColor;
   _voiceAndLensDivider.backgroundColor = dividerColor;
   _miaAndVoiceDivider.backgroundColor = dividerColor;
 }
@@ -1262,9 +1201,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 // Adds a short vertical line between the mic and lens icons in the fakebox.
 - (void)addVoiceAndVPNDivider {
   // no-op
-  // UIView* divider = [self createDivider];
-  // self.voiceAndLensDivider = divider; 
-  // [_buttonStack addArrangedSubview:divider];
 }
 
 // Adds a short vertical line between the MIA and Voice icons in the fakebox.
@@ -1273,20 +1209,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   self.miaAndVoiceDivider = divider;
   [_buttonStack addArrangedSubview:divider];
 }
-
-// Handles a lens button with new badge tap. Registers that the tap has occurred
-// and animates out the new badge portion of the button.
-// - (void)lensButtonWithNewBadgeTapped:(id)sender {
-//   if (!_lensButtonWithNewBadgeTapped) {
-//     _lensButtonWithNewBadgeTapped = YES;
-//     [UIView
-//         animateWithDuration:kMaterialDuration1
-//                  animations:^{
-//                    content_suggestions::ConfigureLensButtonWithNewBadgeAlpha(
-//                        self.lensButton, 0);
-//                  }];
-//   }
-// }
 
 // Returns end button fakebox trailing space depending on fakebox size and
 // whether the new badge is displayed.
