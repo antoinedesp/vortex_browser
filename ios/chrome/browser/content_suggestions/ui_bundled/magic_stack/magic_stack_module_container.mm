@@ -302,12 +302,6 @@ const CGFloat kSeparatorHeight = 0.5;
   _type = config.type;
   [[self contextMenuInteractionHandler] configureWithType:_type config:config];
 
-  _title.text = [MagicStackModuleContainer titleStringForModule:_type
-                                                         config:config];
-  _title.accessibilityIdentifier =
-      [MagicStackModuleContainer accessibilityIdentifierForModule:_type
-                                                           config:config];
-
   _seeMoreButton.hidden = !config.shouldShowSeeMore;
   [self setCustomAccessibilityLabelForSeeMoreButton:_type config:config];
 
