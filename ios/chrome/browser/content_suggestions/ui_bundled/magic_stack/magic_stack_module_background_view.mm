@@ -75,21 +75,10 @@
     return;
   }
 
-  UIView* backgroundColorView = [self backgroundColorView];
-  if (!backgroundColorView.superview) {
-    [self addSubview:backgroundColorView];
-    AddSameConstraints(self, backgroundColorView);
-  }
   if (_backgroundBlurView) {
     [_backgroundBlurView removeFromSuperview];
     _backgroundBlurView = nil;
   }
-
-  NewTabPageColorPalette* colorPalette =
-      [self.traitCollection objectForNewTabPageTrait];
-  backgroundColorView.backgroundColor =
-      colorPalette ? colorPalette.secondaryCellColor
-                   : [UIColor colorNamed:kBackgroundColor];
 
   [self updateFadedState];
 }
