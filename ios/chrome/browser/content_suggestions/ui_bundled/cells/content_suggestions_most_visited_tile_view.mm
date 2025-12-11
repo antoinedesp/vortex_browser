@@ -44,8 +44,7 @@
   self = [super initWithFrame:frame
                      tileType:ContentSuggestionsTileType::kMostVisited];
   if (self) {
-    self.imageContainerView.layer.cornerRadius =
-        kMagicStackImageContainerWidth / 2;
+    self.imageContainerView.layer.cornerRadius = 12;
     self.imageContainerView.layer.masksToBounds = NO;
     self.imageContainerView.clipsToBounds = YES;
 
@@ -72,15 +71,12 @@
     _faviconView = [[FaviconView alloc] init];
     _faviconView.font = [UIFont systemFontOfSize:22];
     _faviconView.translatesAutoresizingMaskIntoConstraints = NO;
-    [NSLayoutConstraint activateConstraints:@[
-      [_faviconView.heightAnchor
-          constraintEqualToConstant:kMagicStackFaviconWidth],
-      [_faviconView.widthAnchor
-          constraintEqualToAnchor:_faviconView.heightAnchor],
-    ]];
+    _faviconView.layer.masksToBounds = YES;
+    _faviconView.layer.cornerRadius = 12;
 
     [self addSubview:_faviconView];
-    AddSameCenterConstraints(_faviconView, self.imageContainerView);
+
+    AddSameConstraints(_faviconView, self.imageContainerView);
     [self registerViewForTraitChanges];
   }
   return self;
