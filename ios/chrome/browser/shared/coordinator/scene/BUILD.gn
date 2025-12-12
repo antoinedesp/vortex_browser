@@ -222,6 +222,7 @@ source_set("scene") {
     "//ui/base",
     "//ios/chrome/browser/ui/vortex_paywall:vortex_paywall",
     "//ios/chrome/browser/vortex_vpn:vortex_vpn",
+    "//ios/chrome/browser/vortex_plus:vortex_plus",
   ]
   public_deps = [ ":scene_state_header" ]
   allow_circular_includes_from = [
