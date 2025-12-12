@@ -268,5 +268,7 @@ bundle_data_xcassets("vortex_assets") {
     "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo_dark.png",
     "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo_dark@2x.png",
     "VortexAssets.xcassets/vortex_logo.imageset/vortex_logo_dark@3x.png",
+    "VortexAssets.xcassets/ntp_background_image_abstract_1.imageset/Contents.json",
+    "VortexAssets.xcassets/ntp_background_image_abstract_1.imageset/image.jpg",
   ]
 }
