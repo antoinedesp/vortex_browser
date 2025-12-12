@@ -2040,6 +2040,7 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
   regularImageView.contentMode = UIViewContentModeScaleAspectFill;
   regularImageView.clipsToBounds = YES;
   regularImageView.userInteractionEnabled = NO;
+  regularImageView.layer.cornerRadius = 16;
 
   UIImage* bgImage = [UIImage imageNamed:@"ntp_background_image_abstract_1"
                                 inBundle:[NSBundle mainBundle]
