@@ -20,6 +20,7 @@
 #import "ios/chrome/browser/content_suggestions/ui_bundled/magic_stack/magic_stack_constants.h"
 #import "ios/chrome/browser/content_suggestions/ui_bundled/ntp_home_constant.h"
 #import "ios/chrome/browser/home_customization/ui/home_customization_image_view.h"
+#import "ios/chrome/browser/home_customization/ui/home_customization_framing_coordinates.h"
 #import "ios/chrome/browser/ntp/shared/metrics/feed_metrics_constants.h"
 #import "ios/chrome/browser/ntp/shared/metrics/feed_metrics_recorder.h"
 #import "ios/chrome/browser/ntp/ui_bundled/discover_feed_constants.h"
@@ -246,15 +247,7 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
   [self updateModularHomeBackgroundColorForUserInterfaceStyle:
             self.traitCollection.userInterfaceStyle];
 
-  if (IsNTPBackgroundCustomizationEnabled()) {
-    _backgroundImageView = [[HomeCustomizationImageView alloc] init];
-    _backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self updateBackgroundImageView];
-    [self.view addSubview:_backgroundImageView];
-    AddSameConstraints(_backgroundImageView, self.view);
-  } else {
-    self.view.backgroundColor = [UIColor colorNamed:@"ntp_background_color"];
-  }
+  [self applyBackgroundImage];
 
   [self registerNotifications];
 
@@ -278,12 +271,6 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
     [weakSelf updateUIOnTraitChange:previousCollection];
   };
   [self registerForTraitChanges:traits withHandler:handler];
-  if (IsNTPBackgroundCustomizationEnabled()) {
-    [self registerForTraitChanges:
-              @[ NewTabPageTrait.class, NewTabPageImageBackgroundTrait.class ]
-                       withAction:@selector(applyBackgroundTheme)];
-    [self applyBackgroundTheme];
-  }
   [self.mutator checkNewBadgeEligibility];
 }
 
@@ -571,6 +558,8 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
       [[[self.viewControllersAboveFeed reverseObjectEnumerator] allObjects]
           mutableCopy];
 
+  [self addBackgroundToHeader];
+
   // TODO(crbug.com/40165977): The contentCollectionView width might be
   // narrower than the ContentSuggestions view. This causes elements to be
   // hidden, so we set clipsToBounds to ensure that they remain visible. The
@@ -851,10 +840,11 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
 - (void)setBackgroundImage:(UIImage*)backgroundImage
         framingCoordinates:
             (HomeCustomizationFramingCoordinates*)framingCoordinates {
-  _backgroundImage = backgroundImage;
-  _framingCoordinates = framingCoordinates;
-
-  [self updateBackgroundImageView];
+// no-op
+//  _backgroundImage = backgroundImage;
+//  _framingCoordinates = framingCoordinates;
+//
+//  [self updateBackgroundImageView];
 }
 
 - (void)setAIMAllowed:(BOOL)allowed {
@@ -887,6 +877,9 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
   if (self.viewDidAppear) {
     [self updateFeedSigninPromoIsVisible];
   }
+
+//  CGFloat percent = [self.headerViewController searchFieldProgressForOffset:scrollView.contentOffset.y];
+//  _backgroundImageView.alpha = 1.0 - percent;
 
   [self updateScrollPositionToSave];
   [self updateFeedContainerSizeAndPosition];
@@ -2038,6 +2031,43 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
   collectionView.contentOffset = CGPointMake(0, offset);
   [self handleStickyElementsForScrollPosition:offset force:YES];
   [self updateScrollPositionToSave];
+}
+
+#pragma mark - Background Image
+- (void)applyBackgroundImage {
+  UIImageView* regularImageView = [[UIImageView alloc] init];
+  regularImageView.translatesAutoresizingMaskIntoConstraints = NO;
+  regularImageView.contentMode = UIViewContentModeScaleAspectFill;
+  regularImageView.clipsToBounds = YES;
+  regularImageView.userInteractionEnabled = NO;
+
+  UIImage* bgImage = [UIImage imageNamed:@"ntp_background_image_abstract_1"
+                                inBundle:[NSBundle mainBundle]
+           compatibleWithTraitCollection:nil];
+
+  if (!bgImage) {
+    return;
+  }
+
+  regularImageView.image = bgImage;
+  _backgroundGradientView.hidden = YES;
+  _backgroundImageView = (HomeCustomizationImageView*)regularImageView;
+}
+
+- (void)addBackgroundToHeader {
+  if (!_backgroundImageView || !self.headerViewController || !self.collectionView) {
+    return;
+  }
+
+  [self.collectionView insertSubview:(UIView*)_backgroundImageView
+                        belowSubview:self.headerViewController.view];
+
+  [NSLayoutConstraint activateConstraints:@[
+    [_backgroundImageView.leadingAnchor constraintEqualToAnchor:self.headerViewController.view.leadingAnchor],
+    [_backgroundImageView.trailingAnchor constraintEqualToAnchor:self.headerViewController.view.trailingAnchor],
+    [_backgroundImageView.bottomAnchor constraintEqualToAnchor:self.headerViewController.view.bottomAnchor],
+    [_backgroundImageView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+  ]];
 }
 
 @end
