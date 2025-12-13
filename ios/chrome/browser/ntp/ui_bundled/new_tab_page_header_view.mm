@@ -646,7 +646,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     widthConstraint.constant = searchFieldNormalWidth;
     self.fakeLocationBarHeightConstraint.constant =
         fakeOmniboxHeight - kFakeLocationBarHeightMargin;
-    self.fakeLocationBar.layer.cornerRadius = 12;
+    self.fakeLocationBar.layer.cornerRadius = self.fakeLocationBarHeightConstraint.constant / 2;
 
     self.fakeLocationBarLeadingConstraint.constant = 0;
     self.fakeLocationBarTrailingConstraint.constant = 0;
@@ -693,7 +693,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
       ntp_header::kFakeLocationBarTopConstraint * percent;
   self.fakeLocationBarHeightConstraint.constant =
       Interpolate(fakeOmniboxHeight, locationBarHeight, percent);
-  self.fakeLocationBar.layer.cornerRadius = 12;
+  self.fakeLocationBar.layer.cornerRadius = self.fakeLocationBarHeightConstraint.constant / 2;
 
   // Keep spacing constant relative to button stack throughout animation
   self.hintLabelLeadingConstraint.constant =
