@@ -215,7 +215,8 @@ CGFloat SearchFieldWidth(CGFloat width, UITraitCollection* trait_collection) {
 }
 
 CGFloat FakeOmniboxHeight() {
-  if (ShouldEnlargeNTPFakeboxForMIA()) {
+  BOOL _shouldEnlargeNTPFakeboxForMIA = NO;
+  if (_shouldEnlargeNTPFakeboxForMIA) {
     CGFloat multiplier = ui_util::SystemSuggestedFontSizeMultiplier();
     return AlignValueToPixel((kFakeboxHeight - kFakeboxHeightNonDynamic) *
                                  multiplier +
@@ -226,7 +227,8 @@ CGFloat FakeOmniboxHeight() {
 }
 
 CGFloat PinnedFakeOmniboxHeight() {
-  if (ShouldEnlargeNTPFakeboxForMIA()) {
+  BOOL _shouldEnlargeNTPFakeboxForMIA = NO;
+  if (_shouldEnlargeNTPFakeboxForMIA) {
     CGFloat multiplier = ui_util::SystemSuggestedFontSizeMultiplier();
     return AlignValueToPixel(
         (kPinnedFakeboxHeight - kPinnedFakeboxHeightNonDynamic) * multiplier +
