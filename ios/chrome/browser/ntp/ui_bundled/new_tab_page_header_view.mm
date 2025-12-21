@@ -700,6 +700,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
       hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
 
   _lastAnimationPercent = percent;
+
+  CGFloat startCornerRadius = 16.0;
+  CGFloat endCornerRadius = 0.0;
+
+  self.layer.cornerRadius = Interpolate(startCornerRadius, endCornerRadius, percent);
 }
 
 - (void)setFakeboxHighlighted:(BOOL)highlighted {
@@ -1437,17 +1442,10 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  self.layer.shadowColor = [UIColor blackColor].CGColor;
-  self.layer.shadowOffset = CGSizeMake(0, 4);
-  self.layer.shadowOpacity = 0.3;
-  self.layer.shadowRadius = 16;
+  if (_lastAnimationPercent == 0) {
+     self.layer.cornerRadius = 16;
+  }
 
-  CGRect shadowRect = self.bounds;
-  self.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:shadowRect
-                                          byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-                                          cornerRadii:CGSizeMake(16, 16)].CGPath;
-
-  self.layer.cornerRadius = 16;
   self.layer.maskedCorners = kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner;
   self.clipsToBounds = NO;
 }
