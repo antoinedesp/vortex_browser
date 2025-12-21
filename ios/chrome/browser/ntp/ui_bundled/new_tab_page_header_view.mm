@@ -512,7 +512,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                      constant:-kOmniboxImageLeadingSpace];
   [NSLayoutConstraint activateConstraints:@[
     self.leadingLogoConstraint,
-    [logoView.centerYAnchor constraintEqualToAnchor:searchField.centerYAnchor
+    [logoView.centerYAnchor constraintEqualToAnchor:_fakeLocationBar.centerYAnchor
                                            constant:-2.0],
 
   ]];
