@@ -691,7 +691,8 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   const CGFloat kExtraTopOffset = 16.0;
   self.fakeLocationBarTopConstraint.constant =
-     (ntp_header::kFakeLocationBarTopConstraint * percent) - (kExtraTopOffset * (1 - percent));
+     (ntp_header::kFakeLocationBarTopConstraint + kExtraTopOffset) * percent - kExtraTopOffset;
+
   self.fakeLocationBarHeightConstraint.constant =
       Interpolate(fakeOmniboxHeight, locationBarHeight, percent);
   self.fakeLocationBar.layer.cornerRadius = self.fakeLocationBarHeightConstraint.constant / 2;
