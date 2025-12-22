@@ -7,6 +7,9 @@
 
 namespace prefs {
 
+// Boolean that is true when AdBlocker is enabled.
+inline constexpr char kAdBlockerEnabled[] = "ios.adblocker.enabled";
+
 // Number of times the "Address Bar" settings "new" IPH badge has been shown.
 // This is set to INT_MAX when the user visites the "Address Bar" settings page.
 inline constexpr char kAddressBarSettingsNewBadgeShownCount[] =
