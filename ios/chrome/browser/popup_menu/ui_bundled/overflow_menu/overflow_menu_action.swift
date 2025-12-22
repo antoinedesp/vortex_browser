@@ -27,6 +27,12 @@ import Combine
   /// the menu will be presented when the action is tapped.
   @Published public var menu: UIMenu? = nil
 
+  /// Whether this action should display as a toggle switch instead of a button.
+  @Published public var displayAsToggle = false
+
+  /// The toggle state if displayAsToggle is true.
+  @Published public var toggleOn = false
+
   /// The uniquely-identifying `overflow_menu::ActionType` of the action,
   /// stored as an int because Swift does not yet support C++ enum variables.
   public var actionType = 0
