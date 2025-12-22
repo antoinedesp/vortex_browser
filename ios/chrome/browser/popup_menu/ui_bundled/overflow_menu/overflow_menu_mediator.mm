@@ -237,6 +237,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 @property(nonatomic, strong) OverflowMenuAction* openIncognitoTabAction;
 @property(nonatomic, strong) OverflowMenuAction* openNewWindowAction;
 
+@property(nonatomic, strong) OverflowMenuAction* adBlockerAction;
 @property(nonatomic, strong) OverflowMenuAction* clearBrowsingDataAction;
 @property(nonatomic, strong) OverflowMenuAction* readerModeAction;
 @property(nonatomic, strong) OverflowMenuAction* tabGroupAction;
@@ -600,6 +601,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                    [weakSelf openNewWindow];
                                  }];
 
+  self.adBlockerAction = [self newAdBlockerAction];
   self.clearBrowsingDataAction = [self newClearBrowsingDataAction];
 
   if (base::FeatureList::IsEnabled(kTabGroupInOverflowMenu)) {
@@ -993,6 +995,23 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   }
 
   [self showSetTabReminderUI];
+}
+
+- (OverflowMenuAction*)newAdBlockerAction {
+  __weak __typeof(self) weakSelf = self;
+  NSString* hideItemText =
+      l10n_util::GetNSString(IDS_IOS_OVERFLOW_MENU_HIDE_ACTION_ADBLOCKER);
+  return [self
+      createOverflowMenuActionWithNameID:IDS_IOS_TOOLS_MENU_ADBLOCKER
+                              actionType:overflow_menu::ActionType::AdBlocker
+                              symbolName:@"shield.fill"
+                            systemSymbol:YES
+                        monochromeSymbol:NO
+                         accessibilityID:@"kToolsMenuAdBlocker"
+                            hideItemText:hideItemText
+                                 handler:^{
+                                   [weakSelf toggleAdBlocker];
+                                 }];
 }
 
 - (OverflowMenuAction*)newClearBrowsingDataAction {
@@ -2166,6 +2185,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   }
   actions.push_back(overflow_menu::ActionType::Bookmark);
   actions.push_back(overflow_menu::ActionType::ReadingList);
+  actions.push_back(overflow_menu::ActionType::AdBlocker);
   actions.push_back(overflow_menu::ActionType::ClearBrowsingData);
   actions.push_back(overflow_menu::ActionType::Translate);
   actions.push_back(overflow_menu::ActionType::DesktopSite);
@@ -2216,6 +2236,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     }
     case overflow_menu::ActionType::ReadingList:
       return self.readLaterAction;
+    case overflow_menu::ActionType::AdBlocker:
+      return self.adBlockerAction;
     case overflow_menu::ActionType::ClearBrowsingData:
       // Showing the Clear Browsing Data Action would be confusing in incognito.
       return (self.incognito) ? nil : self.clearBrowsingDataAction;
@@ -2274,6 +2296,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return [self newAddBookmarkAction];
     case overflow_menu::ActionType::ReadingList:
       return [self newReadLaterAction];
+    case overflow_menu::ActionType::AdBlocker:
+      return [self newAdBlockerAction];
     case overflow_menu::ActionType::ClearBrowsingData:
       return [self newClearBrowsingDataAction];
     case overflow_menu::ActionType::Translate:
@@ -2346,6 +2370,22 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 }
 
 // Dismisses the menu and opens the Clear Browsing Data screen.
+// Toggles the AdBlocker setting.
+- (void)toggleAdBlocker {
+  RecordAction(UserMetricsAction("MobileMenuToggleAdBlocker"));
+
+  // Toggle the adblocker preference
+  // Note: Define pref key in a prefs file like:
+  // const char kAdBlockerEnabled[] = "adblocker.enabled";
+  if (self.profilePrefs) {
+    const char* kAdBlockerEnabledPref = "adblocker.enabled";
+    BOOL currentValue = self.profilePrefs->GetBoolean(kAdBlockerEnabledPref);
+    self.profilePrefs->SetBoolean(kAdBlockerEnabledPref, !currentValue);
+  }
+
+  [self dismissMenu];
+}
+
 - (void)openClearBrowsingData {
   RecordAction(UserMetricsAction("MobileMenuClearBrowsingData"));
   base::UmaHistogramEnumeration(
