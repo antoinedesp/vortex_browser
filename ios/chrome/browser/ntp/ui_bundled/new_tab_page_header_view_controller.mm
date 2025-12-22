@@ -237,10 +237,18 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
   self.headerView.fakeLocationBarTrailingConstraint.constant =
       -(self.fakeOmnibox.bounds.size.width -
         (omniboxFrameInFakebox.origin.x + omniboxFrameInFakebox.size.width));
+
   self.headerView.voiceSearchButton.alpha = 0;
-  self.headerView.cancelButton.alpha = 0.7;
+  self.headerView.vpnShieldButton.alpha = 0;
+  self.headerView.miaButton.alpha = 0;
+  self.headerView.logoView.alpha = 0;
+  self.headerView.fakeLocationBar.alpha = 0;
+
+  self.headerView.cancelButton.alpha = 1;
   self.headerView.omnibox.alpha = 1;
+  self.headerView.omnibox.hidden = NO;
   self.headerView.searchHintLabel.alpha = 0;
+
   [self.headerView layoutIfNeeded];
 }
 
@@ -249,7 +257,13 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
   self.headerView.omnibox.hidden = YES;
   self.headerView.cancelButton.hidden = YES;
   self.headerView.searchHintLabel.alpha = 1;
+
+  // Restore all buttons and elements when unfocused
   self.headerView.voiceSearchButton.alpha = 1;
+  self.headerView.vpnShieldButton.alpha = 1;
+  self.headerView.miaButton.alpha = 1;
+  self.headerView.logoView.alpha = 1;
+  self.headerView.fakeLocationBar.alpha = 1;
   if (finalPosition == UIViewAnimatingPositionEnd &&
       self.delegate.scrolledToMinimumHeight) {
     // Check to see if the collection are still scrolled to the top --
