@@ -53,6 +53,8 @@ IOSOverflowMenuAction HistogramActionFromActionType(
       return IOSOverflowMenuAction::kBookmark;
     case overflow_menu::ActionType::ReadingList:
       return IOSOverflowMenuAction::kReadingList;
+    case overflow_menu::ActionType::AdBlocker:
+      return IOSOverflowMenuAction::kAdBlocker;
     case overflow_menu::ActionType::ClearBrowsingData:
       return IOSOverflowMenuAction::kClearBrowsingData;
     case overflow_menu::ActionType::Translate:
