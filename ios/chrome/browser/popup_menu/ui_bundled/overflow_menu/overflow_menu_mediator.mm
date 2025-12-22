@@ -70,6 +70,7 @@
 #import "ios/chrome/browser/search_engines/model/search_engine_observer_bridge.h"
 #import "ios/chrome/browser/search_engines/model/search_engines_util.h"
 #import "ios/chrome/browser/settings/model/sync/utils/identity_error_util.h"
+#import "ios/chrome/browser/shared/model/prefs/pref_names.h"
 #import "ios/chrome/browser/shared/model/profile/profile_ios.h"
 #import "ios/chrome/browser/shared/model/url/chrome_url_constants.h"
 #import "ios/chrome/browser/shared/model/web_state_list/tab_group_utils.h"
@@ -1001,7 +1002,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   __weak __typeof(self) weakSelf = self;
   NSString* hideItemText =
       l10n_util::GetNSString(IDS_IOS_OVERFLOW_MENU_HIDE_ACTION_ADBLOCKER);
-  return [self
+  OverflowMenuAction* action = [self
       createOverflowMenuActionWithNameID:IDS_IOS_TOOLS_MENU_ADBLOCKER
                               actionType:overflow_menu::ActionType::AdBlocker
                               symbolName:@"shield.fill"
@@ -1012,6 +1013,16 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                  handler:^{
                                    [weakSelf toggleAdBlocker];
                                  }];
+
+  // Configure as a toggle switch
+  action.displayAsToggle = YES;
+
+  // Set initial toggle state from preference
+  if (self.profilePrefs) {
+    action.toggleOn = self.profilePrefs->GetBoolean(prefs::kAdBlockerEnabled);
+  }
+
+  return action;
 }
 
 - (OverflowMenuAction*)newClearBrowsingDataAction {
@@ -1620,6 +1631,12 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   if (base::FeatureList::IsEnabled(kHideToolbarsInOverflowMenu)) {
     self.hideToolbarsAction.enabled = YES;
+  }
+
+  // Update AdBlocker toggle state
+  if (self.profilePrefs && self.adBlockerAction) {
+    self.adBlockerAction.toggleOn =
+        self.profilePrefs->GetBoolean(prefs::kAdBlockerEnabled);
   }
 }
 
@@ -2375,15 +2392,17 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   RecordAction(UserMetricsAction("MobileMenuToggleAdBlocker"));
 
   // Toggle the adblocker preference
-  // Note: Define pref key in a prefs file like:
-  // const char kAdBlockerEnabled[] = "adblocker.enabled";
   if (self.profilePrefs) {
-    const char* kAdBlockerEnabledPref = "adblocker.enabled";
-    BOOL currentValue = self.profilePrefs->GetBoolean(kAdBlockerEnabledPref);
-    self.profilePrefs->SetBoolean(kAdBlockerEnabledPref, !currentValue);
+    BOOL currentValue = self.profilePrefs->GetBoolean(prefs::kAdBlockerEnabled);
+    self.profilePrefs->SetBoolean(prefs::kAdBlockerEnabled, !currentValue);
+
+    // Update the toggle state immediately
+    if (self.adBlockerAction) {
+      self.adBlockerAction.toggleOn = !currentValue;
+    }
   }
 
-  [self dismissMenu];
+  // Don't dismiss menu - let user continue using menu after toggling
 }
 
 - (void)openClearBrowsingData {
