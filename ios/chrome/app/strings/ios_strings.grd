@@ -4509,6 +4509,9 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_OVERFLOW_MENU_HIDE_ACTION_ADD_TO_BOOKMARKS" desc="The title for the context menu item to hide Add to Bookmarks. This should match the title of the Add to Bookmarks action in the menu." meaning="[iOS only] [Length: Unlimited]">
         Hide Add to Bookmarks
       </message>
+      <message name="IDS_IOS_OVERFLOW_MENU_HIDE_ACTION_ADBLOCKER" desc="The title for the context menu item to hide AdBlocker. This should match the title of the AdBlocker action in the menu." meaning="[iOS only] [Length: Unlimited]">
+        Hide AdBlocker
+      </message>
       <message name="IDS_IOS_OVERFLOW_MENU_HIDE_ACTION_CLEAR_BROWSING_DATA" desc="The title for the context menu item to hide Delete Browsing Data. This should match the title of the Delete Browsing Data action in the menu." meaning="[iOS only] [Length: Unlimited]">
         Hide Delete Browsing Data
       </message>
@@ -7660,6 +7663,9 @@ Handoff must also be enabled in the General section of Settings, and your device
       </message>
       <message name="IDS_IOS_TOOLS_MENU_CELL_NEW_FEATURE_BADGE" desc="Title and accessibility label of the badge displayed on a tools menu item when it represents a new feature [Length: 20em]" meaning="A badge with this title is displayed informing the user that this feature that is new to them.">
         New
+      </message>
+      <message name="IDS_IOS_TOOLS_MENU_ADBLOCKER" desc="The iOS menu item to toggle AdBlocker [iOS only]" meaning="[Length: unlimited]">
+        AdBlocker
       </message>
       <message name="IDS_IOS_TOOLS_MENU_CLEAR_BROWSING_DATA" desc="The iOS menu item to open the Delete Browsing Data screen [iOS only]" meaning="[Length: unlimited]">
         Delete Browsing Data
