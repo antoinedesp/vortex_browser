@@ -92,6 +92,8 @@ std::optional<ActionType> ActionTypeForStringName(std::string action) {
     return overflow_menu::ActionType::Bookmark;
   } else if (action == "ReadingList") {
     return overflow_menu::ActionType::ReadingList;
+  } else if (action == "AdBlocker") {
+    return overflow_menu::ActionType::AdBlocker;
   } else if (action == "ClearBrowsingData") {
     return overflow_menu::ActionType::ClearBrowsingData;
   } else if (action == "Translate") {
@@ -147,6 +149,8 @@ std::string StringNameForActionType(ActionType action) {
       return "Bookmark";
     case overflow_menu::ActionType::ReadingList:
       return "ReadingList";
+    case overflow_menu::ActionType::AdBlocker:
+      return "AdBlocker";
     case overflow_menu::ActionType::ClearBrowsingData:
       return "ClearBrowsingData";
     case overflow_menu::ActionType::Translate:
