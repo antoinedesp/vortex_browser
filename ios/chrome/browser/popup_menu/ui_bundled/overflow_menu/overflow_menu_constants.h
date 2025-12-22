@@ -38,6 +38,7 @@ enum class ActionType {
   NewWindow,
   Bookmark,
   ReadingList,
+  AdBlocker,
   ClearBrowsingData,
   Translate,
   ReaderMode,
