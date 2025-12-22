@@ -790,6 +790,9 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
       user_prefs::PrefRegistrySyncable::SYNCABLE_PREF);
   registry->RegisterBooleanPref(prefs::kSavingBrowserHistoryDisabled, false);
 
+  // Register AdBlocker preference.
+  registry->RegisterBooleanPref(prefs::kAdBlockerEnabled, false);
+
   // Register pref used to show the link preview.
   registry->RegisterBooleanPref(prefs::kLinkPreviewEnabled, true);
 
