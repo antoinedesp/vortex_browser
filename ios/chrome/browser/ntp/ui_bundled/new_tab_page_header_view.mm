@@ -82,9 +82,6 @@ const CGFloat kEndButtonNormalSizeFakeboxWithBadgeTrailingSpace = 7.0;
 const CGFloat kEndButtonMIAEnlargedFakebox = 20.0;
 // const CGFloat kEndButtonOmniboxTrailingSpace = 7.0;
 
-// Distance between the trailing fakebox icon and the placeholder text.
-const CGFloat kHintLabelFakeboxTrailingSpace = 12.0f;
-
 // The constants for the constraints the leading-edge aligned UI elements.
 const CGFloat kHintLabelFakeboxLeadingSpace = 28.0;
 const CGFloat kHintLabelFakeboxLeadingSpaceWithIcon = 42.0;
@@ -92,8 +89,6 @@ const CGFloat kHintLabelOmniboxLeadingSpace = 20.0;
 const CGFloat kHintLabelOmniboxLeadingSpaceWithIcon = 42.0;
 
 // The constants for the search engine image.
-const CGFloat kFakeboxImageLeadingSpace = 13.0;
-const CGFloat kOmniboxImageLeadingSpace = 22.0;
 const CGFloat kFakeboxImageSize = 20.0;
 
 // The amount to inset the Fakebox from the rest of the modules on Home, when
@@ -218,6 +213,8 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 @property(nonatomic, strong, readwrite) ExtendedTouchTargetButton* lensButton;
 // The MIA button. May be null if MIA is not available.
 @property(nonatomic, strong, readwrite) ExtendedTouchTargetButton* miaButton;
+// The search engine logo view. May be nil if not using logo.
+@property(nonatomic, strong, readwrite) UIImageView* logoView;
 @property(nonatomic, strong) UIView* voiceAndLensDivider;
 @property(nonatomic, strong) UIView* miaAndVoiceDivider;
 
@@ -273,8 +270,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   UIView* _customizationNewFeatureBadge;
   // A view to contain all the buttons on the trailing side of the fakebox.
   UIStackView* _buttonStack;
-  // Default search engine logo view.
-  UIImageView* _logoView;
 
   // Constraints to update the `toolbarView`'s postion according to the
   // `tabGroupIndicatorView`'s visibility.
@@ -433,13 +428,18 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsZero;
   _buttonStack.layoutMarginsRelativeArrangement = true;
   [searchField addSubview:_buttonStack];
+
+  const CGFloat kButtonStackTralingSpace = 32.0;
+
   [NSLayoutConstraint activateConstraints:@[
     [_buttonStack.leadingAnchor
-        constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
-                     constant:[self endButtonFakeboxTrailingSpace]],  // ✅ Inside, with margin
+        constraintEqualToAnchor:self.fakeLocationBar.trailingAnchor
+                     constant:-kButtonStackTralingSpace],
     [_buttonStack.centerYAnchor
         constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor],
   ]];
+
+  [self addSearchEngineLogoIfNeededToSearchField:searchField];
 
   [self addFakeboxButtonsToStack];
 
@@ -451,9 +451,24 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
       self.searchHintLabel, searchField, self.placeholderText);
   [self updateHintLabelFonts];
 
-  self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
-      constraintEqualToAnchor:_buttonStack.trailingAnchor
-                     constant:kHintLabelFakeboxTrailingSpace];
+  // Important: Set content priorities to prevent centering
+  [self.searchHintLabel
+      setContentCompressionResistancePriority:UILayoutPriorityDefaultLow
+                                      forAxis:UILayoutConstraintAxisHorizontal];
+  [self.searchHintLabel
+      setContentHuggingPriority:UILayoutPriorityDefaultLow
+                        forAxis:UILayoutConstraintAxisHorizontal];
+
+  if(self.logoView) {
+    self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
+        constraintEqualToAnchor:self.logoView.trailingAnchor
+                       constant:0.0];
+  } else {
+    self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
+        constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
+                       constant:kHintLabelFakeboxLeadingSpace];
+  }
+
   [NSLayoutConstraint activateConstraints:@[
     self.hintLabelLeadingConstraint,
     [self.searchHintLabel.heightAnchor
@@ -491,8 +506,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     self.fakeLocationBarTrailingConstraint,
     self.fakeLocationBarHeightConstraint,
   ]];
-
-  [self addSearchEngineLogoIfNeededToSearchField:searchField];
 }
 
 - (void)addSearchEngineLogoIfNeededToSearchField:(UIView*)searchField {
@@ -507,20 +520,20 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   logoView.translatesAutoresizingMaskIntoConstraints = NO;
   AddSquareConstraints(logoView, kFakeboxImageSize);
 
-  self.leadingLogoConstraint = [logoView.trailingAnchor
-      constraintEqualToAnchor:searchField.trailingAnchor
-                     constant:-kOmniboxImageLeadingSpace];
+  self.leadingLogoConstraint = [logoView.leadingAnchor
+      constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
+                     constant:kOmniboxLeadingImageViewEdgeOffset];
+
   [NSLayoutConstraint activateConstraints:@[
     self.leadingLogoConstraint,
-    [logoView.centerYAnchor constraintEqualToAnchor:_fakeLocationBar.centerYAnchor
-                                           constant:-2.0],
-
+    [logoView.centerYAnchor constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor
+                                           constant:0],
   ]];
 
   logoView.image = DefaultSymbolWithPointSize(kSearchSymbol, kFakeboxImageSize);
   logoView.tintColor = [UIColor colorNamed:kTextSecondaryColor];
 
-  _logoView = logoView;
+  self.logoView = logoView;
 }
 
 - (void)setDefaultSearchEngineLogo:(UIImage*)logo {
@@ -624,17 +637,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self setFakeboxColorsWithProgress:percent];
 
   [self scaleHintLabelForPercent:percent];
-  CGFloat hintLabelScalingExtraOffset =
-      (_currentHintLabelScale - 1) *
-      self.searchHintLabel.intrinsicContentSize.width * 0.5;
-
-  // Define the base spacing (constant relative to button stack)
-  // const CGFloat kBaseHintSpacing = kHintLabelFakeboxTrailingSpace + 12;
-
-  // Animate the logo
-  self.leadingLogoConstraint.constant =
-      -(kFakeboxImageLeadingSpace * (1 - percent) +
-      kOmniboxImageLeadingSpace * percent);
 
   CGFloat fakeOmniboxHeight = content_suggestions::FakeOmniboxHeight();
   CGFloat locationBarHeight = content_suggestions::PinnedFakeOmniboxHeight();
@@ -652,9 +654,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
     self.fakeLocationBarTrailingConstraint.constant = 0;
     self.fakeLocationBarTopConstraint.constant = 0;
 
-    // Keep spacing constant relative to button stack
-    self.hintLabelLeadingConstraint.constant =
-        hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
+    if(self.logoView) {
+      self.hintLabelLeadingConstraint.constant = kOmniboxTextFieldLeadingOffsetImage;
+    } else {
+      self.hintLabelLeadingConstraint.constant = kHintLabelFakeboxLeadingSpace;
+    }
 
     self.separator.alpha = 0;
     _buttonStack.directionalLayoutMargins = NSDirectionalEdgeInsetsZero;
@@ -697,9 +701,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
       Interpolate(fakeOmniboxHeight, locationBarHeight, percent);
   self.fakeLocationBar.layer.cornerRadius = self.fakeLocationBarHeightConstraint.constant / 2;
 
-  // Keep spacing constant relative to button stack throughout animation
-  self.hintLabelLeadingConstraint.constant =
-      hintLabelScalingExtraOffset + [self miaButtonHintLabelOffset] + kHintLabelFakeboxTrailingSpace;
+  if(self.logoView) {
+    self.hintLabelLeadingConstraint.constant = kOmniboxTextFieldLeadingOffsetImage;
+  } else {
+    self.hintLabelLeadingConstraint.constant = kHintLabelFakeboxLeadingSpace;
+  }
 
   _lastAnimationPercent = percent;
 
@@ -1050,7 +1056,6 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   [self updateButtonsForCurrentTraitCollection];
 
   [self addActionsToFakeboxButtons];
-  [self updateHintLabelTrailingConstraint];
 }
 
 // Registers the actions for the fakebox buttons.
@@ -1075,42 +1080,40 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 // Updates the trailing constraint of the label to the nearest button stack
 // element.
 // Updates the trailing constraint of the label to the nearest button stack element.
-- (void)updateHintLabelTrailingConstraint {
-  UIView* referenceView = _buttonStack.arrangedSubviews.lastObject;  
-  
-  NSLayoutConstraint* leadingConstraint = [self.searchHintLabel.leadingAnchor
-      constraintGreaterThanOrEqualToAnchor:_buttonStack.trailingAnchor
-                     constant:kHintLabelFakeboxTrailingSpace];
-  
-  // Create trailing constraint
-  NSLayoutConstraint* trailingConstraint = nil;
-  if (_logoView) {
-    trailingConstraint = [self.searchHintLabel.trailingAnchor
-        constraintLessThanOrEqualToAnchor:_logoView.leadingAnchor
-                                 constant:-kHintLabelFakeboxTrailingSpace];
-  } else {
-    trailingConstraint = [self.searchHintLabel.trailingAnchor
-        constraintLessThanOrEqualToAnchor:self.fakeLocationBar.trailingAnchor
-                                 constant:-kHintLabelFakeboxTrailingSpace];
-  }
-  trailingConstraint.priority = UILayoutPriorityDefaultHigh;
+- (void)updateHintLabelConstraints {
+    if (!self.searchHintLabel || !_buttonStack) {
+      return;
+    }
 
-  // Store the constraints
-  self.hintLabelLeadingConstraint = leadingConstraint;
-  self.hintLabelTrailingConstraint = trailingConstraint;
+    if (self.hintLabelLeadingConstraint) {
+      self.hintLabelLeadingConstraint.active = NO;
+    }
+    if (self.hintLabelTrailingConstraint) {
+      self.hintLabelTrailingConstraint.active = NO;
+    }
+    NSLayoutConstraint* leadingConstraint;
+    if(self.logoView) {
+      leadingConstraint = [self.searchHintLabel.leadingAnchor
+          constraintEqualToAnchor:self.logoView.trailingAnchor
+                         constant:kOmniboxTextFieldLeadingOffsetImage];
+    } else {
+      leadingConstraint = [self.searchHintLabel.leadingAnchor
+          constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
+                         constant:kHintLabelFakeboxLeadingSpace];
+    }
 
-  // Activate them
-  NSMutableArray* constraints = [NSMutableArray arrayWithObjects:
-    leadingConstraint,
-    trailingConstraint,
-    nil];
-  
-  if (referenceView) {
-    [constraints addObject:[referenceView.centerYAnchor
-        constraintEqualToAnchor:self.fakeLocationBar.centerYAnchor]];
-  }
+    NSLayoutConstraint* trailingConstraint = [self.searchHintLabel.trailingAnchor
+        constraintLessThanOrEqualToAnchor:_buttonStack.leadingAnchor
+                                 constant:-12.0];
+    trailingConstraint.priority = UILayoutPriorityDefaultHigh;
 
-  [NSLayoutConstraint activateConstraints:constraints];
+    self.hintLabelLeadingConstraint = leadingConstraint;
+    self.hintLabelTrailingConstraint = trailingConstraint;
+
+    [NSLayoutConstraint activateConstraints:@[
+      leadingConstraint,
+      trailingConstraint,
+    ]];
 }
 
 // Gets the fonts for the pinned and unpinned fakebox hint label, and sets
