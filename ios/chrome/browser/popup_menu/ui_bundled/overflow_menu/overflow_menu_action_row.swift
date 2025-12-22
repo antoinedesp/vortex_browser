@@ -163,6 +163,20 @@ struct OverflowMenuActionRow: View {
       .padding([.trailing], Self.editRowEndPadding)
       .accessibilityElement(children: .combine)
       .accessibilityLabel([action.name, action.subtitle].compactMap { $0 }.joined(separator: ", "))
+    } else if action.displayAsToggle {
+      HStack {
+        centerTextView
+        Spacer()
+        Toggle("", isOn: $action.toggleOn)
+          .labelsHidden()
+          .onChange(of: action.toggleOn) { _ in
+            action.handler()
+          }
+        if let rowIcon = rowIcon {
+          rowIcon
+        }
+      }
+      .padding([.trailing], Self.rowEndPadding)
     } else {
       HStack {
         // If there is no icon, the text should be centered.
@@ -192,10 +206,10 @@ struct OverflowMenuActionRow: View {
   }
 
   // The button view, which is replaced by just a plain view when this is in
-  // edit mode.
+  // edit mode or when displaying as a toggle.
   @ViewBuilder
   var button: some View {
-    if isEditing {
+    if isEditing || action.displayAsToggle {
       rowContent
     } else if let menu = action.menu {
       Button(action: {}) {
