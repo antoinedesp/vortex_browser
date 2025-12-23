@@ -30,6 +30,7 @@ source_set("model") {
     ":page_placeholder",
     ":tab_helper_delegates",
     "//base",
+    "//ios/chrome/browser/web/model/adblocker",
     "//components/application_locale_storage",
     "//components/content_settings/core/browser",
     "//components/error_page/common",
@@ -352,6 +353,7 @@ source_set("web_internal") {
     "//ui/display",
     "//ui/gfx",
     "//url",
+    "//ios/chrome/browser/web/model/adblocker:adblocker"
   ]
 
   if (use_allocator_shim) {
