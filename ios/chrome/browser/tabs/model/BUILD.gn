@@ -152,6 +152,7 @@ source_set("tabs_internal") {
     "//ios/web/public/find_in_page",
     "//ios/web/public/security",
     "//ui/base",
+    "//ios/chrome/browser/web/model/adblocker:adblocker",
   ]
   frameworks = [
     "Foundation.framework",
