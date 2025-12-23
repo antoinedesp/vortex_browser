@@ -44,6 +44,26 @@ interface FindElementImgResult {
 }
 
 /**
+ * Response from `findElementAtPoint` describing a video element.
+ */
+interface FindElementVideoResult {
+  // The request id passed to this JavaScript from the native application.
+  // It is always included, but marked as optional because it is set after
+  // creation.
+  requestId?: string;
+  // Lowercase tag of the element found ('video').
+  tagName: string;
+  // Referrer policy to use for navigations away from the current page.
+  referrerPolicy: string;
+  // URL source of the video.
+  src: string;
+  // URL of a link if the video is wrapped in a link.
+  href?: string;
+  // Title of the video.
+  title?: string;
+}
+
+/**
  * Response from `findElementAtPoint` describing a link element.
  */
 interface FindElementLinkResult {
@@ -89,8 +109,8 @@ interface FindElementFailResult {
   requestId?: string;
 }
 
-type FindElementResult = FindElementImgResult|FindElementLinkResult|
-    FindElementTextResult|FindElementFailResult;
+type FindElementResult = FindElementImgResult|FindElementVideoResult|
+    FindElementLinkResult|FindElementTextResult|FindElementFailResult;
 
 /**
  * Represents local `x` and `y` coordinates in `window` space.
@@ -154,6 +174,43 @@ function getResponseForImageElement(
       // This regex identifies strings like void(0),
       // void(0)  ;void(0);, ;;;;
       // which result in a NOP when executed as JavaScript.
+      const regex = RegExp('^javascript:(?:(?:void\\(0\\)|;)\\s*)+$');
+      if (href.match(regex)) {
+        parent = parent.parentNode;
+        continue;
+      }
+      result.href = href;
+      result.referrerPolicy = getReferrerPolicy(parent);
+      break;
+    }
+    parent = parent.parentNode;
+  }
+  return result;
+}
+
+/**
+ * Returns an object representing the details of a given video element.
+ * @param element - the element whose details will be returned.
+ * @param src - the source of the video element.
+ */
+function getResponseForVideoElement(
+    element: HTMLElement, src: string): FindElementVideoResult {
+  const result: FindElementVideoResult = {
+    tagName: 'video',
+    src: src,
+    referrerPolicy: getReferrerPolicy(),
+  };
+  // Copy the title, if any.
+  if (element.title) {
+    result.title = element.title;
+  }
+  // Check if the video is also a link.
+  let parent: Node|null = element.parentNode;
+  while (parent) {
+    if ((parent instanceof HTMLAnchorElement ||
+         parent instanceof SVGAElement) &&
+        getElementHref(parent)) {
+      const href = getElementHref(parent);
       const regex = RegExp('^javascript:(?:(?:void\\(0\\)|;)\\s*)+$');
       if (href.match(regex)) {
         parent = parent.parentNode;
@@ -266,6 +323,7 @@ function findElementAtPoint(
   }
   let foundLinkElement: HTMLAnchorElement|SVGAElement|null = null;
   let foundTextElement: Element|null = null;
+  let foundVideoElement: HTMLElement|null = null;
   let foundImageElement: HTMLElement|null = null;
   for (let elementIndex = 0;
        elementIndex < elements.length && elementIndex < MAX_SEARCH_DEPTH;
@@ -275,8 +333,8 @@ function findElementAtPoint(
     // Element.closest will find link elements that are parents of the current
     // element. It also works for SVGAElements, links within svg tags. However,
     // we must still iterate through the elements at this position to find
-    // images. This ensures that it will never miss the link, even if this loop
-    //  terminates due to hitting an opaque element.
+    // images and videos. This ensures that it will never miss the link, even
+    // if this loop terminates due to hitting an opaque element.
     if (!foundLinkElement) {
       const closestLink = element.closest('a');
       if (closestLink && closestLink.href &&
@@ -314,24 +372,40 @@ function findElementAtPoint(
       // Remember topmost text element, while going up the tree looking for
       // links.
       if (foundTextElement === null && element.tagName !== 'HTML' &&
-          element.tagName !== 'IMG' && element.tagName !== 'svg' &&
-          isTextElement(element)) {
+          element.tagName !== 'IMG' && element.tagName !== 'VIDEO' &&
+          element.tagName !== 'svg' && isTextElement(element)) {
         foundTextElement = element;
       }
 
+      // Remember topmost video element. Videos take priority over images.
+      if (foundVideoElement === null && foundTextElement === null &&
+          getVideoSource(element) && !isTransparentElement(element)) {
+        foundVideoElement = element as HTMLElement;
+      }
+
       // Remember topmost opaque image, while going up the tree looking for
-      // links. If there's already a topmost text, no need to remember this
-      // image.
-      if (foundImageElement === null && foundTextElement === null &&
-          getImageSource(element) && !isTransparentElement(element)) {
+      // links. If there's already a topmost text or video, no need to remember
+      // this image.
+      if (foundImageElement === null && foundVideoElement === null &&
+          foundTextElement === null && getImageSource(element) &&
+          !isTransparentElement(element)) {
         foundImageElement = element as HTMLElement;
       }
     }
 
-    // Opaque elements should block taps on images that are behind them.
+    // Opaque elements should block taps on videos/images that are behind them.
     if (isOpaqueElement(element)) {
       break;
     }
+  }
+
+  if (foundVideoElement) {
+    // videoSrc cannot be null, as it would've stopped `foundVideoElement` from
+    // being set.
+    const videoSrc = getVideoSource(foundVideoElement);
+    sendFindElementAtPointResponse(
+        requestId, getResponseForVideoElement(foundVideoElement, videoSrc!));
+    return true;
   }
 
   if (foundImageElement) {
@@ -415,6 +489,16 @@ function processElementForFindElementAtPoint(
     // return empty results.
     sendFindElementAtPointResponse(requestId, /*response=*/ {});
     return true;
+  }
+
+  // Handle video elements directly
+  if (tagName === 'video' && element instanceof HTMLVideoElement) {
+    const videoSrc = getVideoSource(element);
+    if (videoSrc) {
+      sendFindElementAtPointResponse(
+          requestId, getResponseForVideoElement(element, videoSrc));
+      return true;
+    }
   }
 
   if (getComputedWebkitTouchCallout(element) !== 'none') {
@@ -610,6 +694,34 @@ function getImageSource(element: Element): string|null {
     return null;
   }
   return extractUrlFromBackgroundImageString(backgroundImageString);
+}
+
+/**
+ * Returns the video source if the element is a <video> element. Returns null
+ * if no video source was found.
+ * @param element - the element from which to get the video source.
+ */
+function getVideoSource(element: Element): string|null {
+  if (element.tagName && element.tagName.toLowerCase() === 'video') {
+    if (element instanceof HTMLVideoElement) {
+      // Try currentSrc first (the actual playing source), then src attribute
+      if (element.currentSrc) {
+        return element.currentSrc;
+      }
+      if (element.src) {
+        return element.src;
+      }
+      // Check for <source> child elements
+      const sourceElements = element.querySelectorAll('source');
+      if (sourceElements.length > 0) {
+        const firstSource = sourceElements[0] as HTMLSourceElement;
+        if (firstSource.src) {
+          return firstSource.src;
+        }
+      }
+    }
+  }
+  return null;
 }
 
 /**
