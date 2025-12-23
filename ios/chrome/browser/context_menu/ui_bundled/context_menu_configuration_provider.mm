@@ -4,6 +4,8 @@
 
 #import "ios/chrome/browser/context_menu/ui_bundled/context_menu_configuration_provider.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 #import "base/ios/block_types.h"
 #import "base/ios/ios_util.h"
 #import "base/memory/weak_ptr.h"
@@ -231,6 +233,21 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
     return nil;
   }
 
+  // Check if this is a video element
+  const bool isVideo =
+      params.tag_name &&
+      [params.tag_name.lowercaseString isEqualToString:@"video"];
+
+  if (isVideo) {
+    // For videos, create a custom preview controller that shows a thumbnail
+    UIViewController* videoPreviewController =
+        [self createVideoPreviewControllerWithURL:params.src_url
+                                         webState:webState];
+    return ^() {
+      return videoPreviewController;
+    };
+  }
+
   ImagePreviewViewController* previewViewController =
       [[ImagePreviewViewController alloc]
           initWithSrcURL:net::NSURLWithGURL(params.src_url)
@@ -239,6 +256,95 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
   return ^() {
     return previewViewController;
   };
+}
+
+// Creates a preview controller that displays a thumbnail for a video.
+- (UIViewController*)createVideoPreviewControllerWithURL:(const GURL&)videoURL
+                                                webState:
+                                                    (web::WebState*)webState {
+  UIViewController* previewController = [[UIViewController alloc] init];
+  previewController.view.backgroundColor = [UIColor clearColor];
+  previewController.preferredContentSize = CGSizeMake(40, 40);
+
+  UIImageView* imageView = [[UIImageView alloc] init];
+  imageView.translatesAutoresizingMaskIntoConstraints = NO;
+  imageView.backgroundColor = [UIColor clearColor];
+  imageView.contentMode = UIViewContentModeScaleAspectFit;
+  [previewController.view addSubview:imageView];
+
+  [NSLayoutConstraint activateConstraints:@[
+    [imageView.leadingAnchor
+        constraintEqualToAnchor:previewController.view.leadingAnchor],
+    [imageView.trailingAnchor
+        constraintEqualToAnchor:previewController.view.trailingAnchor],
+    [imageView.topAnchor
+        constraintEqualToAnchor:previewController.view.topAnchor],
+    [imageView.bottomAnchor
+        constraintEqualToAnchor:previewController.view.bottomAnchor]
+  ]];
+
+  // Fetch the video and generate thumbnail
+  ImageFetchTabHelper* tabHelper = ImageFetchTabHelper::FromWebState(webState);
+  if (!tabHelper) {
+    return previewController;
+  }
+
+  const GURL& lastCommittedURL = webState->GetLastCommittedURL();
+  web::Referrer referrer(lastCommittedURL, web::ReferrerPolicyDefault);
+
+  __weak UIImageView* weakImageView = imageView;
+  __weak UIViewController* weakController = previewController;
+  tabHelper->GetImageData(videoURL, referrer, ^(NSData* videoData) {
+    if (!videoData || videoData.length == 0) {
+      return;
+    }
+
+    // Save video data to a temporary file
+    NSString* tempDir = NSTemporaryDirectory();
+    NSString* fileName =
+        [NSString stringWithFormat:@"video_preview_%@.mp4",
+                                   [[NSUUID UUID] UUIDString]];
+    NSString* filePath = [tempDir stringByAppendingPathComponent:fileName];
+    NSURL* fileURL = [NSURL fileURLWithPath:filePath];
+
+    if (![videoData writeToFile:filePath atomically:YES]) {
+      return;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      UIImageView* strongImageView = weakImageView;
+      UIViewController* strongController = weakController;
+      if (!strongImageView || !strongController) {
+        [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+        return;
+      }
+
+      // Generate thumbnail from video using AVFoundation
+      AVAsset* asset = [AVAsset assetWithURL:fileURL];
+      AVAssetImageGenerator* imageGenerator =
+          [[AVAssetImageGenerator alloc] initWithAsset:asset];
+      imageGenerator.appliesPreferredTrackTransform = YES;
+      imageGenerator.maximumSize = CGSizeMake(400, 400);
+
+      CMTime time = CMTimeMake(0, 1);
+      NSError* error = nil;
+      CGImageRef imageRef =
+          [imageGenerator copyCGImageAtTime:time actualTime:NULL error:&error];
+
+      // Clean up temp file
+      [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+
+      if (imageRef) {
+        UIImage* thumbnail = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
+
+        strongImageView.image = thumbnail;
+        strongController.preferredContentSize = thumbnail.size;
+      }
+    });
+  });
+
+  return previewController;
 }
 
 // Returns an action based contextual menu for a given web state (link, image,
