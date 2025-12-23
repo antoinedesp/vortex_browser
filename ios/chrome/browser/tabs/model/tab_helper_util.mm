@@ -27,6 +27,7 @@
 #import "ios/chrome/browser/autofill/model/bottom_sheet/autofill_bottom_sheet_tab_helper.h"
 #import "ios/chrome/browser/autofill/model/form_suggestion_tab_helper.h"
 #import "ios/chrome/browser/browser_container/model/edit_menu_tab_helper.h"
+#import "ios/chrome/browser/web/model/adblocker/adblocker_tab_helper.h"
 #import "ios/chrome/browser/collaboration/model/data_sharing_tab_helper.h"
 #import "ios/chrome/browser/commerce/model/price_alert_util.h"
 #import "ios/chrome/browser/commerce/model/price_notifications/price_notifications_tab_helper.h"
@@ -277,6 +278,9 @@ void AttachTabHelpers(web::WebState* web_state, TabHelperFilter filter_flags) {
   attacher.Create<VoiceSearchNavigationTabHelper>();
   attacher.Create<InfoBarManagerImpl>();
   attacher.Create<FindTabHelper>();
+
+  // AdBlocker tab helper
+  attacher.Create<AdBlockerTabHelper>();
 
   bool should_create_history_tab_helper =
       !attacher.IsForReaderMode() &&

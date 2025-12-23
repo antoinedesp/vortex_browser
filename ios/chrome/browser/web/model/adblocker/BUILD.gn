@@ -1,0 +1,70 @@
+# Copyright 2025 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//ios/web/public/js_messaging/optimize_ts.gni")
+import("//build/config/ios/rules.gni")
+
+source_set("adblocker") {
+  sources = [
+    "adblocker_content_rule_manager.h",
+    "adblocker_content_rule_manager.mm",
+    "adblocker_filter_list_loader.h",
+    "adblocker_filter_list_loader.mm",
+    "adblocker_filter_list_util.h",
+    "adblocker_filter_list_util.mm",
+    "adblocker_java_script_feature.h",
+    "adblocker_java_script_feature.mm",
+    "adblocker_service_factory.h",
+    "adblocker_service_factory.mm",
+    "adblocker_tab_helper.h",
+    "adblocker_tab_helper.mm",
+  ]
+
+  deps = [
+    ":adblocker_filters",
+    ":adblocker_js",
+    "//base",
+    "//components/keyed_service/core:core",
+    "//components/keyed_service/ios",
+    "//components/prefs",
+    "//ios/chrome/browser/shared/model/prefs:pref_names",
+    "//ios/chrome/browser/shared/model/profile",
+    "//ios/web/public",
+    "//ios/web/public/js_messaging",
+    "//ios/web/web_state/ui:wk_web_view_configuration_provider",
+    "//ios/web/web_state/ui:wk_web_view_configuration_provider_header",
+  ]
+}
+
+bundle_data("adblocker_filters") {
+  visibility = [ ":adblocker" ]
+  sources = [ "resources/filters/easylist.txt" ]
+  outputs = [ "{{bundle_resources_dir}}/{{source_file_part}}" ]
+}
+
+optimize_ts("adblocker_js") {
+  visibility = [ ":adblocker" ]
+
+  sources = [ "resources/adblocker.ts" ]
+
+  deps = [
+    "//ios/web/public/js_messaging:gcrweb",
+    "//ios/web/public/js_messaging:util_scripts",
+  ]
+}
+
+# Future: Add npm package bundling here
+# This would bundle the @ghostery/adblocker npm package
+# into the TypeScript build
+#
+# Example structure:
+# optimize_ts("adblocker_with_ghostery") {
+#   sources = [
+#     "resources/adblocker.ts",
+#     "resources/ghostery_bundle.ts",  # Wrapped npm package
+#   ]
+#   npm_packages = [
+#     "//third_party/npm:@ghostery/adblocker",
+#   ]
+# }
