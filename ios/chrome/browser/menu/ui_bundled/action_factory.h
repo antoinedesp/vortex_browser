@@ -120,6 +120,9 @@ class TabGroup;
 // Creates a UIAction instance for saving an image.
 - (UIAction*)actionSaveImageWithBlock:(ProceduralBlock)block;
 
+// Creates a UIAction instance for saving a video.
+- (UIAction*)actionSaveVideoWithBlock:(ProceduralBlock)block;
+
 // Creates a UIAction instance for copying an image.
 - (UIAction*)actionCopyImageWithBlock:(ProceduralBlock)block;
 
