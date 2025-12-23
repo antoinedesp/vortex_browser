@@ -83,6 +83,7 @@
 #import "ios/chrome/browser/web/model/error_page_util.h"
 #import "ios/chrome/browser/web/model/features.h"
 #import "ios/chrome/browser/web/model/font_size/font_size_java_script_feature.h"
+#import "ios/chrome/browser/web/model/adblocker/adblocker_java_script_feature.h"
 #import "ios/chrome/browser/web/model/image_fetch/image_fetch_java_script_feature.h"
 #import "ios/chrome/browser/web/model/java_script_console/java_script_console_feature.h"
 #import "ios/chrome/browser/web/model/java_script_console/java_script_console_feature_factory.h"
@@ -407,6 +408,9 @@ std::vector<web::JavaScriptFeature*> ChromeWebClient::GetJavaScriptFeatures(
   features.push_back(java_script_console_feature);
 
   features.push_back(print_feature.get());
+
+  // AdBlocker feature
+  features.push_back(AdBlockerJavaScriptFeature::GetInstance());
 
   features.push_back(autofill::AutofillJavaScriptFeature::GetInstance());
   features.push_back(autofill::FormHandlersJavaScriptFeature::GetInstance());
