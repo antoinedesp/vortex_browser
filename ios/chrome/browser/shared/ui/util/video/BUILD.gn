@@ -1,0 +1,23 @@
+# Copyright 2025 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+source_set("video") {
+  sources = [
+    "video_saver.h",
+    "video_saver.mm",
+  ]
+  deps = [
+    "//base",
+    "//components/strings:components_strings_grit",
+    "//ios/chrome/app/strings",
+    "//ios/chrome/browser/shared/model/browser",
+    "//ios/chrome/browser/web/model/image_fetch",
+    "//ios/web/public",
+    "//ui/base",
+  ]
+  frameworks = [
+    "Photos.framework",
+    "UIKit.framework",
+  ]
+}
