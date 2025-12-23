@@ -62,6 +62,7 @@
 #import "ios/chrome/browser/shared/ui/util/image/image_copier.h"
 #import "ios/chrome/browser/shared/ui/util/image/image_saver.h"
 #import "ios/chrome/browser/shared/ui/util/pasteboard_util.h"
+#import "ios/chrome/browser/shared/ui/util/video/video_saver.h"
 #import "ios/chrome/browser/shared/ui/util/url_with_title.h"
 #import "ios/chrome/browser/text_selection/model/text_classifier_util.h"
 #import "ios/chrome/browser/url_loading/model/image_search_param_generator.h"
@@ -111,6 +112,8 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
 @property(nonatomic, strong) ImageSaver* imageSaver;
 // Helper for copying images.
 @property(nonatomic, strong) ImageCopier* imageCopier;
+// Helper for saving videos.
+@property(nonatomic, strong) VideoSaver* videoSaver;
 
 @property(nonatomic, assign) Browser* browser;
 
@@ -142,6 +145,7 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
     _baseViewController = baseViewController;
     _imageSaver = [[ImageSaver alloc] initWithBrowser:self.browser];
     _imageCopier = [[ImageCopier alloc] initWithBrowser:self.browser];
+    _videoSaver = [[VideoSaver alloc] initWithBrowser:self.browser];
     _baseWebState = webState ? webState->GetWeakPtr() : nullptr;
     _isLensOverlay = isLensOverlay;
   }
@@ -163,6 +167,8 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
   _imageSaver = nil;
   [_imageCopier stop];
   _imageCopier = nil;
+  [_videoSaver stop];
+  _videoSaver = nil;
   _imageTranscoder = nullptr;
   _baseWebState = nullptr;
 }
@@ -252,7 +258,10 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
   const GURL linkURL = params.link_url;
   const bool isLink = linkURL.is_valid();
   const GURL imageURL = params.src_url;
-  const bool isImage = imageURL.is_valid();
+  const bool isVideo =
+      imageURL.is_valid() && params.tag_name &&
+      [params.tag_name.lowercaseString isEqualToString:@"video"];
+  const bool isImage = imageURL.is_valid() && !isVideo;
 
   DCHECK(self.browser->GetProfile());
   const bool isOffTheRecord = self.browser->GetProfile()->IsOffTheRecord();
@@ -270,7 +279,7 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
   NSString* menuTitle = nil;
   UIAction* showFullURL = nil;
 
-  if (isLink || isImage) {
+  if (isLink || isImage || isVideo) {
     menuTitle = GetContextMenuTitle(params);
 
     if (!IsImageTitle(params) &&
@@ -321,6 +330,59 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
                                                            isLink:isLink
                                                          webState:webState
                                                            params:params]];
+  }
+
+  if (isVideo) {
+    BrowserActionFactory* actionFactory =
+        [[BrowserActionFactory alloc] initWithBrowser:self.browser
+                                             scenario:menuScenario];
+
+    __weak __typeof(self) weakSelf = self;
+
+    // Save Video
+    UIAction* saveVideo = [actionFactory actionSaveVideoWithBlock:^{
+      ContextMenuConfigurationProvider* strongSelf = weakSelf;
+      if (!strongSelf || !strongSelf.baseViewController) {
+        return;
+      }
+      [strongSelf.videoSaver saveVideoAtURL:imageURL
+                                   referrer:referrer
+                                   webState:strongSelf.webState
+                         baseViewController:strongSelf.baseViewController];
+    }];
+    [menuElements addObject:saveVideo];
+
+    // Copy Video Link
+    UIAction* copyVideoLink = [actionFactory actionToCopyURLWithBlock:^{
+      StoreURLInPasteboard(imageURL);  // imageURL contains video URL
+    }];
+    [menuElements addObject:copyVideoLink];
+
+    // Share Video
+    if ([self isSharingAllowed]) {
+      UIAction* shareVideo = [actionFactory actionToShareWithBlock:^{
+        [weakSelf shareURLFromContextMenu:imageURL
+                                 URLTitle:GetContextMenuTitle(params)
+                                   params:params];
+      }];
+      [menuElements addObject:shareVideo];
+    }
+
+    // Open in New Tab
+    UrlLoadParams loadParams = UrlLoadParams::InNewTab(imageURL);
+    loadParams.SetInBackground(YES);
+    loadParams.web_params.referrer = referrer;
+    loadParams.in_incognito = isOffTheRecord;
+    loadParams.append_to = OpenPosition::kCurrentTab;
+    loadParams.origin_point = [params.view convertPoint:params.location
+                                                 toView:nil];
+
+    UIAction* openVideoInNewTab = [actionFactory
+        actionToOpenInNewTabWithURL:imageURL
+                         completion:^{
+                           [weakSelf didOpenTabInBackground:imageURL];
+                         }];
+    [menuElements addObject:openVideoInNewTab];
   }
 
   // This check skips every internal context menu entry. This may need to be
