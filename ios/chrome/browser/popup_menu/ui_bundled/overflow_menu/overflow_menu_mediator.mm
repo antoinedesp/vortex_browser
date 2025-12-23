@@ -43,6 +43,7 @@
 #import "ios/chrome/browser/intelligence/bwg/model/bwg_service_factory.h"
 #import "ios/chrome/browser/intelligence/bwg/utils/bwg_constants.h"
 #import "ios/chrome/browser/intelligence/features/features.h"
+#import "ios/chrome/browser/web/model/adblocker/adblocker_service_factory.h"
 #import "ios/chrome/browser/intents/model/intents_donation_helper.h"
 #import "ios/chrome/browser/lens_overlay/coordinator/lens_overlay_availability.h"
 #import "ios/chrome/browser/lens_overlay/model/lens_overlay_tab_helper.h"
@@ -2392,9 +2393,17 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   RecordAction(UserMetricsAction("MobileMenuToggleAdBlocker"));
 
   // Toggle the adblocker preference
-  if (self.profilePrefs) {
+  if (self.profilePrefs && self.webState) {
     BOOL currentValue = self.profilePrefs->GetBoolean(prefs::kAdBlockerEnabled);
     self.profilePrefs->SetBoolean(prefs::kAdBlockerEnabled, !currentValue);
+
+    // Ensure the AdBlocker service is created to handle the preference change
+    // This will install/remove WKContentRuleLists for network blocking
+    web::BrowserState* browserState = self.webState->GetBrowserState();
+    ProfileIOS* profile = ProfileIOS::FromBrowserState(browserState);
+    if (profile && !profile->IsOffTheRecord()) {
+      AdBlockerServiceFactory::GetForProfile(profile->GetOriginalProfile());
+    }
 
     // Update the toggle state immediately
     if (self.adBlockerAction) {
