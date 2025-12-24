@@ -313,9 +313,22 @@ constexpr CGFloat kEmojiCanvasPaddingRatio = 1.3;
   UIImage* image = DefaultSymbolWithPointSize(kSaveImageActionSymbol,
                                               kSymbolActionPointSize);
   UIAction* action =
-      [self actionWithTitle:@"Save Video"
+      [self actionWithTitle:l10n_util::GetNSString(
+                                IDS_IOS_CONTENT_CONTEXT_SAVEVIDEO)
                       image:image
                        type:MenuActionType::SaveImage  // Reuse SaveImage type for now
+                      block:block];
+  return action;
+}
+
+- (UIAction*)actionCopyVideoAddressWithBlock:(ProceduralBlock)block {
+  UIImage* image =
+      DefaultSymbolWithPointSize(kLinkActionSymbol, kSymbolActionPointSize);
+  UIAction* action =
+      [self actionWithTitle:l10n_util::GetNSString(
+                                IDS_IOS_CONTENT_CONTEXT_COPYVIDEO)
+                      image:image
+                       type:MenuActionType::CopyURL
                       block:block];
   return action;
 }
