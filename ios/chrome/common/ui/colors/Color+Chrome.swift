@@ -96,6 +96,36 @@ extension Color {
     return Color(kRed500Color)
   }
 
+  /// The brand pink color for primary branding elements.
+  public static var brandPink: Color {
+    return Color(kBrandPinkColor)
+  }
+
+  /// The brand purple color for primary branding elements.
+  public static var brandPurple: Color {
+    return Color(kBrandPurpleColor)
+  }
+
+  /// The brand blue color for primary branding elements.
+  public static var brandBlue: Color {
+    return Color(kBrandBlueColor)
+  }
+
+  /// The brand white color for primary branding elements.
+  public static var brandWhite: Color {
+    return Color(kBrandWhiteColor)
+  }
+
+  /// The brand green color for primary branding elements.
+  public static var brandGreen: Color {
+    return Color(kBrandGreenColor)
+  }
+
+  /// The brand purple halo color for backgrounds.
+  public static var brandPurpleHalo: Color {
+    return Color(kBrandPurpleHaloColor)
+  }
+
   /// The table row view highlight color.
   public static var tableRowViewHighlight: Color {
     return Color(kTableViewRowHighlightColor)
