@@ -249,7 +249,7 @@ struct OverflowMenuDestinationView: View {
 
   /// Background color for the icon.
   var backgroundColor: Color {
-    isPressed ? Color(.systemGray4) : (highlighted ? .blueHalo : .groupedSecondaryBackground)
+    isPressed ? Color(.systemGray4) : (highlighted ? .blueHalo : .brandPurple)
   }
 
   /// View representing the background of the icon.
@@ -336,7 +336,7 @@ struct OverflowMenuDestinationView: View {
     // recognize.
     .accessibilityHidden(true)
 
-    configuredImage.foregroundColor(.blue600).imageScale(.medium).font(
+    configuredImage.foregroundColor(.white).imageScale(.medium).font(
       Font.system(size: Dimensions.iconSymbolSize, weight: .medium)
     )
     .alignmentGuide(.icon) { $0[VerticalAlignment.center] }
