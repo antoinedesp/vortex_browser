@@ -899,7 +899,8 @@ constexpr CGFloat kEmojiCanvasPaddingRatio = 1.3;
   UIImage* image =
       DefaultSymbolWithPointSize(kXMarkSymbol, kSymbolActionPointSize);
 
-  return [self actionWithTitle:@"Plus"
+  return [self actionWithTitle:l10n_util::GetNSString(
+                                   IDS_IOS_VORTEX_PLUS_MENU_TITLE)
                          image:image
                           type:MenuActionType::VortexPaywall
                          block:block];
