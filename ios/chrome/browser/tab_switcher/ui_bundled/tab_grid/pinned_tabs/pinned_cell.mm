@@ -242,7 +242,7 @@ UIColor* GetInterfaceStyleDarkColor(UIColor* dynamicColor) {
   selectedBackgroundBorderView.layer.borderWidth =
       kPinnedCellSelectionRingTintWidth;
   selectedBackgroundBorderView.layer.borderColor =
-      [UIColor colorNamed:kStaticBlue400Color].CGColor;
+      [UIColor colorNamed:kBrandPurpleColor].CGColor;
 
   UIView* selectedBackgroundView = [[UIView alloc] init];
   [selectedBackgroundView addSubview:selectedBackgroundBorderView];
