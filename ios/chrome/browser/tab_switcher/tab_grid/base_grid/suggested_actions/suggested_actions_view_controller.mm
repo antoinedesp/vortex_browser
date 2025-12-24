@@ -113,14 +113,16 @@ typedef NS_ENUM(NSInteger, ItemType) {
 
   TableViewModel* model = self.tableViewModel;
   [model addSectionWithIdentifier:kSectionIdentifierSuggestedActions];
-  UIColor* actionsTextColor = [UIColor colorNamed:kBlueColor];
+  UIColor* actionsColor = [UIColor colorNamed:kBrandWhiteColor];
   TableViewImageItem* searchWebItem = [[TableViewImageItem alloc]
       initWithType:ItemTypeSuggestedActionSearchWeb];
   searchWebItem.title =
       l10n_util::GetNSString(IDS_IOS_TABS_SEARCH_SUGGESTED_ACTION_SEARCH_WEB);
   searchWebItem.image = [[UIImage imageNamed:@"suggested_action_web"]
       imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-  searchWebItem.textColor = actionsTextColor;
+  searchWebItem.textColor = actionsColor;
+  searchWebItem.symbolTintColor = actionsColor;
+  searchWebItem.symbolBackgroundColor = UIColor.clearColor;
   [model addItem:searchWebItem
       toSectionWithIdentifier:kSectionIdentifierSuggestedActions];
 
@@ -132,7 +134,9 @@ typedef NS_ENUM(NSInteger, ItemType) {
       IDS_IOS_TABS_SEARCH_SUGGESTED_ACTION_SEARCH_HISTORY_UNKNOWN_RESULT_COUNT);
   _searchHistoryItem.accessibilityIdentifier =
       kTabGridSearchSuggestedHistoryItemId;
-  _searchHistoryItem.textColor = actionsTextColor;
+  _searchHistoryItem.textColor = actionsColor;
+  _searchHistoryItem.symbolTintColor = actionsColor;
+  _searchHistoryItem.symbolBackgroundColor = UIColor.clearColor;
   [model addItem:_searchHistoryItem
       toSectionWithIdentifier:kSectionIdentifierSuggestedActions];
 
