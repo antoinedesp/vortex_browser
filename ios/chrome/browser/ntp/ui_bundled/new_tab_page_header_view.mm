@@ -709,10 +709,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
   _lastAnimationPercent = percent;
 
-  CGFloat startCornerRadius = 16.0;
-  CGFloat endCornerRadius = 0.0;
-
-  self.layer.cornerRadius = Interpolate(startCornerRadius, endCornerRadius, percent);
+  self.layer.cornerRadius = 0;
 }
 
 - (void)setFakeboxHighlighted:(BOOL)highlighted {
@@ -1447,11 +1444,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  if (_lastAnimationPercent == 0) {
-     self.layer.cornerRadius = 16;
-  }
-
-  self.layer.maskedCorners = kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner;
+  self.layer.cornerRadius = 0;
   self.clipsToBounds = NO;
 }
 
