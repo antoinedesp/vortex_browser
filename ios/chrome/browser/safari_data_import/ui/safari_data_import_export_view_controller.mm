@@ -83,7 +83,7 @@ NSDictionary<NSString*, NSString*>* GetTextProvider() {
   /// Sets up the safari data import item.
   self.animationName = GetAnimationName(/*dark_mode=*/NO);
   self.animationNameDarkMode = GetAnimationName(/*dark_mode=*/YES);
-  self.animationBackgroundColor = [UIColor colorNamed:kBlueHaloColor];
+  self.animationBackgroundColor = [UIColor colorNamed:kBrandPurpleHaloColor];
   self.underTitleView = GetInstructionsView();
   self.primaryActionString = l10n_util::GetNSString(
       IDS_IOS_SAFARI_IMPORT_EXPORT_BUTTON_GO_TO_SETTINGS);
