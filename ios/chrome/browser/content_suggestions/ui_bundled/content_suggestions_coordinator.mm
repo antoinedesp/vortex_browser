@@ -348,19 +348,21 @@ using segmentation_platform::TipIdentifier;
   self.contentSuggestionsMediator.mostVisitedTilesMediator =
       _mostVisitedTilesMediator;
 
-  _shortcutsMediator = [[ShortcutsMediator alloc]
-      initWithReadingListModel:readingListModel
-      featureEngagementTracker:feature_engagement::TrackerFactory::
-                                   GetForProfile(profile)
-               identityManager:identityManager];
-  _shortcutsMediator.contentSuggestionsMetricsRecorder =
-      self.contentSuggestionsMetricsRecorder;
-  _shortcutsMediator.NTPActionsDelegate = self.NTPActionsDelegate;
-  _shortcutsMediator.dispatcher = static_cast<
-      id<ApplicationCommands, BrowserCoordinatorCommands, WhatsNewCommands>>(
-      self.browser->GetCommandDispatcher());
-  [moduleMediators addObject:_shortcutsMediator];
-  self.contentSuggestionsMediator.shortcutsMediator = _shortcutsMediator;
+  if (kDisplayShortcuts) {
+    _shortcutsMediator = [[ShortcutsMediator alloc]
+        initWithReadingListModel:readingListModel
+        featureEngagementTracker:feature_engagement::TrackerFactory::
+                                     GetForProfile(profile)
+                 identityManager:identityManager];
+    _shortcutsMediator.contentSuggestionsMetricsRecorder =
+        self.contentSuggestionsMetricsRecorder;
+    _shortcutsMediator.NTPActionsDelegate = self.NTPActionsDelegate;
+    _shortcutsMediator.dispatcher = static_cast<
+        id<ApplicationCommands, BrowserCoordinatorCommands, WhatsNewCommands>>(
+        self.browser->GetCommandDispatcher());
+    [moduleMediators addObject:_shortcutsMediator];
+    self.contentSuggestionsMediator.shortcutsMediator = _shortcutsMediator;
+  }
 
   if (IsTabResumptionEnabled()) {
     _tabResumptionMediator = [[TabResumptionMediator alloc]
