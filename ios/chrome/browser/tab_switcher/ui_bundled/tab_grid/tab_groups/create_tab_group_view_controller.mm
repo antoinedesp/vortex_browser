@@ -338,7 +338,7 @@ const CGFloat kClearButtonWidthAndHeight = 40;
   UIButton* cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
   cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
 
-  UIColor* textColor = isCompact ? [UIColor colorNamed:kBlue600Color]
+  UIColor* textColor = isCompact ? [UIColor colorNamed:kBrandPurpleColor]
                                  : [UIColor colorNamed:kSolidBlackColor];
 
   NSDictionary* attributes = @{
@@ -379,7 +379,7 @@ const CGFloat kClearButtonWidthAndHeight = 40;
   UIButton* creationButton = [UIButton buttonWithType:UIButtonTypeSystem];
   creationButton.translatesAutoresizingMaskIntoConstraints = NO;
 
-  UIColor* textColor = isCompact ? [UIColor colorNamed:kBlue600Color]
+  UIColor* textColor = isCompact ? [UIColor colorNamed:kBrandPurpleColor]
                                  : [UIColor colorNamed:kSolidWhiteColor];
 
   UIFontDescriptor* boldDescriptor = [[UIFontDescriptor
@@ -409,7 +409,7 @@ const CGFloat kClearButtonWidthAndHeight = 40;
     UIButtonConfiguration* buttonConfiguration =
         [UIButtonConfiguration filledButtonConfiguration];
     buttonConfiguration.baseBackgroundColor =
-        [UIColor colorNamed:kBlue600Color];
+        [UIColor colorNamed:kBrandPurpleColor];
     buttonConfiguration.background.cornerRadius = kButtonBackgroundCornerRadius;
     buttonConfiguration.attributedTitle = attributedString;
     creationButton.configuration = buttonConfiguration;
