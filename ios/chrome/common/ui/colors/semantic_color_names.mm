@@ -114,6 +114,12 @@ NSString* const kPink400Color = @"pink_400_color";
 NSString* const kPink500Color = @"pink_500_color";
 NSString* const kPink600Color = @"pink_600_color";
 NSString* const kPink700Color = @"pink_700_color";
+NSString* const kBrandPinkColor = @"brand_pink_color";
+NSString* const kBrandPurpleColor = @"brand_purple_color";
+NSString* const kBrandBlueColor = @"brand_blue_color";
+NSString* const kBrandWhiteColor = @"brand_white_color";
+NSString* const kBrandGreenColor = @"brand_green_color";
+NSString* const kBrandPurpleHaloColor = @"brand_purple_halo_color";
 
 NSString* const kPurple500Color = @"purple_500_color";
 NSString* const kPurple600Color = @"purple_600_color";

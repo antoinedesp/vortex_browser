@@ -156,6 +156,14 @@ extern NSString* const kPink500Color;
 extern NSString* const kPink600Color;
 extern NSString* const kPink700Color;
 
+// Brand colors for primary branding elements.
+extern NSString* const kBrandPinkColor;
+extern NSString* const kBrandPurpleColor;
+extern NSString* const kBrandBlueColor;
+extern NSString* const kBrandWhiteColor;
+extern NSString* const kBrandGreenColor;
+extern NSString* const kBrandPurpleHaloColor;
+
 // Purple palette.
 extern NSString* const kPurple500Color;
 extern NSString* const kPurple600Color;
