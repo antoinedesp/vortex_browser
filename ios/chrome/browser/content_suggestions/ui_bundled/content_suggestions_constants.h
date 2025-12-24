@@ -107,4 +107,7 @@ ContentSuggestionsModuleType SetUpListModuleTypeForSetUpListType(
 // Returns true if the module type is one of the Tips card types.
 bool IsTipsModuleType(ContentSuggestionsModuleType type);
 
+// Whether to display the Shortcuts module in the Magic Stack.
+extern const bool kDisplayShortcuts;
+
 #endif  // IOS_CHROME_BROWSER_CONTENT_SUGGESTIONS_UI_BUNDLED_CONTENT_SUGGESTIONS_CONSTANTS_H_
