@@ -2,10 +2,12 @@
 
 #import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_mediator.h"
 
-#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_view_controller.h"
-#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_item.h"
-#import "third_party/revenuecat/ios/vortex_revenuecat_shim.h"
 #import "ios/chrome/browser/shared/model/browser/browser.h"
+#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_item.h"
+#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_view_controller.h"
+#import "ios/chrome/grit/ios_strings.h"
+#import "third_party/revenuecat/ios/vortex_revenuecat_shim.h"
+#import "ui/base/l10n/l10n_util.h"
 
 @interface VortexPaywallMediator ()
 @property(nonatomic, assign) Browser* browser;
@@ -43,8 +45,8 @@
 
       if (error || products.count == 0) {
         NSLog(@"[VortexPaywallMediator] error or empty products, showing error");
-        [self.consumer
-            showErrorMessage:@"Unable to load offers. Please try again later."];
+        [self.consumer showErrorMessage:l10n_util::GetNSString(
+                                            IDS_IOS_VORTEX_PLUS_LOAD_ERROR)];
         return;
       }
 
