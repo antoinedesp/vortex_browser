@@ -659,7 +659,7 @@ UIImage* ArrowDownImage() {
     _disclaimerView.textDragDelegate = self;
     _disclaimerView.backgroundColor = UIColor.clearColor;
     _disclaimerView.linkTextAttributes =
-        @{NSForegroundColorAttributeName : [UIColor colorNamed:kBlueColor]};
+        @{NSForegroundColorAttributeName : [UIColor colorNamed:kBrandPurpleColor]};
     _disclaimerView.translatesAutoresizingMaskIntoConstraints = NO;
     _disclaimerView.attributedText = [self attributedStringForDisclaimer];
   }
