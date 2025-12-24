@@ -1255,9 +1255,9 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 - (OverflowMenuDestination*)newVortexPaywallDestination {
   __weak __typeof(self) weakSelf = self;
 
-  OverflowMenuDestination* result =
-      [[OverflowMenuDestination alloc] initWithName:@"Plus"
-                                         symbolName:kPlusInSquareSymbol
+  OverflowMenuDestination* result = [[OverflowMenuDestination alloc]
+      initWithName:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_MENU_TITLE)
+        symbolName:kPlusInSquareSymbol
                                        systemSymbol:YES
                                    monochromeSymbol:NO
                             accessibilityIdentifier:@"VortexPaywallDestination"
