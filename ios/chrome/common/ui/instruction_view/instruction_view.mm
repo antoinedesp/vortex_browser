@@ -283,7 +283,7 @@ UIView* CreateIconView(UIImage* icon) {
           [UIColor colorNamed:kGroupedPrimaryBackgroundColor].CGColor;
       break;
     case InstructionViewStyleDefault:
-      stepNumberLabel.textColor = [UIColor colorNamed:kBlueColor];
+      stepNumberLabel.textColor = [UIColor colorNamed:kBrandPurpleColor];
       stepNumberLabel.layer.backgroundColor =
           [UIColor colorNamed:kPrimaryBackgroundColor].CGColor;
       break;
