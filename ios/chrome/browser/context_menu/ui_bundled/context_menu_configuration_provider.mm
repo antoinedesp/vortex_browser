@@ -458,11 +458,11 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
     }];
     [menuElements addObject:saveVideo];
 
-    // Copy Video Link
-    UIAction* copyVideoLink = [actionFactory actionToCopyURLWithBlock:^{
+    // Copy Video Address
+    UIAction* copyVideoAddress = [actionFactory actionCopyVideoAddressWithBlock:^{
       StoreURLInPasteboard(imageURL);  // imageURL contains video URL
     }];
-    [menuElements addObject:copyVideoLink];
+    [menuElements addObject:copyVideoAddress];
 
     // Share Video
     if ([self isSharingAllowed]) {
