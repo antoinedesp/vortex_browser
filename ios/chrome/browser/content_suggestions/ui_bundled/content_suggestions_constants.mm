@@ -52,6 +52,8 @@ ContentSuggestionsModuleType SetUpListModuleTypeForSetUpListType(
   }
 }
 
+const bool kDisplayShortcuts = false;
+
 bool IsTipsModuleType(ContentSuggestionsModuleType type) {
   switch (type) {
     case ContentSuggestionsModuleType::kSetUpListDefaultBrowser:
