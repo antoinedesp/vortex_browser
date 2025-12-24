@@ -6152,6 +6152,62 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_SAVE_VIDEO_PRIVACY_ALERT_NO_PERMISSION" desc="Message informing the user that the app does not have permission to access Photos. [iOS only]">
         Vortex does not have permission to access Photos.
       </message>
+
+      <!-- Vortex Plus Paywall strings -->
+      <message name="IDS_IOS_VORTEX_PLUS_TITLE" desc="Title for the Vortex Plus premium subscription paywall screen. [iOS only]">
+        Vortex Plus
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_SUBTITLE" desc="Subtitle describing the benefits of Vortex Plus subscription. [iOS only]">
+        Browse faster. Block ads. Stay private.
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURES_HEADER" desc="Header text for the list of features included in Vortex Plus. [iOS only]">
+        Everything included
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURE_VPN" desc="Feature description for VPN protection in Vortex Plus. [iOS only]">
+        Private VPN protection
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURE_AD_FREE" desc="Feature description for ad-free browsing in Vortex Plus. [iOS only]">
+        Ad-free browsing
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURE_TURBO" desc="Feature description for faster loading in Vortex Plus. [iOS only]">
+        Faster loading (Turbo mode)
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURE_PRIVACY" desc="Feature description for tracker blocking in Vortex Plus. [iOS only]">
+        Privacy guard (block trackers)
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FEATURE_SECURE" desc="Feature description for secure connections in Vortex Plus. [iOS only]">
+        Secure connections everywhere
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FREE_TRIAL_BUTTON" desc="Button text to start a free trial of Vortex Plus. [iOS only]">
+        Get 7 days free
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_CONTINUE_BUTTON" desc="Button text to continue with purchase when no trial is available. [iOS only]">
+        Continue
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_TRIAL_DETAILS" desc="Text showing price after trial period ends. The placeholder is the subscription price. [iOS only]">
+        Then <ph name="PRICE">$1<ex>$39.99/year</ex></ph>. Cancel anytime.
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_PRICE_DETAILS" desc="Text showing subscription price without trial. The placeholder is the subscription price. [iOS only]">
+        <ph name="PRICE">$1<ex>$39.99/year</ex></ph> • Cancel anytime
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_RESTORE_PURCHASES" desc="Button text to restore previous purchases. [iOS only]">
+        Restore Purchases
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_TERMS" desc="Link text for terms of service. [iOS only]">
+        Terms
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_PRIVACY" desc="Link text for privacy policy. [iOS only]">
+        Privacy
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_SUBSCRIPTION_TERMS" desc="Legal text explaining subscription auto-renewal terms. [iOS only]">
+        You can cancel anytime in Settings. Subscription auto-renews unless canceled at least 24h before renewal.
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_LOAD_ERROR" desc="Error message when subscription offers fail to load. [iOS only]">
+        Unable to load offers. Please try again later.
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_MENU_TITLE" desc="Title for Vortex Plus in the overflow menu. [iOS only]">
+        Plus
+      </message>
       <message name="IDS_IOS_SAVE_PASSWORDS" desc="Title for the switch item in Settings that can be toggled to enable or disable saving passwords. [Length: 15em] [iOS only]">
         Save Passwords
       </message>
