@@ -35,10 +35,10 @@ bool ShouldUseTintColor(UIButton* button) {
 // Returns the color to be used by a primary `destructive` `button`.
 UIColor* PrimaryButtonBackgroundColor(UIButton* button, bool destructive) {
   UIColor* background_color = destructive ? [UIColor colorNamed:kRedColor]
-                                          : [UIColor colorNamed:kBlueColor];
+                                          : [UIColor colorNamed:kBrandPurpleColor];
   if (button.state & UIControlStateTunedDown) {
     background_color = destructive ? [UIColor colorNamed:kRed100Color]
-                                   : [UIColor colorNamed:kBlue100Color];
+                                   : [UIColor colorNamed:kBrandPurpleColor];
   } else if (!button.enabled) {
     background_color = [UIColor colorNamed:kGrey400Color];
   }
@@ -228,7 +228,7 @@ UIImage* CheckmarkImage() {
       UIColor* color = UIColor.whiteColor;
       if (self.state & UIControlStateTunedDown) {
         if (self.style == ChromeButtonStylePrimary) {
-          color = [UIColor colorNamed:kBlue700Color];
+          color = [UIColor colorNamed:kBrandPurpleColor];
         } else if (self.style == ChromeButtonStylePrimaryDestructive) {
           color = [UIColor colorNamed:kRed600Color];
         }
@@ -332,7 +332,7 @@ UIImage* CheckmarkImage() {
     self.tintColor = UIColor.clearColor;
     configuration.background.backgroundColor = UIColor.clearColor;
   } else {
-    enabled_text_color = [UIColor colorNamed:kBlueColor];
+    enabled_text_color = [UIColor colorNamed:kBrandPurpleColor];
     font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     configuration.background.backgroundColor = UIColor.clearColor;
   }
@@ -346,21 +346,21 @@ UIImage* CheckmarkImage() {
 // Updates `button` to match a tertiary action style.
 - (void)updateButtonToMatchTertiaryAction {
   UIButtonConfiguration* configuration = self.configuration;
-  UIColor* enabled_text_color = [UIColor colorNamed:kBlueColor];
+  UIColor* enabled_text_color = [UIColor colorNamed:kBrandPurpleColor];
   UIFont* font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
   SetButtonTitleTextAttributes(configuration, font, enabled_text_color);
   configuration.baseForegroundColor = enabled_text_color;
   if (@available(iOS 26, *)) {
     if (@available(iOS 26.1, *)) {
       configuration.background.backgroundColor =
-          [UIColor colorNamed:kBlueHaloColor];
+          [UIColor colorNamed:kBrandPurpleHaloColor];
     } else {
       configuration.background.backgroundColor = UIColor.clearColor;
-      self.tintColor = [UIColor colorNamed:kBlueHaloColor];
+      self.tintColor = [UIColor colorNamed:kBrandPurpleHaloColor];
     }
   } else {
     configuration.background.backgroundColor =
-        [UIColor colorNamed:kBlueHaloColor];
+        [UIColor colorNamed:kBrandPurpleHaloColor];
   }
   self.configuration = configuration;
   self.configurationUpdateHandler =
