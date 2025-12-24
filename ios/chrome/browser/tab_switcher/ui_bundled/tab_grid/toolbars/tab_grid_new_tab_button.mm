@@ -125,14 +125,14 @@ const CGFloat kSquareCornerRadius = 10;
       if (@available(iOS 26, *)) {
         UIButtonConfiguration* config = self.configuration;
         config.background.backgroundColor =
-            [UIColor colorNamed:kStaticBlue400Color];
+            [UIColor colorNamed:kBrandPurpleColor];
         // Set the corner style to display a circle button.
         config.cornerStyle = UIButtonConfigurationCornerStyleCapsule;
         self.configuration = config;
       } else {
         _imageContainer.image = SymbolWithPalette(
             _symbol,
-            @[ UIColor.blackColor, [UIColor colorNamed:kStaticBlue400Color] ]);
+            @[ UIColor.blackColor, [UIColor colorNamed:kBrandPurpleColor] ]);
       }
 
       break;
@@ -144,14 +144,14 @@ const CGFloat kSquareCornerRadius = 10;
         if (@available(iOS 26, *)) {
           UIButtonConfiguration* config = self.configuration;
           config.background.backgroundColor =
-              [UIColor colorNamed:kStaticBlue400Color];
+              [UIColor colorNamed:kBrandPurpleColor];
           // Set the corner style and radius to display a square button.
           config.cornerStyle = UIButtonConfigurationCornerStyleFixed;
           config.background.cornerRadius = kSquareCornerRadius;
           self.configuration = config;
         } else {
           _imageContainer.image = SymbolWithPalette(_symbol, @[
-            UIColor.blackColor, [UIColor colorNamed:kStaticBlue400Color]
+            UIColor.blackColor, [UIColor colorNamed:kBrandPurpleColor]
           ]);
         }
       }
