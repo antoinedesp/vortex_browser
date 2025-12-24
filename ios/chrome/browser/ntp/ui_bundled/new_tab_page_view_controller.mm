@@ -2035,24 +2035,7 @@ const CGFloat kBackgroundImageAnimationDuration = 0.2;
 
 #pragma mark - Background Image
 - (void)applyBackgroundImage {
-  UIImageView* regularImageView = [[UIImageView alloc] init];
-  regularImageView.translatesAutoresizingMaskIntoConstraints = NO;
-  regularImageView.contentMode = UIViewContentModeScaleAspectFill;
-  regularImageView.clipsToBounds = YES;
-  regularImageView.userInteractionEnabled = NO;
-  regularImageView.layer.cornerRadius = 16;
-
-  UIImage* bgImage = [UIImage imageNamed:@"ntp_background_image_abstract_1"
-                                inBundle:[NSBundle mainBundle]
-           compatibleWithTraitCollection:nil];
-
-  if (!bgImage) {
-    return;
-  }
-
-  regularImageView.image = bgImage;
-  _backgroundGradientView.hidden = YES;
-  _backgroundImageView = (HomeCustomizationImageView*)regularImageView;
+  // Background image disabled.
 }
 
 - (void)addBackgroundToHeader {
