@@ -261,7 +261,7 @@ NSString* GridCellSnapshotAccessibilityIdentifier(NSUInteger index) {
       self.groupingBackgroundView.translatesAutoresizingMaskIntoConstraints =
           NO;
       self.groupingBackgroundView.backgroundColor =
-          [UIColor colorNamed:kStaticBlue400Color];
+          [UIColor colorNamed:kBrandPurpleColor];
       self.groupingBackgroundView.layer.cornerRadius = kGridCellCornerRadius;
       self.groupingBackgroundView.layer.masksToBounds = YES;
       self.groupingBackgroundView.alpha = 0;
@@ -373,7 +373,7 @@ NSString* GridCellSnapshotAccessibilityIdentifier(NSUInteger index) {
     case GridThemeLight:
       [self updateInterfaceStyleForWindow:self.window];
       self.border.layer.borderColor =
-          [UIColor colorNamed:kStaticBlue400Color].CGColor;
+          [UIColor colorNamed:kBrandPurpleColor].CGColor;
       break;
     case GridThemeDark:
       self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
