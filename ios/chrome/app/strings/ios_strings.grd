@@ -1515,6 +1515,9 @@
       <message name="IDS_IOS_CONTENT_CONTEXT_COPYIMAGE" desc="The name of the Copy Image command in the content area context menu.">
         Copy Image
       </message>
+      <message name="IDS_IOS_CONTENT_CONTEXT_COPYVIDEO" desc="The name of the Copy Video Address command in the content area context menu.">
+        Copy Video Address
+      </message>
       <message name="IDS_IOS_CONTENT_CONTEXT_DELETEGROUP" desc="The iOS context menu item for deleting a tab group. [iOS only]">
         Delete Group
       </message>
@@ -1586,6 +1589,9 @@
       </message>
       <message name="IDS_IOS_CONTENT_CONTEXT_SAVEIMAGE" desc="The name of the Save Image As command in the content area context menu">
         Save in Photos
+      </message>
+      <message name="IDS_IOS_CONTENT_CONTEXT_SAVEVIDEO" desc="The name of the Save Video command in the content area context menu">
+        Save Video
       </message>
       <message name="IDS_IOS_CONTENT_CONTEXT_SELECTTABS" desc="The iOS context menu item for entering into the selection mode, where users can select tabs to perform bulk actions on them.[iOS only]">
         Select Tabs
@@ -6124,6 +6130,27 @@ Handoff must also be enabled in the General section of Settings, and your device
       </message>
       <message name="IDS_IOS_SAVE_IMAGE_PRIVACY_ALERT_TITLE" desc="Title for message to inform user that Save Image failed due to insufficient privilege in Privacy Settings. This message is displayed as the title of an alert box. [Length: 20em] [iOS only]">
         Cannot save image
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_NO_INTERNET_CONNECTION" desc="Message informing the user that the video could not be downloaded because the device has no internet connection.">
+        Unable to download video. Check your internet connection.
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_ERROR" desc="Message informing the user that the video could not be saved because there was an error.">
+        Unable to save video. Please try again.
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_SUCCESS_TITLE" desc="Title for alert message to inform user that the video was saved successfully. [Length: 20em] [iOS only]">
+        Video Saved
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_SUCCESS_MESSAGE" desc="Message informing the user that the video has been saved to their Photos library. [iOS only]">
+        The video has been saved to your Photos library.
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_PRIVACY_ALERT_TITLE" desc="Title for message to inform user that Save Video failed due to insufficient privilege in Privacy Settings. This message is displayed as the title of an alert box. [Length: 20em] [iOS only]">
+        Unable to Save Video
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_PRIVACY_ALERT_MESSAGE" desc="Message to inform user that they need to allow Photos access in Settings to save videos. [iOS only]">
+        To save videos, allow Vortex to access Photos in Settings.
+      </message>
+      <message name="IDS_IOS_SAVE_VIDEO_PRIVACY_ALERT_NO_PERMISSION" desc="Message informing the user that the app does not have permission to access Photos. [iOS only]">
+        Vortex does not have permission to access Photos.
       </message>
       <message name="IDS_IOS_SAVE_PASSWORDS" desc="Title for the switch item in Settings that can be toggled to enable or disable saving passwords. [Length: 15em] [iOS only]">
         Save Passwords
