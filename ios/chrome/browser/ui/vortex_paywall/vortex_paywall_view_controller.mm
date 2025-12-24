@@ -256,7 +256,7 @@
                                                       weight:UIImageSymbolWeightMedium];
   UIImage* icon = [UIImage systemImageNamed:iconName withConfiguration:config];
   UIImageView* imageView = [[UIImageView alloc] initWithImage:icon];
-  imageView.tintColor = [UIColor colorNamed:kBlueColor];
+  imageView.tintColor = [UIColor colorNamed:kBrandPurpleColor];
   imageView.contentMode = UIViewContentModeScaleAspectFit;
   imageView.translatesAutoresizingMaskIntoConstraints = NO;
   [imageView.widthAnchor constraintEqualToConstant:20.0].active = YES;
@@ -289,16 +289,8 @@
     [bottomBar.heightAnchor constraintEqualToConstant:56.0],
   ]];
 
-  // Gradient background.
-  CAGradientLayer* gradient = [CAGradientLayer layer];
-  gradient.colors = @[
-    (id)[UIColor colorNamed:kBlueColor].CGColor,
-    (id)[UIColor colorNamed:kBlueColor].CGColor,
-  ];
-  gradient.startPoint = CGPointMake(0.0, 0.5);
-  gradient.endPoint = CGPointMake(1.0, 0.5);
-  [bottomBar.layer insertSublayer:gradient atIndex:0];
-  self.primaryGradientLayer = gradient;
+  // Solid background color.
+  bottomBar.backgroundColor = [UIColor colorNamed:kBrandPurpleColor];
 
   UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
   button.translatesAutoresizingMaskIntoConstraints = NO;
@@ -360,6 +352,8 @@
   [restoreButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_RESTORE_PURCHASES)
                  forState:UIControlStateNormal];
   restoreButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+  [restoreButton setTitleColor:[UIColor colorNamed:kBrandPurpleColor]
+                      forState:UIControlStateNormal];
   [restoreButton addTarget:self
                     action:@selector(restoreTapped)
           forControlEvents:UIControlEventTouchUpInside];
@@ -377,6 +371,8 @@
   [termsButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_TERMS)
                forState:UIControlStateNormal];
   termsButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+  [termsButton setTitleColor:[UIColor colorNamed:kBrandPurpleColor]
+                    forState:UIControlStateNormal];
   [termsButton addTarget:self
                   action:@selector(termsTapped)
         forControlEvents:UIControlEventTouchUpInside];
@@ -384,12 +380,14 @@
   UILabel* separator = [[UILabel alloc] init];
   separator.text = @"·";
   separator.font = [UIFont systemFontOfSize:12.0];
-  separator.textColor = [UIColor secondaryLabelColor];
+  separator.textColor = [UIColor colorNamed:kBrandPurpleColor];
 
   UIButton* privacyButton = [UIButton buttonWithType:UIButtonTypeSystem];
   [privacyButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_PRIVACY)
                  forState:UIControlStateNormal];
   privacyButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+  [privacyButton setTitleColor:[UIColor colorNamed:kBrandPurpleColor]
+                      forState:UIControlStateNormal];
   [privacyButton addTarget:self
                     action:@selector(privacyTapped)
           forControlEvents:UIControlEventTouchUpInside];
@@ -675,9 +673,9 @@
     UILabel* priceLabel = (UILabel*)[v viewWithTag:20];
 
     if (selected) {
-      v.layer.borderColor = [UIColor colorNamed:kBlueColor].CGColor;
-      circle.backgroundColor = [UIColor colorNamed:kBlueColor];
-      priceLabel.textColor = [UIColor colorNamed:kBlueColor];
+      v.layer.borderColor = [UIColor colorNamed:kBrandPurpleColor].CGColor;
+      circle.backgroundColor = [UIColor colorNamed:kBrandPurpleColor];
+      priceLabel.textColor = [UIColor colorNamed:kBrandPurpleColor];
       circle.layer.borderWidth = 2.0;
     } else {
       v.layer.borderColor = [UIColor systemGray5Color].CGColor;
