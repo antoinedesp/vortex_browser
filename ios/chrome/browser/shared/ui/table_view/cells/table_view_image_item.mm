@@ -44,6 +44,8 @@
     ColorfulSymbolContentConfiguration* symbolConfiguration =
         [[ColorfulSymbolContentConfiguration alloc] init];
     symbolConfiguration.symbolImage = self.image;
+    symbolConfiguration.symbolTintColor = self.symbolTintColor;
+    symbolConfiguration.symbolBackgroundColor = self.symbolBackgroundColor;
     configuration.leadingConfiguration = symbolConfiguration;
   }
 

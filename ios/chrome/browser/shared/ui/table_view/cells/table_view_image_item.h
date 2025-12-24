@@ -21,6 +21,12 @@
 // takes precedence over black color, but not over `textColor`.
 @property(nonatomic, strong) UIColor* textColor;
 
+// UIColor for the symbol icon's tint color.
+@property(nonatomic, strong) UIColor* symbolTintColor;
+
+// UIColor for the symbol icon's background color.
+@property(nonatomic, strong) UIColor* symbolBackgroundColor;
+
 // UIColor for the cell's detailTextLabel. If not set,
 // [UIColor colorNamed:kTextSecondaryColor] is used.
 @property(nonatomic, strong) UIColor* detailTextColor;
