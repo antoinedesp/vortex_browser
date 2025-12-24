@@ -1007,7 +1007,9 @@ using segmentation_platform::home_modules::SavePasswordsEphemeralModule;
         break;
       }
       case ContentSuggestionsModuleType::kShortcuts:
-        [magicStackOrder addObject:_shortcutsMediator.shortcutsConfig];
+        if (_shortcutsMediator.shortcutsConfig) {
+          [magicStackOrder addObject:_shortcutsMediator.shortcutsConfig];
+        }
         break;
       case ContentSuggestionsModuleType::kShopCard:
         if (!PromoteShopCardToFrontOfStack() && _shopCardMediator &&
