@@ -2,10 +2,13 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "ios/chrome/browser/shared/ui/util/uikit_ui_util.h"        // nogncheck
-#import "ios/chrome/common/ui/colors/semantic_color_names.h"
-#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_item.h"
+#import "base/strings/sys_string_conversions.h"
 #import "ios/chrome/browser/shared/model/url/chrome_url_constants.h"
+#import "ios/chrome/browser/shared/ui/util/uikit_ui_util.h"        // nogncheck
+#import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_item.h"
+#import "ios/chrome/common/ui/colors/semantic_color_names.h"
+#import "ios/chrome/grit/ios_strings.h"
+#import "ui/base/l10n/l10n_util.h"
 
 @interface VortexPaywallViewController ()
 
@@ -43,7 +46,7 @@
   NSLog(@"[VortexPaywallViewController] viewDidLoad");
 
   self.view.backgroundColor = [UIColor colorNamed:kSecondaryBackgroundColor];
-  self.title = @"Vortex Plus";
+  self.title = l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_TITLE);
   self.selectedIndex = -1;
 
   self.navigationItem.leftBarButtonItem =
@@ -106,7 +109,7 @@
 
   // Description with emotional value.
   UILabel* subtitleLabel = [[UILabel alloc] init];
-  subtitleLabel.text = @"Browse faster. Block ads. Stay private.";
+  subtitleLabel.text = l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_SUBTITLE);
   subtitleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
   subtitleLabel.textColor = [UIColor secondaryLabelColor];
   subtitleLabel.numberOfLines = 0;
@@ -211,7 +214,7 @@
 
   // Header.
   UILabel* header = [[UILabel alloc] init];
-  header.text = @"Everything included";
+  header.text = l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURES_HEADER);
   header.font = [UIFont systemFontOfSize:18.0 weight:UIFontWeightSemibold];
   header.textAlignment = NSTextAlignmentCenter;
   [vertical addArrangedSubview:header];
@@ -225,11 +228,11 @@
 
   // Benefits.
   NSArray<NSDictionary*>* benefits = @[
-    @{@"icon": @"lock.shield.fill", @"text": @"Private VPN protection"},
-    @{@"icon": @"nosign", @"text": @"Ad-free browsing"},
-    @{@"icon": @"bolt.fill", @"text": @"Faster loading (Turbo mode)"},
-    @{@"icon": @"hand.raised.fill", @"text": @"Privacy guard (block trackers)"},
-    @{@"icon": @"checkmark.shield.fill", @"text": @"Secure connections everywhere"},
+    @{@"icon": @"lock.shield.fill", @"text": l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURE_VPN)},
+    @{@"icon": @"nosign", @"text": l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURE_AD_FREE)},
+    @{@"icon": @"bolt.fill", @"text": l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURE_TURBO)},
+    @{@"icon": @"hand.raised.fill", @"text": l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURE_PRIVACY)},
+    @{@"icon": @"checkmark.shield.fill", @"text": l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FEATURE_SECURE)},
   ];
 
   for (NSDictionary* benefit in benefits) {
@@ -299,7 +302,8 @@
 
   UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
   button.translatesAutoresizingMaskIntoConstraints = NO;
-  [button setTitle:@"Get 7 days free" forState:UIControlStateNormal];
+  [button setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FREE_TRIAL_BUTTON)
+          forState:UIControlStateNormal];
   button.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
   [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   button.backgroundColor = [UIColor clearColor];
@@ -319,7 +323,8 @@
 
   // Trial details label below button.
   UILabel* detailsLabel = [[UILabel alloc] init];
-  detailsLabel.text = @"Then $39.99/year. Cancel anytime.";
+  detailsLabel.text = l10n_util::GetNSStringF(IDS_IOS_VORTEX_PLUS_TRIAL_DETAILS,
+                                               u"$39.99/year");
   detailsLabel.font = [UIFont systemFontOfSize:13.0];
   detailsLabel.textColor = [UIColor secondaryLabelColor];
   detailsLabel.textAlignment = NSTextAlignmentCenter;
@@ -352,7 +357,8 @@
 
   // Restore button (left).
   UIButton* restoreButton = [UIButton buttonWithType:UIButtonTypeSystem];
-  [restoreButton setTitle:@"Restore Purchases" forState:UIControlStateNormal];
+  [restoreButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_RESTORE_PURCHASES)
+                 forState:UIControlStateNormal];
   restoreButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
   [restoreButton addTarget:self
                     action:@selector(restoreTapped)
@@ -368,7 +374,8 @@
   [footer addSubview:legalStack];
 
   UIButton* termsButton = [UIButton buttonWithType:UIButtonTypeSystem];
-  [termsButton setTitle:@"Terms" forState:UIControlStateNormal];
+  [termsButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_TERMS)
+               forState:UIControlStateNormal];
   termsButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
   [termsButton addTarget:self
                   action:@selector(termsTapped)
@@ -380,7 +387,8 @@
   separator.textColor = [UIColor secondaryLabelColor];
 
   UIButton* privacyButton = [UIButton buttonWithType:UIButtonTypeSystem];
-  [privacyButton setTitle:@"Privacy" forState:UIControlStateNormal];
+  [privacyButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_PRIVACY)
+                 forState:UIControlStateNormal];
   privacyButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
   [privacyButton addTarget:self
                     action:@selector(privacyTapped)
@@ -689,16 +697,22 @@
 
   // Update the button title.
   if (item.hasTrial) {
-    [self.primaryButton setTitle:@"Get 7 days free" forState:UIControlStateNormal];
+    [self.primaryButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FREE_TRIAL_BUTTON)
+                        forState:UIControlStateNormal];
   } else {
-    [self.primaryButton setTitle:@"Continue" forState:UIControlStateNormal];
+    [self.primaryButton setTitle:l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_CONTINUE_BUTTON)
+                        forState:UIControlStateNormal];
   }
 
   // Trial details text.
   if (item.hasTrial) {
-    self.trialDetailsLabel.text = [NSString stringWithFormat:@"Then %@. Cancel anytime.", item.priceString];
+    self.trialDetailsLabel.text = l10n_util::GetNSStringF(
+        IDS_IOS_VORTEX_PLUS_TRIAL_DETAILS,
+        base::SysNSStringToUTF16(item.priceString));
   } else {
-    self.trialDetailsLabel.text = [NSString stringWithFormat:@"%@ • Cancel anytime", item.priceString];
+    self.trialDetailsLabel.text = l10n_util::GetNSStringF(
+        IDS_IOS_VORTEX_PLUS_PRICE_DETAILS,
+        base::SysNSStringToUTF16(item.priceString));
   }
 }
 
@@ -710,7 +724,7 @@
   label.textColor = [UIColor secondaryLabelColor];
   label.textAlignment = NSTextAlignmentCenter;
   label.numberOfLines = 0;
-  label.text = @"You can cancel anytime in Settings. Subscription auto-renews unless canceled at least 24h before renewal.";
+  label.text = l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_SUBSCRIPTION_TERMS);
 
   self.termsLabel = label;
   [self.stackView addArrangedSubview:label];
