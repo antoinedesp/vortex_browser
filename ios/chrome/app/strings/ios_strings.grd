@@ -1593,6 +1593,9 @@
       <message name="IDS_IOS_CONTENT_CONTEXT_SAVEVIDEO" desc="The name of the Save Video command in the content area context menu">
         Save Video
       </message>
+      <message name="IDS_IOS_CONTENT_CONTEXT_VIDEO_DOWNLOAD_BLOCKED" desc="Alert message shown when video download is not allowed on a website">
+        Download is not allowed on this website.
+      </message>
       <message name="IDS_IOS_CONTENT_CONTEXT_SELECTTABS" desc="The iOS context menu item for entering into the selection mode, where users can select tabs to perform bulk actions on them.[iOS only]">
         Select Tabs
       </message>
