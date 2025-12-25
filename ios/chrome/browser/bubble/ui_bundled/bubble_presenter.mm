@@ -216,7 +216,7 @@ BOOL CanGestureInProductHelpViewFitInGuide(GestureInProductHelpView* view,
 #pragma mark - Bubble presenter methods
 
 - (void)presentDiscoverFeedMenuTipBubble {
-  NSString* text = @"Tap here to enable VPN and protect your connection";
+  NSString* text = l10n_util::GetNSString(IDS_IOS_VPN_IPH_TEXT);
 
   UIView* menuButton =
       [_layoutGuideCenter referencedViewUnderName:kFeedIPHNamedGuide];
