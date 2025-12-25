@@ -116,7 +116,7 @@ const CGFloat kTrailingButtonIconPointSizeMedium = 15.0f;
     return;
   }
 
-  self.tintColor = [UIColor colorNamed:kBlueColor];
+  self.tintColor = [UIColor colorNamed:kBrandPurpleColor];
 }
 
 @end
