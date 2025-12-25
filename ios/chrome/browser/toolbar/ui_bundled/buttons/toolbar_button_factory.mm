@@ -374,7 +374,7 @@ const CGFloat kCloseButtonAlpha = 0.6f;
 
 - (UIButton*)cancelButtonWithStyle:(ToolbarCancelButtonStyle)style {
   UIButton* cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
-  cancelButton.tintColor = [UIColor colorNamed:kBlueColor];
+  cancelButton.tintColor = [UIColor colorNamed:kBrandPurpleColor];
   [cancelButton setContentHuggingPriority:UILayoutPriorityRequired
                                   forAxis:UILayoutConstraintAxisHorizontal];
   [cancelButton
