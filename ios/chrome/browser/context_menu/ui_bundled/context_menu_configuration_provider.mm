@@ -451,6 +451,23 @@ NSString* const kAlertAccessibilityIdentifier = @"AlertAccessibilityIdentifier";
       if (!strongSelf || !strongSelf.baseViewController) {
         return;
       }
+      // Check if domain is blocked for video download.
+      NSURL* videoNSURL = net::NSURLWithGURL(imageURL);
+      if ([VideoSaver isDomainBlockedForVideoDownload:videoNSURL]) {
+        UIAlertController* alert = [UIAlertController
+            alertControllerWithTitle:nil
+                             message:l10n_util::GetNSString(
+                                         IDS_IOS_CONTENT_CONTEXT_VIDEO_DOWNLOAD_BLOCKED)
+                      preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction
+                             actionWithTitle:l10n_util::GetNSString(IDS_OK)
+                                       style:UIAlertActionStyleDefault
+                                     handler:nil]];
+        [strongSelf.baseViewController presentViewController:alert
+                                                    animated:YES
+                                                  completion:nil];
+        return;
+      }
       [strongSelf.videoSaver saveVideoAtURL:imageURL
                                    referrer:referrer
                                    webState:strongSelf.webState
