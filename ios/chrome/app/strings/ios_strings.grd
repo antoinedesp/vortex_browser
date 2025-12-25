@@ -6166,6 +6166,9 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_VORTEX_PLUS_FEATURE_VPN" desc="Feature description for VPN protection in Vortex Plus. [iOS only]">
         Private VPN protection
       </message>
+      <message name="IDS_IOS_VPN_IPH_TEXT" desc="In-product help bubble text that encourages the user to enable VPN protection on the new tab page. [iOS only]">
+        Tap here to enable VPN and protect your connection
+      </message>
       <message name="IDS_IOS_VORTEX_PLUS_FEATURE_AD_FREE" desc="Feature description for ad-free browsing in Vortex Plus. [iOS only]">
         Ad-free browsing
       </message>
