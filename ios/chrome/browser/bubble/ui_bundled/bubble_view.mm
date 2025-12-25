@@ -30,7 +30,7 @@ BOOL IsArrowDirectionVertical(BubbleArrowDirection direction) {
 
 // The color of the bubble (both circular background and arrow).
 UIColor* BubbleColor() {
-  return [UIColor colorNamed:kBlueColor];
+  return [UIColor colorNamed:kBrandPurpleColor];
 }
 
 // The corner radius of the bubble's background, which causes the ends of the
