@@ -347,6 +347,11 @@ PopularSitesImpl::~PopularSitesImpl() = default;
 
 bool PopularSitesImpl::MaybeStartFetch(bool force_download,
                                        FinishedCallback callback) {
+  // If remote fetching is disabled, only use baked-in popular sites.
+  if (!base::FeatureList::IsEnabled(kPopularSitesRemoteFetchFeature)) {
+    return false;
+  }
+
   DCHECK(!callback_);
   callback_ = std::move(callback);
 
