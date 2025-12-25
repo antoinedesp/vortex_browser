@@ -23,7 +23,10 @@ AdBlockerServiceFactory* AdBlockerServiceFactory::GetInstance() {
 }
 
 AdBlockerServiceFactory::AdBlockerServiceFactory()
-    : ProfileKeyedServiceFactoryIOS("AdBlockerService") {
+    : ProfileKeyedServiceFactoryIOS("AdBlockerService",
+                                    ProfileSelection::kOwnInstanceInIncognito,
+                                    ServiceCreation::kCreateWithProfile,
+                                    TestingCreation::kNoServiceForTests) {
   DependsOn(ios::HostContentSettingsMapFactory::GetInstance());
 }
 
