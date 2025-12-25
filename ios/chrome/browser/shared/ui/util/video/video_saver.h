@@ -31,6 +31,9 @@ struct Referrer;
 // Stops the video saver.
 - (void)stop;
 
+// Returns YES if the domain of `url` is blocked for video download.
++ (BOOL)isDomainBlockedForVideoDownload:(NSURL*)url;
+
 @end
 
 #endif  // IOS_CHROME_BROWSER_SHARED_UI_UTIL_VIDEO_VIDEO_SAVER_H_

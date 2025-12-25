@@ -245,4 +245,36 @@
   _alertController = nil;
 }
 
++ (BOOL)isDomainBlockedForVideoDownload:(NSURL*)url {
+  static NSSet* blockedDomains;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    blockedDomains = [NSSet setWithArray:@[
+      @"youtube.com",
+      @"m.youtube.com",
+      @"youtu.be",
+      @"youtube-nocookie.com",
+      @"netflix.com",
+      @"www.netflix.com",
+      @"primevideo.com",
+      @"www.primevideo.com",
+      @"tiktok.com",
+      @"m.tiktok.com",
+      @"instagram.com",
+      @"www.instagram.com",
+      @"facebook.com",
+      @"m.facebook.com",
+      @"disneyplus.com",
+      @"www.disneyplus.com",
+      @"hulu.com",
+      @"www.hulu.com",
+      @"hbomax.com",
+      @"hbo.com"
+    ]];
+  });
+
+  NSString* host = url.host.lowercaseString;
+  return [blockedDomains containsObject:host];
+}
+
 @end
