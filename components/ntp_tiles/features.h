@@ -18,6 +18,10 @@ extern const char kPopularSitesFieldTrialName[];
 // Android or iOS users.
 BASE_DECLARE_FEATURE(kPopularSitesBakedInContentFeature);
 
+// Feature to enable remote fetching of popular sites from the server.
+// When disabled, only baked-in (hardcoded) popular sites are used.
+BASE_DECLARE_FEATURE(kPopularSitesRemoteFetchFeature);
+
 // Feature to allow the new Google favicon server for fetching favicons for Most
 // Likely tiles on the New Tab Page.
 BASE_DECLARE_FEATURE(kNtpMostLikelyFaviconsFromServerFeature);

@@ -17,6 +17,10 @@ BASE_FEATURE(kPopularSitesBakedInContentFeature,
              "NTPPopularSitesBakedInContent",
              base::FEATURE_ENABLED_BY_DEFAULT);
 
+BASE_FEATURE(kPopularSitesRemoteFetchFeature,
+             "NTPPopularSitesRemoteFetch",
+             base::FEATURE_DISABLED_BY_DEFAULT);
+
 BASE_FEATURE(kNtpMostLikelyFaviconsFromServerFeature,
              "NTPMostLikelyFaviconsFromServer",
              base::FEATURE_ENABLED_BY_DEFAULT);
