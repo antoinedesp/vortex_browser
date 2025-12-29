@@ -93,44 +93,44 @@ struct OverflowMenuDestinationView: View {
   }
 
   enum Dimensions {
-    static let cornerRadius: CGFloat = 13
+    static let cornerRadius: CGFloat = 10
 
     /// The padding on either side of the text in the vertical layout,
     /// separating it from the next view.
-    static let verticalLayoutTextPadding: CGFloat = 3
+    static let verticalLayoutTextPadding: CGFloat = 2
 
     /// The padding on either side of the view in the horizontal layout,
     /// separating it from the next view.
-    static let horizontalLayoutViewPadding: CGFloat = 13
+    static let horizontalLayoutViewPadding: CGFloat = 10
 
     /// The padding around the icon and inside the background in horizontal
     /// layout.
-    static let horizontalLayoutIconPadding: CGFloat = 3
+    static let horizontalLayoutIconPadding: CGFloat = 0
 
     /// The spacing between the icon and the text in horizontal layout.
-    static let horizontalLayoutIconSpacing: CGFloat = 14
+    static let horizontalLayoutIconSpacing: CGFloat = 10
 
     /// The image width, which controls the width of the overall view.
-    static let imageWidth: CGFloat = 54
+    static let imageWidth: CGFloat = 32
 
     /// The size of the Symbol in the icon.
-    static let iconSymbolSize: CGFloat = 26
+    static let iconSymbolSize: CGFloat = 20
 
     /// The width of the icon, used for positioning the unread badge over the
     /// corner.
-    static let iconWidth: CGFloat = 30
+    static let iconWidth: CGFloat = 24
 
     /// The width of the badge circle.
-    static let badgeWidth: CGFloat = 10
+    static let badgeWidth: CGFloat = 8
 
     /// The width of the new label badge.
-    static let newLabelBadgeWidth: CGFloat = 20
+    static let newLabelBadgeWidth: CGFloat = 16
 
     /// The top padding of the hover effect on destination items.
-    static let hoverEffectTopPadding: CGFloat = 10
+    static let hoverEffectTopPadding: CGFloat = 6
 
     /// The bottom padding of the hover effect on destination items.
-    static let hoverEffectBottomPadding: CGFloat = 3
+    static let hoverEffectBottomPadding: CGFloat = 2
   }
 
   static let viewNamespace = "destinationView"
@@ -247,22 +247,18 @@ struct OverflowMenuDestinationView: View {
     .contentShape(Rectangle())
   }
 
-  /// Background color for the icon.
-  var backgroundColor: Color {
-    isPressed ? Color(.systemGray4) : (highlighted ? .blueHalo : .brandPurple)
-  }
-
-  /// View representing the background of the icon.
-  @ViewBuilder
-  var iconBackground: some View {
-    ZStack {
-      RoundedRectangle(cornerRadius: Dimensions.cornerRadius)
-        .foregroundColor(backgroundColor)
-      if highlighted {
-        RoundedRectangle(cornerRadius: Dimensions.cornerRadius)
-          .stroke(Color.chromeBlue, lineWidth: 2)
-      }
+  /// Foreground color for the icon - uses semantic colors for light/dark mode.
+  /// Dark/gray in light mode, light/white in dark mode.
+  var iconForegroundColor: Color {
+    if isPressed {
+      return Color(.systemGray3)
     }
+    if highlighted {
+      return .chromeBlue
+    }
+    // Use semantic color that adapts to light/dark mode
+    // In light mode: dark gray, in dark mode: light/white
+    return Color(.label)
   }
 
   /// Icon for the destination.
@@ -330,13 +326,14 @@ struct OverflowMenuDestinationView: View {
     }
     .frame(width: Dimensions.imageWidth, height: Dimensions.imageWidth)
     .padding(interiorPadding)
-    .background(iconBackground)
+    // No background - icons are displayed without colored background
     // Without explicitly removing the image from accessibility,
     // VoiceOver will occasionally read out icons it thinks it can
     // recognize.
     .accessibilityHidden(true)
 
-    configuredImage.foregroundColor(.white).imageScale(.medium).font(
+    // Use semantic foreground color that adapts to light/dark mode
+    configuredImage.foregroundColor(iconForegroundColor).imageScale(.medium).font(
       Font.system(size: Dimensions.iconSymbolSize, weight: .medium)
     )
     .alignmentGuide(.icon) { $0[VerticalAlignment.center] }
