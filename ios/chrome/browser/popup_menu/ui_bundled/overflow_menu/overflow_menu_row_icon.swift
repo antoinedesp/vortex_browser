@@ -9,8 +9,9 @@ struct OverflowMenuRowIcon: View {
   var systemSymbol: Bool
   var monochromeSymbol: Bool
 
-  static let symbolImageFrameLength: CGFloat = 30
-  static let symbolSize: CGFloat = 18
+  // Smaller icon size for compact design
+  static let symbolImageFrameLength: CGFloat = 24
+  static let symbolSize: CGFloat = 16
 
   var body: some View {
     symbol
@@ -20,6 +21,8 @@ struct OverflowMenuRowIcon: View {
         width: Self.symbolImageFrameLength,
         height: Self.symbolImageFrameLength, alignment: .center
       )
+      // Use semantic color: dark/gray in light mode, light/white in dark mode
+      .foregroundColor(Color(.secondaryLabel))
       // Without explicitly removing the image from accessibility,
       // VoiceOver will occasionally read out icons it thinks it can
       // recognize.
