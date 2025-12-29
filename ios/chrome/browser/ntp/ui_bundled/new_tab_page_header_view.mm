@@ -460,9 +460,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                         forAxis:UILayoutConstraintAxisHorizontal];
 
   if(self.logoView) {
+    // Use kOmniboxTextFieldLeadingOffsetImage (14pt) to match the focused omnibox
+    // spacing between the leading image and text field.
     self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
         constraintEqualToAnchor:self.logoView.trailingAnchor
-                       constant:0.0];
+                       constant:kOmniboxTextFieldLeadingOffsetImage];
   } else {
     self.hintLabelLeadingConstraint = [self.searchHintLabel.leadingAnchor
         constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
@@ -514,11 +516,14 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   }
 
   UIImageView* logoView = [[UIImageView alloc] init];
-  logoView.contentMode = UIViewContentModeScaleAspectFit;
+  // Use UIViewContentModeCenter to match the focused omnibox behavior.
+  // This centers the logo image without scaling, matching the real omnibox.
+  logoView.contentMode = UIViewContentModeCenter;
   [searchField addSubview:logoView];
 
   logoView.translatesAutoresizingMaskIntoConstraints = NO;
-  AddSquareConstraints(logoView, kFakeboxImageSize);
+  // Use kOmniboxLeadingImageSize (30pt) to match focused omnibox container size
+  AddSquareConstraints(logoView, kOmniboxLeadingImageSize);
 
   self.leadingLogoConstraint = [logoView.leadingAnchor
       constraintEqualToAnchor:self.fakeLocationBar.leadingAnchor
@@ -530,6 +535,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
                                            constant:0],
   ]];
 
+  // Use kFakeboxImageSize for the symbol point size (actual icon size within the container)
   logoView.image = DefaultSymbolWithPointSize(kSearchSymbol, kFakeboxImageSize);
   logoView.tintColor = [UIColor colorNamed:kTextSecondaryColor];
 
@@ -537,8 +543,11 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
 }
 
 - (void)setDefaultSearchEngineLogo:(UIImage*)logo {
-  // no-op
-  // _logoView.image = logo;
+  if (logo && self.logoView) {
+    self.logoView.image = logo;
+    // Reset tint color to nil to show the original colors of the logo
+    self.logoView.tintColor = nil;
+  }
 }
 
 // Updates button styling for the current trait collection.
