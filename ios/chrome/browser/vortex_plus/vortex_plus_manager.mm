@@ -92,6 +92,12 @@
   [self notifyObservers];
 }
 
+#pragma mark - Premium Status
+
+- (BOOL)isPremium {
+  return self.isVortexPlusEnabled;
+}
+
 #pragma mark - RevenueCat Integration
 
 - (void)syncWithRevenueCat {
