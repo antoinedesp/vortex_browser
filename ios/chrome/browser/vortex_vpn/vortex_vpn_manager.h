@@ -32,7 +32,9 @@ typedef NS_ENUM(NSInteger, VortexVPNStatus) {
 - (void)toggle;
 
 - (void)configureWithServer:(NSString*)serverAddress
-                sharedSecret:(NSString*)sharedSecret
+               sharedSecret:(NSString*)sharedSecret
+                   username:(NSString*)username
+                   password:(NSString*)password
           completionHandler:(void (^)(BOOL success, NSError* _Nullable error))completion;
 
 - (BOOL)isConfigured;
