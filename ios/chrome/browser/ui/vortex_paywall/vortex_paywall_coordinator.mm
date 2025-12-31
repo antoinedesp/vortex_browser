@@ -137,50 +137,57 @@
 
 - (void)vortexPaywallViewController:(VortexPaywallViewController*)viewController
          didSelectPackageIdentifier:(NSString*)packageIdentifier {
+  [viewController setButtonLoading:YES];
   __weak __typeof(self) weakSelf = self;
   [self.mediator purchasePackageWithIdentifier:packageIdentifier
                              fromViewController:viewController
                                      completion:^(BOOL success,
                                                   NSError* error) {
-                                       if (success) {
-                                         NSLog(@"[VortexPaywallCoordinator] Purchase successful");
-                                         [[VortexPlusManager sharedManager] syncWithRevenueCat];
-                                         if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
-                                           [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
-                                         } else {
-                                           [weakSelf stop];
-                                         }
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                         [viewController setButtonLoading:NO];
+                                         if (success) {
+                                           NSLog(@"[VortexPaywallCoordinator] Purchase successful");
+                                           [[VortexPlusManager sharedManager] syncWithRevenueCat];
+                                           if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
+                                             [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
+                                           } else {
+                                             [weakSelf stop];
+                                           }
 
-                                       } else {
-                                         NSLog(@"[VortexPaywallCoordinator] Purchase failed: %@", error);
-                                       }
+                                         } else {
+                                           NSLog(@"[VortexPaywallCoordinator] Purchase failed: %@", error);
+                                         }
+                                       });
                                      }];
 }
 
 - (void)vortexPaywallViewControllerDidRequestRestore:
     (VortexPaywallViewController*)viewController {
+  [viewController setButtonLoading:YES];
   __weak __typeof(self) weakSelf = self;
   NSLog(@"[VortexPaywallCoordinator] restore tapped");
   [VortexRevenueCatShim restorePurchasesWithCompletion:^(BOOL success, NSError* error) {
-    if (error) {
-      NSLog(@"[VortexPaywallCoordinator] Restore failed: %@", error);
-      if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidRequestClose:)]) {
-        [weakSelf.delegate vortexPaywallCoordinatorDidRequestClose:weakSelf];
-      } else {
-        [weakSelf stop];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [viewController setButtonLoading:NO];
+      if (error) {
+        NSLog(@"[VortexPaywallCoordinator] Restore failed: %@", error);
+        if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidRequestClose:)]) {
+          [weakSelf.delegate vortexPaywallCoordinatorDidRequestClose:weakSelf];
+        } else {
+          [weakSelf stop];
+        }
       }
-    }
-    if (success) {
-      NSLog(@"[VortexPaywallCoordinator] Restore successful");
-      [[VortexPlusManager sharedManager] syncWithRevenueCat];
-      if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
-        [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
-      } else {
-        [weakSelf stop];
+      if (success) {
+        NSLog(@"[VortexPaywallCoordinator] Restore successful");
+        [[VortexPlusManager sharedManager] syncWithRevenueCat];
+        if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
+          [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
+        } else {
+          [weakSelf stop];
+        }
       }
-
-    }
- }];
+    });
+  }];
 }
 
 @end
