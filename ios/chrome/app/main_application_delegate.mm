@@ -40,6 +40,7 @@
 #import "ios/chrome/browser/shared/model/browser/browser_provider_interface.h"
 #import "ios/chrome/browser/shared/model/profile/profile_ios.h"
 #import "ios/chrome/browser/shared/public/features/features.h"
+#import "components/prefs/pref_service.h"
 #import "ios/chrome/browser/shared/ui/chrome_overlay_window/chrome_overlay_window.h"
 #import "ios/chrome/browser/signin/model/identity_manager_factory.h"
 #import "ios/web/common/uikit_ui_util.h"
@@ -50,6 +51,8 @@
 // Vortex RevenueCat initializer
 #import "ios/chrome/app/vortex_revenuecat_initializer.h"
 #import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
+#import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
+#import "ios/chrome/browser/shared/model/prefs/pref_names.h"
 #import "third_party/mixpanel/ios/vortex_mixpanel_shim.h"
 #import "ios/third_party/vortex/src/vortex_constants.h"
 
@@ -59,7 +62,7 @@ namespace {
 constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
 }  // namespace
 
-@interface MainApplicationDelegate () {
+@interface MainApplicationDelegate () <VortexPlusObserver> {
   MainController* _mainController;
   // Memory helper used to log the number of memory warnings received.
   MemoryWarningHelper* _memoryHelper;
@@ -69,6 +72,9 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
 // determine whether or not shutdown should be invoked from
 // applicationWillTerminate:.
 @property(nonatomic, assign) BOOL didFinishLaunching;
+
+// YES if VPN auto-start has been attempted this session.
+@property(nonatomic, assign) BOOL vpnAutoStartAttempted;
 
 // Delegate that handles delivered push notification workflow.
 @property(nonatomic, strong) PushNotificationDelegate* pushNotificationDelegate;
@@ -145,6 +151,7 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
   [VortexRevenueCatInitializer configureRevenueCat];
 
   // Sync premium status on launch
+  [[VortexPlusManager sharedManager] addObserver:self];
   [[VortexPlusManager sharedManager] syncWithRevenueCat];
 
   // UIApplicationWillEnterForegroundNotification will be delivered right
@@ -153,6 +160,13 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
       addObserver:self
          selector:@selector(firstSceneWillEnterForeground:)
              name:UIApplicationWillEnterForegroundNotification
+           object:nil];
+
+  // Observe scene activation to attempt VPN auto-start when browser is ready.
+  [[NSNotificationCenter defaultCenter]
+      addObserver:self
+         selector:@selector(sceneDidActivate:)
+             name:UISceneDidActivateNotification
            object:nil];
 
   return YES;
@@ -337,6 +351,11 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
                                     memoryHelper:_memoryHelper];
 }
 
+- (void)sceneDidActivate:(NSNotification*)notification {
+  // Attempt VPN auto-start now that browser should be ready.
+  [self attemptVPNAutoStartIfNeeded];
+}
+
 - (void)firstSceneWillEnterForeground:(NSNotification*)notification {
   // This method may be invoked really early in the application lifetime
   // even before the creation of the main loop. Thus it is not possible
@@ -434,6 +453,52 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
          IsContentNotificationRegistered(profile) ||
          base::FeatureList::IsEnabled(
              send_tab_to_self::kSendTabToSelfIOSPushNotifications);
+}
+
+#pragma mark - VortexPlusObserver
+
+- (void)vortexPlusManagerDidUpdateIsVortexPlusEnabled:(BOOL)isVortexPlusEnabled {
+  [self attemptVPNAutoStartIfNeeded];
+}
+
+- (void)attemptVPNAutoStartIfNeeded {
+  // Only attempt auto-start once per session (cold start).
+  if (self.vpnAutoStartAttempted) {
+    return;
+  }
+
+  // Check if user is premium.
+  if (![[VortexPlusManager sharedManager] isPremium]) {
+    return;
+  }
+
+  // Get browser and profile to access prefs.
+  Browser* browser = _mainController.browserProviderInterfaceDoNotUse
+                         .mainBrowserProvider.browser;
+  if (!browser) {
+    return;
+  }
+
+  ProfileIOS* profile = browser->GetProfile();
+  if (!profile) {
+    return;
+  }
+
+  PrefService* prefs = profile->GetPrefs();
+  if (!prefs) {
+    return;
+  }
+
+  // Check if VPN start on launch pref is enabled.
+  if (!prefs->GetBoolean(prefs::kVPNStartOnLaunch)) {
+    return;
+  }
+
+  // Mark as attempted so we don't try again this session.
+  self.vpnAutoStartAttempted = YES;
+
+  // Start VPN with a random server.
+  [[VortexVPNManager sharedManager] connect];
 }
 
 @end
