@@ -39,6 +39,7 @@ enum class ActionType {
   Bookmark,
   ReadingList,
   AdBlocker,
+  VPNStartOnLaunch,
   ClearBrowsingData,
   Translate,
   ReaderMode,
