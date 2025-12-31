@@ -11,6 +11,8 @@
 // internal Impression Limits.
 BASE_DECLARE_FEATURE(kFullscreenPromosManagerSkipInternalLimits);
 
+BASE_DECLARE_FEATURE(kWhatsNewPromoEnabled);
+
 // Returns true if the Fullscreen Promos Manager should skip evaluation of its
 // internal Impression Limits when deciding whether or not to display a promo.
 bool IsSkippingInternalImpressionLimitsEnabled();

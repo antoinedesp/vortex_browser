@@ -9,6 +9,8 @@
 BASE_FEATURE(kFullscreenPromosManagerSkipInternalLimits,
              base::FEATURE_DISABLED_BY_DEFAULT);
 
+BASE_FEATURE(kWhatsNewPromoEnabled, base::FEATURE_DISABLED_BY_DEFAULT);
+
 bool IsSkippingInternalImpressionLimitsEnabled() {
   return base::FeatureList::IsEnabled(
       kFullscreenPromosManagerSkipInternalLimits);
