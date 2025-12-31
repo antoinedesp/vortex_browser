@@ -793,6 +793,9 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
   // Register AdBlocker preference.
   registry->RegisterBooleanPref(prefs::kAdBlockerEnabled, true);
 
+  // Register VPN start on launch preference.
+  registry->RegisterBooleanPref(prefs::kVPNStartOnLaunch, false);
+
   // Register pref used to show the link preview.
   registry->RegisterBooleanPref(prefs::kLinkPreviewEnabled, true);
 
