@@ -68,6 +68,10 @@
   return self.vpnManager.protocolConfiguration != nil;
 }
 
+- (BOOL)isConnected {
+  return self.status == VortexVPNStatusConnected;
+}
+
 #pragma mark - Status Updates
 
 - (void)vpnStatusDidChange:(NSNotification*)notification {
