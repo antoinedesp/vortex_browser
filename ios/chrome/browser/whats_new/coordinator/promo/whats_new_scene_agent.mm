@@ -4,6 +4,7 @@
 
 #import "ios/chrome/browser/whats_new/coordinator/promo/whats_new_scene_agent.h"
 
+#import "base/feature_list.h"
 #import "ios/chrome/browser/promos_manager/model/constants.h"
 #import "ios/chrome/browser/promos_manager/model/features.h"
 #import "ios/chrome/browser/promos_manager/model/promos_manager.h"
@@ -36,6 +37,9 @@
     transitionedToActivationLevel:(SceneActivationLevel)level {
   switch (level) {
     case SceneActivationLevelForegroundActive: {
+      if (!base::FeatureList::IsEnabled(kWhatsNewPromoEnabled)) {
+        break;
+      }
       DCHECK(self.promosManager);
       self.promosManager->RegisterPromoForContinuousDisplay(
           promos_manager::Promo::WhatsNew);
