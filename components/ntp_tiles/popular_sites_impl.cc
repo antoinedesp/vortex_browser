@@ -339,9 +339,32 @@ PopularSitesImpl::PopularSitesImpl(
       variations_(variations_service),
       url_loader_factory_(std::move(url_loader_factory)),
       is_fallback_(false),
-      sections_(
-          ParseSites(prefs->GetList(prefs::kPopularSitesJsonPref),
-                     prefs_->GetInteger(prefs::kPopularSitesVersionPref))) {}
+      sections_() {
+  // Clear any cached remote data when remote fetching is disabled.
+  MaybeClearCachedRemoteData();
+  sections_ = ParseSites(prefs_->GetList(prefs::kPopularSitesJsonPref),
+                         GetInitialSitesVersion());
+}
+
+void PopularSitesImpl::MaybeClearCachedRemoteData() {
+  // When remote fetch is disabled, clear any cached remote data to ensure
+  // baked-in content is used. This prevents stale remote data from persisting
+  // after the feature flag is disabled.
+  if (!base::FeatureList::IsEnabled(kPopularSitesRemoteFetchFeature)) {
+    prefs_->ClearPref(prefs::kPopularSitesJsonPref);
+    prefs_->ClearPref(prefs::kPopularSitesLastDownloadPref);
+    prefs_->ClearPref(prefs::kPopularSitesURLPref);
+  }
+}
+
+int PopularSitesImpl::GetInitialSitesVersion() const {
+  if (!base::FeatureList::IsEnabled(kPopularSitesRemoteFetchFeature)) {
+    int version;
+    base::StringToInt(kPopularSitesDefaultVersion, &version);
+    return version;
+  }
+  return prefs_->GetInteger(prefs::kPopularSitesVersionPref);
+}
 
 PopularSitesImpl::~PopularSitesImpl() = default;
 

@@ -64,6 +64,13 @@ class PopularSitesImpl : public PopularSites {
       user_prefs::PrefRegistrySyncable* user_prefs);
 
  private:
+  // Clears any cached remote data if remote fetching is disabled, ensuring
+  // baked-in content is used.
+  void MaybeClearCachedRemoteData();
+
+  // Returns the sites version to use for initialization.
+  int GetInitialSitesVersion() const;
+
   // Fetch the popular sites at the given URL, overwriting any cache in prefs
   // that already exists.
   void FetchPopularSites();
