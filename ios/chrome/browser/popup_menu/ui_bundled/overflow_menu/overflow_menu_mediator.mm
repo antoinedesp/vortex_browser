@@ -240,6 +240,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 @property(nonatomic, strong) OverflowMenuAction* openNewWindowAction;
 
 @property(nonatomic, strong) OverflowMenuAction* adBlockerAction;
+@property(nonatomic, strong) OverflowMenuAction* vpnStartOnLaunchAction;
 @property(nonatomic, strong) OverflowMenuAction* clearBrowsingDataAction;
 @property(nonatomic, strong) OverflowMenuAction* readerModeAction;
 @property(nonatomic, strong) OverflowMenuAction* tabGroupAction;
@@ -604,6 +605,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                  }];
 
   self.adBlockerAction = [self newAdBlockerAction];
+  self.vpnStartOnLaunchAction = [self newVPNStartOnLaunchAction];
   self.clearBrowsingDataAction = [self newClearBrowsingDataAction];
 
   if (base::FeatureList::IsEnabled(kTabGroupInOverflowMenu)) {
@@ -1021,6 +1023,29 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   // Set initial toggle state from preference
   if (self.profilePrefs) {
     action.toggleOn = self.profilePrefs->GetBoolean(prefs::kAdBlockerEnabled);
+  }
+
+  return action;
+}
+
+- (OverflowMenuAction*)newVPNStartOnLaunchAction {
+  __weak __typeof(self) weakSelf = self;
+  OverflowMenuAction* action = [self
+      createOverflowMenuActionWithName:@"Start VPN on Launch"
+                            actionType:overflow_menu::ActionType::VPNStartOnLaunch
+                            symbolName:@"network.badge.shield.half.filled"
+                          systemSymbol:YES
+                      monochromeSymbol:NO
+                       accessibilityID:@"kToolsMenuVPNStartOnLaunch"
+                          hideItemText:nil
+                               handler:^{
+                                 [weakSelf toggleVPNStartOnLaunch];
+                               }];
+
+  action.displayAsToggle = YES;
+
+  if (self.profilePrefs) {
+    action.toggleOn = self.profilePrefs->GetBoolean(prefs::kVPNStartOnLaunch);
   }
 
   return action;
@@ -2204,6 +2229,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   actions.push_back(overflow_menu::ActionType::Bookmark);
   actions.push_back(overflow_menu::ActionType::ReadingList);
   actions.push_back(overflow_menu::ActionType::AdBlocker);
+  actions.push_back(overflow_menu::ActionType::VPNStartOnLaunch);
   actions.push_back(overflow_menu::ActionType::ClearBrowsingData);
   actions.push_back(overflow_menu::ActionType::Translate);
   actions.push_back(overflow_menu::ActionType::DesktopSite);
@@ -2256,6 +2282,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return self.readLaterAction;
     case overflow_menu::ActionType::AdBlocker:
       return self.adBlockerAction;
+    case overflow_menu::ActionType::VPNStartOnLaunch:
+      return self.vpnStartOnLaunchAction;
     case overflow_menu::ActionType::ClearBrowsingData:
       // Showing the Clear Browsing Data Action would be confusing in incognito.
       return (self.incognito) ? nil : self.clearBrowsingDataAction;
@@ -2316,6 +2344,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return [self newReadLaterAction];
     case overflow_menu::ActionType::AdBlocker:
       return [self newAdBlockerAction];
+    case overflow_menu::ActionType::VPNStartOnLaunch:
+      return [self newVPNStartOnLaunchAction];
     case overflow_menu::ActionType::ClearBrowsingData:
       return [self newClearBrowsingDataAction];
     case overflow_menu::ActionType::Translate:
@@ -2412,6 +2442,17 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   }
 
   // Don't dismiss menu - let user continue using menu after toggling
+}
+
+- (void)toggleVPNStartOnLaunch {
+  if (self.profilePrefs) {
+    BOOL currentValue = self.profilePrefs->GetBoolean(prefs::kVPNStartOnLaunch);
+    self.profilePrefs->SetBoolean(prefs::kVPNStartOnLaunch, !currentValue);
+
+    if (self.vpnStartOnLaunchAction) {
+      self.vpnStartOnLaunchAction.toggleOn = !currentValue;
+    }
+  }
 }
 
 - (void)openClearBrowsingData {
