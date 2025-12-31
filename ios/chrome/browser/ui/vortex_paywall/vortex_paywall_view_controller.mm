@@ -28,6 +28,8 @@
 @property(nonatomic, strong) UIButton* primaryButton;
 @property(nonatomic, strong) UILabel* trialDetailsLabel;
 @property(nonatomic, strong) CAGradientLayer* primaryGradientLayer;
+@property(nonatomic, strong) UIActivityIndicatorView* buttonActivityIndicator;
+@property(nonatomic, copy) NSString* savedButtonTitle;
 
 // Footer links.
 @property(nonatomic, strong) UIView* footerView;
@@ -313,6 +315,19 @@
     [button.trailingAnchor constraintEqualToAnchor:bottomBar.trailingAnchor],
   ]];
 
+  UIActivityIndicatorView* buttonSpinner =
+      [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
+  buttonSpinner.color = [UIColor whiteColor];
+  buttonSpinner.hidesWhenStopped = YES;
+  buttonSpinner.translatesAutoresizingMaskIntoConstraints = NO;
+  [bottomBar addSubview:buttonSpinner];
+  self.buttonActivityIndicator = buttonSpinner;
+
+  [NSLayoutConstraint activateConstraints:@[
+    [buttonSpinner.centerXAnchor constraintEqualToAnchor:bottomBar.centerXAnchor],
+    [buttonSpinner.centerYAnchor constraintEqualToAnchor:bottomBar.centerYAnchor],
+  ]];
+
   // Trial details label below button.
   UILabel* detailsLabel = [[UILabel alloc] init];
   detailsLabel.text = l10n_util::GetNSStringF(IDS_IOS_VORTEX_PLUS_TRIAL_DETAILS,
@@ -530,6 +545,23 @@
   label.tag = 999;
 
   [self.stackView addArrangedSubview:label];
+}
+
+- (void)setButtonLoading:(BOOL)loading {
+  if (loading) {
+    self.savedButtonTitle = [self.primaryButton titleForState:UIControlStateNormal];
+    [self.primaryButton setTitle:@"" forState:UIControlStateNormal];
+    [self.buttonActivityIndicator startAnimating];
+    self.bottomBar.alpha = 0.6;
+    self.primaryButton.userInteractionEnabled = NO;
+  } else {
+    [self.buttonActivityIndicator stopAnimating];
+    if (self.savedButtonTitle) {
+      [self.primaryButton setTitle:self.savedButtonTitle forState:UIControlStateNormal];
+    }
+    self.bottomBar.alpha = 1.0;
+    self.primaryButton.userInteractionEnabled = YES;
+  }
 }
 
 #pragma mark - Helpers (dynamic views)
