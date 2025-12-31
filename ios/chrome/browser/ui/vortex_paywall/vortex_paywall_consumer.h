@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 // Display the list of purchasable packages.
 - (void)showPackages:(NSArray<VortexPaywallPackageItem*>*)packages;
 
+// Show/hide loading state on the primary button.
+- (void)setButtonLoading:(BOOL)loading;
+
 @end
 
 NS_ASSUME_NONNULL_END
