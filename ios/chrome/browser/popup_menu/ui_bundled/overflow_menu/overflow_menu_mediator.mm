@@ -2156,14 +2156,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::Destination::History:
       return (self.incognito) ? nil : self.historyDestination;
     case overflow_menu::Destination::ReadingList:
-      // Set badges if necessary.
-      if (self.engagementTracker &&
-          self.engagementTracker->ShouldTriggerHelpUI(
-              feature_engagement::kIPHBadgedReadingListFeature)) {
-        self.readingListDestination.badge = BadgeTypePromo;
-      }
-      return self.readingListModel->loaded() ? self.readingListDestination
-                                             : nil;
+      // Reading List destination removed from popup menu.
+      return nil;
     case overflow_menu::Destination::Passwords:
       if ([self shouldIndicateMissingTrustedVaultKeyForPasswordsError]) {
         self.passwordsDestination.badge = BadgeTypeError;
@@ -2172,7 +2166,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::Destination::Downloads:
       return self.downloadsDestination;
     case overflow_menu::Destination::RecentTabs:
-      return self.incognito ? nil : self.recentTabsDestination;
+      // Recent Tabs destination removed from popup menu.
+      return nil;
     case overflow_menu::Destination::SiteInfo:
       return ([self currentWebPageSupportsSiteInfo]) ? self.siteInfoDestination
                                                      : nil;
