@@ -681,7 +681,7 @@ const CGFloat kIdentityDiscAvatarBackgroundSpacing = 5;
 
     case VortexVPNStatusConnected:
       // Green when connected
-      tintColor = [UIColor systemGreenColor];
+      tintColor = [UIColor colorNamed:kBrandPurpleColor];
       accessibilityLabel = @"VPN Connected. Tap to disconnect.";
       break;
 
