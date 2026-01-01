@@ -13,6 +13,9 @@ inline constexpr char kAdBlockerEnabled[] = "ios.adblocker.enabled";
 // Boolean that is true when VPN should start on app launch.
 inline constexpr char kVPNStartOnLaunch[] = "ios.vpn.start_on_launch";
 
+// Boolean that is true when browsing data should be deleted on app close.
+inline constexpr char kClearDataOnClose[] = "ios.clear_data_on_close";
+
 // Number of times the "Address Bar" settings "new" IPH badge has been shown.
 // This is set to INT_MAX when the user visites the "Address Bar" settings page.
 inline constexpr char kAddressBarSettingsNewBadgeShownCount[] =
