@@ -7759,6 +7759,9 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_TOOLS_MENU_VPN_START_ON_LAUNCH" desc="The iOS menu item to toggle VPN auto-start on app launch [iOS only]" meaning="[Length: unlimited]">
         Start VPN on Launch
       </message>
+      <message name="IDS_IOS_TOOLS_MENU_CLEAR_DATA_ON_CLOSE" desc="The iOS menu item to toggle automatic deletion of browsing data when app closes [iOS only]" meaning="[Length: unlimited]">
+        Delete Data on Close
+      </message>
       <message name="IDS_IOS_TOOLS_MENU_CLEAR_BROWSING_DATA" desc="The iOS menu item to open the Delete Browsing Data screen [iOS only]" meaning="[Length: unlimited]">
         Delete Browsing Data
       </message>
