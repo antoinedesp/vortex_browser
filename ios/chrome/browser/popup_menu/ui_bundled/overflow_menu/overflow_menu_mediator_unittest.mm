@@ -513,11 +513,15 @@ TEST_F(OverflowMenuMediatorTest, TestMenuItemsCount) {
   CreateMediator(/*incognito=*/NO);
   mediator_.model = model_;
 
-  NSUInteger number_of_action_items = 6;
+  // Base page actions: Bookmark, ReadingList, ClearBrowsingData.
+  NSUInteger number_of_action_items = 3;
 
   if (ios::provider::IsTextZoomEnabled()) {
     number_of_action_items++;
   }
+
+  // Privacy actions: AdBlocker, VPNStartOnLaunch, ClearDataOnClose.
+  NSUInteger number_of_privacy_items = 3;
 
   // New Tab, New Incognito Tab.
   NSUInteger number_of_tab_actions = 2;
@@ -539,6 +543,8 @@ TEST_F(OverflowMenuMediatorTest, TestMenuItemsCount) {
   // Checks that Tools Menu has the right number of items in each section.
   CheckMediatorSetItems(9, @[
     @(number_of_tab_actions),
+    // Privacy features group.
+    @(number_of_privacy_items),
     // Other actions, depending on configuration.
     @(number_of_action_items),
     // Customization button
