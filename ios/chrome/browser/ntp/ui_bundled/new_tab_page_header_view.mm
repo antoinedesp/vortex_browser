@@ -1436,7 +1436,7 @@ CGFloat MIAAnimationOpacityForScrollProgress(CGFloat percent) {
   
   switch (status) {
     case VortexVPNStatusConnected:
-      self.vpnShieldButton.tintColor = [UIColor systemGreenColor];
+      self.vpnShieldButton.tintColor = [UIColor colorNamed:kBrandPurpleColor];
       break;
     case VortexVPNStatusConnecting:
       self.vpnShieldButton.tintColor = [UIColor systemOrangeColor];
