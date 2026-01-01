@@ -125,6 +125,7 @@ source_set("discover_feed_visibility_browser_agent") {
     "//ios/chrome/browser/search_engines/model:template_url_service_factory",
     "//ios/chrome/browser/shared/coordinator/scene:scene_state_header",
     "//ios/chrome/browser/shared/model/browser",
+    "//ios/chrome/browser/shared/public/features",
     "//ios/chrome/browser/shared/model/profile",
     "//ios/public/provider/chrome/browser/discover_feed:discover_feed_api",
   ]
