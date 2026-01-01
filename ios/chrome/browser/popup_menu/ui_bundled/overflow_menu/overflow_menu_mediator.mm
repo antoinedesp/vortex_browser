@@ -241,6 +241,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
 @property(nonatomic, strong) OverflowMenuAction* adBlockerAction;
 @property(nonatomic, strong) OverflowMenuAction* vpnStartOnLaunchAction;
+@property(nonatomic, strong) OverflowMenuAction* clearDataOnCloseAction;
 @property(nonatomic, strong) OverflowMenuAction* clearBrowsingDataAction;
 @property(nonatomic, strong) OverflowMenuAction* readerModeAction;
 @property(nonatomic, strong) OverflowMenuAction* tabGroupAction;
@@ -606,6 +607,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   self.adBlockerAction = [self newAdBlockerAction];
   self.vpnStartOnLaunchAction = [self newVPNStartOnLaunchAction];
+  self.clearDataOnCloseAction = [self newClearDataOnCloseAction];
   self.clearBrowsingDataAction = [self newClearBrowsingDataAction];
 
   if (base::FeatureList::IsEnabled(kTabGroupInOverflowMenu)) {
@@ -1046,6 +1048,29 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   if (self.profilePrefs) {
     action.toggleOn = self.profilePrefs->GetBoolean(prefs::kVPNStartOnLaunch);
+  }
+
+  return action;
+}
+
+- (OverflowMenuAction*)newClearDataOnCloseAction {
+  __weak __typeof(self) weakSelf = self;
+  OverflowMenuAction* action = [self
+      createOverflowMenuActionWithNameID:IDS_IOS_TOOLS_MENU_CLEAR_DATA_ON_CLOSE
+                              actionType:overflow_menu::ActionType::ClearDataOnClose
+                              symbolName:@"xmark.bin"
+                            systemSymbol:YES
+                        monochromeSymbol:NO
+                         accessibilityID:@"kToolsMenuClearDataOnClose"
+                            hideItemText:nil
+                                 handler:^{
+                                   [weakSelf toggleClearDataOnClose];
+                                 }];
+
+  action.displayAsToggle = YES;
+
+  if (self.profilePrefs) {
+    action.toggleOn = self.profilePrefs->GetBoolean(prefs::kClearDataOnClose);
   }
 
   return action;
@@ -2230,6 +2255,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   actions.push_back(overflow_menu::ActionType::ReadingList);
   actions.push_back(overflow_menu::ActionType::AdBlocker);
   actions.push_back(overflow_menu::ActionType::VPNStartOnLaunch);
+  actions.push_back(overflow_menu::ActionType::ClearDataOnClose);
   actions.push_back(overflow_menu::ActionType::ClearBrowsingData);
   actions.push_back(overflow_menu::ActionType::Translate);
   actions.push_back(overflow_menu::ActionType::DesktopSite);
@@ -2284,6 +2310,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return self.adBlockerAction;
     case overflow_menu::ActionType::VPNStartOnLaunch:
       return self.vpnStartOnLaunchAction;
+    case overflow_menu::ActionType::ClearDataOnClose:
+      return self.clearDataOnCloseAction;
     case overflow_menu::ActionType::ClearBrowsingData:
       // Showing the Clear Browsing Data Action would be confusing in incognito.
       return (self.incognito) ? nil : self.clearBrowsingDataAction;
@@ -2346,6 +2374,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return [self newAdBlockerAction];
     case overflow_menu::ActionType::VPNStartOnLaunch:
       return [self newVPNStartOnLaunchAction];
+    case overflow_menu::ActionType::ClearDataOnClose:
+      return [self newClearDataOnCloseAction];
     case overflow_menu::ActionType::ClearBrowsingData:
       return [self newClearBrowsingDataAction];
     case overflow_menu::ActionType::Translate:
@@ -2451,6 +2481,17 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
     if (self.vpnStartOnLaunchAction) {
       self.vpnStartOnLaunchAction.toggleOn = !currentValue;
+    }
+  }
+}
+
+- (void)toggleClearDataOnClose {
+  if (self.profilePrefs) {
+    BOOL currentValue = self.profilePrefs->GetBoolean(prefs::kClearDataOnClose);
+    self.profilePrefs->SetBoolean(prefs::kClearDataOnClose, !currentValue);
+
+    if (self.clearDataOnCloseAction) {
+      self.clearDataOnCloseAction.toggleOn = !currentValue;
     }
   }
 }
