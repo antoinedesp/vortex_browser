@@ -96,6 +96,8 @@ std::optional<ActionType> ActionTypeForStringName(std::string action) {
     return overflow_menu::ActionType::AdBlocker;
   } else if (action == "VPNStartOnLaunch") {
     return overflow_menu::ActionType::VPNStartOnLaunch;
+  } else if (action == "ClearDataOnClose") {
+    return overflow_menu::ActionType::ClearDataOnClose;
   } else if (action == "ClearBrowsingData") {
     return overflow_menu::ActionType::ClearBrowsingData;
   } else if (action == "Translate") {
@@ -155,6 +157,8 @@ std::string StringNameForActionType(ActionType action) {
       return "AdBlocker";
     case overflow_menu::ActionType::VPNStartOnLaunch:
       return "VPNStartOnLaunch";
+    case overflow_menu::ActionType::ClearDataOnClose:
+      return "ClearDataOnClose";
     case overflow_menu::ActionType::ClearBrowsingData:
       return "ClearBrowsingData";
     case overflow_menu::ActionType::Translate:

@@ -40,6 +40,7 @@ enum class ActionType {
   ReadingList,
   AdBlocker,
   VPNStartOnLaunch,
+  ClearDataOnClose,
   ClearBrowsingData,
   Translate,
   ReaderMode,
