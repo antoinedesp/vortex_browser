@@ -5,6 +5,7 @@
 #import "ios/chrome/browser/discover_feed/model/discover_feed_visibility_browser_agent.h"
 
 #import "ios/chrome/app/application_delegate/app_state.h"
+#import "ios/chrome/browser/shared/public/features/features.h"
 #import "ios/chrome/app/profile/profile_state.h"
 #import "ios/chrome/browser/discover_feed/model/discover_feed_service_factory.h"
 #import "ios/chrome/browser/discover_feed/model/discover_feed_visibility_provider_configuration.h"
@@ -40,6 +41,9 @@ DiscoverFeedEligibility DiscoverFeedVisibilityBrowserAgent::GetEligibility() {
 }
 
 bool DiscoverFeedVisibilityBrowserAgent::ShouldBeVisible() {
+  if (IsDiscoverFeedDisabled()) {
+    return false;
+  }
   return GetEligibility() == DiscoverFeedEligibility::kEligible && IsEnabled();
 }
 
