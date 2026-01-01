@@ -230,6 +230,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
 @property(nonatomic, strong) OverflowMenuActionGroup* appActionsGroup;
 @property(nonatomic, strong) OverflowMenuActionGroup* pageActionsGroup;
+@property(nonatomic, strong) OverflowMenuActionGroup* privacyActionsGroup;
 @property(nonatomic, strong) OverflowMenuActionGroup* helpActionsGroup;
 @property(nonatomic, strong) OverflowMenuActionGroup* editActionsGroup;
 
@@ -733,6 +734,15 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                                   footer:nil];
   self.menuOrderer.pageActionsGroup = self.pageActionsGroup;
 
+  // The privacy actions group contains privacy-related toggles.
+  // Actions are set in `-updateModel`.
+  self.privacyActionsGroup = [[OverflowMenuActionGroup alloc]
+      initWithGroupName:@"privacy_actions"
+                actions:@[]
+                 footer:nil
+            headerTitle:l10n_util::GetNSString(
+                            IDS_IOS_TOOLS_MENU_PRIVACY_FEATURES)];
+
   // Footer and actions vary based on state, so they're set in -updateModel.
   self.helpActionsGroup =
       [[OverflowMenuActionGroup alloc] initWithGroupName:@"help_actions"
@@ -745,8 +755,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                  footer:nil];
 
   self.model.actionGroups = @[
-    self.appActionsGroup, self.pageActionsGroup, self.editActionsGroup,
-    self.helpActionsGroup
+    self.appActionsGroup, self.privacyActionsGroup, self.pageActionsGroup,
+    self.editActionsGroup, self.helpActionsGroup
   ];
   _modelInitialized = YES;
 }
@@ -1723,6 +1733,14 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   [self.menuOrderer updatePageActions];
 
+  // Privacy actions group contains privacy-related toggles.
+  NSMutableArray<OverflowMenuAction*>* privacyActions =
+      [[NSMutableArray alloc] init];
+  [privacyActions addObject:self.adBlockerAction];
+  [privacyActions addObject:self.vpnStartOnLaunchAction];
+  [privacyActions addObject:self.clearDataOnCloseAction];
+  self.privacyActionsGroup.actions = privacyActions;
+
   NSMutableArray<OverflowMenuAction*>* helpActions =
       [[NSMutableArray alloc] init];
 
@@ -2253,9 +2271,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   }
   actions.push_back(overflow_menu::ActionType::Bookmark);
   actions.push_back(overflow_menu::ActionType::ReadingList);
-  actions.push_back(overflow_menu::ActionType::AdBlocker);
-  actions.push_back(overflow_menu::ActionType::VPNStartOnLaunch);
-  actions.push_back(overflow_menu::ActionType::ClearDataOnClose);
+  // Privacy actions (AdBlocker, VPNStartOnLaunch, ClearDataOnClose) are now in
+  // privacyActionsGroup.
   actions.push_back(overflow_menu::ActionType::ClearBrowsingData);
   actions.push_back(overflow_menu::ActionType::Translate);
   actions.push_back(overflow_menu::ActionType::DesktopSite);
