@@ -303,7 +303,7 @@ const CGFloat kShareIconBalancingHeightPadding = 1;
 - (void)updateVPNShieldForStatus:(VortexVPNStatus)status {
   switch (status) {
     case VortexVPNStatusConnected:
-      _vpnShieldButton.tintColor = [UIColor systemGreenColor];
+      _vpnShieldButton.tintColor = [UIColor colorNamed:kBrandPurpleColor];
       break;
     case VortexVPNStatusConnecting:
       _vpnShieldButton.tintColor = [UIColor systemOrangeColor];
