@@ -57,6 +57,8 @@ IOSOverflowMenuAction HistogramActionFromActionType(
       return IOSOverflowMenuAction::kAdBlocker;
     case overflow_menu::ActionType::VPNStartOnLaunch:
       return IOSOverflowMenuAction::kVPNStartOnLaunch;
+    case overflow_menu::ActionType::ClearDataOnClose:
+      return IOSOverflowMenuAction::kClearDataOnClose;
     case overflow_menu::ActionType::ClearBrowsingData:
       return IOSOverflowMenuAction::kClearBrowsingData;
     case overflow_menu::ActionType::Translate:

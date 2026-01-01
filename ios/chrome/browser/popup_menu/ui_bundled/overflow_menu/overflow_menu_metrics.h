@@ -99,7 +99,8 @@ enum class IOSOverflowMenuAction {
   kTabGroup = 22,
   kAdBlocker = 23,
   kVPNStartOnLaunch = 24,
-  kMaxValue = kVPNStartOnLaunch,
+  kClearDataOnClose = 25,
+  kMaxValue = kClearDataOnClose,
 };
 // LINT.ThenChange(overflow_menu_constants.h:actionType)
 
