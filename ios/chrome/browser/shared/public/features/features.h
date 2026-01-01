@@ -678,6 +678,12 @@ extern const char kTabResumptionImagesTypesThumbnails[];
 // TODO(crbug.com/40246814): Remove this.
 extern const char kDiscoverFeedIsNativeUIEnabled[];
 
+// Feature flag to disable the Discover Feed on NTP.
+BASE_DECLARE_FEATURE(kDisableDiscoverFeed);
+
+// Convenience method for determining if Discover Feed is disabled.
+bool IsDiscoverFeedDisabled();
+
 // Feature parameters for the tab resumption feature. The threshold for tabs
 // fetched from sync in seconds. Default to 12 hours.
 extern const char kTabResumptionThresholdParameterName[];

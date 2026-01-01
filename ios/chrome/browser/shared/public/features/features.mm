@@ -659,6 +659,13 @@ BASE_FEATURE(kTabResumption, base::FEATURE_ENABLED_BY_DEFAULT);
 // feed.
 const char kDiscoverFeedIsNativeUIEnabled[] = "DiscoverFeedIsNativeUIEnabled";
 
+// Feature flag to disable the Discover Feed on NTP.
+BASE_FEATURE(kDisableDiscoverFeed, base::FEATURE_ENABLED_BY_DEFAULT);
+
+bool IsDiscoverFeedDisabled() {
+  return base::FeatureList::IsEnabled(kDisableDiscoverFeed);
+}
+
 const char kTabResumptionThresholdParameterName[] =
     "tab-resumption-sync-threshold";
 
