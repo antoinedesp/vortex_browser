@@ -11,6 +11,10 @@ import SwiftUI
   /// used to identify the group.
   public let groupName: String
 
+  /// An optional title displayed as a visible section header.
+  /// If nil, no header text is shown (only spacing).
+  public var headerTitle: String?
+
   /// The actions for this group.
   @Published public var actions: [OverflowMenuAction]
 
@@ -24,6 +28,19 @@ import SwiftUI
     self.groupName = groupName
     self.actions = actions
     self.footer = footer
+    self.headerTitle = nil
+  }
+
+  public init(
+    groupName: String,
+    actions: [OverflowMenuAction],
+    footer: OverflowMenuFooter?,
+    headerTitle: String?
+  ) {
+    self.groupName = groupName
+    self.actions = actions
+    self.footer = footer
+    self.headerTitle = headerTitle
   }
 
   /// Sets the actions wrapped in a SwiftUI `withAnimation` block.
