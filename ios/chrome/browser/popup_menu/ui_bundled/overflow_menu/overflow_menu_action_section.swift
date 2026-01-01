@@ -37,10 +37,21 @@ struct OverflowMenuActionSection<FooterBackground: View>: View {
         .onMove(perform: move)
       },
       header: {
-        Spacer()
-          .frame(height: Self.headerFooterHeight)
-          .listRowInsets(EdgeInsets())
-          .accessibilityHidden(true)
+        if let headerTitle = actionGroup.headerTitle {
+          Text(headerTitle)
+            .font(.footnote)
+            .fontWeight(.semibold)
+            .foregroundColor(.textSecondary)
+            .textCase(.uppercase)
+            .padding(.top, Self.headerFooterHeight)
+            .padding(.bottom, 8)
+            .accessibilityAddTraits(.isHeader)
+        } else {
+          Spacer()
+            .frame(height: Self.headerFooterHeight)
+            .listRowInsets(EdgeInsets())
+            .accessibilityHidden(true)
+        }
       },
       footer: {
         if let actionFooter = actionGroup.footer {
