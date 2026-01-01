@@ -796,6 +796,9 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
   // Register VPN start on launch preference.
   registry->RegisterBooleanPref(prefs::kVPNStartOnLaunch, false);
 
+  // Register clear data on close preference.
+  registry->RegisterBooleanPref(prefs::kClearDataOnClose, false);
+
   // Register pref used to show the link preview.
   registry->RegisterBooleanPref(prefs::kLinkPreviewEnabled, true);
 
