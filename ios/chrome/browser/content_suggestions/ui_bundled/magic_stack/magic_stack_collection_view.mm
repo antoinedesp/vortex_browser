@@ -23,6 +23,7 @@
 #import "ios/chrome/browser/content_suggestions/ui_bundled/magic_stack/placeholder_config.h"
 #import "ios/chrome/browser/content_suggestions/ui_bundled/shop_card/ui/shop_card_item.h"
 #import "ios/chrome/browser/ntp/shared/metrics/home_metrics.h"
+#import "ios/chrome/browser/shared/public/features/features.h"
 #import "ios/chrome/browser/shared/ui/util/uikit_ui_util.h"
 
 namespace {
@@ -277,6 +278,9 @@ typedef NSDiffableDataSourceSnapshot<NSString*, MagicStackModule*>
 
 // Configures the collectionView.
 - (void)configureCollectionView {
+  if (_collectionView) {
+    return;
+  }
   _magicStackCollectionViewLayoutConfigurator =
       [[MagicStackLayoutConfigurator alloc] init];
   _collectionView = [[UICollectionView alloc]
@@ -371,8 +375,13 @@ typedef NSDiffableDataSourceSnapshot<NSString*, MagicStackModule*>
   cell.audience = self.audience;
 }
 
-// Creates two placeholder module configs and inserts them as the initial items.
+// Creates placeholder module configs and inserts them as the initial items.
 - (void)populateWithPlaceholders {
+  // Ensure collection view is configured even if we skip placeholders.
+  [self configureCollectionView];
+  if (IsDiscoverFeedDisabled()) {
+    return;
+  }
   NSMutableArray<MagicStackModule*>* items =
       [[NSMutableArray<MagicStackModule*> alloc] init];
   [items addObject:[[PlaceholderConfig alloc] init]];
