@@ -53,6 +53,10 @@
 #import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
 #import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
 #import "ios/chrome/browser/shared/model/prefs/pref_names.h"
+#import "ios/chrome/browser/browsing_data/model/browsing_data_remover.h"
+#import "ios/chrome/browser/browsing_data/model/browsing_data_remover_factory.h"
+#import "ios/chrome/browser/browsing_data/model/browsing_data_remove_mask.h"
+#import "components/browsing_data/core/browsing_data_utils.h"
 #import "third_party/mixpanel/ios/vortex_mixpanel_shim.h"
 #import "ios/third_party/vortex/src/vortex_constants.h"
 
@@ -349,6 +353,45 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
 - (void)lastSceneDidEnterBackground:(NSNotification*)notification {
   [_mainController applicationDidEnterBackground:UIApplication.sharedApplication
                                     memoryHelper:_memoryHelper];
+
+  // Clear browsing data if the preference is enabled.
+  [self clearBrowsingDataOnCloseIfNeeded];
+}
+
+- (void)clearBrowsingDataOnCloseIfNeeded {
+  Browser* browser = _mainController.browserProviderInterfaceDoNotUse
+                         .mainBrowserProvider.browser;
+  if (!browser) {
+    return;
+  }
+
+  ProfileIOS* profile = browser->GetProfile();
+  if (!profile || profile->IsOffTheRecord()) {
+    return;
+  }
+
+  PrefService* prefs = profile->GetPrefs();
+  if (!prefs || !prefs->GetBoolean(prefs::kClearDataOnClose)) {
+    return;
+  }
+
+  BrowsingDataRemover* remover =
+      BrowsingDataRemoverFactory::GetForProfile(profile);
+  if (!remover) {
+    return;
+  }
+
+  // Remove browsing history, cache, cookies, and site data.
+  BrowsingDataRemoveMask mask = BrowsingDataRemoveMask::REMOVE_HISTORY |
+                                BrowsingDataRemoveMask::REMOVE_CACHE |
+                                BrowsingDataRemoveMask::REMOVE_SITE_DATA;
+
+  BrowsingDataRemover::RemovalParams params;
+  params.show_activity_indicator =
+      BrowsingDataRemover::ActivityIndicatorPolicy::kNoIndicator;
+
+  remover->Remove(browsing_data::TimePeriod::ALL_TIME, mask, base::DoNothing(),
+                  params);
 }
 
 - (void)sceneDidActivate:(NSNotification*)notification {
