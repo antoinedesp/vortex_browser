@@ -1,0 +1,20 @@
+# Copyright 2025 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+group("drive_browser") {
+  deps = [
+    "//ios/chrome/browser/drive_browser/coordinator",
+    "//ios/chrome/browser/drive_browser/model",
+    "//ios/chrome/browser/drive_browser/ui",
+  ]
+}
+
+group("unit_tests") {
+  testonly = true
+  deps = [
+    "//ios/chrome/browser/drive_browser/coordinator:unit_tests",
+    "//ios/chrome/browser/drive_browser/model:unit_tests",
+    "//ios/chrome/browser/drive_browser/ui:unit_tests",
+  ]
+}
