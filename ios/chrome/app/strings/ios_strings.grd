@@ -6214,6 +6214,45 @@ Handoff must also be enabled in the General section of Settings, and your device
       <message name="IDS_IOS_VORTEX_PLUS_MENU_TITLE" desc="Title for Vortex Plus in the overflow menu. [iOS only]">
         Plus
       </message>
+
+      <!-- Vortex VPN Server Selection strings -->
+      <message name="IDS_IOS_TOOLS_MENU_VPN" desc="The iOS menu item for opening the VPN server selection screen. [iOS only]">
+        VPN
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_TITLE" desc="Title for the VPN server selection modal. [iOS only]">
+        Select VPN Server
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_AUTO" desc="Option to automatically select the best VPN server. [iOS only]">
+        Auto (Best Server)
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_AUTO_SUBTITLE" desc="Subtitle explaining the auto server selection option. [iOS only]">
+        Automatically connect to the fastest available server
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_CONNECTING" desc="Status text shown when VPN is connecting to a server. [iOS only]">
+        Connecting...
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_CONNECTED" desc="Status text shown when VPN is connected to a server. [iOS only]">
+        Connected
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_SELECT" desc="Button text to select a VPN server. [iOS only]">
+        Select
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_PREMIUM" desc="Badge label for premium VPN servers. [iOS only]">
+        Premium
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_PREMIUM_REQUIRED" desc="Message shown when a premium server is selected by a non-premium user. [iOS only]">
+        Premium required
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_OFFLINE" desc="Status label for offline VPN servers. [iOS only]">
+        Offline
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_ONLINE" desc="Status label for online VPN servers. [iOS only]">
+        Online
+      </message>
+      <message name="IDS_IOS_VPN_SERVERS_ERROR_FETCH" desc="Error message when VPN servers fail to load. [iOS only]">
+        Failed to load servers
+      </message>
+
       <message name="IDS_IOS_SAVE_PASSWORDS" desc="Title for the switch item in Settings that can be toggled to enable or disable saving passwords. [Length: 15em] [iOS only]">
         Save Passwords
       </message>
