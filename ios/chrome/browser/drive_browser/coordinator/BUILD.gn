@@ -1,0 +1,47 @@
+# Copyright 2025 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+source_set("coordinator") {
+  sources = [
+    "drive_browser_coordinator.h",
+    "drive_browser_coordinator.mm",
+    "drive_browser_mediator.h",
+    "drive_browser_mediator.mm",
+    "drive_browser_mediator_delegate.h",
+  ]
+
+  deps = [
+    "//base",
+    "//components/strings:components_strings_grit",
+    "//ios/chrome/app/strings",
+    "//ios/chrome/browser/download/coordinator",
+    "//ios/chrome/browser/drive_browser/model",
+    "//ios/chrome/browser/drive_browser/ui",
+    "//ios/chrome/browser/shared/coordinator/chrome_coordinator",
+    "//ios/chrome/browser/shared/model/browser",
+    "//ios/chrome/browser/shared/model/profile",
+    "//ios/chrome/browser/shared/model/utils",
+    "//ios/chrome/browser/shared/public/commands",
+    "//ios/web/public",
+    "//ui/base",
+  ]
+
+  frameworks = [
+    "QuickLook.framework",
+    "UIKit.framework",
+  ]
+}
+
+source_set("unit_tests") {
+  testonly = true
+  sources = []
+  deps = [
+    ":coordinator",
+    "//base",
+    "//base/test:test_support",
+    "//ios/chrome/browser/shared/model/browser/test:test_support",
+    "//ios/chrome/browser/shared/model/profile/test",
+    "//testing/gtest",
+  ]
+}
