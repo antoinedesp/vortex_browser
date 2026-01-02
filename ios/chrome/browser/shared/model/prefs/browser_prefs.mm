@@ -114,7 +114,8 @@
 #import "ios/chrome/browser/drive/model/drive_policy.h"
 #import "ios/chrome/browser/first_run/model/first_run.h"
 #import "ios/chrome/browser/incognito_reauth/ui_bundled/incognito_reauth_scene_agent.h"
-#import "ios/chrome/browser/memory/model/memory_debugger_manager.h"
+// Memory debugger uses private API - commented out for App Store builds.
+// #import "ios/chrome/browser/memory/model/memory_debugger_manager.h"
 #import "ios/chrome/browser/metrics/model/constants.h"
 #import "ios/chrome/browser/metrics/model/ios_chrome_metrics_service_client.h"
 #import "ios/chrome/browser/ntp/model/set_up_list_prefs.h"
@@ -471,7 +472,8 @@ void RegisterLocalStatePrefs(PrefRegistrySimple* registry) {
   registry->RegisterBooleanPref(prefs::kLegacyProfileHidden, false);
   registry->RegisterDictionaryPref(prefs::kLegacyProfileMap);
 
-  [MemoryDebuggerManager registerLocalState:registry];
+  // Memory debugger uses private API - commented out for App Store builds.
+  // [MemoryDebuggerManager registerLocalState:registry];
   [IncognitoReauthSceneAgent registerLocalState:registry];
   [VariationsAppStateAgent registerLocalState:registry];
 
