@@ -46,6 +46,9 @@ enum class TrustedVaultUserActionTriggerForUMA;
 // Shows the downloads folder.
 - (void)showDownloadsFolder;
 
+// Shows the drive browser (in-app file manager for downloads).
+- (void)showDriveBrowser;
+
 // Shows recent tabs.
 - (void)showRecentTabs;
 
