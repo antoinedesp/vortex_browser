@@ -15,6 +15,8 @@
 #import "base/task/thread_pool.h"
 #import "base/threading/scoped_blocking_call.h"
 #import "components/strings/grit/components_strings.h"
+#import "ios/chrome/browser/download/model/download_directory_util.h"
+#import "ios/chrome/browser/drive_browser/model/active_download_item.h"
 #import "ios/chrome/browser/shared/model/browser/browser.h"
 #import "ios/chrome/browser/shared/ui/util/image/image_util.h"
 #import "ios/chrome/browser/web/model/image_fetch/image_fetch_tab_helper.h"
@@ -22,6 +24,18 @@
 #import "ios/chrome/grit/ios_strings.h"
 #import "net/base/mime_util.h"
 #import "ui/base/l10n/l10n_util.h"
+
+namespace {
+
+// Generates a unique filename for saved images.
+NSString* GenerateImageFileName() {
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  formatter.dateFormat = @"yyyyMMdd_HHmmss";
+  NSString* timestamp = [formatter stringFromDate:[NSDate date]];
+  return [NSString stringWithFormat:@"IMG_%@.jpg", timestamp];
+}
+
+}  // namespace
 
 @interface ImageSaver ()
 // Base view controller for the alerts.
@@ -83,23 +97,59 @@
     return;
   }
 
-  // Dump `data` into the photo library. Requires the usage of
-  // NSPhotoLibraryAddUsageDescription.
+  // Save to internal drive directory instead of Photos library.
+  NSString* fileName = GenerateImageFileName();
+
+  // Get the downloads directory.
+  base::FilePath downloadsDir;
+  GetDownloadsDirectory(&downloadsDir);
+  base::FilePath destPath =
+      downloadsDir.Append(base::SysNSStringToUTF8(fileName));
+  NSString* destPathString = base::SysUTF8ToNSString(destPath.value());
+
+  // Create and notify active download item.
+  ActiveDownloadItem* downloadItem = [[ActiveDownloadItem alloc]
+      initWithIdentifier:[[NSUUID UUID] UUIDString]
+                fileName:fileName
+            downloadType:ActiveDownloadTypeImage
+               sourceURL:nil];
+  downloadItem.totalBytes = data.length;
+  downloadItem.bytesReceived = 0;
+  downloadItem.progress = 0.0f;
+
+  [[NSNotificationCenter defaultCenter]
+      postNotificationName:kActiveDownloadAddedNotification
+                    object:downloadItem];
+
+  // Write to drive directory asynchronously.
   __weak ImageSaver* weakSelf = self;
-  [[PHPhotoLibrary sharedPhotoLibrary]
-      performChanges:^{
-        PHAssetResourceCreationOptions* options =
-            [[PHAssetResourceCreationOptions alloc] init];
-        [[PHAssetCreationRequest creationRequestForAsset]
-            addResourceWithType:PHAssetResourceTypePhoto
-                           data:data
-                        options:options];
-      }
-      completionHandler:^(BOOL success, NSError* error) {
-        [weakSelf image:savedImage
-            didFinishSavingWithError:error
-                         contextInfo:nil];
-      }];
+  dispatch_async(
+      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError* writeError = nil;
+        BOOL success = [data writeToFile:destPathString
+                                 options:NSDataWritingAtomic
+                                   error:&writeError];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+          downloadItem.progress = 1.0f;
+          downloadItem.bytesReceived = data.length;
+
+          if (success) {
+            downloadItem.state = ActiveDownloadStateComplete;
+          } else {
+            downloadItem.state = ActiveDownloadStateFailed;
+            downloadItem.error = writeError;
+          }
+
+          [[NSNotificationCenter defaultCenter]
+              postNotificationName:kActiveDownloadUpdatedNotification
+                            object:downloadItem];
+
+          [weakSelf image:savedImage
+              didFinishSavingWithError:writeError
+                           contextInfo:nil];
+        });
+      });
 }
 
 // Called when Chrome has been denied access to add photos or videos and the
