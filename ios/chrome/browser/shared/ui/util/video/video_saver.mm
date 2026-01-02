@@ -6,12 +6,27 @@
 
 #import <Photos/Photos.h>
 
+#import "base/files/file_path.h"
 #import "base/strings/sys_string_conversions.h"
+#import "ios/chrome/browser/download/model/download_directory_util.h"
+#import "ios/chrome/browser/drive_browser/model/active_download_item.h"
 #import "ios/chrome/browser/shared/model/browser/browser.h"
 #import "ios/web/public/navigation/referrer.h"
 #import "net/base/apple/url_conversions.h"
 
-@interface VideoSaver ()
+namespace {
+
+// Generates a unique filename for saved videos.
+NSString* GenerateVideoFileName() {
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  formatter.dateFormat = @"yyyyMMdd_HHmmss";
+  NSString* timestamp = [formatter stringFromDate:[NSDate date]];
+  return [NSString stringWithFormat:@"VID_%@.mp4", timestamp];
+}
+
+}  // namespace
+
+@interface VideoSaver () <NSURLSessionDownloadDelegate>
 // Base view controller for the alerts.
 @property(nonatomic, weak) UIViewController* baseViewController;
 @property(nonatomic, readonly) Browser* browser;
@@ -20,6 +35,12 @@
 @implementation VideoSaver {
   // Alert to give feedback to the user.
   UIAlertController* _alertController;
+  // Active download item for progress tracking.
+  ActiveDownloadItem* _activeDownloadItem;
+  // URL session for download with progress tracking.
+  NSURLSession* _urlSession;
+  // Current download task.
+  NSURLSessionDownloadTask* _downloadTask;
 }
 
 - (instancetype)initWithBrowser:(Browser*)browser {
@@ -63,74 +84,146 @@
     [request setValue:referrerString forHTTPHeaderField:@"Referer"];
   }
 
+  // Create active download item for progress tracking.
+  NSString* fileName = GenerateVideoFileName();
+  _activeDownloadItem = [[ActiveDownloadItem alloc]
+      initWithIdentifier:[[NSUUID UUID] UUIDString]
+                fileName:fileName
+            downloadType:ActiveDownloadTypeVideo
+               sourceURL:videoURL];
+
+  // Set cancel block.
   __weak VideoSaver* weakSelf = self;
-  NSURLSessionDownloadTask* downloadTask =
-      [[NSURLSession sharedSession]
-          downloadTaskWithRequest:request
-                completionHandler:^(NSURL* location, NSURLResponse* response,
-                                    NSError* error) {
-                  if (error || !location) {
-                    [weakSelf displayPrivacyErrorAlertOnMainQueue:
-                                  @"Unable to download video. Check your "
-                                  @"internet connection."];
-                    return;
-                  }
+  _activeDownloadItem.cancelBlock = ^{
+    [weakSelf cancelDownload];
+  };
 
-                  // Check HTTP status code
-                  if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-                    NSInteger statusCode =
-                        [(NSHTTPURLResponse*)response statusCode];
-                    if (statusCode < 200 || statusCode >= 300) {
-                      [weakSelf displayPrivacyErrorAlertOnMainQueue:
-                                    @"Unable to download video. Server error."];
-                      return;
-                    }
-                  }
+  // Notify that download has started.
+  [[NSNotificationCenter defaultCenter]
+      postNotificationName:kActiveDownloadAddedNotification
+                    object:_activeDownloadItem];
 
-                  // Move file to a permanent temp location before processing
-                  NSString* tempDir = NSTemporaryDirectory();
-                  NSString* fileName = [NSString
-                      stringWithFormat:@"video_%@.mp4",
-                                       [[NSUUID UUID] UUIDString]];
-                  NSString* destPath =
-                      [tempDir stringByAppendingPathComponent:fileName];
-                  NSURL* destURL = [NSURL fileURLWithPath:destPath];
+  // Create URL session with delegate for progress tracking.
+  NSURLSessionConfiguration* config =
+      [NSURLSessionConfiguration defaultSessionConfiguration];
+  _urlSession = [NSURLSession sessionWithConfiguration:config
+                                              delegate:self
+                                         delegateQueue:[NSOperationQueue mainQueue]];
 
-                  NSError* moveError = nil;
-                  [[NSFileManager defaultManager] moveItemAtURL:location
-                                                          toURL:destURL
-                                                          error:&moveError];
-                  if (moveError) {
-                    [weakSelf displayPrivacyErrorAlertOnMainQueue:
-                                  @"Unable to save video. Please try again."];
-                    return;
-                  }
+  _downloadTask = [_urlSession downloadTaskWithRequest:request];
+  [_downloadTask resume];
+}
 
-                  [weakSelf saveVideoFileToPhotos:destURL];
-                }];
-  [downloadTask resume];
+- (void)cancelDownload {
+  if (_downloadTask) {
+    [_downloadTask cancel];
+    _downloadTask = nil;
+  }
+  if (_activeDownloadItem) {
+    _activeDownloadItem.state = ActiveDownloadStateCancelled;
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:kActiveDownloadUpdatedNotification
+                      object:_activeDownloadItem];
+    _activeDownloadItem = nil;
+  }
+}
+
+#pragma mark - NSURLSessionDownloadDelegate
+
+- (void)URLSession:(NSURLSession*)session
+                 downloadTask:(NSURLSessionDownloadTask*)downloadTask
+                 didWriteData:(int64_t)bytesWritten
+            totalBytesWritten:(int64_t)totalBytesWritten
+    totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+  if (_activeDownloadItem) {
+    _activeDownloadItem.bytesReceived = totalBytesWritten;
+    _activeDownloadItem.totalBytes = totalBytesExpectedToWrite;
+    if (totalBytesExpectedToWrite > 0) {
+      _activeDownloadItem.progress =
+          (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
+    }
+
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:kActiveDownloadUpdatedNotification
+                      object:_activeDownloadItem];
+  }
+}
+
+- (void)URLSession:(NSURLSession*)session
+                 downloadTask:(NSURLSessionDownloadTask*)downloadTask
+    didFinishDownloadingToURL:(NSURL*)location {
+  // Check HTTP status code.
+  NSHTTPURLResponse* httpResponse =
+      (NSHTTPURLResponse*)downloadTask.response;
+  if (httpResponse && (httpResponse.statusCode < 200 ||
+                       httpResponse.statusCode >= 300)) {
+    _activeDownloadItem.state = ActiveDownloadStateFailed;
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:kActiveDownloadUpdatedNotification
+                      object:_activeDownloadItem];
+    [self displayPrivacyErrorAlertOnMainQueue:
+              @"Unable to download video. Server error."];
+    return;
+  }
+
+  [self saveVideoFileToDrive:location];
+}
+
+- (void)URLSession:(NSURLSession*)session
+                    task:(NSURLSessionTask*)task
+    didCompleteWithError:(NSError*)error {
+  if (error) {
+    if (error.code == NSURLErrorCancelled) {
+      // Download was cancelled by user.
+      return;
+    }
+    _activeDownloadItem.state = ActiveDownloadStateFailed;
+    _activeDownloadItem.error = error;
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:kActiveDownloadUpdatedNotification
+                      object:_activeDownloadItem];
+    [self displayPrivacyErrorAlertOnMainQueue:
+              @"Unable to download video. Check your internet connection."];
+  }
 }
 
 #pragma mark - Private
 
-// Save the video file to Photos library
-- (void)saveVideoFileToPhotos:(NSURL*)fileURL {
-  __weak VideoSaver* weakSelf = self;
-  [[PHPhotoLibrary sharedPhotoLibrary]
-      performChanges:^{
-        PHAssetResourceCreationOptions* options =
-            [[PHAssetResourceCreationOptions alloc] init];
-        [[PHAssetCreationRequest creationRequestForAsset]
-            addResourceWithType:PHAssetResourceTypeVideo
-                        fileURL:fileURL
-                        options:options];
-      }
-      completionHandler:^(BOOL success, NSError* error) {
-        // Clean up temp file
-        [[NSFileManager defaultManager] removeItemAtURL:fileURL error:nil];
+// Save the video file to internal drive directory.
+- (void)saveVideoFileToDrive:(NSURL*)tempFileURL {
+  // Get the downloads directory.
+  base::FilePath downloadsDir;
+  GetDownloadsDirectory(&downloadsDir);
 
-        [weakSelf videoDidFinishSavingWithError:error];
-      }];
+  NSString* fileName = _activeDownloadItem.fileName;
+  base::FilePath destPath =
+      downloadsDir.Append(base::SysNSStringToUTF8(fileName));
+  NSString* destPathString = base::SysUTF8ToNSString(destPath.value());
+  NSURL* destURL = [NSURL fileURLWithPath:destPathString];
+
+  NSError* moveError = nil;
+  [[NSFileManager defaultManager] moveItemAtURL:tempFileURL
+                                          toURL:destURL
+                                          error:&moveError];
+
+  if (moveError) {
+    _activeDownloadItem.state = ActiveDownloadStateFailed;
+    _activeDownloadItem.error = moveError;
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:kActiveDownloadUpdatedNotification
+                      object:_activeDownloadItem];
+    [self videoDidFinishSavingWithError:moveError];
+    return;
+  }
+
+  // Mark download as complete.
+  _activeDownloadItem.progress = 1.0f;
+  _activeDownloadItem.state = ActiveDownloadStateComplete;
+  [[NSNotificationCenter defaultCenter]
+      postNotificationName:kActiveDownloadUpdatedNotification
+                    object:_activeDownloadItem];
+
+  [self videoDidFinishSavingWithError:nil];
 }
 
 // Called after attempting to save the video
@@ -165,7 +258,7 @@
   [self dismissAlert];
 
   NSString* title = @"Video Saved";
-  NSString* message = @"The video has been saved to your Photos library.";
+  NSString* message = @"The video has been saved to Downloads.";
   _alertController =
       [UIAlertController alertControllerWithTitle:title
                                           message:message
