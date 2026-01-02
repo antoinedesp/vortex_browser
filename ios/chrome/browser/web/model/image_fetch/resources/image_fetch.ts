@@ -41,6 +41,18 @@ function getImageData(id: number, url: string): void {
 }
 
 /**
+ * Extracts the file extension from a URL, stripping query parameters.
+ * @param url The URL to extract the extension from.
+ * @returns The file extension (without the dot) or null if not found.
+ */
+function getExtensionFromUrl(url: string): string | null {
+  // Remove query parameters and fragment
+  const urlWithoutParams = url.split('?')[0]?.split('#')[0];
+  const extension = urlWithoutParams?.split('.').pop();
+  return extension || null;
+}
+
+/**
  * Returns image data directly from <img> by drawing it to <canvas> and export
  * it. If the <img> is cross-origin without "crossorigin=anonymous", this would
  * be prevented by the browser. The exported image is in a resolution of 96 dpi.
@@ -50,7 +62,7 @@ function getImageData(id: number, url: string): void {
  *   3. Exporting data from <img> failed.
  */
 function getImageDataByCanvas(url: string): string | null {
-  const extension = url.split('.').pop();
+  const extension = getExtensionFromUrl(url);
   if (!extension || extension.toLowerCase() === 'gif') {
     return null;
   }
