@@ -1,5 +1,6 @@
 #import "ios/chrome/browser/vortex_vpn/vortex_vpn_manager.h"
 #import <NetworkExtension/NetworkExtension.h>
+#import "ios/chrome/browser/ui/vortex_vpn_servers/vortex_vpn_server.h"
 #import "ios/third_party/vortex/src/vortex_constants.h"
 
 @interface VortexVPNManager ()
@@ -7,6 +8,7 @@
 @property(nonatomic, strong) NSHashTable<id<VortexVPNObserver>>* observers;
 @property(nonatomic, strong) NEVPNManager* vpnManager;
 @property(nonatomic, assign) BOOL connectionInProgress;
+@property(nonatomic, strong, nullable, readwrite) VortexVPNServer* selectedServer;
 @end
 
 @implementation VortexVPNManager
@@ -134,42 +136,64 @@
   self.status = VortexVPNStatusConnecting;
   [self notifyObservers];
 
-  __weak __typeof__(self) weakSelf = self;
-  [self fetchRandomServerWithCompletion:^(NSString* serverAddress,
-                                          NSString* sharedSecret,
-                                          NSString* username,
-                                          NSString* password,
-                                          NSError* error) {
-    __strong __typeof__(weakSelf) strongSelf = weakSelf;
-    if (!strongSelf) return;
+  // If a server is selected, use it directly; otherwise fetch a random server.
+  if (self.selectedServer) {
+    [self connectWithServerAddress:self.selectedServer.ip
+                      sharedSecret:self.selectedServer.psk
+                          username:self.selectedServer.username
+                          password:self.selectedServer.password];
+  } else {
+    __weak __typeof__(self) weakSelf = self;
+    [self fetchRandomServerWithCompletion:^(NSString* serverAddress,
+                                            NSString* sharedSecret,
+                                            NSString* username,
+                                            NSString* password,
+                                            NSError* error) {
+      __strong __typeof__(weakSelf) strongSelf = weakSelf;
+      if (!strongSelf) return;
 
-    if (error || serverAddress.length == 0 || sharedSecret.length == 0) {
-      [strongSelf handleConnectionError];
-      return;
-    }
-
-    [strongSelf configureWithServer:serverAddress
-                       sharedSecret:sharedSecret
-                           username:username
-                           password:password
-                  completionHandler:^(BOOL success, NSError* configError) {
-      if (!success || configError) {
+      if (error || serverAddress.length == 0 || sharedSecret.length == 0) {
         [strongSelf handleConnectionError];
         return;
       }
 
-      NEVPNStatus currentStatus = strongSelf.vpnManager.connection.status;
-      if (currentStatus == NEVPNStatusConnecting || currentStatus == NEVPNStatusConnected) {
-        return; // Already connecting/connected by system
-      }
-
-      NSError* startError = nil;
-      BOOL started = [strongSelf.vpnManager.connection startVPNTunnelAndReturnError:&startError];
-
-      if (!started || startError) {
-        [strongSelf handleConnectionError];
-      }
+      [strongSelf connectWithServerAddress:serverAddress
+                              sharedSecret:sharedSecret
+                                  username:username
+                                  password:password];
     }];
+  }
+}
+
+- (void)connectWithServerAddress:(NSString*)serverAddress
+                    sharedSecret:(NSString*)sharedSecret
+                        username:(NSString*)username
+                        password:(NSString*)password {
+  __weak __typeof__(self) weakSelf = self;
+  [self configureWithServer:serverAddress
+               sharedSecret:sharedSecret
+                   username:username
+                   password:password
+          completionHandler:^(BOOL success, NSError* configError) {
+    __strong __typeof__(weakSelf) strongSelf = weakSelf;
+    if (!strongSelf) return;
+
+    if (!success || configError) {
+      [strongSelf handleConnectionError];
+      return;
+    }
+
+    NEVPNStatus currentStatus = strongSelf.vpnManager.connection.status;
+    if (currentStatus == NEVPNStatusConnecting || currentStatus == NEVPNStatusConnected) {
+      return; // Already connecting/connected by system
+    }
+
+    NSError* startError = nil;
+    BOOL started = [strongSelf.vpnManager.connection startVPNTunnelAndReturnError:&startError];
+
+    if (!started || startError) {
+      [strongSelf handleConnectionError];
+    }
   }];
 }
 
@@ -410,6 +434,112 @@
       [observer vpnManagerDidUpdateStatus:self.status];
     }
   });
+}
+
+#pragma mark - Server Selection
+
+- (void)setSelectedServer:(VortexVPNServer* _Nullable)server {
+  _selectedServer = server;
+}
+
+- (void)clearSelectedServer {
+  [self setSelectedServer:nil];
+}
+
+- (void)fetchAllServersWithCompletion:
+    (void (^)(NSArray<VortexVPNServer*>* _Nullable servers,
+              NSError* _Nullable error))completion {
+  NSURL* url = [NSURL URLWithString:@"https://vortexbrowser.com/api/servers"];
+  if (!url) {
+    if (completion) {
+      NSError* err = [NSError errorWithDomain:@"VortexVPN"
+                                         code:1010
+                                     userInfo:@{
+                                       NSLocalizedDescriptionKey :
+                                           @"Invalid servers URL"
+                                     }];
+      completion(nil, err);
+    }
+    return;
+  }
+
+  NSURLSessionDataTask* task =
+      [[NSURLSession sharedSession]
+          dataTaskWithURL:url
+        completionHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
+          if (error) {
+            if (completion) {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+              });
+            }
+            return;
+          }
+
+          NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+          if (![httpResponse isKindOfClass:[NSHTTPURLResponse class]] ||
+              httpResponse.statusCode < 200 || httpResponse.statusCode >= 300) {
+            NSString* msg = [NSString
+                stringWithFormat:@"Unexpected status code: %ld",
+                                 (long)httpResponse.statusCode];
+            if (completion) {
+              NSError* statusError =
+                  [NSError errorWithDomain:@"VortexVPN"
+                                      code:1011
+                                  userInfo:@{NSLocalizedDescriptionKey : msg}];
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, statusError);
+              });
+            }
+            return;
+          }
+
+          if (!data) {
+            NSString* msg = @"Empty response body from servers endpoint";
+            if (completion) {
+              NSError* dataError =
+                  [NSError errorWithDomain:@"VortexVPN"
+                                      code:1012
+                                  userInfo:@{NSLocalizedDescriptionKey : msg}];
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, dataError);
+              });
+            }
+            return;
+          }
+
+          NSError* jsonError = nil;
+          id json = [NSJSONSerialization JSONObjectWithData:data
+                                                    options:0
+                                                      error:&jsonError];
+          if (jsonError || ![json isKindOfClass:[NSArray class]]) {
+            if (completion) {
+              dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, jsonError);
+              });
+            }
+            return;
+          }
+
+          NSArray* serverDicts = (NSArray*)json;
+          NSMutableArray<VortexVPNServer*>* servers =
+              [NSMutableArray arrayWithCapacity:serverDicts.count];
+
+          for (NSDictionary* dict in serverDicts) {
+            VortexVPNServer* server = [VortexVPNServer serverFromDictionary:dict];
+            if (server) {
+              [servers addObject:server];
+            }
+          }
+
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+              completion([servers copy], nil);
+            }
+          });
+        }];
+
+  [task resume];
 }
 
 @end

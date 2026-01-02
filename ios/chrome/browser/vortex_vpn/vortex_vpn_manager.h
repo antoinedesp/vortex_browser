@@ -2,6 +2,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class VortexVPNServer;
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, VortexVPNStatus) {
@@ -21,6 +23,9 @@ typedef NS_ENUM(NSInteger, VortexVPNStatus) {
 
 @property(nonatomic, readonly) BOOL isConnected;
 
+// The currently selected server (nil means use random/auto selection).
+@property(nonatomic, strong, nullable, readonly) VortexVPNServer* selectedServer;
+
 + (instancetype)sharedManager;
 
 - (void)addObserver:(id<VortexVPNObserver>)observer;
@@ -38,6 +43,18 @@ typedef NS_ENUM(NSInteger, VortexVPNStatus) {
           completionHandler:(void (^)(BOOL success, NSError* _Nullable error))completion;
 
 - (BOOL)isConfigured;
+
+// Server selection
+// Sets the server to use for future connections.
+- (void)setSelectedServer:(VortexVPNServer* _Nullable)server;
+
+// Clears the selected server (will use random/auto selection).
+- (void)clearSelectedServer;
+
+// Fetches all available servers from the API.
+- (void)fetchAllServersWithCompletion:
+    (void (^)(NSArray<VortexVPNServer*>* _Nullable servers,
+              NSError* _Nullable error))completion;
 
 @end
 
