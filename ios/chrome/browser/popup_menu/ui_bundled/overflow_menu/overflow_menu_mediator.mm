@@ -269,8 +269,11 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 @property(nonatomic, strong) OverflowMenuAction* askBWGAction;
 
 @property(nonatomic, strong) OverflowMenuAction* hideToolbarsAction;
+@property(nonatomic, strong) OverflowMenuAction* siteInfoAction;
 
 @property(nonatomic, strong) OverflowMenuDestination* vortexPaywallDestination;
+
+@property(nonatomic, strong) OverflowMenuDestination* vpnDestination;
 
 @end
 
@@ -543,6 +546,9 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   // Vortex Paywall destination.
   self.vortexPaywallDestination = [self newVortexPaywallDestination];
 
+  // VPN destination.
+  self.vpnDestination = [self newVPNDestination];
+
   [self logTranslateAvailability];
 
   self.reloadAction =
@@ -702,6 +708,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   if (base::FeatureList::IsEnabled(kHideToolbarsInOverflowMenu)) {
     self.hideToolbarsAction = [self collapseToolbars];
   }
+
+  self.siteInfoAction = [self newSiteInfoAction];
 
   if ([self isGeminiAvailable]) {
     self.askBWGAction = [self openAskBWGAction];
@@ -944,6 +952,21 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                handler:^{
                                  [weakSelf startCollapseToolbars];
                                }];
+}
+
+- (OverflowMenuAction*)newSiteInfoAction {
+  __weak __typeof(self) weakSelf = self;
+  return [self
+      createOverflowMenuActionWithNameID:IDS_IOS_TOOLS_MENU_SITE_INFORMATION
+                              actionType:overflow_menu::ActionType::SiteInfo
+                              symbolName:kTunerSymbol
+                            systemSymbol:NO
+                        monochromeSymbol:NO
+                         accessibilityID:kToolsMenuSiteInformation
+                            hideItemText:nil
+                                 handler:^{
+                                   [weakSelf openSiteInformation];
+                                 }];
 }
 
 - (OverflowMenuAction*)newReadLaterAction {
@@ -1333,6 +1356,20 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   return result;
 }
 
+- (OverflowMenuDestination*)newVPNDestination {
+  __weak __typeof(self) weakSelf = self;
+
+  return [self
+      createOverflowMenuDestination:IDS_IOS_TOOLS_MENU_VPN
+                        destination:overflow_menu::Destination::VPN
+                         symbolName:@"shield"
+                       systemSymbol:YES
+                    accessibilityID:kToolsMenuVPNId
+                            handler:^{
+                              [weakSelf openVPNServers];
+                            }];
+}
+
 - (NSString*)hideItemTextForDestination:
     (overflow_menu::Destination)destination {
   switch (destination) {
@@ -1340,6 +1377,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::Destination::Settings:
     case overflow_menu::Destination::SpotlightDebugger:
     case overflow_menu::Destination::VortexPaywall:
+    case overflow_menu::Destination::VPN:
       // These items are unhideable.
       return nil;
     case overflow_menu::Destination::Bookmarks:
@@ -1568,10 +1606,11 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       overflow_menu::Destination::History,
       overflow_menu::Destination::Downloads,
       overflow_menu::Destination::VortexPaywall,
+      overflow_menu::Destination::VPN,
       overflow_menu::Destination::ReadingList,
 //      overflow_menu::Destination::Passwords,
       overflow_menu::Destination::RecentTabs,
-      overflow_menu::Destination::SiteInfo,
+//      overflow_menu::Destination::SiteInfo,
       overflow_menu::Destination::Settings,
 //      overflow_menu::Destination::PriceNotifications,
 //      overflow_menu::Destination::WhatsNew,
@@ -2203,12 +2242,15 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return self.whatsNewDestination;
     case overflow_menu::Destination::SpotlightDebugger:
       return self.spotlightDebuggerDestination;
-    case overflow_menu::Destination::PriceNotifications:
+    case overflow_menu::Destination::PriceNotifications: {
       BOOL priceNotificationsActive =
           self.webState && IsPriceTrackingEnabled(ProfileIOS::FromBrowserState(
                                self.webState->GetBrowserState()));
       return (priceNotificationsActive) ? self.priceNotificationsDestination
                                         : nil;
+    }
+    case overflow_menu::Destination::VPN:
+      return self.vpnDestination;
   }
 }
 
@@ -2239,6 +2281,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return [self newSpotlightDebuggerDestination];
     case overflow_menu::Destination::PriceNotifications:
       return [self newPriceNotificationsDestination];
+    case overflow_menu::Destination::VPN:
+      return [self newVPNDestination];
   }
 }
 
@@ -2292,6 +2336,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   if (base::FeatureList::IsEnabled(kHideToolbarsInOverflowMenu)) {
     actions.push_back(overflow_menu::ActionType::HideToolbars);
   }
+
+  actions.push_back(overflow_menu::ActionType::SiteInfo);
 
   return actions;
 }
@@ -2358,6 +2404,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return self.askBWGAction;
     case overflow_menu::ActionType::HideToolbars:
       return self.hideToolbarsAction;
+    case overflow_menu::ActionType::SiteInfo:
+      return ([self currentWebPageSupportsSiteInfo]) ? self.siteInfoAction : nil;
   }
 }
 
@@ -2412,6 +2460,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
       return [self hideToolbarsAction];
     case overflow_menu::ActionType::TabGroup:
       return [self dynamicTabGroupAction];
+    case overflow_menu::ActionType::SiteInfo:
+      return [self newSiteInfoAction];
   }
 }
 
@@ -2881,6 +2931,12 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
   [self.applicationHandler showVortexPaywall];
 }
 
+// Dismisses the menu and opens VPN server selection.
+- (void)openVPNServers {
+  [self dismissMenu];
+  [self.applicationHandler showVPNServers];
+}
+
 - (void)enterpriseLearnMore {
   [self dismissMenu];
   [self.applicationHandler
@@ -2924,6 +2980,7 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
     case overflow_menu::Destination::SpotlightDebugger:
     case overflow_menu::Destination::PriceNotifications:
     case overflow_menu::Destination::VortexPaywall:
+    case overflow_menu::Destination::VPN:
       // Most destinations have no corresponding destination and nothing special
       // to be done when their shown state is toggled.
       return;
