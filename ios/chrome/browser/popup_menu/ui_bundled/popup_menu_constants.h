@@ -94,5 +94,7 @@ extern NSString* const kToolsMenuNewTabGroupId;
 extern NSString* const kToolsMenuMoveTabToGroupId;
 // Add Tab to Group accessibility Identifier.
 extern NSString* const kToolsMenuAddTabToGroupId;
+// VPN item accessibility Identifier.
+extern NSString* const kToolsMenuVPNId;
 
 #endif  // IOS_CHROME_BROWSER_POPUP_MENU_UI_BUNDLED_POPUP_MENU_CONSTANTS_H_
