@@ -106,6 +106,7 @@
 #import "ios/chrome/browser/download/coordinator/safari_download_coordinator.h"
 #import "ios/chrome/browser/download/coordinator/vcard_coordinator.h"
 #import "ios/chrome/browser/download/model/download_directory_util.h"
+#import "ios/chrome/browser/drive_browser/coordinator/drive_browser_coordinator.h"
 #import "ios/chrome/browser/download/model/external_app_util.h"
 #import "ios/chrome/browser/download/model/pass_kit_tab_helper.h"
 #import "ios/chrome/browser/download/ui/features.h"
@@ -518,6 +519,9 @@ const char kChromeAppStoreUrl[] =
 
 // Coordinator that manages the presentation of Download List UI.
 @property(nonatomic, strong) DownloadListCoordinator* downloadListCoordinator;
+
+// Coordinator that manages the presentation of Drive Browser UI.
+@property(nonatomic, strong) DriveBrowserCoordinator* driveBrowserCoordinator;
 
 // The coordinator that manages enterprise prompts.
 @property(nonatomic, strong)
@@ -1537,6 +1541,9 @@ const char kChromeAppStoreUrl[] =
     self.downloadListCoordinator = nil;
   }
 
+  [self.driveBrowserCoordinator stop];
+  self.driveBrowserCoordinator = nil;
+
   [self.browserContainerCoordinator stop];
   self.browserContainerCoordinator = nil;
 
@@ -2337,22 +2344,19 @@ const char kChromeAppStoreUrl[] =
 }
 
 - (void)showDownloadsFolder {
-  if (IsDownloadListEnabled()) {
-    [self showDownloadList];
-    return;
-  }
-  NSURL* URL = GetFilesAppUrl();
-  if (!URL) {
-    return;
-  }
+  // Redirect to the new drive browser.
+  [self showDriveBrowser];
+}
 
-  [[UIApplication sharedApplication] openURL:URL
-                                     options:@{}
-                           completionHandler:nil];
-
+- (void)showDriveBrowser {
   base::UmaHistogramEnumeration(
       "Download.OpenDownloads.PerProfileType",
       profile_metrics::GetBrowserProfileType(self.profile));
+
+  self.driveBrowserCoordinator = [[DriveBrowserCoordinator alloc]
+      initWithBaseViewController:self.viewController
+                         browser:self.browser];
+  [self.driveBrowserCoordinator start];
 }
 
 - (void)showRecentTabs {
