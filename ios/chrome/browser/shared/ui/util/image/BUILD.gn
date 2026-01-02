@@ -25,6 +25,8 @@ source_set("web") {
     "//components/image_fetcher/ios",
     "//components/strings",
     "//ios/chrome/app/strings",
+    "//ios/chrome/browser/download/model",
+    "//ios/chrome/browser/drive_browser/model",
     "//ios/chrome/browser/shared/coordinator/alert",
     "//ios/chrome/browser/shared/model/browser",
     "//ios/chrome/browser/shared/ui/util",
