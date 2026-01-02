@@ -6,15 +6,10 @@
 
 #import <Photos/Photos.h>
 
-#import "base/files/file_path.h"
-#import "base/files/file_util.h"
 #import "base/strings/sys_string_conversions.h"
-#import "base/task/thread_pool.h"
-#import "components/strings/grit/components_strings.h"
 #import "ios/chrome/browser/shared/model/browser/browser.h"
-#import "ios/chrome/browser/web/model/image_fetch/image_fetch_tab_helper.h"
-#import "ios/chrome/grit/ios_strings.h"
-#import "ui/base/l10n/l10n_util.h"
+#import "ios/web/public/navigation/referrer.h"
+#import "net/base/apple/url_conversions.h"
 
 @interface VideoSaver ()
 // Base view controller for the alerts.
@@ -47,58 +42,76 @@
     baseViewController:(UIViewController*)baseViewController {
   self.baseViewController = baseViewController;
 
-  ImageFetchTabHelper* tabHelper = ImageFetchTabHelper::FromWebState(webState);
-  DCHECK(tabHelper);
-
-  __weak VideoSaver* weakSelf = self;
-  tabHelper->GetImageData(URL, referrer, ^(NSData* data) {
-    [weakSelf didGetVideoData:data];
-  });
-}
-
-#pragma mark - Private
-
-// Callback when the video `data` got retrieved from the tab.
-- (void)didGetVideoData:(NSData*)data {
-  if (data.length == 0) {
+  // Use NSURLSession for video downloads - better for large files than
+  // ImageFetchTabHelper which loads everything into memory.
+  NSURL* videoURL = net::NSURLWithGURL(URL);
+  if (!videoURL) {
     [self displayPrivacyErrorAlertOnMainQueue:
-              @"Unable to download video. Check your internet connection."];
+              @"Unable to download video. Invalid URL."];
     return;
   }
 
-  // Save video to a temporary file first, then import to Photos
-  __weak VideoSaver* weakSelf = self;
-  base::ThreadPool::PostTaskAndReplyWithResult(
-      FROM_HERE, {base::MayBlock(), base::TaskPriority::USER_VISIBLE},
-      base::BindOnce(
-          [](NSData* videoData) -> NSURL* {
-            NSString* tempDir = NSTemporaryDirectory();
-            NSString* fileName = [NSString
-                stringWithFormat:@"video_%@.mp4",
-                                 [[NSUUID UUID] UUIDString]];
-            NSString* filePath = [tempDir stringByAppendingPathComponent:fileName];
+  NSMutableURLRequest* request =
+      [NSMutableURLRequest requestWithURL:videoURL];
+  [request setHTTPMethod:@"GET"];
+  [request setTimeoutInterval:60.0];
 
-            if ([videoData writeToFile:filePath atomically:YES]) {
-              return [NSURL fileURLWithPath:filePath];
-            }
-            return nil;
-          },
-          data),
-      base::BindOnce(
-          [](VideoSaver* strongSelf, NSURL* tempFileURL) {
-            if (!strongSelf) {
-              return;
-            }
-            if (!tempFileURL) {
-              [strongSelf
-                  displayPrivacyErrorAlertOnMainQueue:
-                      @"Unable to save video. Please try again."];
-              return;
-            }
-            [strongSelf saveVideoFileToPhotos:tempFileURL];
-          },
-          weakSelf));
+  // Set referrer if available
+  if (referrer.url.is_valid()) {
+    NSString* referrerString =
+        base::SysUTF8ToNSString(referrer.url.spec());
+    [request setValue:referrerString forHTTPHeaderField:@"Referer"];
+  }
+
+  __weak VideoSaver* weakSelf = self;
+  NSURLSessionDownloadTask* downloadTask =
+      [[NSURLSession sharedSession]
+          downloadTaskWithRequest:request
+                completionHandler:^(NSURL* location, NSURLResponse* response,
+                                    NSError* error) {
+                  if (error || !location) {
+                    [weakSelf displayPrivacyErrorAlertOnMainQueue:
+                                  @"Unable to download video. Check your "
+                                  @"internet connection."];
+                    return;
+                  }
+
+                  // Check HTTP status code
+                  if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                    NSInteger statusCode =
+                        [(NSHTTPURLResponse*)response statusCode];
+                    if (statusCode < 200 || statusCode >= 300) {
+                      [weakSelf displayPrivacyErrorAlertOnMainQueue:
+                                    @"Unable to download video. Server error."];
+                      return;
+                    }
+                  }
+
+                  // Move file to a permanent temp location before processing
+                  NSString* tempDir = NSTemporaryDirectory();
+                  NSString* fileName = [NSString
+                      stringWithFormat:@"video_%@.mp4",
+                                       [[NSUUID UUID] UUIDString]];
+                  NSString* destPath =
+                      [tempDir stringByAppendingPathComponent:fileName];
+                  NSURL* destURL = [NSURL fileURLWithPath:destPath];
+
+                  NSError* moveError = nil;
+                  [[NSFileManager defaultManager] moveItemAtURL:location
+                                                          toURL:destURL
+                                                          error:&moveError];
+                  if (moveError) {
+                    [weakSelf displayPrivacyErrorAlertOnMainQueue:
+                                  @"Unable to save video. Please try again."];
+                    return;
+                  }
+
+                  [weakSelf saveVideoFileToPhotos:destURL];
+                }];
+  [downloadTask resume];
 }
+
+#pragma mark - Private
 
 // Save the video file to Photos library
 - (void)saveVideoFileToPhotos:(NSURL*)fileURL {
