@@ -9,6 +9,8 @@ source_set("video") {
   ]
   deps = [
     "//base",
+    "//ios/chrome/browser/download/model",
+    "//ios/chrome/browser/drive_browser/model",
     "//ios/chrome/browser/shared/model/browser",
     "//ios/web/public",
     "//net",
