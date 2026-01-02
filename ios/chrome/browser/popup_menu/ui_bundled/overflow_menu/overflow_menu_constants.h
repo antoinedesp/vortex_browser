@@ -24,6 +24,7 @@ enum class Destination {
   SpotlightDebugger = 9,
   PriceNotifications = 10,
   VortexPaywall = 11,
+  VPN = 12,
 };
 // LINT.ThenChange(overflow_menu_metrics.h:destination)
 
@@ -58,6 +59,7 @@ enum class ActionType {
   AskBWG,
   HideToolbars,
   TabGroup,
+  SiteInfo,
 };
 // LINT.ThenChange(overflow_menu_metrics.h:actionType)
 

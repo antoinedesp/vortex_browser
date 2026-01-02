@@ -56,6 +56,9 @@ TEST_F(OverflowMenuConstantsTest, DestinationConversion) {
       case overflow_menu::Destination::VortexPaywall:
         finalExpectedDestination = overflow_menu::Destination::VortexPaywall;
         break;
+      case overflow_menu::Destination::VPN:
+        finalExpectedDestination = overflow_menu::Destination::VPN;
+        break;
     }
 
     // If there's no finalExpectedDestination, then the loop has looped through
@@ -99,6 +102,15 @@ TEST_F(OverflowMenuConstantsTest, ActionTypeConversion) {
       case overflow_menu::ActionType::ReadingList:
         finalExpectedActionType = overflow_menu::ActionType::ReadingList;
         break;
+      case overflow_menu::ActionType::AdBlocker:
+        finalExpectedActionType = overflow_menu::ActionType::AdBlocker;
+        break;
+      case overflow_menu::ActionType::VPNStartOnLaunch:
+        finalExpectedActionType = overflow_menu::ActionType::VPNStartOnLaunch;
+        break;
+      case overflow_menu::ActionType::ClearDataOnClose:
+        finalExpectedActionType = overflow_menu::ActionType::ClearDataOnClose;
+        break;
       case overflow_menu::ActionType::ClearBrowsingData:
         finalExpectedActionType = overflow_menu::ActionType::ClearBrowsingData;
         break;
@@ -116,9 +128,6 @@ TEST_F(OverflowMenuConstantsTest, ActionTypeConversion) {
         break;
       case overflow_menu::ActionType::ReportAnIssue:
         finalExpectedActionType = overflow_menu::ActionType::ReportAnIssue;
-        break;
-      case overflow_menu::ActionType::Help:
-        finalExpectedActionType = overflow_menu::ActionType::Help;
         break;
       case overflow_menu::ActionType::ShareChrome:
         finalExpectedActionType = overflow_menu::ActionType::ShareChrome;
@@ -146,6 +155,9 @@ TEST_F(OverflowMenuConstantsTest, ActionTypeConversion) {
         break;
       case overflow_menu::ActionType::TabGroup:
         finalExpectedActionType = overflow_menu::ActionType::TabGroup;
+        break;
+      case overflow_menu::ActionType::SiteInfo:
+        finalExpectedActionType = overflow_menu::ActionType::SiteInfo;
         break;
     }
 

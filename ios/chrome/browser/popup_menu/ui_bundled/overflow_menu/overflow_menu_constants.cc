@@ -37,6 +37,8 @@ std::optional<Destination> DestinationForStringName(std::string destination) {
     return overflow_menu::Destination::SpotlightDebugger;
   } else if (destination == "overflow_menu::Destination::VortexPaywall") {
     return overflow_menu::Destination::VortexPaywall;
+  } else if (destination == "overflow_menu::Destination::VPN") {
+    return overflow_menu::Destination::VPN;
   } else {
     return std::nullopt;
   }
@@ -72,6 +74,8 @@ std::string StringNameForDestination(Destination destination) {
       return "overflow_menu::Destination::SpotlightDebugger";
     case overflow_menu::Destination::VortexPaywall:
       return "overflow_menu::Destination::VortexPaywall";
+    case overflow_menu::Destination::VPN:
+      return "overflow_menu::Destination::VPN";
   }
 }
 // LINT.ThenChange(:stringToDestination)
@@ -132,6 +136,8 @@ std::optional<ActionType> ActionTypeForStringName(std::string action) {
     return overflow_menu::ActionType::HideToolbars;
   } else if (action == "TabGroup") {
     return overflow_menu::ActionType::TabGroup;
+  } else if (action == "SiteInfo") {
+    return overflow_menu::ActionType::SiteInfo;
   } else {
     return std::nullopt;
   }
@@ -191,6 +197,8 @@ std::string StringNameForActionType(ActionType action) {
       return "HideToolbars";
     case overflow_menu::ActionType::TabGroup:
       return "TabGroup";
+    case overflow_menu::ActionType::SiteInfo:
+      return "SiteInfo";
   }
 }
 // LINT.ThenChange(/ios/chrome/browser/popup_menu/ui_bundled/overflow_menu/overflow_menu_constants.cc:stringToActionType)
@@ -233,6 +241,9 @@ void RecordUmaActionForDestination(Destination destination) {
       break;
     case Destination::VortexPaywall:
       base::RecordAction(base::UserMetricsAction("MobileMenuVortexPaywall"));
+      break;
+    case Destination::VPN:
+      base::RecordAction(base::UserMetricsAction("MobileMenuVPN"));
       break;
     case overflow_menu::Destination::SpotlightDebugger:
       // No need to log metrics for a debug-only feature.
