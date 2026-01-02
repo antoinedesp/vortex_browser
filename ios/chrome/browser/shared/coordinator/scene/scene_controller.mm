@@ -230,6 +230,7 @@
 #import "services/network/public/cpp/shared_url_loader_factory.h"
 #import "ui/base/l10n/l10n_util.h"
 #import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_coordinator.h"
+#import "ios/chrome/browser/ui/vortex_vpn_servers/vortex_vpn_servers_coordinator.h"
 #import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
 
 #if BUILDFLAG(ENABLE_WIDGETS_FOR_MIM)
@@ -417,6 +418,7 @@ void RecordIfNeededSigninFullscreenPromoEvent(
                                SettingsNavigationControllerDelegate,
                                TabGridCoordinatorDelegate,
                                VortexPaywallCoordinatorDelegate,
+                               VortexVPNServersCoordinatorDelegate,
                                YoutubeIncognitoCoordinatorDelegate> {
   std::unique_ptr<WebStateListObserverBridge> _webStateListForwardingObserver;
   std::unique_ptr<PolicyWatcherBrowserAgentObserverBridge>
@@ -546,6 +548,9 @@ void RecordIfNeededSigninFullscreenPromoEvent(
 
 @property(nonatomic, strong)
     VortexPaywallCoordinator* vortexPaywallCoordinator;
+
+@property(nonatomic, strong)
+    VortexVPNServersCoordinator* vpnServersCoordinator;
 @end
 
 @implementation SceneController
@@ -1519,6 +1524,9 @@ void RecordIfNeededSigninFullscreenPromoEvent(
 
   [self.vortexPaywallCoordinator stop];
   self.vortexPaywallCoordinator = nil;
+
+  [self.vpnServersCoordinator stop];
+  self.vpnServersCoordinator = nil;
 
   [self.sceneState.profileState removeObserver:self];
   _sceneURLLoadingService.reset();
@@ -2537,6 +2545,32 @@ using UserFeedbackDataCallback =
 
   UIViewController* topViewController = self.activeViewController;
   [topViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showVPNServers {
+  if (self.vpnServersCoordinator) {
+    [self.vpnServersCoordinator stop];
+    self.vpnServersCoordinator = nil;
+  }
+
+  Browser* browser = self.mainInterface.browser;
+  if (!browser) {
+    return;
+  }
+
+  UIViewController* baseViewController = self.currentInterface.viewController;
+  if (!baseViewController) {
+    return;
+  }
+
+  VortexVPNServersCoordinator* coordinator =
+      [[VortexVPNServersCoordinator alloc]
+          initWithBaseViewController:baseViewController
+                             browser:browser];
+  coordinator.delegate = self;
+  self.vpnServersCoordinator = coordinator;
+
+  [self.vpnServersCoordinator start];
 }
 
 - (void)openNewWindowWithActivity:(NSUserActivity*)userActivity {
@@ -4359,6 +4393,15 @@ using UserFeedbackDataCallback =
 
   UIViewController* topViewController = self.activeViewController;
   [topViewController presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - VortexVPNServersCoordinatorDelegate
+
+- (void)vortexVPNServersCoordinatorDidRequestDismissal:
+    (VortexVPNServersCoordinator*)coordinator {
+  CHECK_EQ(coordinator, self.vpnServersCoordinator);
+  [self.vpnServersCoordinator stop];
+  self.vpnServersCoordinator = nil;
 }
 
 #pragma mark - Private methods
