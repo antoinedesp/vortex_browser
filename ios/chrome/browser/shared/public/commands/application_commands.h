@@ -184,6 +184,9 @@ enum class TabGridOpeningMode {
 
 // Shows the Vortex paywall (RevenueCat)
 - (void)showVortexPaywall;
+
+// Shows the VPN server selection UI.
+- (void)showVPNServers;
 @end
 
 #endif  // IOS_CHROME_BROWSER_SHARED_PUBLIC_COMMANDS_APPLICATION_COMMANDS_H_
