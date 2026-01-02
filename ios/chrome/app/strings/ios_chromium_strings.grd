@@ -645,10 +645,10 @@ Things to consider:
         Search with voice in Vortex
       </message>
       <message name="IDS_IOS_INTENTS_SET_CHROME_DEFAULT_BROWSER_DESCRIPTION" desc="Siri Shortcut description to set Vortex as default browser [iOS only]">
-        Opens the Vortex Setting to set Vortex as Default Browser.
+        Opens Vortex Settings for default browser configuration.
       </message>
       <message name="IDS_IOS_INTENTS_SET_CHROME_DEFAULT_BROWSER_TITLE" desc="Siri Shortcut for set Vortex as default browser title [iOS only]">
-        Set Vortex As default browser
+        Make Vortex the default browser
       </message>
       <message name="IDS_IOS_INTENTS_VIEW_CHROME_HISTORY_DESCRIPTION" desc="Siri Shortcut description to view Vortex history [iOS only]">
         Opens your Vortex History page.
