@@ -12,10 +12,12 @@ buildflag_header("features") {
 
 source_set("model") {
   sources = [
-    "memory_debugger.h",
-    "memory_debugger.mm",
-    "memory_debugger_manager.h",
-    "memory_debugger_manager.mm",
+    # Memory debugger uses private API (_performMemoryWarning) that causes
+    # App Store rejection. Commented out for now.
+    # "memory_debugger.h",
+    # "memory_debugger.mm",
+    # "memory_debugger_manager.h",
+    # "memory_debugger_manager.mm",
     "memory_metrics.cc",
     "memory_metrics.h",
   ]
