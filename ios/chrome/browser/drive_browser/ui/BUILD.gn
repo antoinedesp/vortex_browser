@@ -1,0 +1,40 @@
+# Copyright 2025 The Chromium Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+source_set("ui") {
+  sources = [
+    "active_download_cell.h",
+    "active_download_cell.mm",
+    "drive_browser_constants.h",
+    "drive_browser_constants.mm",
+    "drive_browser_consumer.h",
+    "drive_browser_empty_view.h",
+    "drive_browser_empty_view.mm",
+    "drive_browser_mutator.h",
+    "drive_browser_table_view_controller.h",
+    "drive_browser_table_view_controller.mm",
+  ]
+
+  deps = [
+    "//base",
+    "//ios/chrome/app/strings",
+    "//ios/chrome/browser/drive_browser/model",
+    "//ios/chrome/browser/shared/ui/symbols",
+    "//ios/chrome/common/ui/colors",
+    "//ui/base",
+  ]
+
+  frameworks = [ "UIKit.framework" ]
+}
+
+source_set("unit_tests") {
+  testonly = true
+  sources = []
+  deps = [
+    ":ui",
+    "//base",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+}
