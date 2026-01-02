@@ -60,7 +60,8 @@ enum class IOSOverflowMenuDestination {
   kSpotlightDebugger = 9,
   kPriceNotifications = 10,
   kVortexPaywall = 11,
-  kMaxValue = kVortexPaywall,
+  kVPN = 12,
+  kMaxValue = kVPN,
 };
 // LINT.ThenChange(overflow_menu_constants.h:destination)
 
@@ -100,7 +101,8 @@ enum class IOSOverflowMenuAction {
   kAdBlocker = 23,
   kVPNStartOnLaunch = 24,
   kClearDataOnClose = 25,
-  kMaxValue = kClearDataOnClose,
+  kSiteInfo = 26,
+  kMaxValue = kSiteInfo,
 };
 // LINT.ThenChange(overflow_menu_constants.h:actionType)
 

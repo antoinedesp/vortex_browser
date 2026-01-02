@@ -35,6 +35,8 @@ IOSOverflowMenuDestination HistogramDestinationFromDestination(
       return IOSOverflowMenuDestination::kPriceNotifications;
     case overflow_menu::Destination::VortexPaywall:
       return IOSOverflowMenuDestination::kVortexPaywall;
+    case overflow_menu::Destination::VPN:
+      return IOSOverflowMenuDestination::kVPN;
   }
 }
 
@@ -91,6 +93,8 @@ IOSOverflowMenuAction HistogramActionFromActionType(
       return IOSOverflowMenuAction::kHideToolbars;
     case overflow_menu::ActionType::TabGroup:
       return IOSOverflowMenuAction::kTabGroup;
+    case overflow_menu::ActionType::SiteInfo:
+      return IOSOverflowMenuAction::kSiteInfo;
   }
 }
 
