@@ -111,6 +111,7 @@ source_set("ui_bundled") {
     "//ios/chrome/browser/download/coordinator/auto_deletion",
     "//ios/chrome/browser/download/model",
     "//ios/chrome/browser/download/ui:features",
+    "//ios/chrome/browser/drive_browser/coordinator",
     "//ios/chrome/browser/drive_file_picker/coordinator",
     "//ios/chrome/browser/enterprise/data_controls/coordinator",
     "//ios/chrome/browser/enterprise/data_controls/model",
