@@ -93,7 +93,8 @@
 #import "ios/chrome/browser/first_run/model/first_run.h"
 #import "ios/chrome/browser/first_run/ui_bundled/first_run_util.h"
 #import "ios/chrome/browser/main/ui_bundled/browser_view_wrangler.h"
-#import "ios/chrome/browser/memory/model/memory_debugger_manager.h"
+// Memory debugger uses private API - commented out for App Store builds.
+// #import "ios/chrome/browser/memory/model/memory_debugger_manager.h"
 #import "ios/chrome/browser/metrics/model/first_user_action_recorder.h"
 #import "ios/chrome/browser/metrics/model/incognito_usage_app_state_agent.h"
 #import "ios/chrome/browser/metrics/model/tab_usage_recorder_browser_agent.h"
@@ -489,9 +490,8 @@ std::string GetProfileNameForChoice(ProfileChoice choice,
   // Registrar for pref changes notifications to the local state.
   PrefChangeRegistrar _localStatePrefChangeRegistrar;
 
-  // The class in charge of showing/hiding the memory debugger when the
-  // appropriate pref changes.
-  MemoryDebuggerManager* _memoryDebuggerManager;
+  // Memory debugger uses private API - commented out for App Store builds.
+  // MemoryDebuggerManager* _memoryDebuggerManager;
 
   // Metrics mediator used to check and update the metrics accordingly to the
   // user preferences.
@@ -1404,22 +1404,13 @@ std::string GetProfileNameForChoice(ProfileChoice choice,
 }
 
 - (void)scheduleMemoryDebuggingTools {
-  if (experimental_flags::IsMemoryDebuggingEnabled()) {
-    __weak MainController* weakSelf = self;
-    [_appState.deferredRunner
-        enqueueBlockNamed:kMemoryDebuggingToolsStartup
-                    block:^{
-                      [weakSelf initializedMemoryDebuggingTools];
-                    }];
-  }
+  // Memory debugger uses private API (_performMemoryWarning) - disabled for
+  // App Store builds.
 }
 
 - (void)initializedMemoryDebuggingTools {
-  DCHECK(!_memoryDebuggerManager);
-  DCHECK(experimental_flags::IsMemoryDebuggingEnabled());
-  _memoryDebuggerManager = [[MemoryDebuggerManager alloc]
-      initWithView:self.appState.foregroundActiveScene.window
-             prefs:GetApplicationContext()->GetLocalState()];
+  // Memory debugger uses private API (_performMemoryWarning) - disabled for
+  // App Store builds.
 }
 
 // Schedule a call to `scheduleSaveFieldTrialValuesForExternals` for deferred
