@@ -55,6 +55,7 @@
 #import "ios/chrome/browser/download/model/browser_download_service_factory.h"
 #import "ios/chrome/browser/download/model/download_file_service_factory.h"
 #import "ios/chrome/browser/download/model/download_record_service_factory.h"
+#import "ios/chrome/browser/drive_browser/model/drive_browser_service_factory.h"
 #import "ios/chrome/browser/drive/model/drive_service_factory.h"
 #import "ios/chrome/browser/enterprise/connectors/connectors_service_factory.h"
 #import "ios/chrome/browser/enterprise/connectors/reporting/ios_realtime_reporting_client_factory.h"
@@ -299,6 +300,7 @@ void EnsureProfileKeyedServiceFactoriesBuilt() {
   if (IsDownloadListEnabled()) {
     DownloadRecordServiceFactory::GetInstance();
   }
+  DriveBrowserServiceFactory::GetInstance();
   ExternalFileRemoverFactory::GetInstance();
   BwgServiceFactory::GetInstance();
   GoogleGroupsManagerFactory::GetInstance();
