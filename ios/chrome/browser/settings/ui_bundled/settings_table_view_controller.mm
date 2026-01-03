@@ -521,13 +521,15 @@ struct EnhancedSafeBrowsingActivePromoData
   }
 
   // Basics section
-  [model addSectionWithIdentifier:SettingsSectionIdentifierBasics];
-  [model addItem:[self passwordsDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierBasics];
-  [model addItem:[self autoFillCreditCardDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierBasics];
-  [model addItem:[self autoFillProfileDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierBasics];
+  if (!IsCompactSettingsEnabled()) {
+    [model addSectionWithIdentifier:SettingsSectionIdentifierBasics];
+    [model addItem:[self passwordsDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierBasics];
+    [model addItem:[self autoFillCreditCardDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierBasics];
+    [model addItem:[self autoFillProfileDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierBasics];
+  }
 
   // Advanced Section
   [model addSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
@@ -543,32 +545,38 @@ struct EnhancedSafeBrowsingActivePromoData
   }
   [model addItem:[self voiceSearchDetailItem]
       toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
-  [model addItem:[self safetyCheckDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+  if (!IsCompactSettingsEnabled()) {
+    [model addItem:[self safetyCheckDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+  }
   [model addItem:[self privacyDetailItem]
       toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
 
-  DiscoverFeedEligibility discoverFeedEligiblity =
-      _discoverFeedVisibilityBrowserAgent->GetEligibility();
-  switch (discoverFeedEligiblity) {
-    case DiscoverFeedEligibility::kEligible:
-      [model addItem:self.feedSettingsItem
-          toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
-      break;
-    case DiscoverFeedEligibility::kDisabledByEnterprisePolicy:
-      [model addItem:self.managedFeedSettingsItem
-          toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
-      break;
-    case DiscoverFeedEligibility::kIneligibleReasonUnknown:
-      break;
+  if (!IsCompactSettingsEnabled()) {
+    DiscoverFeedEligibility discoverFeedEligiblity =
+        _discoverFeedVisibilityBrowserAgent->GetEligibility();
+    switch (discoverFeedEligiblity) {
+      case DiscoverFeedEligibility::kEligible:
+        [model addItem:self.feedSettingsItem
+            toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+        break;
+      case DiscoverFeedEligibility::kDisabledByEnterprisePolicy:
+        [model addItem:self.managedFeedSettingsItem
+            toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+        break;
+      case DiscoverFeedEligibility::kIneligibleReasonUnknown:
+        break;
+    }
   }
 
   PhotosService* photosService = PhotosServiceFactory::GetForProfile(_profile);
   bool shouldShowDownloadsSettings =
       (photosService && photosService->IsSupported()) ||
       IsDownloadAutoDeletionFeatureEnabled();
-  [model addItem:[self tabsSettingsDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+  if (!IsCompactSettingsEnabled()) {
+    [model addItem:[self tabsSettingsDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierAdvanced];
+  }
 
   // Info Section
   [model addSectionWithIdentifier:SettingsSectionIdentifierInfo];
@@ -586,15 +594,18 @@ struct EnhancedSafeBrowsingActivePromoData
   }
   [model addItem:[self bandwidthManagementDetailItem]
       toSectionWithIdentifier:SettingsSectionIdentifierInfo];
-  [model addItem:[self aboutChromeDetailItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierInfo];
+  if (!IsCompactSettingsEnabled()) {
+    [model addItem:[self aboutChromeDetailItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierInfo];
+  }
 
   // Debug Section
   if ([self hasDebugSection]) {
     [model addSectionWithIdentifier:SettingsSectionIdentifierDebug];
   }
 
-  if (experimental_flags::IsMemoryDebuggingEnabled()) {
+  if (!IsCompactSettingsEnabled() &&
+      experimental_flags::IsMemoryDebuggingEnabled()) {
     _showMemoryDebugToolsItem = [self showMemoryDebugSwitchItem];
     [model addItem:_showMemoryDebugToolsItem
         toSectionWithIdentifier:SettingsSectionIdentifierDebug];
@@ -682,8 +693,10 @@ struct EnhancedSafeBrowsingActivePromoData
   }
 
   // Google Services item.
-  [model addItem:[self googleServicesCellItem]
-      toSectionWithIdentifier:SettingsSectionIdentifierAccount];
+  if (!IsCompactSettingsEnabled()) {
+    [model addItem:[self googleServicesCellItem]
+        toSectionWithIdentifier:SettingsSectionIdentifierAccount];
+  }
 }
 
 // Adds the Enhanced Safe Browsing inline promo to promote ESB.
