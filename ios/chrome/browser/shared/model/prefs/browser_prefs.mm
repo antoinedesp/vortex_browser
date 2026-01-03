@@ -474,6 +474,9 @@ void RegisterLocalStatePrefs(PrefRegistrySimple* registry) {
 
   // Memory debugger uses private API - commented out for App Store builds.
   // [MemoryDebuggerManager registerLocalState:registry];
+  // Register the pref even though memory debugger is disabled, to prevent crash
+  // in Settings screen.
+  registry->RegisterBooleanPref(prefs::kShowMemoryDebuggingTools, false);
   [IncognitoReauthSceneAgent registerLocalState:registry];
   [VariationsAppStateAgent registerLocalState:registry];
 
