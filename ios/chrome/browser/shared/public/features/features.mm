@@ -1283,3 +1283,9 @@ BASE_FEATURE(kIOSWebContextMenuNewTitle, base::FEATURE_DISABLED_BY_DEFAULT);
 bool IsIOSWebContextMenuNewTitleEnabled() {
   return base::FeatureList::IsEnabled(kIOSWebContextMenuNewTitle);
 }
+
+BASE_FEATURE(kCompactSettings, base::FEATURE_ENABLED_BY_DEFAULT);
+
+bool IsCompactSettingsEnabled() {
+  return base::FeatureList::IsEnabled(kCompactSettings);
+}

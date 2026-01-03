@@ -1200,4 +1200,12 @@ BASE_DECLARE_FEATURE(kIOSWebContextMenuNewTitle);
 // Returns true if the IOSWebContextMenuNewTitle feature is enabled.
 bool IsIOSWebContextMenuNewTitleEnabled();
 
+// Enables compact settings mode, hiding various settings items like Google
+// Services, Passwords, Payment Methods, Addresses, Memory Debug, Discover
+// Feed, Tabs, and About Chrome.
+BASE_DECLARE_FEATURE(kCompactSettings);
+
+// Returns true if the CompactSettings feature is enabled.
+bool IsCompactSettingsEnabled();
+
 #endif  // IOS_CHROME_BROWSER_SHARED_PUBLIC_FEATURES_FEATURES_H_
