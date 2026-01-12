@@ -4,13 +4,69 @@
 # Setup:
 #   cd third_party/firebase
 #   carthage update --use-xcframeworks --platform iOS
+#
+# Note: Firebase Carthage distribution provides static libraries (.a archives
+# inside .framework bundles), NOT dynamic frameworks. These are linked directly
+# into the executable, not bundled into Frameworks/.
 
 import("//build/config/ios/config.gni")
 import("//build/config/ios/rules.gni")
 
+if (target_environment == "device") {
+  _firebase_arch_dir = "ios-arm64"
+} else {
+  _firebase_arch_dir = "ios-arm64_x86_64-simulator"
+}
+
+_firebase_base = "//third_party/firebase/Carthage/Build"
+
 config("firebase_ios_config") {
+  # Header include paths
+  include_dirs = [
+    "$_firebase_base/FirebaseCore.xcframework/$_firebase_arch_dir/FirebaseCore.framework/Headers",
+    "$_firebase_base/FirebaseAnalytics.xcframework/$_firebase_arch_dir/FirebaseAnalytics.framework/Headers",
+    "$_firebase_base/FirebaseCoreInternal.xcframework/$_firebase_arch_dir/FirebaseCoreInternal.framework/Headers",
+    "$_firebase_base/FirebaseInstallations.xcframework/$_firebase_arch_dir/FirebaseInstallations.framework/Headers",
+    "$_firebase_base/GoogleAppMeasurement.xcframework/$_firebase_arch_dir/GoogleAppMeasurement.framework/Headers",
+    "$_firebase_base/GoogleAppMeasurementIdentitySupport.xcframework/$_firebase_arch_dir/GoogleAppMeasurementIdentitySupport.framework/Headers",
+    "$_firebase_base/GoogleUtilities.xcframework/$_firebase_arch_dir/GoogleUtilities.framework/Headers",
+    "$_firebase_base/nanopb.xcframework/$_firebase_arch_dir/nanopb.framework/Headers",
+    "$_firebase_base/FBLPromises.xcframework/$_firebase_arch_dir/FBLPromises.framework/Headers",
+  ]
+
+  # Framework search paths - needed for auto-linking metadata in static libs
   framework_dirs = [
-    "//third_party/firebase/Carthage/Build",
+    "$_firebase_base/FirebaseCore.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/FirebaseAnalytics.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/FirebaseCoreInternal.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/FirebaseInstallations.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/GoogleAppMeasurement.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/GoogleAppMeasurementIdentitySupport.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/GoogleUtilities.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/nanopb.xcframework/$_firebase_arch_dir",
+    "$_firebase_base/FBLPromises.xcframework/$_firebase_arch_dir",
+  ]
+
+  # Linker flags to link the static libraries
+  libs = [
+    "Carthage/Build/FirebaseAnalytics.xcframework/$_firebase_arch_dir/FirebaseAnalytics.framework/FirebaseAnalytics",
+    "Carthage/Build/FirebaseCore.xcframework/$_firebase_arch_dir/FirebaseCore.framework/FirebaseCore",
+    "Carthage/Build/FirebaseCoreInternal.xcframework/$_firebase_arch_dir/FirebaseCoreInternal.framework/FirebaseCoreInternal",
+    "Carthage/Build/FirebaseInstallations.xcframework/$_firebase_arch_dir/FirebaseInstallations.framework/FirebaseInstallations",
+    "Carthage/Build/GoogleAppMeasurement.xcframework/$_firebase_arch_dir/GoogleAppMeasurement.framework/GoogleAppMeasurement",
+    "Carthage/Build/GoogleAppMeasurementIdentitySupport.xcframework/$_firebase_arch_dir/GoogleAppMeasurementIdentitySupport.framework/GoogleAppMeasurementIdentitySupport",
+    "Carthage/Build/GoogleUtilities.xcframework/$_firebase_arch_dir/GoogleUtilities.framework/GoogleUtilities",
+    "Carthage/Build/nanopb.xcframework/$_firebase_arch_dir/nanopb.framework/nanopb",
+    "Carthage/Build/FBLPromises.xcframework/$_firebase_arch_dir/FBLPromises.framework/FBLPromises",
+  ]
+
+  # System frameworks required by Firebase
+  frameworks = [
+    "StoreKit.framework",
+    "SystemConfiguration.framework",
+    "UIKit.framework",
+    "Foundation.framework",
+    "Security.framework",
   ]
 }
 
@@ -22,74 +78,7 @@ source_set("firebase_analytics_ios") {
 
   public_configs = [ ":firebase_ios_config" ]
 
-  public_deps = [
-    ":firebase_analytics_framework_bundle",
-  ]
-
-  frameworks = [
-    "FirebaseAnalytics.framework",
-    "FirebaseCore.framework",
-    "FirebaseCoreInternal.framework",
-    "FirebaseInstallations.framework",
-    "GoogleAppMeasurement.framework",
-    "GoogleAppMeasurementIdentitySupport.framework",
-    "GoogleUtilities.framework",
-    "nanopb.framework",
-    "FBLPromises.framework",
-  ]
-}
-
-# Bundle all Firebase xcframeworks
-bundle_data("firebase_analytics_framework_bundle") {
-  if (target_environment == "device") {
-    _arch_dir = "ios-arm64"
-  } else {
-    _arch_dir = "ios-arm64_x86_64-simulator"
-  }
-
-  _base_path = "Carthage/Build"
-
-  sources = [
-    # FirebaseAnalytics
-    "$_base_path/FirebaseAnalytics.xcframework/$_arch_dir/FirebaseAnalytics.framework/FirebaseAnalytics",
-    "$_base_path/FirebaseAnalytics.xcframework/$_arch_dir/FirebaseAnalytics.framework/Info.plist",
-
-    # FirebaseCore
-    "$_base_path/FirebaseCore.xcframework/$_arch_dir/FirebaseCore.framework/FirebaseCore",
-    "$_base_path/FirebaseCore.xcframework/$_arch_dir/FirebaseCore.framework/Info.plist",
-
-    # FirebaseCoreInternal
-    "$_base_path/FirebaseCoreInternal.xcframework/$_arch_dir/FirebaseCoreInternal.framework/FirebaseCoreInternal",
-    "$_base_path/FirebaseCoreInternal.xcframework/$_arch_dir/FirebaseCoreInternal.framework/Info.plist",
-
-    # FirebaseInstallations
-    "$_base_path/FirebaseInstallations.xcframework/$_arch_dir/FirebaseInstallations.framework/FirebaseInstallations",
-    "$_base_path/FirebaseInstallations.xcframework/$_arch_dir/FirebaseInstallations.framework/Info.plist",
-
-    # GoogleAppMeasurement
-    "$_base_path/GoogleAppMeasurement.xcframework/$_arch_dir/GoogleAppMeasurement.framework/GoogleAppMeasurement",
-    "$_base_path/GoogleAppMeasurement.xcframework/$_arch_dir/GoogleAppMeasurement.framework/Info.plist",
-
-    # GoogleAppMeasurementIdentitySupport
-    "$_base_path/GoogleAppMeasurementIdentitySupport.xcframework/$_arch_dir/GoogleAppMeasurementIdentitySupport.framework/GoogleAppMeasurementIdentitySupport",
-    "$_base_path/GoogleAppMeasurementIdentitySupport.xcframework/$_arch_dir/GoogleAppMeasurementIdentitySupport.framework/Info.plist",
-
-    # GoogleUtilities
-    "$_base_path/GoogleUtilities.xcframework/$_arch_dir/GoogleUtilities.framework/GoogleUtilities",
-    "$_base_path/GoogleUtilities.xcframework/$_arch_dir/GoogleUtilities.framework/Info.plist",
-
-    # nanopb
-    "$_base_path/nanopb.xcframework/$_arch_dir/nanopb.framework/nanopb",
-    "$_base_path/nanopb.xcframework/$_arch_dir/nanopb.framework/Info.plist",
-
-    # FBLPromises
-    "$_base_path/FBLPromises.xcframework/$_arch_dir/FBLPromises.framework/FBLPromises",
-    "$_base_path/FBLPromises.xcframework/$_arch_dir/FBLPromises.framework/Info.plist",
-  ]
-
-  outputs = [
-    "{{bundle_contents_dir}}/Frameworks/{{source_file_part}}",
-  ]
+  # No bundle_data deps needed - static libs are linked, not bundled
 }
 
 # GoogleService-Info.plist bundle
