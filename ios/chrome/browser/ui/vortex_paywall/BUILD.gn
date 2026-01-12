@@ -24,6 +24,7 @@ source_set("vortex_paywall") {
     "//ios/chrome/common/ui/colors:colors",
     "//ios/chrome/app/strings:ios_strings_grit",
     "//third_party/revenuecat:revenuecat_ios",
+    "//third_party/firebase:firebase_analytics_ios",
     "//ios/chrome/browser/vortex_plus:vortex_plus",
     "//ios/chrome/browser/shared/model/url:constants",
   ]
