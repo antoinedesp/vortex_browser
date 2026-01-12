@@ -57,8 +57,7 @@
 #import "ios/chrome/browser/browsing_data/model/browsing_data_remover_factory.h"
 #import "ios/chrome/browser/browsing_data/model/browsing_data_remove_mask.h"
 #import "components/browsing_data/core/browsing_data_utils.h"
-#import "third_party/mixpanel/ios/vortex_mixpanel_shim.h"
-#import "ios/third_party/vortex/src/vortex_constants.h"
+#import "third_party/firebase/ios/vortex_firebase_analytics_shim.h"
 
 namespace {
 // The time delay after firstSceneWillEnterForeground: before checking for main
@@ -146,10 +145,9 @@ constexpr base::TimeDelta kMainIntentCheckDelay = base::Seconds(1);
              name:UIApplicationDidEnterBackgroundNotification
            object:nil];
 
-  // MixPanel init
-  [VortexMixpanelShim configureWithToken:VORTEX_MIXPANEL_API_KEY
-                                   userId:nil];
-  [VortexMixpanelShim trackEvent:@"app_open" properties:@{ @"source": @"vortex" }];
+  // Firebase Analytics init
+  [VortexFirebaseAnalyticsShim configure];
+  [VortexFirebaseAnalyticsShim logEvent:@"app_open" parameters:@{@"source": @"vortex"}];
 
   // Vortex RevenueCat initializer
   [VortexRevenueCatInitializer configureRevenueCat];
