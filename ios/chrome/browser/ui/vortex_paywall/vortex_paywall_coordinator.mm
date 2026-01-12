@@ -6,6 +6,7 @@
 #import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_mediator.h"
 #import "ios/chrome/browser/ui/vortex_paywall/vortex_paywall_view_controller.h"
 #import "ios/chrome/browser/vortex_plus/vortex_plus_manager.h"
+#import "third_party/firebase/ios/vortex_firebase_analytics_shim.h"
 #import "third_party/revenuecat/ios/vortex_revenuecat_shim.h"
 
 @interface VortexPaywallCoordinator () <VortexPaywallViewControllerDelegate>
@@ -81,6 +82,17 @@
                               animated:YES
                             completion:^{
     NSLog(@"✅ [VortexPaywallCoordinator] Presentation completed");
+
+    // Track paywall view for Google Ads attribution
+    [VortexFirebaseAnalyticsShim logScreenView:@"vortex_paywall"
+                                   screenClass:@"VortexPaywallViewController"];
+    [VortexFirebaseAnalyticsShim logEvent:@"view_item"
+                               parameters:@{
+                                 @"item_id": @"vortex_plus_subscription",
+                                 @"item_name": @"Vortex Plus",
+                                 @"item_category": @"subscription"
+                               }];
+
     [weakSelf.mediator startLoadingDefaultOffering];
   }];
 }
@@ -127,17 +139,29 @@
 
 - (void)vortexPaywallViewControllerDidRequestClose:
     (VortexPaywallViewController*)viewController {
-    if ([self.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidRequestClose:)]) {
+  // Track paywall dismissal without purchase (funnel dropoff)
+  [VortexFirebaseAnalyticsShim logEvent:@"paywall_dismissed"
+                             parameters:@{@"purchased": @NO}];
+
+  if ([self.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidRequestClose:)]) {
     [self.delegate vortexPaywallCoordinatorDidRequestClose:self];
   } else {
     [self stop];
   }
-
 }
 
 - (void)vortexPaywallViewController:(VortexPaywallViewController*)viewController
          didSelectPackageIdentifier:(NSString*)packageIdentifier {
   [viewController setButtonLoading:YES];
+
+  // Track begin_checkout event for Google Ads attribution
+  [VortexFirebaseAnalyticsShim logEvent:@"begin_checkout"
+                             parameters:@{
+                               @"item_id": packageIdentifier ?: @"unknown",
+                               @"item_name": @"Vortex Plus",
+                               @"item_category": @"subscription"
+                             }];
+
   __weak __typeof(self) weakSelf = self;
   [self.mediator purchasePackageWithIdentifier:packageIdentifier
                              fromViewController:viewController
@@ -147,6 +171,24 @@
                                          [viewController setButtonLoading:NO];
                                          if (success) {
                                            NSLog(@"[VortexPaywallCoordinator] Purchase successful");
+
+                                           // Track purchase event - CRITICAL for Google Ads attribution
+                                           [VortexFirebaseAnalyticsShim logEvent:@"purchase"
+                                                                      parameters:@{
+                                             @"transaction_id": [[NSUUID UUID] UUIDString],
+                                             @"item_id": packageIdentifier ?: @"unknown",
+                                             @"item_name": @"Vortex Plus",
+                                             @"item_category": @"subscription",
+                                             @"success": @YES
+                                           }];
+
+                                           // Also track custom event for more detailed analytics
+                                           [VortexFirebaseAnalyticsShim logEvent:@"vortex_plus_subscribed"
+                                                                      parameters:@{
+                                             @"package_id": packageIdentifier ?: @"unknown",
+                                             @"source": @"paywall"
+                                           }];
+
                                            [[VortexPlusManager sharedManager] syncWithRevenueCat];
                                            if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
                                              [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
@@ -156,6 +198,13 @@
 
                                          } else {
                                            NSLog(@"[VortexPaywallCoordinator] Purchase failed: %@", error);
+
+                                           // Track purchase failure
+                                           [VortexFirebaseAnalyticsShim logEvent:@"purchase_error"
+                                                                      parameters:@{
+                                             @"item_id": packageIdentifier ?: @"unknown",
+                                             @"error_message": error.localizedDescription ?: @"unknown"
+                                           }];
                                          }
                                        });
                                      }];
@@ -164,6 +213,11 @@
 - (void)vortexPaywallViewControllerDidRequestRestore:
     (VortexPaywallViewController*)viewController {
   [viewController setButtonLoading:YES];
+
+  // Track restore attempt
+  [VortexFirebaseAnalyticsShim logEvent:@"restore_purchases_initiated"
+                             parameters:@{@"source": @"paywall"}];
+
   __weak __typeof(self) weakSelf = self;
   NSLog(@"[VortexPaywallCoordinator] restore tapped");
   [VortexRevenueCatShim restorePurchasesWithCompletion:^(BOOL success, NSError* error) {
@@ -171,6 +225,13 @@
       [viewController setButtonLoading:NO];
       if (error) {
         NSLog(@"[VortexPaywallCoordinator] Restore failed: %@", error);
+
+        // Track restore failure
+        [VortexFirebaseAnalyticsShim logEvent:@"restore_purchases_error"
+                                   parameters:@{
+                                     @"error_message": error.localizedDescription ?: @"unknown"
+                                   }];
+
         if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidRequestClose:)]) {
           [weakSelf.delegate vortexPaywallCoordinatorDidRequestClose:weakSelf];
         } else {
@@ -179,6 +240,15 @@
       }
       if (success) {
         NSLog(@"[VortexPaywallCoordinator] Restore successful");
+
+        // Track restore success - important for understanding returning users
+        [VortexFirebaseAnalyticsShim logEvent:@"restore_purchases_success"
+                                   parameters:@{@"source": @"paywall"}];
+
+        // Also track as a subscription event for attribution
+        [VortexFirebaseAnalyticsShim logEvent:@"vortex_plus_restored"
+                                   parameters:@{@"source": @"paywall"}];
+
         [[VortexPlusManager sharedManager] syncWithRevenueCat];
         if ([weakSelf.delegate respondsToSelector:@selector(vortexPaywallCoordinatorDidComplete:)]) {
           [weakSelf.delegate vortexPaywallCoordinatorDidComplete:weakSelf];
