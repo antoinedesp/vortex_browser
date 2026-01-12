@@ -1,0 +1,99 @@
+# Copyright 2025 Vortex Softwares Ltd
+# Firebase Analytics integration for iOS via Carthage
+#
+# Setup:
+#   cd third_party/firebase
+#   carthage update --use-xcframeworks --platform iOS
+
+import("//build/config/ios/config.gni")
+import("//build/config/ios/rules.gni")
+
+config("firebase_ios_config") {
+  framework_dirs = [
+    "//third_party/firebase/Carthage/Build",
+  ]
+}
+
+source_set("firebase_analytics_ios") {
+  sources = [
+    "ios/vortex_firebase_analytics_shim.h",
+    "ios/vortex_firebase_analytics_shim.mm",
+  ]
+
+  public_configs = [ ":firebase_ios_config" ]
+
+  public_deps = [
+    ":firebase_analytics_framework_bundle",
+  ]
+
+  frameworks = [
+    "FirebaseAnalytics.framework",
+    "FirebaseCore.framework",
+    "FirebaseCoreInternal.framework",
+    "FirebaseInstallations.framework",
+    "GoogleAppMeasurement.framework",
+    "GoogleAppMeasurementIdentitySupport.framework",
+    "GoogleUtilities.framework",
+    "nanopb.framework",
+    "FBLPromises.framework",
+  ]
+}
+
+# Bundle all Firebase xcframeworks
+bundle_data("firebase_analytics_framework_bundle") {
+  if (target_environment == "device") {
+    _arch_dir = "ios-arm64"
+  } else {
+    _arch_dir = "ios-arm64_x86_64-simulator"
+  }
+
+  _base_path = "Carthage/Build"
+
+  sources = [
+    # FirebaseAnalytics
+    "$_base_path/FirebaseAnalytics.xcframework/$_arch_dir/FirebaseAnalytics.framework/FirebaseAnalytics",
+    "$_base_path/FirebaseAnalytics.xcframework/$_arch_dir/FirebaseAnalytics.framework/Info.plist",
+
+    # FirebaseCore
+    "$_base_path/FirebaseCore.xcframework/$_arch_dir/FirebaseCore.framework/FirebaseCore",
+    "$_base_path/FirebaseCore.xcframework/$_arch_dir/FirebaseCore.framework/Info.plist",
+
+    # FirebaseCoreInternal
+    "$_base_path/FirebaseCoreInternal.xcframework/$_arch_dir/FirebaseCoreInternal.framework/FirebaseCoreInternal",
+    "$_base_path/FirebaseCoreInternal.xcframework/$_arch_dir/FirebaseCoreInternal.framework/Info.plist",
+
+    # FirebaseInstallations
+    "$_base_path/FirebaseInstallations.xcframework/$_arch_dir/FirebaseInstallations.framework/FirebaseInstallations",
+    "$_base_path/FirebaseInstallations.xcframework/$_arch_dir/FirebaseInstallations.framework/Info.plist",
+
+    # GoogleAppMeasurement
+    "$_base_path/GoogleAppMeasurement.xcframework/$_arch_dir/GoogleAppMeasurement.framework/GoogleAppMeasurement",
+    "$_base_path/GoogleAppMeasurement.xcframework/$_arch_dir/GoogleAppMeasurement.framework/Info.plist",
+
+    # GoogleAppMeasurementIdentitySupport
+    "$_base_path/GoogleAppMeasurementIdentitySupport.xcframework/$_arch_dir/GoogleAppMeasurementIdentitySupport.framework/GoogleAppMeasurementIdentitySupport",
+    "$_base_path/GoogleAppMeasurementIdentitySupport.xcframework/$_arch_dir/GoogleAppMeasurementIdentitySupport.framework/Info.plist",
+
+    # GoogleUtilities
+    "$_base_path/GoogleUtilities.xcframework/$_arch_dir/GoogleUtilities.framework/GoogleUtilities",
+    "$_base_path/GoogleUtilities.xcframework/$_arch_dir/GoogleUtilities.framework/Info.plist",
+
+    # nanopb
+    "$_base_path/nanopb.xcframework/$_arch_dir/nanopb.framework/nanopb",
+    "$_base_path/nanopb.xcframework/$_arch_dir/nanopb.framework/Info.plist",
+
+    # FBLPromises
+    "$_base_path/FBLPromises.xcframework/$_arch_dir/FBLPromises.framework/FBLPromises",
+    "$_base_path/FBLPromises.xcframework/$_arch_dir/FBLPromises.framework/Info.plist",
+  ]
+
+  outputs = [
+    "{{bundle_contents_dir}}/Frameworks/{{source_file_part}}",
+  ]
+}
+
+# GoogleService-Info.plist bundle
+bundle_data("google_service_info_plist") {
+  sources = [ "GoogleService-Info.plist" ]
+  outputs = [ "{{bundle_resources_dir}}/{{source_file_part}}" ]
+}
