@@ -5,8 +5,11 @@
 
 #import <Foundation/Foundation.h>
 
-@import FirebaseCore;
-@import FirebaseAnalytics;
+// Firebase headers (from include_dirs in BUILD.gn)
+#import "FirebaseCore.h"
+#import "FIRAnalytics.h"
+#import "FIREventNames.h"
+#import "FIRParameterNames.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
