@@ -130,6 +130,23 @@ static BOOL gConfigured = NO;
   NSLog(@"[VortexFirebaseAnalyticsShim] Reset - cleared user ID");
 }
 
+#pragma mark - App Instance ID
+
++ (NSString *_Nullable)appInstanceID {
+  if (!gConfigured) {
+    NSLog(@"[VortexFirebaseAnalyticsShim] WARNING: appInstanceID called before configure");
+    return nil;
+  }
+
+  NSString *instanceID = [FIRAnalytics appInstanceID];
+
+#if DEBUG
+  NSLog(@"[VortexFirebaseAnalyticsShim] App Instance ID: %@", instanceID ?: @"<nil>");
+#endif
+
+  return instanceID;
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

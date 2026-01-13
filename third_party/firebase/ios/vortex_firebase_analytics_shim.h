@@ -47,6 +47,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Resets analytics data (clears user ID and user properties).
 + (void)reset;
 
+/// Returns the Firebase App Instance ID for RevenueCat integration.
+/// This ID is required for RevenueCat to send server-side events to Google Analytics.
+/// @return The app instance ID, or nil if Firebase is not configured.
++ (NSString *_Nullable)appInstanceID;
+
 @end
 
 NS_ASSUME_NONNULL_END
