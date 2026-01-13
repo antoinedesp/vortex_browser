@@ -67,6 +67,12 @@ NS_ASSUME_NONNULL_BEGIN
                                                  NSError* _Nullable error))
                                            completion;
 
+/// Sets the Firebase App Instance ID for server-side analytics integration.
+/// This enables RevenueCat to send subscription lifecycle events to Google Analytics.
+/// Must be called after configureWithApiKey and after Firebase is configured.
+/// @param appInstanceID The Firebase App Instance ID from FIRAnalytics.appInstanceID().
++ (void)setFirebaseAppInstanceID:(NSString*)appInstanceID;
+
 @end
 
 NS_ASSUME_NONNULL_END

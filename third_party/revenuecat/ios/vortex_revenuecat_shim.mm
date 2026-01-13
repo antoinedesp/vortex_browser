@@ -470,6 +470,24 @@ static NSString* kPremiumEntitlementID = @"premium";
 #endif
 }
 
+#pragma mark - Firebase Integration
+
++ (void)setFirebaseAppInstanceID:(NSString*)appInstanceID {
+  if (!appInstanceID || appInstanceID.length == 0) {
+    NSLog(@"[VortexRevenueCatShim] WARNING: Firebase App Instance ID is nil or empty");
+    return;
+  }
+
+  NSLog(@"[VortexRevenueCatShim] Setting Firebase App Instance ID: %@", appInstanceID);
+
+#if HAS_REVENUECAT
+  [[RCPurchases sharedPurchases].attribution setFirebaseAppInstanceID:appInstanceID];
+  NSLog(@"[VortexRevenueCatShim] Firebase App Instance ID set successfully");
+#else
+  NSLog(@"[VortexRevenueCatShim] RevenueCat SDK not available - Firebase integration skipped");
+#endif
+}
+
 @end
 
 NS_ASSUME_NONNULL_END
