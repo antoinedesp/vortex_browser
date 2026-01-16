@@ -88,19 +88,7 @@ struct OverflowMenuActionRow: View {
         }
         .accessibilityIdentifier(action.accessibilityIdentifier)
         .disabled(!action.enabled || action.enterpriseDisabled)
-        .if(!isEditing) { view in
-          view.contextMenu {
-            ForEach(action.longPressItems) { item in
-              Section {
-                Button {
-                  item.handler()
-                } label: {
-                  Label(item.title, systemImage: item.symbolName)
-                }
-              }
-            }
-          }
-        }
+        // Long-press context menu disabled
         .if(!action.useButtonStyling) { view in
           view.accentColor(.textPrimary)
         }
@@ -125,19 +113,7 @@ struct OverflowMenuActionRow: View {
         }
         .accessibilityIdentifier(action.accessibilityIdentifier)
         .disabled(!action.enabled || action.enterpriseDisabled)
-        .if(!isEditing) { view in
-          view.contextMenu {
-            ForEach(action.longPressItems) { item in
-              Section {
-                Button {
-                  item.handler()
-                } label: {
-                  Label(item.title, systemImage: item.symbolName)
-                }
-              }
-            }
-          }
-        }
+        // Long-press context menu disabled
         .if(!action.useButtonStyling) { view in
           view.accentColor(.textPrimary)
         }
