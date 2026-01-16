@@ -160,19 +160,7 @@ struct OverflowMenuDestinationView: View {
         [.contextMenuPreview, .dragPreview],
         IconShape(iconFrame: iconFrame)
       )
-      .if(editMode?.wrappedValue.isEditing != true) { view in
-        view.contextMenu {
-          ForEach(destination.longPressItems) { item in
-            Section {
-              Button {
-                item.handler()
-              } label: {
-                Label(item.title, systemImage: item.symbolName)
-              }
-            }
-          }
-        }
-      }
+      // Long-press context menu disabled
       .accessibilityIdentifier(accessibilityIdentifier)
       .accessibilityLabel(Text(accessibilityLabel))
       .if(highlighted) { view in
