@@ -762,9 +762,10 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                 actions:@[ self.editActionsAction ]
                  footer:nil];
 
+  // editActionsGroup (Customize Menu button) removed
   self.model.actionGroups = @[
     self.appActionsGroup, self.privacyActionsGroup, self.pageActionsGroup,
-    self.editActionsGroup, self.helpActionsGroup
+    self.helpActionsGroup
   ];
   _modelInitialized = YES;
 }
@@ -1447,28 +1448,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
 
   result.destination = static_cast<NSInteger>(destination);
 
-  NSMutableArray<OverflowMenuLongPressItem*>* longPressItems =
-      [[NSMutableArray alloc] init];
-
-  NSString* hideItemText = [self hideItemTextForDestination:destination];
-  if (hideItemText) {
-    [longPressItems addObject:[[OverflowMenuLongPressItem alloc]
-                                  initWithTitle:hideItemText
-                                     symbolName:@"eye.slash"
-                                        handler:^{
-                                          [weakSelf
-                                              hideDestination:destination];
-                                        }]];
-  }
-  [longPressItems
-      addObject:[[OverflowMenuLongPressItem alloc]
-                    initWithTitle:l10n_util::GetNSString(
-                                      IDS_IOS_OVERFLOW_MENU_EDIT_ACTIONS)
-                       symbolName:@"pencil"
-                          handler:^{
-                            [weakSelf beginCustomization];
-                          }]];
-  result.longPressItems = longPressItems;
+  // Long-press items disabled - no customize menu option
+  result.longPressItems = @[];
 
   __weak __typeof(result) weakResult = result;
   result.onShownToggleCallback = ^{
@@ -1503,16 +1484,8 @@ OverflowMenuFooter* CreateOverflowMenuManagedFooter(
                                        handler:newHandler];
   action.actionType = static_cast<NSInteger>(actionType);
 
-  ActionRanking reorderableActions = [self basePageActions];
-  // If this action is not reorderable, then don't add any longpress items.
-  bool actionIsReorderable =
-      std::find(reorderableActions.begin(), reorderableActions.end(),
-                actionType) != reorderableActions.end();
-  if (actionIsReorderable) {
-    action.longPressItems =
-        [self actionLongPressItemsForActionType:actionType
-                                   hideItemText:hideItemText];
-  }
+  // Long-press items disabled for actions
+  action.longPressItems = @[];
   return action;
 }
 
