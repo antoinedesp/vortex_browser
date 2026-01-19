@@ -740,6 +740,11 @@ chrome_app("chrome") {
       "//third_party/revenuecat:revenuecat_ios_framework_bundle",
     ]
   }
+  if (ios_enable_vortex_vpn_extension) {
+    bundle_deps += [
+      "//third_party/openvpn_adapter:openvpn_adapter_ios_framework_bundle",
+    ]
+  }
   # Firebase Analytics GoogleService-Info.plist
   bundle_deps += [ "//third_party/firebase:google_service_info_plist" ]
   if (!is_chrome_branded || ios_chrome_app_variants == []) {
@@ -806,6 +811,9 @@ chrome_app("chrome") {
     if (ios_enable_push_notification_service_extension) {
       bundle_deps += [ ":push_notification_service_extension_bundle" ]
     }
+    if (ios_enable_vortex_vpn_extension) {
+      bundle_deps += [ ":vortex_vpn_extension_bundle" ]
+    }
 
   }
 
@@ -842,6 +850,8 @@ chrome_app("chrome") {
 }
 
 if (current_toolchain == default_toolchain && !ios_chrome_generate_order_file) {
+  _extension_toolchain = "${current_toolchain}_app_ext"
+
   if (ios_enable_share_extension) {
     extension_bundle_data("share_extension_bundle") {
       extension_name = "share_extension.appex"
@@ -888,6 +898,13 @@ if (current_toolchain == default_toolchain && !ios_chrome_generate_order_file) {
     extension_bundle_data("push_notification_service_extension_bundle") {
       extension_name = "push_notification_service_extension.appex"
       extension_target = "//ios/chrome/push_notification_service_extension/appex(${_extension_toolchain})"
+    }
+  }
+
+  if (ios_enable_vortex_vpn_extension) {
+    extension_bundle_data("vortex_vpn_extension_bundle") {
+      extension_name = "vortex_vpn_extension.appex"
+      extension_target = "//tools/vortex/vortex_vpn_extension:vortex_vpn_extension(${_extension_toolchain})"
     }
   }
 }
