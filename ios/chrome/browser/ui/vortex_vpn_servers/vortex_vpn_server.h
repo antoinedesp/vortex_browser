@@ -42,6 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
 // Pre-shared key for IKEv2.
 @property(nonatomic, copy) NSString* psk;
 
+// OpenVPN configuration file content (.ovpn format).
+// This is the complete configuration file provided by the API for OpenVPN connections.
+@property(nonatomic, copy, nullable) NSString* ovpnConfig;
+
 // Optional flag URL/emoji.
 @property(nonatomic, copy) NSString* flag;
 

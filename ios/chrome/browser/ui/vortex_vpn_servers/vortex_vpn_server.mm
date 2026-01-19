@@ -65,8 +65,16 @@
   id psk = dict[@"psk"];
   if ([psk isKindOfClass:[NSString class]]) {
     server.psk = psk;
-  } else {
-    // PSK is required
+  }
+
+  // Parse OpenVPN configuration if available
+  id ovpnConfig = dict[@"ovpn_config"];
+  if ([ovpnConfig isKindOfClass:[NSString class]]) {
+    server.ovpnConfig = ovpnConfig;
+  }
+
+  // Either PSK (for IKEv2) or ovpn_config (for OpenVPN) must be present
+  if (!server.psk && !server.ovpnConfig) {
     return nil;
   }
 
