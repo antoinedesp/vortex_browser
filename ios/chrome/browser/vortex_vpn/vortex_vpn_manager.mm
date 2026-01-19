@@ -3,12 +3,17 @@
 #import "ios/chrome/browser/ui/vortex_vpn_servers/vortex_vpn_server.h"
 #import "ios/third_party/vortex/src/vortex_constants.h"
 
+// Tunnel provider bundle identifier - must match the VPN extension's bundle ID
+static NSString* const kTunnelProviderBundleIdentifier = @"com.vortexbrowser.app.VPN";
+
 @interface VortexVPNManager ()
 @property(nonatomic, assign, readwrite) VortexVPNStatus status;
 @property(nonatomic, strong) NSHashTable<id<VortexVPNObserver>>* observers;
-@property(nonatomic, strong) NEVPNManager* vpnManager;
+@property(nonatomic, strong) NEVPNManager* vpnManager;  // For IPSec
+@property(nonatomic, strong) NETunnelProviderManager* tunnelManager;  // For OpenVPN
 @property(nonatomic, assign) BOOL connectionInProgress;
 @property(nonatomic, strong, nullable, readwrite) VortexVPNServer* selectedServer;
+@property(nonatomic, assign) BOOL usingOpenVPN;  // Track which protocol is active
 @end
 
 @implementation VortexVPNManager
@@ -36,8 +41,10 @@
     _observers = [NSHashTable weakObjectsHashTable];
     _vpnManager = [NEVPNManager sharedManager];
     _connectionInProgress = NO;
+    _usingOpenVPN = NO;
 
     [self loadVPNConfiguration];
+    [self loadTunnelProviderConfiguration];
 
     [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -58,16 +65,45 @@
   __weak __typeof__(self) weakSelf = self;
   [self.vpnManager loadFromPreferencesWithCompletionHandler:^(NSError* error) {
     if (error) {
-      weakSelf.status = VortexVPNStatusDisconnected;
-      [weakSelf notifyObservers];
+      NSLog(@"[VortexVPNManager] Failed to load IPSec config: %@", error);
       return;
     }
+    NSLog(@"[VortexVPNManager] IPSec configuration loaded");
+    [weakSelf updateStatusFromNEVPNStatus];
+  }];
+}
+
+- (void)loadTunnelProviderConfiguration {
+  __weak __typeof__(self) weakSelf = self;
+  [NETunnelProviderManager loadAllFromPreferencesWithCompletionHandler:^(
+      NSArray<NETunnelProviderManager*>* _Nullable managers, NSError* _Nullable error) {
+    if (error) {
+      NSLog(@"[VortexVPNManager] Failed to load tunnel configs: %@", error);
+      return;
+    }
+
+    // Find our tunnel provider manager
+    for (NETunnelProviderManager* manager in managers) {
+      NETunnelProviderProtocol* proto =
+          (NETunnelProviderProtocol*)manager.protocolConfiguration;
+      if ([proto.providerBundleIdentifier isEqualToString:kTunnelProviderBundleIdentifier]) {
+        weakSelf.tunnelManager = manager;
+        NSLog(@"[VortexVPNManager] Found existing OpenVPN tunnel configuration");
+        break;
+      }
+    }
+
+    if (!weakSelf.tunnelManager) {
+      NSLog(@"[VortexVPNManager] No existing OpenVPN tunnel configuration found");
+    }
+
     [weakSelf updateStatusFromNEVPNStatus];
   }];
 }
 
 - (BOOL)isConfigured {
-  return self.vpnManager.protocolConfiguration != nil;
+  return self.vpnManager.protocolConfiguration != nil ||
+         self.tunnelManager.protocolConfiguration != nil;
 }
 
 - (BOOL)isConnected {
@@ -81,7 +117,13 @@
 }
 
 - (void)updateStatusFromNEVPNStatus {
-  NEVPNStatus vpnStatus = self.vpnManager.connection.status;
+  // Get status from the active manager based on which protocol is in use
+  NEVPNStatus vpnStatus;
+  if (self.usingOpenVPN && self.tunnelManager) {
+    vpnStatus = self.tunnelManager.connection.status;
+  } else {
+    vpnStatus = self.vpnManager.connection.status;
+  }
 
   VortexVPNStatus newStatus;
   switch (vpnStatus) {
@@ -137,31 +179,52 @@
   [self notifyObservers];
 
   // If a server is selected, use it directly; otherwise fetch a random server.
+  NSLog(@"[VortexVPNManager] connect called, selectedServer: %@", self.selectedServer);
   if (self.selectedServer) {
-    [self connectWithServerAddress:self.selectedServer.ip
-                      sharedSecret:self.selectedServer.psk
-                          username:self.selectedServer.username
-                          password:self.selectedServer.password];
+    NSLog(@"[VortexVPNManager] Using selected server: %@", self.selectedServer.ip);
+    [self connectToServer:self.selectedServer];
   } else {
+    NSLog(@"[VortexVPNManager] No selected server, fetching random...");
     __weak __typeof__(self) weakSelf = self;
-    [self fetchRandomServerWithCompletion:^(NSString* serverAddress,
-                                            NSString* sharedSecret,
-                                            NSString* username,
-                                            NSString* password,
-                                            NSError* error) {
+    [self fetchRandomServerWithCompletion:^(VortexVPNServer* server, NSError* error) {
       __strong __typeof__(weakSelf) strongSelf = weakSelf;
       if (!strongSelf) return;
 
-      if (error || serverAddress.length == 0 || sharedSecret.length == 0) {
+      if (error || !server) {
         [strongSelf handleConnectionError];
         return;
       }
 
-      [strongSelf connectWithServerAddress:serverAddress
-                              sharedSecret:sharedSecret
-                                  username:username
-                                  password:password];
+      // Use connectToServer which handles both OpenVPN and IPSec
+      [strongSelf connectToServer:server];
     }];
+  }
+}
+
+- (void)connectToServer:(VortexVPNServer*)server {
+  NSLog(@"[VortexVPNManager] Connecting to server: %@ (%@)", server.ip,
+        [server countryDisplayName]);
+  NSLog(@"[VortexVPNManager] Server has ovpnConfig: %@, psk: %@",
+        server.ovpnConfig ? @"YES" : @"NO",
+        server.psk ? @"YES" : @"NO");
+
+  // Prefer OpenVPN if available
+  if (server.ovpnConfig && server.ovpnConfig.length > 0) {
+    NSLog(@"[VortexVPNManager] Using OpenVPN protocol");
+    self.usingOpenVPN = YES;
+    [self connectWithOpenVPNConfig:server.ovpnConfig
+                          username:server.username
+                          password:server.password];
+  } else if (server.psk && server.psk.length > 0) {
+    NSLog(@"[VortexVPNManager] Using IPSec protocol");
+    self.usingOpenVPN = NO;
+    [self connectWithServerAddress:server.ip
+                      sharedSecret:server.psk
+                          username:server.username
+                          password:server.password];
+  } else {
+    NSLog(@"[VortexVPNManager] Server has no valid configuration");
+    [self handleConnectionError];
   }
 }
 
@@ -197,11 +260,93 @@
   }];
 }
 
+#pragma mark - OpenVPN Connection
+
+- (void)connectWithOpenVPNConfig:(NSString*)ovpnConfig
+                        username:(NSString* _Nullable)username
+                        password:(NSString* _Nullable)password {
+  NSLog(@"[VortexVPNManager] Configuring OpenVPN connection");
+
+  __weak __typeof__(self) weakSelf = self;
+
+  // Create or update tunnel provider manager
+  void (^configureAndConnect)(NETunnelProviderManager*) = ^(NETunnelProviderManager* manager) {
+    NETunnelProviderProtocol* proto = [[NETunnelProviderProtocol alloc] init];
+    proto.providerBundleIdentifier = kTunnelProviderBundleIdentifier;
+    proto.serverAddress = @"Vortex VPN";  // Display name
+
+    // Store OpenVPN config in providerConfiguration
+    NSMutableDictionary* providerConfig = [NSMutableDictionary dictionary];
+    providerConfig[@"ovpn_config"] = ovpnConfig;
+    if (username) {
+      providerConfig[@"username"] = username;
+    }
+    if (password) {
+      providerConfig[@"password"] = password;
+    }
+    proto.providerConfiguration = providerConfig;
+
+    manager.protocolConfiguration = proto;
+    manager.localizedDescription = @"Vortex VPN";
+    manager.enabled = YES;
+
+    [manager saveToPreferencesWithCompletionHandler:^(NSError* saveError) {
+      if (saveError) {
+        NSLog(@"[VortexVPNManager] Failed to save OpenVPN config: %@", saveError);
+        [weakSelf handleConnectionError];
+        return;
+      }
+
+      NSLog(@"[VortexVPNManager] OpenVPN config saved, loading...");
+
+      // Reload to ensure configuration is properly loaded
+      [manager loadFromPreferencesWithCompletionHandler:^(NSError* loadError) {
+        if (loadError) {
+          NSLog(@"[VortexVPNManager] Failed to reload config: %@", loadError);
+          [weakSelf handleConnectionError];
+          return;
+        }
+
+        weakSelf.tunnelManager = manager;
+
+        // Start the tunnel
+        NSError* startError = nil;
+        BOOL started = [manager.connection startVPNTunnelAndReturnError:&startError];
+        if (!started || startError) {
+          NSLog(@"[VortexVPNManager] Failed to start OpenVPN tunnel: %@", startError);
+          [weakSelf handleConnectionError];
+          return;
+        }
+
+        NSLog(@"[VortexVPNManager] OpenVPN tunnel started");
+      }];
+    }];
+  };
+
+  // Check if we already have a tunnel manager
+  if (self.tunnelManager) {
+    configureAndConnect(self.tunnelManager);
+  } else {
+    // Create a new one
+    NETunnelProviderManager* newManager = [[NETunnelProviderManager alloc] init];
+    configureAndConnect(newManager);
+  }
+}
+
 - (void)disconnect {
   if (self.status == VortexVPNStatusDisconnected) {
     return;
   }
-  [self.vpnManager.connection stopVPNTunnel];
+
+  NSLog(@"[VortexVPNManager] Disconnect requested");
+
+  // Disconnect both managers to be safe
+  if (self.tunnelManager.connection.status != NEVPNStatusDisconnected) {
+    [self.tunnelManager.connection stopVPNTunnel];
+  }
+  if (self.vpnManager.connection.status != NEVPNStatusDisconnected) {
+    [self.vpnManager.connection stopVPNTunnel];
+  }
 }
 
 - (void)handleConnectionError {
@@ -214,10 +359,7 @@
 
 #pragma mark - Server Fetch
 
-- (void)fetchRandomServerWithCompletion:(void (^)(NSString* _Nullable serverAddress,
-                                                  NSString* _Nullable sharedSecret,
-                                                  NSString* _Nullable username,
-                                                  NSString* _Nullable password,
+- (void)fetchRandomServerWithCompletion:(void (^)(VortexVPNServer* _Nullable server,
                                                   NSError* _Nullable error))completion {
   NSURL* url = [NSURL URLWithString:VORTEX_RANDOM_SERVER_ENDPOINT_URL];
   if (!url) {
@@ -225,18 +367,21 @@
       NSError* err = [NSError errorWithDomain:@"VortexVPN"
                                          code:1001
                                      userInfo:@{NSLocalizedDescriptionKey: @"Invalid URL"}];
-      completion(nil, nil, nil, nil, err);
+      completion(nil, err);
     }
     return;
   }
+
+  NSLog(@"[VortexVPNManager] Fetching random server from: %@", url);
 
   NSURLSessionDataTask* task =
       [[NSURLSession sharedSession]
           dataTaskWithURL:url
         completionHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
           if (error) {
+            NSLog(@"[VortexVPNManager] Random server fetch error: %@", error);
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, error);
+              if (completion) completion(nil, error);
             });
             return;
           }
@@ -248,7 +393,7 @@
                                                        code:1002
                                                    userInfo:@{NSLocalizedDescriptionKey: @"Server error"}];
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, statusError);
+              if (completion) completion(nil, statusError);
             });
             return;
           }
@@ -258,7 +403,7 @@
                                                      code:1003
                                                  userInfo:@{NSLocalizedDescriptionKey: @"Empty response"}];
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, dataError);
+              if (completion) completion(nil, dataError);
             });
             return;
           }
@@ -267,39 +412,42 @@
           NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
           if (jsonError || ![dict isKindOfClass:[NSDictionary class]]) {
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, jsonError);
+              if (completion) completion(nil, jsonError);
             });
             return;
           }
 
-          NSString* ip = dict[@"ip"];
-          NSString* psk = dict[@"psk"];
-          NSString* username = dict[@"username"];
-          NSString* password = dict[@"password"];
-          NSNumber* isOnline = dict[@"is_online"];
+          NSLog(@"[VortexVPNManager] Random server response: %@", dict);
 
-          if (![ip isKindOfClass:[NSString class]] || ![psk isKindOfClass:[NSString class]]) {
-            NSError* fieldError = [NSError errorWithDomain:@"VortexVPN"
+          // Parse server using the same model as the server list
+          VortexVPNServer* server = [VortexVPNServer serverFromDictionary:dict];
+          if (!server) {
+            NSError* parseError = [NSError errorWithDomain:@"VortexVPN"
                                                       code:1004
                                                   userInfo:@{NSLocalizedDescriptionKey: @"Invalid server data"}];
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, fieldError);
+              if (completion) completion(nil, parseError);
             });
             return;
           }
 
-          if ([isOnline respondsToSelector:@selector(boolValue)] && !isOnline.boolValue) {
+          if (!server.isOnline) {
             NSError* offlineError = [NSError errorWithDomain:@"VortexVPN"
                                                         code:1005
                                                     userInfo:@{NSLocalizedDescriptionKey: @"Server offline"}];
             dispatch_async(dispatch_get_main_queue(), ^{
-              if (completion) completion(nil, nil, nil, nil, offlineError);
+              if (completion) completion(nil, offlineError);
             });
             return;
           }
 
+          NSLog(@"[VortexVPNManager] Random server: %@ (ovpnConfig: %@, psk: %@)",
+                server.ip,
+                server.ovpnConfig ? @"YES" : @"NO",
+                server.psk ? @"YES" : @"NO");
+
           dispatch_async(dispatch_get_main_queue(), ^{
-            if (completion) completion(ip, psk, username, password, nil);
+            if (completion) completion(server, nil);
           });
         }];
 
