@@ -2901,8 +2901,11 @@
       <message name="IDS_IOS_FIRST_RUN_WELCOME_SCREEN_BROWSER_MANAGED" desc="Text to indicate that Chrome is managed by the user’s organization. [iOS only]">
         Your browser is managed by your organization.
       </message>
-      <message name="IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TERMS_OF_SERVICE" desc="The text is displayed in a footer on the very first screen of Chrome. The link ‘Terms of Service’ opens the Google Terms of Service. [iOS only]">
+      <message name="IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TERMS_OF_SERVICE" desc="The text is displayed in a footer on the very first screen of Chrome. The link 'Terms of Service' opens the Google Terms of Service. [iOS only]">
         By continuing, you agree to the <ph name="BEGIN_LINK">BEGIN_LINK</ph>Terms of Service<ph name="END_LINK">END_LINK</ph>.
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER" desc="Disclaimer text explaining that payment will be charged after the free trial ends. Displayed on the first run screen. Required for Apple App Store compliance (Guideline 3.1.2). [iOS only]">
+        Payment begins after your 7-day free trial. Cancel anytime before the trial ends to avoid charges.
       </message>
       <message name="IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TITLE_IPAD" desc="The title of the welcome screen presented to the user on First Run when on iPad [iOS only]">
         Built for Your iPad
@@ -6207,6 +6210,9 @@ Handoff must also be enabled in the General section of Settings, and your device
       </message>
       <message name="IDS_IOS_VORTEX_PLUS_SUBSCRIPTION_TERMS" desc="Legal text explaining subscription auto-renewal terms. [iOS only]">
         You can cancel anytime in Settings. Subscription auto-renews unless canceled at least 24h before renewal.
+      </message>
+      <message name="IDS_IOS_VORTEX_PLUS_FREE_TRIAL_BILLING_DISCLAIMER" desc="Disclaimer text explaining that payment will be charged after the free trial ends. Required for Apple App Store compliance (Guideline 3.1.2). [iOS only]">
+        After your 7-day free trial ends, your subscription will automatically renew and your payment method will be charged at the price shown above unless you cancel at least 24 hours before the trial ends.
       </message>
       <message name="IDS_IOS_VORTEX_PLUS_LOAD_ERROR" desc="Error message when subscription offers fail to load. [iOS only]">
         Unable to load offers. Please try again later.
