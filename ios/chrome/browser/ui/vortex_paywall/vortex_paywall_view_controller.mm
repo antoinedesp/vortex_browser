@@ -19,6 +19,7 @@
 
 // Static sections.
 @property(nonatomic, strong) UILabel* termsLabel;
+@property(nonatomic, strong) UILabel* billingDisclaimerLabel;
 @property(nonatomic, strong) UIView* perksCard;
 @property(nonatomic, strong) UIView* heroView;
 @property(nonatomic, strong) UIView* valuePropositionCard;
@@ -744,6 +745,9 @@
         IDS_IOS_VORTEX_PLUS_PRICE_DETAILS,
         base::SysNSStringToUTF16(item.priceString));
   }
+
+  // Show/hide the billing disclaimer for free trial (Apple Guideline 3.1.2).
+  self.billingDisclaimerLabel.hidden = !item.hasTrial;
 }
 
 - (void)ensureTermsLabel {
@@ -758,5 +762,18 @@
 
   self.termsLabel = label;
   [self.stackView addArrangedSubview:label];
+
+  // Add billing disclaimer label for free trial (Apple Guideline 3.1.2 compliance).
+  UILabel* disclaimerLabel = [[UILabel alloc] init];
+  disclaimerLabel.font = [UIFont systemFontOfSize:12.0];
+  disclaimerLabel.textColor = [UIColor secondaryLabelColor];
+  disclaimerLabel.textAlignment = NSTextAlignmentCenter;
+  disclaimerLabel.numberOfLines = 0;
+  disclaimerLabel.text =
+      l10n_util::GetNSString(IDS_IOS_VORTEX_PLUS_FREE_TRIAL_BILLING_DISCLAIMER);
+  disclaimerLabel.hidden = YES;
+
+  self.billingDisclaimerLabel = disclaimerLabel;
+  [self.stackView addArrangedSubview:disclaimerLabel];
 }
 @end
