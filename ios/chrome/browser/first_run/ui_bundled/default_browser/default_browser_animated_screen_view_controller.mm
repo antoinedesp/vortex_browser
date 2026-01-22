@@ -128,6 +128,8 @@ const CGFloat kTitleTopMarginWhenNoHeaderImage = 30;
         constraintGreaterThanOrEqualToAnchor:self.specificContentView.topAnchor]
   ]];
 
+  [self generateDisclaimer];
+
   [super viewDidLoad];
 }
 
@@ -301,6 +303,42 @@ const CGFloat kTitleTopMarginWhenNoHeaderImage = 30;
   return (first_run::AnimatedDefaultBrowserPromoInFREExperimentTypeEnabled() ==
           first_run::AnimatedDefaultBrowserPromoInFREExperimentType::
               kAnimationWithInstructions);
+}
+
+// Generates the footer string with Terms of Service and billing disclaimer.
+- (void)generateDisclaimer {
+  NSMutableArray<NSString*>* array = [NSMutableArray array];
+  NSMutableArray<NSURL*>* urls = [NSMutableArray array];
+  if (self.hasPlatformPolicies) {
+    [array addObject:l10n_util::GetNSString(
+                         IDS_IOS_FIRST_RUN_WELCOME_SCREEN_BROWSER_MANAGED)];
+  }
+  switch (self.screenIntent) {
+    case kDefault: {
+      break;
+    }
+    case kTOSAndUMA: {
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TERMS_OF_SERVICE)];
+      [urls addObject:[NSURL URLWithString:first_run::kTermsOfServiceURL]];
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_WELCOME_SCREEN_METRIC_REPORTING)];
+      [urls addObject:[NSURL URLWithString:first_run::kMetricReportingURL]];
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER)];
+      break;
+    }
+    case kTOSWithoutUMA: {
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TERMS_OF_SERVICE)];
+      [urls addObject:[NSURL URLWithString:first_run::kTermsOfServiceURL]];
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER)];
+      break;
+    }
+  }
+  self.disclaimerText = [array componentsJoinedByString:@" "];
+  self.disclaimerURLs = urls;
 }
 
 @end
