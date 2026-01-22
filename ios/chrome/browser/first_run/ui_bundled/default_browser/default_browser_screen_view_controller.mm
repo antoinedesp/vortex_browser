@@ -143,12 +143,16 @@
       [array addObject:l10n_util::GetNSString(
                            IDS_IOS_FIRST_RUN_WELCOME_SCREEN_METRIC_REPORTING)];
       [urls addObject:[NSURL URLWithString:first_run::kMetricReportingURL]];
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER)];
       break;
     }
     case kTOSWithoutUMA: {
       [array addObject:l10n_util::GetNSString(
                            IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TERMS_OF_SERVICE)];
       [urls addObject:[NSURL URLWithString:first_run::kTermsOfServiceURL]];
+      [array addObject:l10n_util::GetNSString(
+                           IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER)];
       break;
     }
   }
