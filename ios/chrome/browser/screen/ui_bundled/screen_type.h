@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, ScreenType) {
   kBestFeatures,
   kLensInteractivePromo,
   kLensAnimatedPromo,
+  kATTPrompt,
   // Actions that are performed post first-run experience.
   kSyncedSetUp,
   kGuidedTour,
