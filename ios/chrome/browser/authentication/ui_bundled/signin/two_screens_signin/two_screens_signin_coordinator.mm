@@ -215,6 +215,7 @@ using base::UserMetricsAction;
     case kBestFeatures:
     case kLensInteractivePromo:
     case kLensAnimatedPromo:
+    case kATTPrompt:
     case kStepsCompleted:
     case kSyncedSetUp:
     case kGuidedTour:
