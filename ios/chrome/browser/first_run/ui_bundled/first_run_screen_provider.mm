@@ -70,6 +70,9 @@ void AddDBPromoScreen(NSMutableArray* screens, ProfileIOS* profile) {
 NSArray* FirstRunScreenSequenceForProfile(ProfileIOS* profile) {
   NSMutableArray* screens = [NSMutableArray array];
 
+  // Add ATT prompt screen first.
+  [screens addObject:@(kATTPrompt)];
+
   AddDBPromoScreen(screens, profile);
 
   [screens addObject:@(kStepsCompleted)];
