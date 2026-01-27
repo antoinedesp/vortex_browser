@@ -170,6 +170,7 @@
     case kBestFeatures:
     case kLensInteractivePromo:
     case kLensAnimatedPromo:
+    case kATTPrompt:
     case kSyncedSetUp:
     case kGuidedTour:
     case kSafariImport:
