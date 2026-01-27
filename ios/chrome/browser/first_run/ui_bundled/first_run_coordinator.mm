@@ -24,6 +24,7 @@
 #import "ios/chrome/browser/feature_engagement/model/tracker_factory.h"
 #import "ios/chrome/browser/first_run/model/first_run_metrics.h"
 #import "ios/chrome/browser/first_run/ui_bundled/animated_lens/coordinator/animated_lens_promo_coordinator.h"
+#import "ios/chrome/browser/first_run/ui_bundled/att_prompt/att_prompt_coordinator.h"
 #import "ios/chrome/browser/first_run/ui_bundled/best_features/coordinator/best_features_screen_coordinator.h"
 #import "ios/chrome/browser/first_run/ui_bundled/default_browser/default_browser_screen_coordinator.h"
 #import "ios/chrome/browser/first_run/ui_bundled/features.h"
@@ -240,6 +241,11 @@ class FirstRunCoordinatorMetricsHelper final {
       lensAnimatedPromoCoordinator.firstRunDelegate = self;
       return lensAnimatedPromoCoordinator;
     }
+    case kATTPrompt:
+      return [[ATTPromptCoordinator alloc]
+          initWithBaseNavigationController:_navigationController
+                                   browser:self.browser
+                                  delegate:self];
     case kSyncedSetUp:
     case kGuidedTour:
     case kSafariImport:
