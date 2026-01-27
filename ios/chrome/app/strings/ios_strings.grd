@@ -2907,6 +2907,18 @@
       <message name="IDS_IOS_FIRST_RUN_FREE_TRIAL_BILLING_DISCLAIMER" desc="Disclaimer text explaining that payment will be charged after the free trial ends. Displayed on the first run screen. Required for Apple App Store compliance (Guideline 3.1.2). [iOS only]">
         Payment begins after your 7-day free trial. Cancel anytime before the trial ends to avoid charges.
       </message>
+      <message name="IDS_IOS_FIRST_RUN_ATT_PROMPT_TITLE" desc="Title of the App Tracking Transparency prompt screen shown during first run. [iOS only]">
+        Help Improve Your Experience
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_ATT_PROMPT_SUBTITLE" desc="Subtitle explaining why the app is requesting tracking permission. [iOS only]">
+        Allow us to use your data to personalize ads and improve the app. Your privacy matters and you can change this anytime in Settings.
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_ATT_PROMPT_PRIMARY_ACTION" desc="The primary action button text for the ATT prompt screen during first run. [iOS only]">
+        Continue
+      </message>
+      <message name="IDS_IOS_FIRST_RUN_ATT_PROMPT_SECONDARY_ACTION" desc="The secondary action button text for the ATT prompt screen during first run. [iOS only]">
+        Not Now
+      </message>
       <message name="IDS_IOS_FIRST_RUN_WELCOME_SCREEN_TITLE_IPAD" desc="The title of the welcome screen presented to the user on First Run when on iPad [iOS only]">
         Built for Your iPad
       </message>
