@@ -34,4 +34,7 @@ NSString* const kBestFeaturesMainScreenAccessibilityIdentifier =
 NSString* const kAnimatedLensPromoAccessibilityIdentifier =
     @"animatedLensPromoAccessibilityIdentifier";
 
+NSString* const kATTPromptScreenAccessibilityIdentifier =
+    @"attPromptScreenAccessibilityIdentifier";
+
 }  // namespace first_run

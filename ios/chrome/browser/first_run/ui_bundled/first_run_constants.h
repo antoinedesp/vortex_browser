@@ -44,6 +44,9 @@ extern NSString* const kBestFeaturesMainScreenAccessibilityIdentifier;
 // Accessibility identifier of the Lens Animated promo.
 extern NSString* const kAnimatedLensPromoAccessibilityIdentifier;
 
+// Accessibility identifier of the ATT prompt screen.
+extern NSString* const kATTPromptScreenAccessibilityIdentifier;
+
 }  // namespace first_run
 
 #endif  // IOS_CHROME_BROWSER_FIRST_RUN_UI_BUNDLED_FIRST_RUN_CONSTANTS_H_
